@@ -6,4 +6,21 @@
 //
 
 import Foundation
+import UIKit
 
+enum Constants{
+    
+    // 백그라운드 칼러
+    enum background {
+        static let color = UIColor(red: 164/255, green: 81/255, blue: 247/255, alpha: 1.0)
+        
+    }
+    
+    // 이미지 백그라운드 칼러
+    enum imageBackground {
+        static let color = UIColor(red: 255/255, green: 235/255, blue: 96/255, alpha: 1.0)
+
+    }
+    
+    
+}
