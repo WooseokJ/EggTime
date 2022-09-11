@@ -122,7 +122,7 @@ class WriteView: BaseView {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
         let layoutwidth = UIScreen.main.bounds.width - (spacing * 4)
-        layout.itemSize = CGSize(width: layoutwidth / 1.8, height: layoutwidth)
+        layout.itemSize = CGSize(width: layoutwidth / 2.8, height: layoutwidth)
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing

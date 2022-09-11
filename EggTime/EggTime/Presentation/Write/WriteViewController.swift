@@ -14,9 +14,8 @@ class WriteViewController: BaseViewController, UITextFieldDelegate {
     override func loadView() {
         super.view = writeView
     }
-
     
-    let pickerSelect: [String] = ["A","B"]
+    lazy var pickerSelect: [String] = PickerEnum.allCases.map{$0.pickerLisk[0]}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +29,8 @@ class WriteViewController: BaseViewController, UITextFieldDelegate {
         
         configToolbar()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
         
     }
-  
+
 }
 

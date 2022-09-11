@@ -67,8 +67,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        
         return SettingContent.allCases[section].rawValue
     }
     
@@ -78,6 +76,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         header.textLabel?.textColor = .white
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }

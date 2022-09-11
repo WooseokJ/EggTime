@@ -11,9 +11,7 @@ import UIKit
 extension WriteViewController {
     
     
-    @objc func saveButtonClicked() {
-        self.navigationController?.popViewController(animated: true)
-    }
+ 
     
     //MARK: 피커뷰 위한 툴바
     func configToolbar() {
