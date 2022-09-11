@@ -15,13 +15,13 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     }
     
     //MARK: 컬렉션뷰 안의 내용크기
-    let imageButton : UIButton = {
-        let button = UIButton()
-        button.backgroundColor = Constants.imageBackground.color
-        button.layer.cornerRadius = button.frame.height / 2
-
-        button.clipsToBounds = true
-        return button
+    let imageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = Constants.imageBackground.color
+//        button.backgroundColor = Constants.imageBackground.color
+        imageView.layer.cornerRadius = imageView.frame.height / 2
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     let dateLabel : UILabel = {
@@ -34,8 +34,8 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     
     //MARK: 컬렉션뷰에 등록
     override func configure() {
-        [imageButton,dateLabel].forEach {
-            self.addSubview($0)
+        [dateLabel,imageView].forEach {
+            self.contentView.addSubview($0)
         }
     }
     
@@ -43,22 +43,21 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     //MARK: 컬렉션뷰 안의 위치
     override func setConstrains() {
         
-        imageButton.snp.makeConstraints {
+        imageView.snp.makeConstraints {
             $0.top.equalTo(0)
             $0.leading.trailing.equalTo(0)
             $0.bottom.equalTo(-50)
             
         }
-        
+
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(imageButton.snp.bottom).offset(10)
+            $0.top.equalTo(imageView.snp.bottom).offset(10)
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(0)
-            
-            
         }
     }
     
     
 
 }
+

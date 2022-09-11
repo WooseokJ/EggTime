@@ -62,6 +62,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.content.text = SettingContent.allCases[indexPath.section].settingList[indexPath.row]
         cell.backgroundColor = Constants.background.color
+        
         return cell
     }
     
@@ -78,7 +79,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.textColor = .white
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 80
     }
     
 }

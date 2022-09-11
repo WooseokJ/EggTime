@@ -67,20 +67,23 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier, for: indexPath) as? ListCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.imageButton.layer.cornerRadius = cell.frame.height / 3.5
-        
+        cell.imageView.layer.cornerRadius = cell.frame.height / 3.5
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
            let itemSpacing : CGFloat = 10
-           
            let myWidth : CGFloat = (collectionView.bounds.width - itemSpacing * 2) / 3
-           
-           
            return CGSize(width: myWidth, height: myWidth)
        }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        transition(vc,transitionStyle: .push)
+        vc.navigationItem.backBarButtonItem?.tintColor = .white
+        vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
+        
+    }
     
 }

@@ -24,6 +24,7 @@ class SettingTableViewCell: BaseTableViewCell {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.backgroundColor = Constants.background.color
+        label.textColor = .white
         return label
     }()
     
