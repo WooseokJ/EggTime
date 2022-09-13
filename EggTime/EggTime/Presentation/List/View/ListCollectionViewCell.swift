@@ -18,7 +18,6 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     let imageView : UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = Constants.imageBackground.color
-//        button.backgroundColor = Constants.imageBackground.color
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.clipsToBounds = true
         return imageView
@@ -27,6 +26,7 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     let dateLabel : UILabel = {
         let label = UILabel()
         label.backgroundColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
     

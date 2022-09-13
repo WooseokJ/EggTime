@@ -1,6 +1,7 @@
 
 
 import UIKit
+import RealmSwift
 
 class ListViewController: BaseViewController {
 
@@ -16,6 +17,18 @@ class ListViewController: BaseViewController {
         listView.collectionview.dataSource = self
         listView.collectionview.delegate = self
     
+    }
+    
+    let repository = RealmRepository()
+    var tasks: Results<RealmModel>! {
+        didSet {
+            listView.collectionview.reloadData()
+            print("collectionview Tasks Changed")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tasks = repository.fetch()
     }
     
 

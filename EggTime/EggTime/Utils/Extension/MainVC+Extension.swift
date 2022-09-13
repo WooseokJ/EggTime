@@ -25,30 +25,23 @@ extension MainViewController {
         alert.addAction(modifyButton)
         alert.addAction(cancel)
         present(alert,animated: true)
-        
-    
-        
-        
     }
     func tapsoakButton(){
         let vc = WriteViewController()
         transition(vc,transitionStyle: .push)
-        vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
+        vc.select = true
+
 
     }
     
-    @objc func saveButtonClicked() {
-        self.navigationController?.popViewController(animated: true)
-    }
+ 
     
     
     
     func tapModifyButton() {
         let vc = WriteViewController()
         transition(vc,transitionStyle: .push)
-        vc.navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(modifyButtonClicked))
+        vc.select = false
     }
-    @objc func modifyButtonClicked() {
-        self.navigationController?.popViewController(animated: true)
-    }
+ 
 }

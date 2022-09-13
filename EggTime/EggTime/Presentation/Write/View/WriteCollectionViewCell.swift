@@ -21,11 +21,11 @@ class WriteCollectionViewCell: BaseCollectionViewCell {
     
     
     //MARK: 크기
-    let imageView: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = Constants.imageBackground.color
+    var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = Constants.imageBackground.color
         
-        return button
+        return imageView
     }()
     
     

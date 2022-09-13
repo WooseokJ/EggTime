@@ -27,6 +27,7 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
         button.backgroundColor = Constants.imageBackground.color
         return button
     }()
+  
     
     //MARK: 컬렉션뷰 등록
     override func configure() {

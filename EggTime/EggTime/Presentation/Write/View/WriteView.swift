@@ -9,6 +9,7 @@ import Foundation
 
 import SnapKit
 import UIKit
+//import YPImagePicker
 
 class WriteView: BaseView {
     //MARK: 연결
@@ -254,26 +255,4 @@ extension WriteViewController: UIPickerViewDelegate,UIPickerViewDataSource {
     }
     
   
-}
-
-extension WriteViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WriteCollectionViewCell.reuseIdentifier, for: indexPath) as? WriteCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("컬렉션뷰 클릭")
-    }
-    
-    
-    
-    
 }

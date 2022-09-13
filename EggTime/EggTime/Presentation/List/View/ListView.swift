@@ -17,7 +17,7 @@ class ListView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+
     
     //MARK: 크기
     let collectionview : UICollectionView = {
@@ -54,13 +54,14 @@ class ListView: BaseView {
         }
     }
     
-  
+
     
 }
 
 extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
+        print(tasks.count)
+        return tasks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,7 +69,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
         }
         cell.imageView.layer.cornerRadius = cell.frame.height / 3.5
-        
+        cell.dateLabel.text = repository.dateToString(date: tasks[indexPath.row].openDate) 
         return cell
     }
     
@@ -83,6 +84,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         transition(vc,transitionStyle: .push)
         vc.navigationItem.backBarButtonItem?.tintColor = .white
         vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
+        vc.objectid = tasks[indexPath.item].objectId
         
     }
     

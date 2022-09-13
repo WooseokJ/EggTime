@@ -20,24 +20,31 @@ enum PickerEnum: String, CaseIterable {
     var pickerLisk: [String] {
         switch self {
         case .afterOneday:
-            return [self.rawValue+datePicker(afterday: 1)]
+            return [datePicker(afterday: 1)]
         case .afterThreeDay:
-            return [self.rawValue+datePicker(afterday: 3)]
+            return [datePicker(afterday: 3)]
+
         case .afterweek:
-            return [self.rawValue+datePicker(afterday: 7)]
+            return [datePicker(afterday: 7)]
+
         case .afterTwoWeek:
-            return [self.rawValue+datePicker(afterday: 14)]
+            return [datePicker(afterday: 14)]
+
         case .afterMonth :
-            return [self.rawValue+datePicker(afterday: 30)]
+            return [datePicker(afterday: 30)]
+
         case .userSelect:
-            return ["사용자지정"]
+            return ["사용자입력"]
         }
     }
     
 }
 
 func datePicker(afterday: Int) -> String {
-    let dateformattor = DateFormatter()
-    dateformattor.dateFormat = "yyyy-MM-dd"
-    return dateformattor.string(from: Date(timeInterval: TimeInterval((86400 * afterday)), since: Date()))
+    let formattor = DateFormatter()
+    formattor.locale = Locale(identifier: "ko_KR")
+    formattor.timeZone = TimeZone(abbreviation: "KST")
+    formattor.dateFormat = "yyyy-MM-dd hh:mm"
+    return formattor.string(from: Date(timeInterval: TimeInterval((86400 * afterday)), since: Date()))
+
 }
