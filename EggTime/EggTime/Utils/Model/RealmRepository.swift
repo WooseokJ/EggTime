@@ -9,9 +9,9 @@ import Foundation
 import RealmSwift
 
 protocol RealmRepositoryType {
-    func fetch() -> Results<RealmModel>
-    
-    
+    func fetch() -> Results<EggTime>
+    func stringToDate(string: String) -> Date
+    func dateToString(date: Date) -> String 
     
     
 }
@@ -24,8 +24,15 @@ class RealmRepository: RealmRepositoryType {
     
     
     
-    func fetch() -> Results<RealmModel> {
-        return localRealm.objects(RealmModel.self)
+    func fetch() -> Results<EggTime> {
+        return localRealm.objects(EggTime.self)
+    }
+    
+    func deleteItem(item: EggTime) {
+//        removeImageFromDocument(fileName: "\(item.objectId).jpg") //도큐먼트의 이미지 삭제 10
+        try! localRealm.write{
+            localRealm.delete(item) // 레코드 삭제
+        }
     }
     
     // string -> date로 바꾸기

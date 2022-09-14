@@ -1,11 +1,10 @@
 
 
 import UIKit
-import NMapsMap
 import SnapKit
-import CoreLocation
 
-class MainViewController: BaseViewController, CLLocationManagerDelegate {
+
+class MainViewController: BaseViewController {
     
     //MARK: 뷰 가져오기
     let mainview = MainView()
@@ -13,59 +12,57 @@ class MainViewController: BaseViewController, CLLocationManagerDelegate {
     override func loadView() {
         super.view = mainview
     }
-    var locationManager: CLLocationManager! // location1
-    let coord = NMGLatLng(lat: 37.4889112, lng:127.0657742)
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "타임 캡슐 묻기"
-        
-        let naverMapView = NMFMapView(frame: view.frame)
-        
-        
-        view.addSubview(naverMapView)
-        
-        naverMapView.snp.makeConstraints {
-            $0.width.equalTo(400)
-            $0.center.equalTo(view)
-            $0.height.equalTo(340)
-        }
-        
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "mappin.and.ellipse"), style: .plain, target: self, action: #selector(mapShowButtonClicked))
 
-        
-        
-        
-//        naverMapView.showCompass = true // 나침반 모양
-//        naverMapView.showZoomControls = true // +, - 버튼
-//        naverMapView.showLocationButton = true //동그라미 버튼
-        // NMFMapViewCameraDelegate Delegate 등록
-//        naverMapView.mapView.addCameraDelegate(delegate: self)
-  
-
-
-
-        
         
         mainview.soakButton.addTarget(self, action: #selector(soakButtonClicked), for: .touchUpInside)
     }
-    
-    
-    
-    
+        
     
 }
 
-//extension MainViewController: NMFMapViewCameraDelegate{
-//
-//    // 카메라 위치 변경시 좌표
-//    func mapView(_ mapView: NMFMapView, cameraIsChangingByReason reason: Int) {
-//           print("카메라가 변경됨 : reason : \(reason)")
-//           let cameraPosition = mapView.cameraPosition
-//
-//           print(cameraPosition.target.lat, cameraPosition.target.lng)
-//
-//    }
-//
-//}
+
+
+extension MainViewController {
+    
+    
+    @objc func soakButtonClicked() {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        let soakButton = UIAlertAction(title: "타임 캡슐 묻기", style: .default) { (action) in
+            self.tapsoakButton()
+        }
+        let modifyButton = UIAlertAction(title: "수정하기", style: .default) { (action) in
+            self.tapModifyButton()
+        }
+        let cancel = UIAlertAction(title: "취소하기", style: .cancel)
+        
+        alert.addAction(soakButton)
+        alert.addAction(modifyButton)
+        alert.addAction(cancel)
+        present(alert,animated: true)
+    }
+    func tapsoakButton(){
+        let vc = WriteViewController()
+        transition(vc,transitionStyle: .push)
+        vc.select = true
+
+
+    }
+    
+    func tapModifyButton() {
+        let vc = WriteViewController()
+        transition(vc,transitionStyle: .push)
+        vc.select = false
+    }
+    
+    // 지도보기 버튼
+    @objc func mapShowButtonClicked() {
+        let vc = MapViewController()
+        transition(vc,transitionStyle: .push)
+    }
+ 
+}

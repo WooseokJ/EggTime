@@ -20,7 +20,9 @@ class DetailViewController: BaseViewController {
 
     let repository = RealmRepository()
 
-    var tasks: Results<RealmModel>! {
+    var tag: Int?
+    
+    var tasks: Results<EggTime>! {
         didSet {
             detailView.collectionview.reloadData()
             print("collectionview Tasks Changed")
@@ -31,7 +33,24 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad()
         detailView.collectionview.dataSource = self
         detailView.collectionview.delegate = self
-
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(deleteButtonClicked))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tasks = repository.fetch()
     }
 
+}
+
+extension DetailViewController {
+    @objc func deleteButtonClicked() {
+        guard let tagNotNil = tag else {
+            return
+        }
+        let item = tasks[tagNotNil]
+        repository.deleteItem(item: item)
+        ListView().collectionview.reloadData()
+        self.navigationController?.popViewController(animated: true)
+        
+    }
 }

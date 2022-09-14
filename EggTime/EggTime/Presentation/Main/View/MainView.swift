@@ -5,7 +5,6 @@ import SnapKit
 import UIKit
 
 import NMapsMap
-//import NMapsMap
 class MainView: BaseView {
     
     //MARK: 연결
@@ -37,12 +36,7 @@ class MainView: BaseView {
         return button
     }()
     
-//    let mapView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .red
-//        return view
-//
-//    }()
+    
     
     //MARK: 뷰 등록
     override func configure() {

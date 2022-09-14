@@ -142,7 +142,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let s = repository.localRealm.objects(RealmModel.self).filter("objectId = %@",objectid)
+        let s = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid)
 
 
         detailView.dateLabel.text = "등록일: " + repository.dateToString(date: s[0].regDate)
