@@ -15,7 +15,7 @@ enum SettingContent: String,CaseIterable {
     var settingList : [String] {
         switch self {
         case .backup:
-            return ["백업하기","복구하기"]
+            return ["백업/복구하기"]
         case .appGuide:
             return ["사용법"]
         case .appInfo:

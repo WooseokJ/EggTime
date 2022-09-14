@@ -21,6 +21,7 @@ class SettingView: BaseView {
         let tableview = UITableView(frame: .zero, style: .insetGrouped)
         tableview.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.reuseIdentifier )
         tableview.backgroundColor = Constants.background.color
+        tableview.rowHeight = 80
         return tableview
         
     }()
@@ -77,8 +78,17 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.textColor = .white
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 0) && (indexPath.section == 0) {
+            let vc = BackupStoredViewController()
+            transition(vc,transitionStyle: .push)
+        }
     }
+    
+    
     
 }

@@ -59,8 +59,8 @@ class ListView: BaseView {
 }
 
 extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(tasks.count)
         return tasks.count
     }
     
@@ -85,6 +85,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         vc.navigationItem.backBarButtonItem?.tintColor = .white
         vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
         vc.objectid = tasks[indexPath.item].objectId
+        vc.tag = indexPath.item
         
     }
     
