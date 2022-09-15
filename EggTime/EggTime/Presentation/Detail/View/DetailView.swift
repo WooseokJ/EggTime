@@ -75,6 +75,7 @@ class DetailView: BaseView {
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.numberOfLines = 0
         label.textColor = .white
+        
         return label
     }()
     
@@ -125,7 +126,8 @@ class DetailView: BaseView {
             $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.trailing.equalTo(titleLabel.snp.trailing)
             $0.leading.equalTo(titleLabel.snp.leading)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-40)
+//            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-40)
+            $0.bottom.greaterThanOrEqualTo(self.safeAreaLayoutGuide).offset(-40)
         }
        
         

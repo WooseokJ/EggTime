@@ -49,11 +49,11 @@ class SettingView: BaseView {
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return SettingContent.allCases.count
+        return Setting.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingContent.allCases[section].settingList.count
+        return Setting.allCases[section].settingList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,14 +61,14 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.content.text = SettingContent.allCases[indexPath.section].settingList[indexPath.row]
+        cell.content.text = Setting.allCases[indexPath.section].settingList[indexPath.row]
         cell.backgroundColor = Constants.background.color
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return SettingContent.allCases[section].rawValue
+        return Setting.allCases[section].rawValue
     }
     
     //MARK:  테이블뷰 색션 텍스트 정보
@@ -78,15 +78,48 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.textColor = .white
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 80
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //나중에수정
+        
+        let allVC = Setting.allCases[indexPath.section]
+        let selectVC = allVC.settingList[indexPath.row]
+        
+        //MARK: 백업복구기능
         if (indexPath.row == 0) && (indexPath.section == 0) {
             let vc = BackupStoredViewController()
             transition(vc,transitionStyle: .push)
         }
+        
+        
+        
+        if (indexPath.row == 0) && (indexPath.section == 2) {
+            let vc = OpenLicenseViewController()
+            transition(vc,transitionStyle: .push)
+        }
+        
+    
+        //나중에수정
+        //MARK: 버전 앨럿
+        if (indexPath.row == 1 ) && (indexPath.section == 2) {
+            let vc = VersionViewController()
+            transition(vc,transitionStyle: .push)
+        }
+        
+        //나중에수정
+        //MARK: 리뷰쓰기
+        if (indexPath.row == 2) && (indexPath.section == 2) {
+            if let reviewURL = URL(string: "itms-apps://itunes.apple.com/app/itunes-u/idwooseokJo?ls=1&mt=8&action=write-review"), UIApplication.shared.canOpenURL(reviewURL) { // 유효한 URL인지 검사합니다.
+                if #available(iOS 10.0, *) { //iOS 10.0부터 URL를 오픈하는 방법이 변경 되었습니다.
+                    UIApplication.shared.open(reviewURL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(reviewURL)
+                }
+            }
+            
+        }
+        
+        
+        
     }
     
     

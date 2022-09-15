@@ -49,8 +49,6 @@ extension MainViewController {
         let vc = WriteViewController()
         transition(vc,transitionStyle: .push)
         vc.select = true
-
-
     }
     
     func tapModifyButton() {

@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum SettingContent: String,CaseIterable {
+enum Setting: String,CaseIterable {
     case backup = "백업/복구"
     case appGuide = "앱 사용법"
     case appInfo = "앱 정보"

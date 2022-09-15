@@ -101,7 +101,7 @@ class BackupStoredViewController: BaseViewController {
 }
 
 
-
+// 나중에수정
 extension BackupStoredViewController: UIDocumentPickerDelegate{
     // 취소누른경우
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
@@ -142,7 +142,7 @@ extension BackupStoredViewController: UIDocumentPickerDelegate{
                 //파일 앱 zip -> 도큐먼트 폴더에 복사
                 try FileManager.default.copyItem(at: selectedFieldURL, to: sandboxFileURL)
                 
-                let fileURL = path.appendingPathComponent("sesacDiary.zip") //  ~fileapp/foder/sesacDiary.zip
+                let fileURL = path.appendingPathComponent("나의 캡슐 백업파일.zip") //  ~fileapp/foder/sesacDiary.zip
                 
                 try Zip.unzipFile(fileURL, destination: path , overwrite: true, password: nil, progress: { progress in
                     print("progress: \(progress)")

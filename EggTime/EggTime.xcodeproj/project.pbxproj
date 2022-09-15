@@ -18,13 +18,22 @@
 		E16F4D9A28D1ABE200CEC17A /* BackupStoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9928D1ABE200CEC17A /* BackupStoredView.swift */; };
 		E16F4D9C28D1B26C00CEC17A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9B28D1B26C00CEC17A /* UIViewController+Extension.swift */; };
 		E16F4D9F28D1B31C00CEC17A /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = E16F4D9E28D1B31C00CEC17A /* Zip */; };
+		E16F4DA528D1CD2C00CEC17A /* OpenLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */; };
+		E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */; };
+		E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */; };
+		E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */; };
+		E16F4DB028D1DA7C00CEC17A /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DAF28D1DA7C00CEC17A /* VersionViewController.swift */; };
+		E16F4DB328D1DA8900CEC17A /* VersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB228D1DA8900CEC17A /* VersionView.swift */; };
+		E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB428D1E2A300CEC17A /* UILabel.swift */; };
+		E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB728D1E5B700CEC17A /* PageViewController.swift */; };
+		E16F4DBA28D1E5C100CEC17A /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB928D1E5C100CEC17A /* PageView.swift */; };
 		E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156D928CDDD0500500841 /* DetailViewController.swift */; };
 		E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156DC28CDDD1400500841 /* DetailView.swift */; };
 		E1F156DF28CDF16400500841 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156DE28CDF16400500841 /* ImageCollectionViewCell.swift */; };
 		E1F156E228CDF7D600500841 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156E128CDF7D600500841 /* WriteViewController.swift */; };
 		E1F156E528CDF7E500500841 /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156E428CDF7E500500841 /* WriteView.swift */; };
 		E1F156E928CE0ABB00500841 /* WriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156E828CE0ABB00500841 /* WriteCollectionViewCell.swift */; };
-		E1F156EB28CE42FF00500841 /* PickerEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156EA28CE42FF00500841 /* PickerEnum.swift */; };
+		E1F156EB28CE42FF00500841 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156EA28CE42FF00500841 /* Picker.swift */; };
 		E1FCB0B328CDA0F600C07AA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0B228CDA0F600C07AA3 /* AppDelegate.swift */; };
 		E1FCB0B528CDA0F600C07AA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0B428CDA0F600C07AA3 /* SceneDelegate.swift */; };
 		E1FCB0B728CDA0F600C07AA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0B628CDA0F600C07AA3 /* MainViewController.swift */; };
@@ -47,7 +56,7 @@
 		E1FCB0F228CDA58E00C07AA3 /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */; };
 		E1FCB10028CDB20200C07AA3 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0FF28CDB20200C07AA3 /* View.swift */; };
 		E1FCB10228CDB52800C07AA3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB10128CDB52800C07AA3 /* TabBarController.swift */; };
-		E1FCB10528CDBC0000C07AA3 /* SettingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB10428CDBC0000C07AA3 /* SettingEnum.swift */; };
+		E1FCB10528CDBC0000C07AA3 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB10428CDBC0000C07AA3 /* Setting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,13 +83,22 @@
 		E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredViewController.swift; sourceTree = "<group>"; };
 		E16F4D9928D1ABE200CEC17A /* BackupStoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredView.swift; sourceTree = "<group>"; };
 		E16F4D9B28D1B26C00CEC17A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseViewController.swift; sourceTree = "<group>"; };
+		E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseView.swift; sourceTree = "<group>"; };
+		E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseTableViewCell.swift; sourceTree = "<group>"; };
+		E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicense.swift; sourceTree = "<group>"; };
+		E16F4DAF28D1DA7C00CEC17A /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
+		E16F4DB228D1DA8900CEC17A /* VersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionView.swift; sourceTree = "<group>"; };
+		E16F4DB428D1E2A300CEC17A /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		E16F4DB728D1E5B700CEC17A /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		E16F4DB928D1E5C100CEC17A /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		E1F156D928CDDD0500500841 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E1F156DC28CDDD1400500841 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E1F156DE28CDF16400500841 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1F156E128CDF7D600500841 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		E1F156E428CDF7E500500841 /* WriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		E1F156E828CE0ABB00500841 /* WriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCollectionViewCell.swift; sourceTree = "<group>"; };
-		E1F156EA28CE42FF00500841 /* PickerEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerEnum.swift; sourceTree = "<group>"; };
+		E1F156EA28CE42FF00500841 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
 		E1FCB0B228CDA0F600C07AA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1FCB0B428CDA0F600C07AA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E1FCB0B628CDA0F600C07AA3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +122,7 @@
 		E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		E1FCB0FF28CDB20200C07AA3 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		E1FCB10128CDB52800C07AA3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		E1FCB10428CDBC0000C07AA3 /* SettingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEnum.swift; sourceTree = "<group>"; };
+		E1FCB10428CDBC0000C07AA3 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +186,68 @@
 			isa = PBXGroup;
 			children = (
 				E16F4D9928D1ABE200CEC17A /* BackupStoredView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E16F4DA328D1CD1000CEC17A /* OpenLicense */ = {
+			isa = PBXGroup;
+			children = (
+				E16F4DA628D1CD2F00CEC17A /* View */,
+				E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */,
+			);
+			path = OpenLicense;
+			sourceTree = "<group>";
+		};
+		E16F4DA628D1CD2F00CEC17A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */,
+				E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E16F4DAD28D1CFB400CEC17A /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				E1FCB10428CDBC0000C07AA3 /* Setting.swift */,
+				E1F156EA28CE42FF00500841 /* Picker.swift */,
+				E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		E16F4DAE28D1DA6900CEC17A /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				E16F4DAF28D1DA7C00CEC17A /* VersionViewController.swift */,
+				E16F4DB128D1DA7F00CEC17A /* View */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
+		E16F4DB128D1DA7F00CEC17A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E16F4DB228D1DA8900CEC17A /* VersionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E16F4DB628D1E58A00CEC17A /* PageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E16F4DB728D1E5B700CEC17A /* PageViewController.swift */,
+				E16F4DBB28D1E5C400CEC17A /* View */,
+			);
+			path = PageViewController;
+			sourceTree = "<group>";
+		};
+		E16F4DBB28D1E5C400CEC17A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E16F4DB928D1E5C100CEC17A /* PageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,6 +332,9 @@
 		E1FCB0C828CDA15500C07AA3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E16F4DB628D1E58A00CEC17A /* PageViewController */,
+				E16F4DAE28D1DA6900CEC17A /* Version */,
+				E16F4DA328D1CD1000CEC17A /* OpenLicense */,
 				E16F4D9528D1ABB900CEC17A /* BackupStored */,
 				E16F4D8D28D19B4600CEC17A /* Map */,
 				E1F156E028CDF7C500500841 /* Write */,
@@ -267,6 +350,7 @@
 		E1FCB0C928CDA16200C07AA3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E16F4DAD28D1CFB400CEC17A /* Enum */,
 				E1FCB0EE28CDA55C00C07AA3 /* identifier */,
 				E1FCB0ED28CDA55600C07AA3 /* Extension */,
 				E1FCB0EC28CDA55000C07AA3 /* Model */,
@@ -346,6 +430,7 @@
 			children = (
 				E1FCB0E128CDA32300C07AA3 /* Color.swift */,
 				E1FCB0FF28CDB20200C07AA3 /* View.swift */,
+				E16F4DB428D1E2A300CEC17A /* UILabel.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -360,8 +445,6 @@
 		E1FCB0EC28CDA55000C07AA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E1FCB10428CDBC0000C07AA3 /* SettingEnum.swift */,
-				E1F156EA28CE42FF00500841 /* PickerEnum.swift */,
 				E103002B28CEFE6B00922B54 /* RealmRepository.swift */,
 				E103002D28CEFED900922B54 /* EggTime.swift */,
 			);
@@ -522,28 +605,37 @@
 			files = (
 				E1F156E228CDF7D600500841 /* WriteViewController.swift in Sources */,
 				E103002C28CEFE6B00922B54 /* RealmRepository.swift in Sources */,
-				E1F156EB28CE42FF00500841 /* PickerEnum.swift in Sources */,
+				E1F156EB28CE42FF00500841 /* Picker.swift in Sources */,
 				E1FCB0E628CDA34500C07AA3 /* BaseViewController.swift in Sources */,
 				E1F156E928CE0ABB00500841 /* WriteCollectionViewCell.swift in Sources */,
 				E1FCB0DB28CDA2D800C07AA3 /* ListCollectionViewCell.swift in Sources */,
 				E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */,
+				E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */,
 				E16F4D9C28D1B26C00CEC17A /* UIViewController+Extension.swift in Sources */,
 				E1F156DF28CDF16400500841 /* ImageCollectionViewCell.swift in Sources */,
+				E16F4DBA28D1E5C100CEC17A /* PageView.swift in Sources */,
 				E1FCB0D928CDA2B600C07AA3 /* ListView.swift in Sources */,
 				E1FCB0E228CDA32300C07AA3 /* Color.swift in Sources */,
 				E1FCB0E828CDA3A000C07AA3 /* BaseTableViewCell.swift in Sources */,
 				E1FCB10028CDB20200C07AA3 /* View.swift in Sources */,
 				E1FCB0EA28CDA3AB00C07AA3 /* BaseCollectionViewCell.swift in Sources */,
+				E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */,
+				E16F4DB028D1DA7C00CEC17A /* VersionViewController.swift in Sources */,
+				E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */,
 				E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */,
 				E1FCB0E428CDA33900C07AA3 /* BaseView.swift in Sources */,
+				E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */,
+				E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */,
 				E1FCB0B728CDA0F600C07AA3 /* MainViewController.swift in Sources */,
 				E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */,
+				E16F4DA528D1CD2C00CEC17A /* OpenLicenseViewController.swift in Sources */,
 				E1FCB0DD28CDA2E800C07AA3 /* MainView.swift in Sources */,
 				E1FCB0B328CDA0F600C07AA3 /* AppDelegate.swift in Sources */,
-				E1FCB10528CDBC0000C07AA3 /* SettingEnum.swift in Sources */,
+				E1FCB10528CDBC0000C07AA3 /* Setting.swift in Sources */,
 				E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */,
 				E1FCB0D728CDA2A500C07AA3 /* SettingTableViewCell.swift in Sources */,
 				E1F156E528CDF7E500500841 /* WriteView.swift in Sources */,
+				E16F4DB328D1DA8900CEC17A /* VersionView.swift in Sources */,
 				E16F4D9A28D1ABE200CEC17A /* BackupStoredView.swift in Sources */,
 				E103002E28CEFED900922B54 /* EggTime.swift in Sources */,
 				E1FCB0B528CDA0F600C07AA3 /* SceneDelegate.swift in Sources */,

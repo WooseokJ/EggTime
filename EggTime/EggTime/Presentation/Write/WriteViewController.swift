@@ -35,7 +35,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate {
         
     }
     
-    lazy var pickerSelect: [String] = PickerEnum.allCases.map{$0.pickerLisk[0]}
+    lazy var pickerSelect: [String] = Picker.allCases.map{$0.pickerLisk[0]}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,17 +49,17 @@ class WriteViewController: BaseViewController, UITextFieldDelegate {
         
         
         // 탭제스쳐로 키보드 내리기 
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-            action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+//            action: #selector(dismissKeyboard))
+//        view.addGestureRecognizer(tap)
      
         
         configToolbar()
         
     }
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
 
 }
 

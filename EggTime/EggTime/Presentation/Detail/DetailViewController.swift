@@ -28,12 +28,17 @@ class DetailViewController: BaseViewController {
             print("collectionview Tasks Changed")
         }
     }
+    let s : Int = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailView.collectionview.dataSource = self
         detailView.collectionview.delegate = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(deleteButtonClicked))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(showAlertDeleteMessage))
+        detailView.contentLabel.sizeToFit()
+        print(tasks.count)
+        print(tasks.description)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +48,24 @@ class DetailViewController: BaseViewController {
 }
 
 extension DetailViewController {
-    @objc func deleteButtonClicked() {
+    
+    
+    
+    
+    
+    @objc func showAlertDeleteMessage() {
+        let alert = UIAlertController(title: "알림", message: "정말로 삭제하시겠습니까?", preferredStyle: .alert)
+        
+        let okay = UIAlertAction(title: "삭제", style: .destructive) {(action) in
+            self.deleteButtonClicked()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(okay)
+        alert.addAction(cancel)
+        present(alert,animated: true)
+    }
+    
+    func deleteButtonClicked() {
         guard let tagNotNil = tag else {
             return
         }
@@ -51,6 +73,6 @@ extension DetailViewController {
         repository.deleteItem(item: item)
         ListView().collectionview.reloadData()
         self.navigationController?.popViewController(animated: true)
-        
     }
+    
 }

@@ -87,6 +87,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         vc.objectid = tasks[indexPath.item].objectId
         vc.tag = indexPath.item
         
+        
     }
     
 }

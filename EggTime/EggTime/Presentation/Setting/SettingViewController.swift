@@ -11,6 +11,7 @@ class SettingViewController: BaseViewController {
         super.view = settingview
     }
     
+
     
 
     override func viewDidLoad() {
