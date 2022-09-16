@@ -82,7 +82,11 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate,CLLocationM
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print("좌표:",location.coordinate.latitude)
-            let coord = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
+            print("좌표:",location.coordinate.longitude)
+            
+            UserDefaults.standard.set(location.coordinate.latitude, forKey: "lat")
+            UserDefaults.standard.set(location.coordinate.longitude, forKey: "lng")
+            //            let coord = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
         }
     }
 

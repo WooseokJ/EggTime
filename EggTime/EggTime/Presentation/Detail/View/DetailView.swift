@@ -72,7 +72,7 @@ class DetailView: BaseView {
     let contentLabel: UILabel = {
        let label = UILabel()
         label.backgroundColor = Constants.imageBackground.color
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.numberOfLines = 0
         label.textColor = .white
         
@@ -96,7 +96,7 @@ class DetailView: BaseView {
             $0.top.equalTo(100)
             $0.trailing.equalTo(0)
             $0.leading.equalTo(80)
-            $0.height.equalTo(200)
+            $0.height.equalTo(270)
         }
         // 날짜
         dateLabel.snp.makeConstraints {
@@ -138,28 +138,35 @@ class DetailView: BaseView {
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let detailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid)
-        print("numberof: ",detailInfo)
         print(detailInfo[0].imageList.count)
-        return detailInfo[0].imageList.count
+        if detailInfo[0].imageList.count == 0 {
+            return 1
+        } else {
+            return detailInfo[0].imageList.count
+        }
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let datailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid )
-        print("cellForItem: ",datailInfo)
-        detailView.dateLabel.text = "등록일: " + repository.dateToString(date: datailInfo[0].regDate)
-        detailView.openDateLabel.text = "개봉일: " + repository.dateToString(date: datailInfo[0].openDate)
-        detailView.titleLabel.text = "제목: \(datailInfo[0].title)"
-        detailView.contentLabel.text =  "내용: \(datailInfo[0].content)"
+        let detailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid )
+
+        print(detailInfo[0].title)
+        detailView.dateLabel.text = "등록일: " + repository.dateToString(date: detailInfo[0].regDate)
+        detailView.openDateLabel.text = "개봉일: " + repository.dateToString(date: detailInfo[0].openDate)
+        detailView.titleLabel.text = "제목: \(detailInfo[0].title)"
+        detailView.contentLabel.text =  "\(detailInfo[0].content)"
         
-        guard indexPath.item >= datailInfo[0].imageList.count else {
-            cell.imageView.image = loadImageFromDocument(fileName: datailInfo[0].imageList[indexPath.item])
+        guard indexPath.item >= detailInfo[0].imageList.count else {
+            cell.imageView.image = loadImageFromDocument(fileName: detailInfo[0].imageList[indexPath.item])
             return cell
         }
+        cell.imageView.image = UIImage(named: "NoImage")
         
-        cell.backgroundColor = Constants.imageBackground.color
+        
         return cell
     }
 }

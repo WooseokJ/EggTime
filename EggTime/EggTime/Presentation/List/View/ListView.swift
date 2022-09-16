@@ -71,15 +71,13 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.imageView.layer.cornerRadius = cell.frame.height / 3.5
         cell.dateLabel.text = repository.dateToString(date: tasks[indexPath.row].openDate)
         
-         
-        guard indexPath.item >= tasks[indexPath.item].imageList.count else {
-            cell.imageView.image = loadImageFromDocument(fileName: tasks[indexPath.item].imageList[indexPath.item])
-
+        if tasks[indexPath.item].imageList.count == 0 {
+            cell.imageView.image = UIImage(named: "NoImage")
+            return cell
+        } else {
+            cell.imageView.image = loadImageFromDocument(fileName: tasks[indexPath.item].imageList[0])
             return cell
         }
-            
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -94,6 +92,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         vc.navigationItem.backBarButtonItem?.tintColor = .white
         vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
         vc.objectid = tasks[indexPath.item].objectId
+        print(tasks[indexPath.item].objectId)
         vc.tag = indexPath.item
         
         

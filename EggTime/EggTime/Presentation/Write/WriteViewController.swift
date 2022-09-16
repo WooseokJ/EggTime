@@ -33,6 +33,9 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     
     let writeViewCell = WriteCollectionViewCell()
     
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         picker.delegate = self
         
@@ -43,7 +46,8 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
         print(repository.localRealm.configuration.fileURL!)
 
-        
+        print(UserDefaults.standard.double(forKey: "lat"))
+        print(UserDefaults.standard.double(forKey: "lng"))
     }
     
     lazy var pickerSelect: [String] = Picker.allCases.map{$0.pickerLisk[0]}
@@ -124,22 +128,7 @@ extension WriteViewController {
             return
         }
         
-        
-        let formattor = DateFormatter()
-        formattor.locale = Locale(identifier: "ko_KR")
-        formattor.timeZone = TimeZone(abbreviation: "KST")
-        formattor.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        var date = Date()
-        var name: Date {
-            get {
-                return date
-            }
-            set {
-                date = newValue
-            }
-        }
-        
-        let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, imageStringArray: imageArrayString )
+        let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, latitude: UserDefaults.standard.double(forKey: "lat") ?? 0, longitude: UserDefaults.standard.double(forKey: "lng") ?? 0, imageStringArray: imageArrayString )
         do {
             try repository.localRealm.write {
                 repository.localRealm.add(task)
@@ -147,7 +136,6 @@ extension WriteViewController {
                 imageArrayUIImage.forEach {
                     saveImageToDocument(fileName: "\(task.imageList[cnt])", image: $0)
                     cnt+=1
-                    name = Date()
                 }
                 imageArrayUIImage.removeAll()
             }
