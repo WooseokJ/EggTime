@@ -10,9 +10,6 @@ class SettingViewController: BaseViewController {
     override func loadView() {
         super.view = settingview
     }
-    
-
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

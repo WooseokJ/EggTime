@@ -38,14 +38,20 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate,CLLocationM
         
         naverMapView.showLocationButton = true //현위치 버튼
         naverMapView.showCompass = true // 나침반 모양
-
+        naverMapView.showIndoorLevelPicker = true
+        naverMapView.showScaleBar = true
+        naverMapView.showZoomControls = true
+        
         view.addSubview(naverMapView)
         
         naverMapView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
+       
+        
 
+        
       
     
 
@@ -76,6 +82,7 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate,CLLocationM
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print("좌표:",location.coordinate.latitude)
+            let coord = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
         }
     }
 

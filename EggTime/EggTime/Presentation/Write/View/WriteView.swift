@@ -256,3 +256,43 @@ extension WriteViewController: UIPickerViewDelegate,UIPickerViewDataSource {
     
   
 }
+
+
+extension WriteViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageArrayString.count + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WriteCollectionViewCell.reuseIdentifier, for: indexPath) as? WriteCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+    
+        guard indexPath.item >= imageArrayUIImage.count else {
+            cell.imageView.image = imageArrayUIImage[indexPath.item]
+            return cell
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        tag = indexPath.item
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
+        let photo = UIAlertAction(title: "앨범", style: .default) { (action) in
+            self.photoSelect()
+        }
+        let camera = UIAlertAction(title: "카메라", style: .default) { action in
+            self.cameraStart()
+        }
+        let cancel = UIAlertAction(title: "취소하기", style: .cancel)
+        
+        alert.addAction(photo)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        present(alert,animated: true)
+    }
+
+}
+

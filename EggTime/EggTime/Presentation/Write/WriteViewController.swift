@@ -8,25 +8,34 @@
 import UIKit
 //import YPImagePicker
 //import Kingfisher
+import CoreLocation
+import MobileCoreServices
 
-class WriteViewController: BaseViewController, UITextFieldDelegate {
-
+class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+    
     let writeView = WriteView()
     
     override func loadView() {
         super.view = writeView
     }
     
+    
     let repository = RealmRepository()
     var select: Bool? = nil
     let picker = UIImagePickerController()
-
-    var imageArrayString: [String]?
-    var tag: Int = 0
+    
+    var imageArrayString: [String] = []
+    var imageArrayUIImage: [UIImage] = []
+    var tag: Int?
+    
+    let locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    
+    let writeViewCell = WriteCollectionViewCell()
     
     override func viewWillAppear(_ animated: Bool) {
         picker.delegate = self
-
+        
         guard select == true else {
             navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(modifyButtonClicked))
             return
@@ -36,7 +45,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate {
     }
     
     lazy var pickerSelect: [String] = Picker.allCases.map{$0.pickerLisk[0]}
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         writeView.pickerView.dataSource = self
@@ -48,19 +57,23 @@ class WriteViewController: BaseViewController, UITextFieldDelegate {
         writeView.collectionview.dataSource = self
         
         
-        // 탭제스쳐로 키보드 내리기 
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-//            action: #selector(dismissKeyboard))
-//        view.addGestureRecognizer(tap)
-     
+        
+        
+        // 탭제스쳐로 키보드 내리기
+        //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+        //            action: #selector(dismissKeyboard))
+        //        view.addGestureRecognizer(tap)
+        
         
         configToolbar()
         
     }
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-
+    //    @objc func dismissKeyboard() {
+    //        view.endEditing(true)
+    //    }
+    
+    
+    
 }
 
 extension WriteViewController {
@@ -83,14 +96,14 @@ extension WriteViewController {
         
         writeView.opendateInput.inputAccessoryView = toolBar
     }
-    
+    //MARK: 피커 선택
     @objc func donePicker() {
         let row = self.writeView.pickerView.selectedRow(inComponent: 0)
         self.writeView.pickerView.selectRow(row, inComponent: 0, animated: false)
         self.writeView.opendateInput.text = self.pickerSelect[row]
         self.writeView.opendateInput.resignFirstResponder()
     }
-    
+    //MARK: 피커 취소
     @objc func cancelPicker() {
         self.writeView.opendateInput.text = nil
         self.writeView.opendateInput.resignFirstResponder()
@@ -108,27 +121,52 @@ extension WriteViewController {
             showAlertMessage(title: "오픈일을 선택해주세요", button: "확인")
             return
         }
-
+        
         print(repository.localRealm.configuration.fileURL!)
         
+     
         
-        let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, imageStringArray: ["eee","dsadf"] )
+        let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, imageStringArray: imageArrayString )
         do {
             try repository.localRealm.write {
                 repository.localRealm.add(task)
+                imageArrayUIImage.forEach {
+                    let formattor = DateFormatter()
+                    formattor.locale = Locale(identifier: "ko_KR")
+                    formattor.timeZone = TimeZone(abbreviation: "KST")
+                    formattor.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                    var date = Date()
+                    var name: Date {
+                        get {
+                            return date
+                        }
+                        set {
+                            date = newValue
+                        }
+                    }
+                    saveImageToDocument(fileName: "\(task.objectId)" + "\(formattor.string(from: name))" + ".jpg", image: $0)
+                    name = Date()
+                }
+                imageArrayUIImage.removeAll()
             }
         } catch let error {
             print(error)
         }
         
+        
+        fetchDocumentZipFile() //확인용
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    
+    
     //MARK: 수정하기 버튼클릭
     @objc func modifyButtonClicked() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
+    //MARK: 갤러리 선택
     @objc func photoSelect() {
         print(#function)
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { // .camera
@@ -139,84 +177,83 @@ extension WriteViewController {
         picker.allowsEditing = true // 카메라 찍은뒤 편집할수있냐없냐 default는 false임. //이게있어서 찍은뒤 편집화면이 보일수있는거
         present(picker, animated: true)
     }
+    //MARK: 카메라 선택
     @objc func cameraStart() {
-//        let picker = YPImagePicker() //권한요청 메소드는 안에있어.
-//        picker.didFinishPicking { [unowned picker] items, _ in
-//            if let photo = items.singlePhoto {
-//                WriteCollectionViewCell().imageView.image = photo.image
-//            }
-//            picker.dismiss(animated: true, completion: nil)
-//        }
-//        present(picker, animated: true, completion: nil)
-    }
-}
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
+        //        let picker = YPImagePicker() //권한요청 메소드는 안에있어.
+        //        picker.didFinishPicking { [unowned picker] items, _ in
+        //            if let photo = items.singlePhoto {
+        //                WriteCollectionViewCell().imageView.image = photo.image
+        //            }
+        //            picker.dismiss(animated: true, completion: nil)
+        //        }
+        //        present(picker, animated: true, completion: nil)
     }
 }
 
+
+
+//UIImagePickerControllerDelegate = 이미지를 선택하고 카메라를 찍었을 때 다양한 동작을 도와줍니다.
+//UINavigationControllerDelegate = 앨범 사진을 선택했을 때, 화면 전환을 네비게이션으로 이동합니다.
 
 extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //UIImagePickerController4 : 사진성택하거나 카메라 촬영직후
+    //카메라나 앨범등 PickerController가 사용되고 이미지 촬영을 했을 때 발동 된다.
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("가가")
+        //        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+        //            selectedImage = image
+        //            writeView.collectionview.reloadData()
+        //            dismiss(animated: true)
+        //        }
+        
+        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
+        
+        if mediaType.isEqual(to: kUTTypeImage as NSString as String) {
+            let selectImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+                
+                let imgName = UUID().uuidString+".jpeg"
+                let documentDirectory = NSTemporaryDirectory()
+                let localPath = documentDirectory.appending(imgName)
+                let data = selectImage!.jpegData(compressionQuality: 0.3)! as NSData
+                data.write(toFile: localPath, atomically: true)
+                let photoURL = URL.init(fileURLWithPath: localPath)
+                
+                //카메라로 촬영했을때 로직구현
+                
+                
+                
+            }else if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
+                
+                let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as? NSURL
+                let imageName=imageUrl?.lastPathComponent//파일이름
+                let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+                
+                let photoURL          = NSURL(fileURLWithPath: documentDirectory)
+                let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
+                
+                imageArrayString.append(documentDirectory + "/" + imageName!)
+                
+                
+                if imageArrayUIImage.count == tag! {
+                    imageArrayUIImage.append(selectImage!)
+                } else{
+                    imageArrayUIImage[tag!] = selectImage!
+                }
+                writeView.collectionview.reloadData()
+                dismiss(animated: true)
 
-        if let imgUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+//                let data=NSData(contentsOf: imageUrl as! URL)!
+                
+                //사진첩(라이브러리)로 사진을 가져왔을때 로직구현
+                
+            }
             
-            
+        }
+        //UIImagePickerController5: 취소버튼 클릭시
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             dismiss(animated: true)
         }
-
     }
-    //UIImagePickerController5: 취소버튼 클릭시
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("나난")
-        dismiss(animated: true)
-    }
-}
-
-
-extension WriteViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WriteCollectionViewCell.reuseIdentifier, for: indexPath) as? WriteCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-                
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        tag = indexPath.item
-        
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
-        let photo = UIAlertAction(title: "앨범", style: .default) { (action) in
-            self.photoSelect()
-        }
-        let camera = UIAlertAction(title: "카메라", style: .default) { action in
-            self.cameraStart()
-        }
-        let cancel = UIAlertAction(title: "취소하기", style: .cancel)
-        
-        alert.addAction(photo)
-        alert.addAction(camera)
-        alert.addAction(cancel)
-        present(alert,animated: true)
-    }
-
-    
-    
     
 }

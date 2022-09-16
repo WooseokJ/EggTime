@@ -5,9 +5,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>앱을 열때마다 위치주소 가져오기 허용</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>test2</string>
+	<string>사진 앨범 가져오게 해주세용</string>
 	<key>NSCameraUsageDescription</key>
-	<string>test1</string>
+	<string>카메라 사용을 허용해주세용</string>
 	<key>NMFCientId</key>
 	<string>sjtk98rxyn</string>
 	<key>UIApplicationSceneManifest</key>

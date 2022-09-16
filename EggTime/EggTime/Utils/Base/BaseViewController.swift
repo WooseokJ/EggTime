@@ -3,6 +3,9 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -14,6 +17,7 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white] //네비바 title 칼러
          
     }
+    
     
     func configure() {}
     func setConstraints() {}

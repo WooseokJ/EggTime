@@ -28,7 +28,6 @@ class DetailViewController: BaseViewController {
             print("collectionview Tasks Changed")
         }
     }
-    let s : Int = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +35,6 @@ class DetailViewController: BaseViewController {
         detailView.collectionview.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(showAlertDeleteMessage))
         detailView.contentLabel.sizeToFit()
-        print(tasks.count)
-        print(tasks.description)
         
     }
     
@@ -48,10 +45,6 @@ class DetailViewController: BaseViewController {
 }
 
 extension DetailViewController {
-    
-    
-    
-    
     
     @objc func showAlertDeleteMessage() {
         let alert = UIAlertController(title: "알림", message: "정말로 삭제하시겠습니까?", preferredStyle: .alert)
