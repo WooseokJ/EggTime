@@ -29,18 +29,25 @@ class DetailViewController: BaseViewController {
         }
     }
     
+    
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         detailView.collectionview.dataSource = self
         detailView.collectionview.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(showAlertDeleteMessage))
         detailView.contentLabel.sizeToFit()
+
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tasks = repository.fetch()
+        
     }
+    
 
 }
 

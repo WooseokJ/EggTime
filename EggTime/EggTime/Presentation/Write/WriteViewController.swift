@@ -41,6 +41,8 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
             return
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
+        print(repository.localRealm.configuration.fileURL!)
+
         
     }
     
@@ -122,29 +124,29 @@ extension WriteViewController {
             return
         }
         
-        print(repository.localRealm.configuration.fileURL!)
         
-     
+        let formattor = DateFormatter()
+        formattor.locale = Locale(identifier: "ko_KR")
+        formattor.timeZone = TimeZone(abbreviation: "KST")
+        formattor.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        var date = Date()
+        var name: Date {
+            get {
+                return date
+            }
+            set {
+                date = newValue
+            }
+        }
         
         let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, imageStringArray: imageArrayString )
         do {
             try repository.localRealm.write {
                 repository.localRealm.add(task)
+                var cnt: Int = 0
                 imageArrayUIImage.forEach {
-                    let formattor = DateFormatter()
-                    formattor.locale = Locale(identifier: "ko_KR")
-                    formattor.timeZone = TimeZone(abbreviation: "KST")
-                    formattor.dateFormat = "yyyy-MM-dd hh:mm:ss"
-                    var date = Date()
-                    var name: Date {
-                        get {
-                            return date
-                        }
-                        set {
-                            date = newValue
-                        }
-                    }
-                    saveImageToDocument(fileName: "\(task.objectId)" + "\(formattor.string(from: name))" + ".jpg", image: $0)
+                    saveImageToDocument(fileName: "\(task.imageList[cnt])", image: $0)
+                    cnt+=1
                     name = Date()
                 }
                 imageArrayUIImage.removeAll()
@@ -210,20 +212,21 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
         
         if mediaType.isEqual(to: kUTTypeImage as NSString as String) {
             let selectImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-            if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
-                
-                let imgName = UUID().uuidString+".jpeg"
-                let documentDirectory = NSTemporaryDirectory()
-                let localPath = documentDirectory.appending(imgName)
-                let data = selectImage!.jpegData(compressionQuality: 0.3)! as NSData
-                data.write(toFile: localPath, atomically: true)
-                let photoURL = URL.init(fileURLWithPath: localPath)
-                
-                //카메라로 촬영했을때 로직구현
-                
-                
-                
-            }else if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
+//            if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+//                
+//                let imgName = UUID().uuidString+".jpeg"
+//                let documentDirectory = NSTemporaryDirectory()
+//                let localPath = documentDirectory.appending(imgName)
+//                let data = selectImage!.jpegData(compressionQuality: 0.3)! as NSData
+//                data.write(toFile: localPath, atomically: true)
+//                let photoURL = URL.init(fileURLWithPath: localPath)
+//                
+//                //카메라로 촬영했을때 로직구현
+//                
+//                
+//                
+//            }else
+            if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
                 
                 let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as? NSURL
                 let imageName=imageUrl?.lastPathComponent//파일이름
@@ -232,12 +235,14 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
                 let photoURL          = NSURL(fileURLWithPath: documentDirectory)
                 let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
                 
-                imageArrayString.append(documentDirectory + "/" + imageName!)
+            
                 
                 
                 if imageArrayUIImage.count == tag! {
+                    imageArrayString.append(imageName!)
                     imageArrayUIImage.append(selectImage!)
                 } else{
+                    imageArrayString[tag!] = imageName!
                     imageArrayUIImage[tag!] = selectImage!
                 }
                 writeView.collectionview.reloadData()

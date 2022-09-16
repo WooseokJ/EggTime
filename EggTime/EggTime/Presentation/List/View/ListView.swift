@@ -69,7 +69,16 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
         }
         cell.imageView.layer.cornerRadius = cell.frame.height / 3.5
-        cell.dateLabel.text = repository.dateToString(date: tasks[indexPath.row].openDate) 
+        cell.dateLabel.text = repository.dateToString(date: tasks[indexPath.row].openDate)
+        
+         
+        guard indexPath.item >= tasks[indexPath.item].imageList.count else {
+            cell.imageView.image = loadImageFromDocument(fileName: tasks[indexPath.item].imageList[indexPath.item])
+
+            return cell
+        }
+            
+        
         return cell
     }
     

@@ -260,7 +260,7 @@ extension WriteViewController: UIPickerViewDelegate,UIPickerViewDataSource {
 
 extension WriteViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArrayString.count + 1
+        return imageArrayUIImage.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

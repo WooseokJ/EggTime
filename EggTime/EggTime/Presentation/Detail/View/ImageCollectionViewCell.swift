@@ -22,16 +22,16 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     }
     
     //MARK: 크기
-    let imageButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = Constants.imageBackground.color
-        return button
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = Constants.imageBackground.color
+        return imageView
     }()
   
     
     //MARK: 컬렉션뷰 등록
     override func configure() {
-        [imageButton].forEach {
+        [imageView].forEach {
             contentView.addSubview($0)
         }
     }
@@ -39,7 +39,7 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     
     //MARK: 위치
     override func setConstrains() {
-        imageButton.snp.makeConstraints {
+        imageView.snp.makeConstraints {
             $0.edges.equalTo(0)
         }
         

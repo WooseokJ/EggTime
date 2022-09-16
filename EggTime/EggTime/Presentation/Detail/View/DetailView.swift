@@ -137,23 +137,29 @@ class DetailView: BaseView {
 
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        let detailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid)
+        print("numberof: ",detailInfo)
+        print(detailInfo[0].imageList.count)
+        return detailInfo[0].imageList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let s = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid)
-
-
-        detailView.dateLabel.text = "등록일: " + repository.dateToString(date: s[0].regDate)
-        detailView.openDateLabel.text = "개봉일: " + repository.dateToString(date: s[0].openDate)
-        detailView.titleLabel.text = "제목: \(s[0].title)"
-        detailView.contentLabel.text =  "내용: \(s[0].content)"
-
+        let datailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid )
+        print("cellForItem: ",datailInfo)
+        detailView.dateLabel.text = "등록일: " + repository.dateToString(date: datailInfo[0].regDate)
+        detailView.openDateLabel.text = "개봉일: " + repository.dateToString(date: datailInfo[0].openDate)
+        detailView.titleLabel.text = "제목: \(datailInfo[0].title)"
+        detailView.contentLabel.text =  "내용: \(datailInfo[0].content)"
+        
+        guard indexPath.item >= datailInfo[0].imageList.count else {
+            cell.imageView.image = loadImageFromDocument(fileName: datailInfo[0].imageList[indexPath.item])
+            return cell
+        }
+        
         cell.backgroundColor = Constants.imageBackground.color
-    
         return cell
     }
 }
