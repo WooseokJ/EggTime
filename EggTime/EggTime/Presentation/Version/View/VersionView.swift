@@ -24,22 +24,21 @@ class VersionView: BaseView {
     //MARK: 크기
     let imageView: UIImageView = {
         let imageview = UIImageView()
-        imageview.backgroundColor = Constants.imageBackground.color
+        imageview.image = UIImage(named: "sampleAppIcon")
         return imageview
     }()
     
+    // 최신버전
     let recentLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = Constants.imageBackground.color
         label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 20)
         return label
     }()
-    
-
-    
+    // 현재버전
     let presentLabel: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = Constants.imageBackground.color
+        label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .white
         return label
     }()
@@ -62,7 +61,7 @@ class VersionView: BaseView {
         recentLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(20)
             $0.width.equalTo(200)
-            $0.height.equalTo(50)
+            $0.height.equalTo(20)
             $0.leading.equalTo(imageView.snp.leading)
         }
         presentLabel.snp.makeConstraints {

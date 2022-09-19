@@ -13,7 +13,7 @@ enum OpenLicense: CaseIterable {
     var list: [String] {
         switch self{
         case .license:
-            return ["기술명1","기술명2","기술명3"]
+            return ["Realm","Snapkit","Zip","NMapsMap"]
         }
     }
     

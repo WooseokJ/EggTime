@@ -34,10 +34,11 @@ class VersionViewController: BaseViewController {
              return
         }
         versionView.presentLabel.text = "현재 버전: \(version.split(separator: " ")[1])"
-        
+        //MARK: 수정해야되는부분임.!!!!!!!!!
+        versionView.recentLabel.text = "최신 버전: \(version.split(separator: " ")[1])"
+
     }
-    
-    
+
     
 
 

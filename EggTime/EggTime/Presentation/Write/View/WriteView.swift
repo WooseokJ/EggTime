@@ -28,6 +28,7 @@ class WriteView: BaseView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "제목"
+        label.textColor = .white
         return label
     }()
     //제목입력
@@ -53,6 +54,7 @@ class WriteView: BaseView {
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = "등록일"
+        label.textColor = .white
         return label
     }()
     // 등록일 입력
@@ -77,6 +79,7 @@ class WriteView: BaseView {
     lazy var openLabel: UILabel = {
         let label = UILabel()
         label.text = "오픈일"
+        label.textColor = .white
         return label
     }()
     // 오픈일 입력
@@ -102,6 +105,7 @@ class WriteView: BaseView {
     lazy var writeLabel: UILabel = {
         let label = UILabel()
         label.text = "글쓰기"
+        label.textColor = .white
         return label
     }()
     //
@@ -116,6 +120,7 @@ class WriteView: BaseView {
     lazy var imageLabel: UILabel = {
         let label = UILabel()
         label.text = "이미지"
+        label.textColor = .white
         return label
     }()
     // 이미지 컬렉션뷰
@@ -273,6 +278,8 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
             cell.imageView.image = imageArrayUIImage[indexPath.item]
             return cell
         }
+        cell.imageView.image = UIImage(named: "UploadImage")
+
         return cell
     }
     

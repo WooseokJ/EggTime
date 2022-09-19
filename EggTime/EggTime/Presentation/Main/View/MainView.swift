@@ -28,20 +28,20 @@ class MainView: BaseView {
         return view
     }()
     
-    let soakButton : UIButton = {
-        let button = UIButton()
-        button.setTitle("타임 캡슐 묻기", for: .normal)
-        button.setTitleColor(Constants.background.color, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 25, weight: .bold)
-        return button
-    }()
+//    let soakButton : UIButton = {
+//        let button = UIButton()
+//        button.setTitle("타임 캡슐 묻기", for: .normal)
+//        button.setTitleColor(Constants.background.color, for: .normal)
+//        button.titleLabel?.font = .systemFont(ofSize: 25, weight: .bold)
+//        return button
+//    }()
     
     
     
     //MARK: 뷰 등록
     override func configure() {
         
-        [eggBackGround,soakButton].forEach {
+        [eggBackGround].forEach {
             self.addSubview($0)
         }
         
@@ -57,11 +57,11 @@ class MainView: BaseView {
             $0.top.equalTo(100)
             $0.bottom.equalTo(-100)
         }
-        soakButton.snp.makeConstraints {
-            $0.bottom.equalTo(eggBackGround.snp.bottom).multipliedBy(0.9)
-            $0.leading.equalTo(100)
-            $0.trailing.equalTo(-100)
-        }
+//        soakButton.snp.makeConstraints {
+//            $0.bottom.equalTo(eggBackGround.snp.bottom).multipliedBy(0.9)
+//            $0.leading.equalTo(100)
+//            $0.trailing.equalTo(-100)
+//        }
 
     }
     

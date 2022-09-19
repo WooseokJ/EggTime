@@ -27,6 +27,10 @@
 		E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB428D1E2A300CEC17A /* UILabel.swift */; };
 		E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB728D1E5B700CEC17A /* PageViewController.swift */; };
 		E16F4DBA28D1E5C100CEC17A /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB928D1E5C100CEC17A /* PageView.swift */; };
+		E1DC08AF28D7F5520032440A /* PageVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08AE28D7F5520032440A /* PageVC1.swift */; };
+		E1DC08B128D7F55D0032440A /* PageVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B028D7F55D0032440A /* PageVC2.swift */; };
+		E1DC08B328D7F5680032440A /* PageVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B228D7F5680032440A /* PageVC3.swift */; };
+		E1DC08B528D8437E0032440A /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B428D8437E0032440A /* Setting.swift */; };
 		E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156D928CDDD0500500841 /* DetailViewController.swift */; };
 		E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156DC28CDDD1400500841 /* DetailView.swift */; };
 		E1F156DF28CDF16400500841 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156DE28CDF16400500841 /* ImageCollectionViewCell.swift */; };
@@ -56,7 +60,6 @@
 		E1FCB0F228CDA58E00C07AA3 /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */; };
 		E1FCB10028CDB20200C07AA3 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0FF28CDB20200C07AA3 /* View.swift */; };
 		E1FCB10228CDB52800C07AA3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB10128CDB52800C07AA3 /* TabBarController.swift */; };
-		E1FCB10528CDBC0000C07AA3 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB10428CDBC0000C07AA3 /* Setting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -92,6 +95,10 @@
 		E16F4DB428D1E2A300CEC17A /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E16F4DB728D1E5B700CEC17A /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		E16F4DB928D1E5C100CEC17A /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		E1DC08AE28D7F5520032440A /* PageVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC1.swift; sourceTree = "<group>"; };
+		E1DC08B028D7F55D0032440A /* PageVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC2.swift; sourceTree = "<group>"; };
+		E1DC08B228D7F5680032440A /* PageVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC3.swift; sourceTree = "<group>"; };
+		E1DC08B428D8437E0032440A /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		E1F156D928CDDD0500500841 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E1F156DC28CDDD1400500841 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E1F156DE28CDF16400500841 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -122,7 +129,6 @@
 		E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		E1FCB0FF28CDB20200C07AA3 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		E1FCB10128CDB52800C07AA3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		E1FCB10428CDBC0000C07AA3 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,8 +199,8 @@
 		E16F4DA328D1CD1000CEC17A /* OpenLicense */ = {
 			isa = PBXGroup;
 			children = (
-				E16F4DA628D1CD2F00CEC17A /* View */,
 				E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */,
+				E16F4DA628D1CD2F00CEC17A /* View */,
 			);
 			path = OpenLicense;
 			sourceTree = "<group>";
@@ -211,7 +217,7 @@
 		E16F4DAD28D1CFB400CEC17A /* Enum */ = {
 			isa = PBXGroup;
 			children = (
-				E1FCB10428CDBC0000C07AA3 /* Setting.swift */,
+				E1DC08B428D8437E0032440A /* Setting.swift */,
 				E1F156EA28CE42FF00500841 /* Picker.swift */,
 				E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */,
 			);
@@ -240,6 +246,9 @@
 			children = (
 				E16F4DB728D1E5B700CEC17A /* PageViewController.swift */,
 				E16F4DBB28D1E5C400CEC17A /* View */,
+				E1DC08AE28D7F5520032440A /* PageVC1.swift */,
+				E1DC08B028D7F55D0032440A /* PageVC2.swift */,
+				E1DC08B228D7F5680032440A /* PageVC3.swift */,
 			);
 			path = PageViewController;
 			sourceTree = "<group>";
@@ -609,6 +618,7 @@
 				E1FCB0E628CDA34500C07AA3 /* BaseViewController.swift in Sources */,
 				E1F156E928CE0ABB00500841 /* WriteCollectionViewCell.swift in Sources */,
 				E1FCB0DB28CDA2D800C07AA3 /* ListCollectionViewCell.swift in Sources */,
+				E1DC08B528D8437E0032440A /* Setting.swift in Sources */,
 				E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */,
 				E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */,
 				E16F4D9C28D1B26C00CEC17A /* UIViewController+Extension.swift in Sources */,
@@ -618,7 +628,9 @@
 				E1FCB0E228CDA32300C07AA3 /* Color.swift in Sources */,
 				E1FCB0E828CDA3A000C07AA3 /* BaseTableViewCell.swift in Sources */,
 				E1FCB10028CDB20200C07AA3 /* View.swift in Sources */,
+				E1DC08B128D7F55D0032440A /* PageVC2.swift in Sources */,
 				E1FCB0EA28CDA3AB00C07AA3 /* BaseCollectionViewCell.swift in Sources */,
+				E1DC08B328D7F5680032440A /* PageVC3.swift in Sources */,
 				E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */,
 				E16F4DB028D1DA7C00CEC17A /* VersionViewController.swift in Sources */,
 				E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */,
@@ -626,12 +638,12 @@
 				E1FCB0E428CDA33900C07AA3 /* BaseView.swift in Sources */,
 				E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */,
 				E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */,
+				E1DC08AF28D7F5520032440A /* PageVC1.swift in Sources */,
 				E1FCB0B728CDA0F600C07AA3 /* MainViewController.swift in Sources */,
 				E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */,
 				E16F4DA528D1CD2C00CEC17A /* OpenLicenseViewController.swift in Sources */,
 				E1FCB0DD28CDA2E800C07AA3 /* MainView.swift in Sources */,
 				E1FCB0B328CDA0F600C07AA3 /* AppDelegate.swift in Sources */,
-				E1FCB10528CDBC0000C07AA3 /* Setting.swift in Sources */,
 				E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */,
 				E1FCB0D728CDA2A500C07AA3 /* SettingTableViewCell.swift in Sources */,
 				E1F156E528CDF7E500500841 /* WriteView.swift in Sources */,
@@ -801,7 +813,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -831,7 +843,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -21,7 +21,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     
     
     let repository = RealmRepository()
-    var select: Bool? = nil
+    
     let picker = UIImagePickerController()
     
     var imageArrayString: [String] = []
@@ -39,13 +39,9 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     override func viewWillAppear(_ animated: Bool) {
         picker.delegate = self
         
-        guard select == true else {
-            navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(modifyButtonClicked))
-            return
-        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
         print(repository.localRealm.configuration.fileURL!)
-
+        
         print(UserDefaults.standard.double(forKey: "lat"))
         print(UserDefaults.standard.double(forKey: "lng"))
     }
@@ -66,19 +62,20 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         
         
         // 탭제스쳐로 키보드 내리기
-        //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-        //            action: #selector(dismissKeyboard))
-        //        view.addGestureRecognizer(tap)
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+//                                                                 action: #selector(dismissKeyboard))
+//        view.addGestureRecognizer(tap)
+//        view.backgroundColor = .blue
         
         
         configToolbar()
         
     }
-    //    @objc func dismissKeyboard() {
-    //        view.endEditing(true)
-    //    }
-    
-    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+//
+//
     
 }
 
@@ -200,20 +197,20 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
         
         if mediaType.isEqual(to: kUTTypeImage as NSString as String) {
             let selectImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-//            if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
-//                
-//                let imgName = UUID().uuidString+".jpeg"
-//                let documentDirectory = NSTemporaryDirectory()
-//                let localPath = documentDirectory.appending(imgName)
-//                let data = selectImage!.jpegData(compressionQuality: 0.3)! as NSData
-//                data.write(toFile: localPath, atomically: true)
-//                let photoURL = URL.init(fileURLWithPath: localPath)
-//                
-//                //카메라로 촬영했을때 로직구현
-//                
-//                
-//                
-//            }else
+            //            if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            //
+            //                let imgName = UUID().uuidString+".jpeg"
+            //                let documentDirectory = NSTemporaryDirectory()
+            //                let localPath = documentDirectory.appending(imgName)
+            //                let data = selectImage!.jpegData(compressionQuality: 0.3)! as NSData
+            //                data.write(toFile: localPath, atomically: true)
+            //                let photoURL = URL.init(fileURLWithPath: localPath)
+            //
+            //                //카메라로 촬영했을때 로직구현
+            //
+            //
+            //
+            //            }else
             if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
                 
                 let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as? NSURL
@@ -223,7 +220,7 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
                 let photoURL          = NSURL(fileURLWithPath: documentDirectory)
                 let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
                 
-            
+                
                 
                 
                 if imageArrayUIImage.count == tag! {
@@ -235,8 +232,8 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
                 }
                 writeView.collectionview.reloadData()
                 dismiss(animated: true)
-
-//                let data=NSData(contentsOf: imageUrl as! URL)!
+                
+                //                let data=NSData(contentsOf: imageUrl as! URL)!
                 
                 //사진첩(라이브러리)로 사진을 가져왔을때 로직구현
                 

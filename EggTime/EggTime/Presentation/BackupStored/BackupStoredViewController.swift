@@ -23,7 +23,7 @@ class BackupStoredViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.title = "백업/복구"
         backupStoredView.backupButton.addTarget(self, action: #selector(backupButtonClicked), for: .touchUpInside)
         backupStoredView.storedButton.addTarget(self, action: #selector(storedButtonClicked), for: .touchUpInside)
     }

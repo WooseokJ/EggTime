@@ -20,9 +20,7 @@ class SettingTableViewCell: BaseTableViewCell {
     
     let content : UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 25)
         label.numberOfLines = 0
-        label.textAlignment = .center
         label.backgroundColor = Constants.background.color
         label.textColor = .white
         return label
@@ -40,7 +38,7 @@ class SettingTableViewCell: BaseTableViewCell {
     //MARK: 테이블뷰 안에 위치 등록
     override func setConstrains() {
         content.snp.makeConstraints {
-            $0.leading.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.equalTo(10)
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }

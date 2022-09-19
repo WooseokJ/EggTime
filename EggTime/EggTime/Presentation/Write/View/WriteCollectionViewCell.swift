@@ -23,8 +23,6 @@ class WriteCollectionViewCell: BaseCollectionViewCell {
     //MARK: 크기
     var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = Constants.imageBackground.color
-        
         return imageView
     }()
     

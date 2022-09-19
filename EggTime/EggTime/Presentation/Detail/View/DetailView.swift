@@ -159,6 +159,9 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         detailView.openDateLabel.text = "개봉일: " + repository.dateToString(date: detailInfo[0].openDate)
         detailView.titleLabel.text = "제목: \(detailInfo[0].title)"
         detailView.contentLabel.text =  "\(detailInfo[0].content)"
+
+        print("DB lat:"+"\(detailInfo[0].latitude!)")
+        print("DB lng:"+"\(detailInfo[0].longitude!)")
         
         guard indexPath.item >= detailInfo[0].imageList.count else {
             cell.imageView.image = loadImageFromDocument(fileName: detailInfo[0].imageList[indexPath.item])

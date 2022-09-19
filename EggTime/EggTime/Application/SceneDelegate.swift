@@ -13,14 +13,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        if !UserDefaults.standard.bool(forKey: "first") {
+            if let windowScene = scene as? UIWindowScene {
+               let window = UIWindow(windowScene: windowScene)
+               window.rootViewController = PageViewController()
+               UITabBar.appearance().barTintColor = UIColor.white // 처음 탭바 칼러 (스크롤해도 안변해)
+               self.window = window
+               window.makeKeyAndVisible()
+           }
+        }else {
+            if let windowScene = scene as? UIWindowScene {
+               let window = UIWindow(windowScene: windowScene)
+               window.rootViewController = TabBarController()
+               UITabBar.appearance().barTintColor = UIColor.white // 처음 탭바 칼러 (스크롤해도 안변해)
+               self.window = window
+               window.makeKeyAndVisible()
+           }
+        }
+        
 
-        if let windowScene = scene as? UIWindowScene {
-           let window = UIWindow(windowScene: windowScene)
-           window.rootViewController = TabBarController()
-           UITabBar.appearance().barTintColor = UIColor.white // 처음 탭바 칼러 (스크롤해도 안변해)
-           self.window = window
-           window.makeKeyAndVisible()
-       }
         
     }
 
