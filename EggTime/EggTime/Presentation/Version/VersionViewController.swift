@@ -29,6 +29,8 @@ class VersionViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "버전확인"
+
         guard let version = version  else {
              showAlertMessage(title: "version 오류", button: "확인")
              return

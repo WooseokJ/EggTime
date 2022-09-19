@@ -20,6 +20,7 @@ class OpenLicenseViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "OpenLicense"
         openLicenseView.tableView.delegate = self
         openLicenseView.tableView.dataSource = self
     }

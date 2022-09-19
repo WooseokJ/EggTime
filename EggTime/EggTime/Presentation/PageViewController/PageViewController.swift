@@ -9,12 +9,6 @@ import UIKit
 
 class PageViewController: BaseViewController {
     
-    lazy var navigationView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray
-        
-        return view
-    }()
     
     //MARK: 크기
     let vc1 = PageVC1()
@@ -36,25 +30,22 @@ class PageViewController: BaseViewController {
         configure()
         pageViewController.dataSource = self
         pageViewController.delegate = self
-        
+        navigationItem.title = "앱 사용법"
+
         if let firstVC = vcArray.first {
                pageViewController.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
            }
     }
     
     override func configure() {
-        view.addSubview(navigationView)
+        
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
         
-        navigationView.snp.makeConstraints { make in
-            make.width.top.equalToSuperview()
-            make.height.equalTo(72)
-        }
+
         
         pageViewController.view.snp.makeConstraints { make in
-            make.top.equalTo(navigationView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
         }
         pageViewController.didMove(toParent: self)
     }
