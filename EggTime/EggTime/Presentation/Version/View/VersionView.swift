@@ -33,6 +33,7 @@ class VersionView: BaseView {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 20)
+        label.textAlignment = .center
         return label
     }()
     // 현재버전
@@ -40,6 +41,7 @@ class VersionView: BaseView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .white
+        label.textAlignment = .center
         return label
     }()
     
@@ -59,7 +61,7 @@ class VersionView: BaseView {
         }
         
         recentLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(20)
+            $0.top.equalTo(imageView.snp.bottom).offset(60)
             $0.width.equalTo(200)
             $0.height.equalTo(20)
             $0.leading.equalTo(imageView.snp.leading)

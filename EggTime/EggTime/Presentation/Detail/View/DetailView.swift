@@ -44,7 +44,7 @@ class DetailView: BaseView {
     let dateLabel: UILabel = {
        let label = UILabel()
 //        label.backgroundColor = Constants.imageBackground.color
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = .white
         return label
     }()
@@ -52,7 +52,7 @@ class DetailView: BaseView {
     let openDateLabel: UILabel = {
        let label = UILabel()
 //        label.backgroundColor = Constants.imageBackground.color
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = .white
         return label
         
@@ -62,27 +62,36 @@ class DetailView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
 //        label.backgroundColor = Constants.imageBackground.color
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = .white
         label.numberOfLines = 0
         return label
     }()
     
-    //내용
+    //내용라벨:
     let contentLabel: UILabel = {
-       let label = UILabel()
-        label.backgroundColor = Constants.imageBackground.color
-        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        label.numberOfLines = 0
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textColor = .white
-        
+        label.numberOfLines = 0
+        label.text = "[내용]"
         return label
+    }()
+    
+
+    //내용
+    let content: UITextView = {
+        let textView = UITextView(frame: .zero)
+        textView.backgroundColor = Constants.background.color
+        textView.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        textView.textColor = .white
+        return textView
     }()
     
     
     //MARK: 뷰 등록
     override func configure() {
-        [collectionview,dateLabel,openDateLabel,titleLabel,contentLabel].forEach {
+        [collectionview,dateLabel,openDateLabel,titleLabel,contentLabel,content].forEach {
             self.addSubview($0)
         }
     }
@@ -91,16 +100,17 @@ class DetailView: BaseView {
     
     //MARK: 위치
     override func setConstrains() {
+        
         // 이미지
         collectionview.snp.makeConstraints {
             $0.top.equalTo(100)
             $0.trailing.equalTo(0)
             $0.leading.equalTo(80)
-            $0.height.equalTo(270)
+            $0.height.equalTo(300)
         }
         // 날짜
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(collectionview.snp.bottom).offset(15)
+            $0.top.equalTo(collectionview.snp.bottom).offset(10)
             $0.trailing.equalTo(-80)
             $0.leading.equalTo(collectionview.snp.leading)
             $0.height.equalTo(40)
@@ -108,28 +118,35 @@ class DetailView: BaseView {
         
         // 오픈날짜
         openDateLabel.snp.makeConstraints {
-            $0.top.equalTo(dateLabel.snp.bottom).offset(15)
+            $0.top.equalTo(dateLabel.snp.bottom).offset(10)
             $0.trailing.equalTo(dateLabel.snp.trailing)
             $0.leading.equalTo(dateLabel.snp.leading)
             $0.height.equalTo(dateLabel.snp.height)
         }
         
-        // 제목
+        // 제목라벨
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(openDateLabel.snp.bottom).offset(30)
+            $0.top.equalTo(openDateLabel.snp.bottom).offset(10)
             $0.trailing.equalTo(-80)
             $0.leading.equalTo(80)
             $0.height.equalTo(40)
         }
-        // 내용
+
+        //내용라벨
         contentLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.trailing.equalTo(-80)
+            $0.leading.equalTo(80)
+            $0.height.equalTo(40)
+        }
+        
+        // 내용
+        content.snp.makeConstraints {
+            $0.top.equalTo(contentLabel.snp.bottom).offset(5)
             $0.trailing.equalTo(titleLabel.snp.trailing)
             $0.leading.equalTo(titleLabel.snp.leading)
-//            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-40)
-            $0.bottom.greaterThanOrEqualTo(self.safeAreaLayoutGuide).offset(-40)
+            $0.bottom.greaterThanOrEqualTo(self.safeAreaLayoutGuide).offset(-20)
         }
-       
         
     }
     
@@ -155,18 +172,20 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let detailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid )
 
         print(detailInfo[0].title)
-        detailView.dateLabel.text = "등록일: " + repository.dateToString(date: detailInfo[0].regDate)
-        detailView.openDateLabel.text = "개봉일: " + repository.dateToString(date: detailInfo[0].openDate)
-        detailView.titleLabel.text = "제목: \(detailInfo[0].title)"
-        detailView.contentLabel.text =  "\(detailInfo[0].content)"
+        detailView.dateLabel.text = "[등록일] " + repository.dateToString(date: detailInfo[0].regDate)
+        detailView.openDateLabel.text = "[개봉일] " + repository.dateToString(date: detailInfo[0].openDate)
+        detailView.titleLabel.text = "[제목] \(detailInfo[0].title)"
+        detailView.content.text =  "\(detailInfo[0].content)"
 
         print("DB lat:"+"\(detailInfo[0].latitude!)")
         print("DB lng:"+"\(detailInfo[0].longitude!)")
         
         guard indexPath.item >= detailInfo[0].imageList.count else {
+            cell.imageView.contentMode = .scaleToFill
             cell.imageView.image = loadImageFromDocument(fileName: detailInfo[0].imageList[indexPath.item])
             return cell
         }
+        
         cell.imageView.image = UIImage(named: "NoImage")
         
         

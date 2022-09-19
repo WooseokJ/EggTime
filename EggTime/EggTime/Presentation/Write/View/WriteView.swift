@@ -276,9 +276,12 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
         guard indexPath.item >= imageArrayUIImage.count else {
             cell.imageView.image = imageArrayUIImage[indexPath.item]
+            
             return cell
         }
+        cell.imageView.contentMode = .scaleToFill
         cell.imageView.image = UIImage(named: "UploadImage")
+        
 
         return cell
     }
