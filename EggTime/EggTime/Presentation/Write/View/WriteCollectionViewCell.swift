@@ -38,7 +38,10 @@ class WriteCollectionViewCell: BaseCollectionViewCell {
     //MARK: 위치
     override func setConstrains() {
         imageView.snp.makeConstraints {
-            $0.edges.equalTo(0)
+            $0.leading.equalTo(0)
+            $0.top.equalTo(40)
+            $0.bottom.equalTo(-40)
+            $0.trailing.equalTo(0)
         }
     }
     

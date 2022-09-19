@@ -40,7 +40,7 @@ class RealmRepository: RealmRepositoryType {
         let formattor = DateFormatter()
         formattor.locale = Locale(identifier: "ko_KR")
         formattor.timeZone = TimeZone(abbreviation: "KST")
-        formattor.dateFormat = "yyyy-MM-dd hh:mm"
+        formattor.dateFormat = "yyyy-MM-dd"
         return formattor.date(from: string) ?? Date()
     }
     
@@ -49,7 +49,7 @@ class RealmRepository: RealmRepositoryType {
         let formattor = DateFormatter()
         formattor.locale = Locale(identifier: "ko_KR")
         formattor.timeZone = TimeZone(abbreviation: "KST")
-        formattor.dateFormat = "yyyy-MM-dd hh:mm"
+        formattor.dateFormat = "yyyy-MM-dd"
         return formattor.string(from: date) 
     }
     

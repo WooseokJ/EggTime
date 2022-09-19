@@ -57,25 +57,13 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         
         writeView.collectionview.delegate = self
         writeView.collectionview.dataSource = self
-        
-        
-        
-        
-        // 탭제스쳐로 키보드 내리기
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-//                                                                 action: #selector(dismissKeyboard))
-//        view.addGestureRecognizer(tap)
-//        view.backgroundColor = .blue
-        
-        
         configToolbar()
         
     }
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-//
-//
+    // 키보드 여백눌러서 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
 }
 
@@ -124,8 +112,9 @@ extension WriteViewController {
             showAlertMessage(title: "오픈일을 선택해주세요", button: "확인")
             return
         }
-        
-        let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, latitude: UserDefaults.standard.double(forKey: "lat") ?? 0, longitude: UserDefaults.standard.double(forKey: "lng") ?? 0, imageStringArray: imageArrayString )
+        print(UserDefaults.standard.double(forKey: "lat"))
+        print(UserDefaults.standard.double(forKey: "lng"))
+        let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, latitude: UserDefaults.standard.double(forKey: "lat") , longitude: UserDefaults.standard.double(forKey: "lng") , imageStringArray: imageArrayString )
         do {
             try repository.localRealm.write {
                 repository.localRealm.add(task)
@@ -216,12 +205,8 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
                 let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as? NSURL
                 let imageName=imageUrl?.lastPathComponent//파일이름
                 let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-                
                 let photoURL          = NSURL(fileURLWithPath: documentDirectory)
                 let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
-                
-                
-                
                 
                 if imageArrayUIImage.count == tag! {
                     imageArrayString.append(imageName!)

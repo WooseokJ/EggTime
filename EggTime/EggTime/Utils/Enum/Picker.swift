@@ -44,7 +44,7 @@ func datePicker(afterday: Int) -> String {
     let formattor = DateFormatter()
     formattor.locale = Locale(identifier: "ko_KR")
     formattor.timeZone = TimeZone(abbreviation: "KST")
-    formattor.dateFormat = "yyyy-MM-dd hh:mm"
+    formattor.dateFormat = "yyyy-MM-dd"
     return formattor.string(from: Date(timeInterval: TimeInterval((86400 * afterday)), since: Date()))
 
 }

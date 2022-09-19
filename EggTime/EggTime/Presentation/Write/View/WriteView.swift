@@ -48,8 +48,6 @@ class WriteView: BaseView {
         return stackView
     }()
     
-    
-    
     // 등록일
     lazy var dateLabel: UILabel = {
         let label = UILabel()
@@ -61,7 +59,7 @@ class WriteView: BaseView {
     lazy var dateInput: UILabel = {
         let label = UILabel()
         let dateformattor = DateFormatter()
-        dateformattor.dateFormat = "yyyy-MM-dd"
+        dateformattor.dateFormat = "yyyy-MM-dd hh:mm"
         label.text = dateformattor.string(from: Date())
         label.backgroundColor = Constants.imageBackground.color
         label.textColor = .black
@@ -72,7 +70,6 @@ class WriteView: BaseView {
         let stackView = UIStackView(arrangedSubviews: [dateLabel,dateInput] )
         return stackView
     }()
-    
     
     
     // 오픈일
@@ -96,9 +93,6 @@ class WriteView: BaseView {
     }()
     //
     lazy var pickerView = UIPickerView()
-    
-    
-    
     
     
     // 글쓰기
@@ -128,7 +122,7 @@ class WriteView: BaseView {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
         let layoutwidth = UIScreen.main.bounds.width - (spacing * 4)
-        layout.itemSize = CGSize(width: layoutwidth / 2.8, height: layoutwidth)
+        layout.itemSize = CGSize(width: layoutwidth / 2.7, height: layoutwidth)
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
@@ -153,8 +147,6 @@ class WriteView: BaseView {
             self.addSubview($0)
         }
     }
-    
-    
     
     //MARK: 위치
     override func setConstrains() {
@@ -211,37 +203,30 @@ class WriteView: BaseView {
         
         //글쓰기
         writeLabel.snp.makeConstraints {
-            $0.top.equalTo(openLabel.snp.bottom).offset(60)
+            $0.top.equalTo(openLabel.snp.bottom).offset(40)
             $0.leading.equalTo(openLabel.snp.leading)
             $0.height.equalTo(openLabel.snp.height)
         }
         //글쓰기 입력
         writeTextView.snp.makeConstraints {
-            $0.top.equalTo(writeLabel.snp.bottom).offset(30)
+            $0.top.equalTo(writeLabel.snp.bottom).offset(20)
             $0.leading.equalTo(writeLabel.snp.leading)
             $0.height.equalTo(200)
             $0.trailing.equalTo(opendateInput.snp.trailing)
         }
         //이미지
         imageLabel.snp.makeConstraints {
-            $0.top.equalTo(writeTextView.snp.bottom).offset(30)
+            $0.top.equalTo(writeTextView.snp.bottom).offset(20)
             $0.leading.equalTo(writeTextView.snp.leading)
             $0.height.equalTo(writeLabel.snp.height)
         }
         collectionview.snp.makeConstraints {
-            $0.top.equalTo(imageLabel.snp.bottom).offset(30)
+            $0.top.equalTo(imageLabel.snp.bottom).offset(20)
             $0.leading.equalTo(writeTextView.snp.leading)
             $0.trailing.equalTo(writeTextView.snp.trailing)
             $0.bottom.equalTo(-20)
         }
-        
-        
-        
-        
-        
     }
-    
-    
 }
 
 extension WriteViewController: UIPickerViewDelegate,UIPickerViewDataSource {
@@ -293,13 +278,13 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let photo = UIAlertAction(title: "앨범", style: .default) { (action) in
             self.photoSelect()
         }
-        let camera = UIAlertAction(title: "카메라", style: .default) { action in
-            self.cameraStart()
-        }
+//        let camera = UIAlertAction(title: "카메라", style: .default) { action in
+//            self.cameraStart()
+//        }
         let cancel = UIAlertAction(title: "취소하기", style: .cancel)
         
         alert.addAction(photo)
-        alert.addAction(camera)
+//        alert.addAction(camera)
         alert.addAction(cancel)
         present(alert,animated: true)
     }

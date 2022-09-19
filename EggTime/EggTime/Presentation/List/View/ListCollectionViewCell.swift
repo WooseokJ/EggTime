@@ -26,7 +26,8 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     let dateLabel : UILabel = {
         let label = UILabel()
         label.backgroundColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.textAlignment = .center
         return label
     }()
     
