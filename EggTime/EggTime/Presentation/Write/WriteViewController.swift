@@ -113,6 +113,18 @@ extension WriteViewController {
             showAlertMessage(title: "오픈일을 선택해주세요", button: "확인")
             return
         }
+        
+        
+            //MARK: 거리 계산하는 매소드
+            
+//            let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
+//            print("차이거리:", containDistance)
+//            if containDistance <= 100 {
+//                distanceArray.append(containDistance)
+//            }
+        
+
+        
         print(UserDefaults.standard.double(forKey: "lat"))
         print(UserDefaults.standard.double(forKey: "lng"))
         let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, latitude: UserDefaults.standard.double(forKey: "lat") , longitude: UserDefaults.standard.double(forKey: "lng") , imageStringArray: imageArrayString )

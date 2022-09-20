@@ -155,7 +155,6 @@ class DetailView: BaseView {
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let detailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid)
-        print(detailInfo[0].imageList.count)
         if detailInfo[0].imageList.count == 0 {
             return 1
         } else {
@@ -176,9 +175,6 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         detailView.openDateLabel.text = "[개봉일] " + repository.dateToString(date: detailInfo[0].openDate)
         detailView.titleLabel.text = "[제목] \(detailInfo[0].title)"
         detailView.content.text =  "\(detailInfo[0].content)"
-
-        print("DB lat:"+"\(detailInfo[0].latitude!)")
-        print("DB lng:"+"\(detailInfo[0].longitude!)")
         
         guard indexPath.item >= detailInfo[0].imageList.count else {
             cell.imageView.contentMode = .scaleToFill
