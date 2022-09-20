@@ -91,7 +91,8 @@ extension WriteViewController {
     @objc func donePicker() {
         let row = self.writeView.pickerView.selectedRow(inComponent: 0)
         self.writeView.pickerView.selectRow(row, inComponent: 0, animated: false)
-        self.writeView.opendateInput.text = self.pickerSelect[row]
+        let text = self.pickerSelect[row].split(separator: ":")
+        self.writeView.opendateInput.text = String(text[1])
         self.writeView.opendateInput.resignFirstResponder()
     }
     //MARK: 피커 취소

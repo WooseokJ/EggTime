@@ -62,6 +62,7 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate,NMFMapViewT
             print("위치 서비스 On 상태")
             locationManager.startUpdatingLocation()
             
+            
             //기본위치
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: 37.553409 , lng: 126.969734 )) // 서울역위치
             cameraUpdate.animation = .easeIn
@@ -99,31 +100,31 @@ extension MapViewController {
             //현위치 좌표
             print("현재좌표:",location.coordinate.latitude)
             print("현재좌표:",location.coordinate.longitude)
-            
+
             tasks.forEach{
                 //MARK: 거리 계산하는 매소드
-                
+
                 let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
                 print("차이거리:", containDistance)
                 if containDistance <= 100 {
                     distanceArray.append(containDistance)
                 }
             }
-            
+
             //현 위치로 카메라 이동
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: naverMapView.mapView.cameraPosition.target.lat , lng: naverMapView.mapView.cameraPosition.target.lng )) // 서울역위치
             cameraUpdate.animation = .easeIn
             naverMapView.mapView.moveCamera(cameraUpdate)
-            
+
             print(distanceArray) // 거리의 모음
-            
+
             UserDefaults.standard.set(naverMapView.mapView.cameraPosition.target.lat, forKey: "lat")
             UserDefaults.standard.set(naverMapView.mapView.cameraPosition.target.lng, forKey: "lng")
         }
-        
+
         // 위치 업데이트 멈춰 (실시간성이 중요한거는 매번쓰고, 중요하지않은건 원하는 시점에 써라)
         locationManager.stopUpdatingLocation() // stopUpdatingHeading 이랑 주의
-        
+
     }
     
     // 탭할떄
@@ -165,7 +166,6 @@ extension MapViewController {
     func setpin() {
         if !tasks.isEmpty {
             
-            var tag = 0
             
             tasks.forEach {
    
@@ -174,11 +174,9 @@ extension MapViewController {
                 marker.mapView = naverMapView.mapView
                 infoWindow.open(with: marker)
                 
-                marker.userInfo = ["tag": tag]
+                marker.userInfo = ["tag": $0.title]
                 marker.userInfo = ["lat": $0.latitude]
                 marker.userInfo = ["lng": $0.longitude]
-
-                tag += 1
                 
                 markers.append(marker)
             }

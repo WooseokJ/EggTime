@@ -15,26 +15,26 @@ enum Picker: String, CaseIterable {
     case afterweek = "일주일후: "
     case afterTwoWeek = "이주일후: "
     case afterMonth = "한달후: "
-    case userSelect = "사용자지정: "
+//    case userSelect = "사용자지정: "
     
     var pickerLisk: [String] {
         switch self {
         case .afterOneday:
-            return [datePicker(afterday: 1)]
+            return [self.rawValue+datePicker(afterday: 1)]
         case .afterThreeDay:
-            return [datePicker(afterday: 3)]
+            return [self.rawValue+datePicker(afterday: 3)]
 
         case .afterweek:
-            return [datePicker(afterday: 7)]
+            return [self.rawValue+datePicker(afterday: 7)]
 
         case .afterTwoWeek:
-            return [datePicker(afterday: 14)]
+            return [self.rawValue+datePicker(afterday: 14)]
 
         case .afterMonth :
-            return [datePicker(afterday: 30)]
+            return [self.rawValue+datePicker(afterday: 30)]
 
-        case .userSelect:
-            return ["사용자입력"]
+//        case .userSelect:
+//            return ["사용자입력"]
         }
     }
     
