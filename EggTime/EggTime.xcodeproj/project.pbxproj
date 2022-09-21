@@ -7,17 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0E29B7C200E44B4F9AEE4D /* Pods_EggTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */; };
 		E103002C28CEFE6B00922B54 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002B28CEFE6B00922B54 /* RealmRepository.swift */; };
 		E103002E28CEFED900922B54 /* EggTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002D28CEFED900922B54 /* EggTime.swift */; };
-		E155FB3A28D0537F007ED02D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E155FB3928D0537F007ED02D /* Realm */; };
-		E155FB3C28D0537F007ED02D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E155FB3B28D0537F007ED02D /* RealmSwift */; };
-		E155FB3F28D0551A007ED02D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E155FB3E28D0551A007ED02D /* SnapKit */; };
 		E16F4D8F28D19B6700CEC17A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D8E28D19B6700CEC17A /* MapViewController.swift */; };
 		E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9128D19B7F00CEC17A /* MapView.swift */; };
 		E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */; };
 		E16F4D9A28D1ABE200CEC17A /* BackupStoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9928D1ABE200CEC17A /* BackupStoredView.swift */; };
 		E16F4D9C28D1B26C00CEC17A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9B28D1B26C00CEC17A /* UIViewController+Extension.swift */; };
-		E16F4D9F28D1B31C00CEC17A /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = E16F4D9E28D1B31C00CEC17A /* Zip */; };
 		E16F4DA528D1CD2C00CEC17A /* OpenLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */; };
 		E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */; };
 		E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */; };
@@ -27,6 +24,10 @@
 		E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB428D1E2A300CEC17A /* UILabel.swift */; };
 		E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB728D1E5B700CEC17A /* PageViewController.swift */; };
 		E16F4DBA28D1E5C100CEC17A /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB928D1E5C100CEC17A /* PageView.swift */; };
+		E191978628DB256A0056AB56 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E191978528DB256A0056AB56 /* Realm */; };
+		E191978828DB256A0056AB56 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E191978728DB256A0056AB56 /* RealmSwift */; };
+		E191978B28DB259B0056AB56 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = E191978A28DB259B0056AB56 /* Zip */; };
+		E191978E28DB25AB0056AB56 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E191978D28DB25AB0056AB56 /* SnapKit */; };
 		E1DC08AF28D7F5520032440A /* PageVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08AE28D7F5520032440A /* PageVC1.swift */; };
 		E1DC08B128D7F55D0032440A /* PageVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B028D7F55D0032440A /* PageVC2.swift */; };
 		E1DC08B328D7F5680032440A /* PageVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B228D7F5680032440A /* PageVC3.swift */; };
@@ -76,11 +77,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0AE6392F2A1ADB1C888FEB61 /* Pods-EggTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.release.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.release.xcconfig"; sourceTree = "<group>"; };
-		234C93075D5FD78E834CBC69 /* Pods-EggTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.debug.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.debug.xcconfig"; sourceTree = "<group>"; };
+		1387769608B1FD4E97E20182 /* Pods-EggTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.debug.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.debug.xcconfig"; sourceTree = "<group>"; };
+		3A4BF2660034AC03730AA34F /* Pods-EggTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.release.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.release.xcconfig"; sourceTree = "<group>"; };
+		BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E103002B28CEFE6B00922B54 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		E103002D28CEFED900922B54 /* EggTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggTime.swift; sourceTree = "<group>"; };
-		E142944928D0750400B297D3 /* EggTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E15813CC28DB20F100E359CE /* EggTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16F4D8E28D19B6700CEC17A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E16F4D9128D19B7F00CEC17A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredViewController.swift; sourceTree = "<group>"; };
@@ -136,28 +138,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E155FB3C28D0537F007ED02D /* RealmSwift in Frameworks */,
-				E155FB3F28D0551A007ED02D /* SnapKit in Frameworks */,
-				E16F4D9F28D1B31C00CEC17A /* Zip in Frameworks */,
-				E155FB3A28D0537F007ED02D /* Realm in Frameworks */,
+				E191978828DB256A0056AB56 /* RealmSwift in Frameworks */,
+				E191978628DB256A0056AB56 /* Realm in Frameworks */,
+				E191978B28DB259B0056AB56 /* Zip in Frameworks */,
+				5C0E29B7C200E44B4F9AEE4D /* Pods_EggTime.framework in Frameworks */,
+				E191978E28DB25AB0056AB56 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		73EC42E05163C7B7957C3048 /* Pods */ = {
+		1FAB8394D18E3B7A8E893708 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				234C93075D5FD78E834CBC69 /* Pods-EggTime.debug.xcconfig */,
-				0AE6392F2A1ADB1C888FEB61 /* Pods-EggTime.release.xcconfig */,
+				1387769608B1FD4E97E20182 /* Pods-EggTime.debug.xcconfig */,
+				3A4BF2660034AC03730AA34F /* Pods-EggTime.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		DAA56D770B5DABFBAE79DBC0 /* Frameworks */ = {
+		21C107921BAE6ECAC45B62BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -301,9 +305,9 @@
 			isa = PBXGroup;
 			children = (
 				E1FCB0B128CDA0F600C07AA3 /* EggTime */,
-				73EC42E05163C7B7957C3048 /* Pods */,
-				DAA56D770B5DABFBAE79DBC0 /* Frameworks */,
-				E142944928D0750400B297D3 /* EggTime.app */,
+				1FAB8394D18E3B7A8E893708 /* Pods */,
+				21C107921BAE6ECAC45B62BB /* Frameworks */,
+				E15813CC28DB20F100E359CE /* EggTime.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -505,13 +509,13 @@
 			);
 			name = EggTime;
 			packageProductDependencies = (
-				E155FB3928D0537F007ED02D /* Realm */,
-				E155FB3B28D0537F007ED02D /* RealmSwift */,
-				E155FB3E28D0551A007ED02D /* SnapKit */,
-				E16F4D9E28D1B31C00CEC17A /* Zip */,
+				E191978528DB256A0056AB56 /* Realm */,
+				E191978728DB256A0056AB56 /* RealmSwift */,
+				E191978A28DB259B0056AB56 /* Zip */,
+				E191978D28DB25AB0056AB56 /* SnapKit */,
 			);
 			productName = EggTime;
-			productReference = E142944928D0750400B297D3 /* EggTime.app */;
+			productReference = E15813CC28DB20F100E359CE /* EggTime.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -539,9 +543,9 @@
 			);
 			mainGroup = E1FCB0A628CDA0F600C07AA3;
 			packageReferences = (
-				E155FB3828D0537F007ED02D /* XCRemoteSwiftPackageReference "realm-swift" */,
-				E155FB3D28D0551A007ED02D /* XCRemoteSwiftPackageReference "SnapKit" */,
-				E16F4D9D28D1B31C00CEC17A /* XCRemoteSwiftPackageReference "Zip" */,
+				E191978428DB256A0056AB56 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */,
+				E191978C28DB25AB0056AB56 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = E1FCB0A628CDA0F600C07AA3;
 			projectDirPath = "";
@@ -790,6 +794,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -799,7 +804,7 @@
 		};
 		E1FCB0C428CDA0FB00C07AA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 234C93075D5FD78E834CBC69 /* Pods-EggTime.debug.xcconfig */;
+			baseConfigurationReference = 1387769608B1FD4E97E20182 /* Pods-EggTime.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -829,7 +834,7 @@
 		};
 		E1FCB0C528CDA0FB00C07AA3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0AE6392F2A1ADB1C888FEB61 /* Pods-EggTime.release.xcconfig */;
+			baseConfigurationReference = 3A4BF2660034AC03730AA34F /* Pods-EggTime.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -881,7 +886,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E155FB3828D0537F007ED02D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		E191978428DB256A0056AB56 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -889,15 +894,7 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		E155FB3D28D0551A007ED02D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		E16F4D9D28D1B31C00CEC17A /* XCRemoteSwiftPackageReference "Zip" */ = {
+		E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
@@ -905,28 +902,36 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		E191978C28DB25AB0056AB56 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E155FB3928D0537F007ED02D /* Realm */ = {
+		E191978528DB256A0056AB56 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E155FB3828D0537F007ED02D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = E191978428DB256A0056AB56 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		E155FB3B28D0537F007ED02D /* RealmSwift */ = {
+		E191978728DB256A0056AB56 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E155FB3828D0537F007ED02D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = E191978428DB256A0056AB56 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		E155FB3E28D0551A007ED02D /* SnapKit */ = {
+		E191978A28DB259B0056AB56 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E155FB3D28D0551A007ED02D /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		E16F4D9E28D1B31C00CEC17A /* Zip */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E16F4D9D28D1B31C00CEC17A /* XCRemoteSwiftPackageReference "Zip" */;
+			package = E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		E191978D28DB25AB0056AB56 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E191978C28DB25AB0056AB56 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
