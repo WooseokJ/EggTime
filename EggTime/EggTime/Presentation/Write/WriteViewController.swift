@@ -127,6 +127,7 @@ extension WriteViewController {
         
         print(UserDefaults.standard.double(forKey: "lat"))
         print(UserDefaults.standard.double(forKey: "lng"))
+        
         let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, latitude: UserDefaults.standard.double(forKey: "lat") , longitude: UserDefaults.standard.double(forKey: "lng") , imageStringArray: imageArrayString )
         do {
             try repository.localRealm.write {

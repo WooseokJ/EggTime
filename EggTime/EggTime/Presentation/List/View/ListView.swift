@@ -87,14 +87,38 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
        }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = DetailViewController()
-        transition(vc,transitionStyle: .push)
-        vc.navigationItem.backBarButtonItem?.tintColor = .white
-        vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
-        vc.objectid = tasks[indexPath.item].objectId
-        print(tasks[indexPath.item].objectId)
-        vc.tag = indexPath.item
         
+        let openDate = tasks[indexPath.item].openDate
+        var calendar = Calendar.current
+        let date = Date()
+        
+        calendar.locale = Locale(identifier: "ko_KR")
+        
+        //요소 뽑아내기
+        let todayYear = calendar.component(.year, from: date)
+        let todayMonth = calendar.component(.month, from: date)
+        let todayDay = calendar.component(.day, from: date)
+        
+        let openYear = calendar.component(.year, from: openDate)
+        let openMonth = calendar.component(.month, from: openDate)
+        let openDay = calendar.component(.day, from: openDate)
+        print(todayYear,todayMonth,todayDay)
+        print(openYear,openMonth,openDay)
+
+        if !((openYear <= todayYear) && (openMonth <= todayMonth) && (openDay <= todayDay) && openAvailable.contains(tasks[indexPath.item].objectId)) {
+            let vc = DetailViewController()
+            transition(vc,transitionStyle: .push)
+            vc.navigationItem.backBarButtonItem?.tintColor = .white
+            vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
+            vc.objectid = tasks[indexPath.item].objectId
+            print(tasks[indexPath.item].objectId)
+            vc.tag = indexPath.item
+        } else{
+            let alert = UIAlertController(title: "아직 오픈시간아님", message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .cancel)
+            alert.addAction(ok)
+            present(alert,animated: true)
+        }
         
     }
     

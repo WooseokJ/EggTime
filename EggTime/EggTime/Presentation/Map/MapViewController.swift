@@ -63,13 +63,6 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
         locationManager.requestWhenInUseAuthorization()
 
         
-        
-//        naverMapView.showCompass = true
-//        naverMapView.showZoomControls = true
-//        naverMapView.showIndoorLevelPicker = true
-//        naverMapView.mapView.isZoomGestureEnabled = true
-        
-        
         naverMapView.mapView.zoomLevel = 17
         naverMapView.mapView.positionMode = .direction
         
@@ -127,6 +120,10 @@ extension MapViewController {
 
             UserDefaults.standard.set(location.coordinate.latitude, forKey: "lat")
             UserDefaults.standard.set(location.coordinate.longitude, forKey: "lng")
+            
+            
+            
+            
         }
 
         // 위치 업데이트 멈춰 (실시간성이 중요한거는 매번쓰고, 중요하지않은건 원하는 시점에 써라)
@@ -137,36 +134,7 @@ extension MapViewController {
     
     
     // 탭할떄
-    
-//    func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
-//        print(#function)
-//        if !UserDefaults.standard.bool(forKey: "tapped") {
-//
-//            let markerHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-//                guard let self = self else { return false }
-//                self.view.addSubview(self.mapview.popup)
-//                return true
-//            }
-//
-////            markers[0].touchHandler = markerHandler
-////                    self?.dataSource.title = marker2.userInfo["tag"] as! String
-////                    print(self?.dataSource.title)
-////                        self?.infoWindow.dataSource = self!.dataSource
-//////                    self?.infoWindow.position = NMGLatLng(lat: marker2.userInfo["lat"] as! Double , lng:   marker2.userInfo["lng"] as! Double)
-////
-////    //                    self?.infoWindow.open(with: self!.naverMapView.mapView)
-////                        // 마커를 터치할 때 정보창을 엶
-////                    self?.infoWindow.open(with: marker2)
-////                }
-//        } else {
-//
-//        }
-//        let select = UserDefaults.standard.bool(forKey: "tapped") ? false : true
-//        UserDefaults.standard.set(select, forKey: "tapped")
-//
-//
-//
-//    }
+
     func setpin() {
         if !tasks.isEmpty {
             tasks.forEach { task in
@@ -189,10 +157,7 @@ extension MapViewController {
                             } else {
                                 self.mapview.image.image = UIImage(named: "NoImage")
                             }
-                            
 
-                            
-                            
                            return true
                          } else {
                              self.hidden()
@@ -203,7 +168,6 @@ extension MapViewController {
                     
                 }
             
-                
                 marker.mapView = naverMapView.mapView
                 infoWindow.open(with: marker)
                 
@@ -247,14 +211,3 @@ extension MapViewController {
     }
 
 }
-//
-//extension MapViewController: NMFMapViewTouchDelegate {
-//    public func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
-//        let alertController = UIAlertController(title: "지도 클릭", message: "", preferredStyle: .alert)
-//        present(alertController, animated: true) {
-//            DispatchQueue.main.asyncAfter(deadline: (DispatchTime.now() + 0.5), execute: {
-//                alertController.dismiss(animated: true, completion: nil)
-//            })
-//        }
-//    }
-//}

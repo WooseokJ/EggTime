@@ -2,6 +2,7 @@
 
 import UIKit
 import RealmSwift
+import CoreLocation
 
 class ListViewController: BaseViewController {
 
@@ -10,16 +11,29 @@ class ListViewController: BaseViewController {
     override func loadView() {
         super.view = listView
     }
-    
-    
-    
+
+    let locationManager = CLLocationManager()
+
+    override func viewDidAppear(_ animated: Bool) {
+        if CLLocationManager.locationServicesEnabled() {
+            print("위치 서비스 On 상태")
+            locationManager.startUpdatingLocation()
+            
+        } else {
+            print("위치 서비스 Off 상태")
+        }
+    }
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "캡슐 리스트"
         listView.collectionview.dataSource = self
         listView.collectionview.delegate = self
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
     }
-    
     
     let repository = RealmRepository()
     var tasks: Results<EggTime>! {
@@ -28,9 +42,36 @@ class ListViewController: BaseViewController {
             print("collectionview Tasks Changed")
         }
     }
+    
+    var openAvailable: [ObjectId] = []
+    
     override func viewWillAppear(_ animated: Bool) {
         tasks = repository.fetch()
     }
 
 }
 
+extension ListViewController: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(#function)
+        if let location = locations.first {
+            //현위치 좌표
+            print("현재좌표:",location.coordinate.latitude)
+            print("현재좌표:",location.coordinate.longitude)
+            
+            tasks.forEach{
+                //MARK: 거리 계산하는 매소드
+                let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
+                if containDistance < 40 {
+                    openAvailable.append($0.objectId)
+                }
+            }
+       
+        }
+
+        // 위치 업데이트 멈춰 (실시간성이 중요한거는 매번쓰고, 중요하지않은건 원하는 시점에 써라)
+        locationManager.stopUpdatingLocation() // stopUpdatingHeading 이랑 주의
+
+    }
+    
+}
