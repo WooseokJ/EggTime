@@ -20,6 +20,8 @@ class ListView: BaseView {
 
     
     //MARK: 크기
+
+    
     let collectionview : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 8
@@ -30,7 +32,8 @@ class ListView: BaseView {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = Constants.background.color
+//        cv.backgroundColor = Constants.background.color
+        cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         cv.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
         return cv
     }()
@@ -39,7 +42,7 @@ class ListView: BaseView {
     
     //MARK: 뷰등록
     override func configure() {
-        [collectionview].forEach {
+        [backGroundView,collectionview].forEach {
             self.addSubview($0)
         }
     }
@@ -47,6 +50,10 @@ class ListView: BaseView {
     
     //MARK: 위치
     override func setConstrains() {
+        backGroundView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
+        
         collectionview.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.bottom.equalTo(self.safeAreaLayoutGuide)

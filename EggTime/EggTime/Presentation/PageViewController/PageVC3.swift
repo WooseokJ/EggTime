@@ -14,13 +14,13 @@ class PageVC3: UIViewController {
         let bt = UIButton()
         let text = UserDefaults.standard.bool(forKey: "first") ? "확인" : "시작하기"
         bt.setTitle(text, for: .normal)
-        bt.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        bt.layer.borderColor = UIColor.white.cgColor
         bt.layer.borderWidth = 4
         return bt
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        view.backgroundColor = .systemGray3
         view.addSubview(button)
         button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
         
@@ -38,10 +38,18 @@ class PageVC3: UIViewController {
             dismiss(animated: true)
         }else {
             UserDefaults.standard.set(true,forKey: "first")
-            let vc = TabBarController()
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+
+            let vc = MainViewController()
+            let nav = UINavigationController(rootViewController: vc)
+
+           sceneDelegate?.window?.rootViewController = nav
+           sceneDelegate?.window?.makeKeyAndVisible()
             
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: false)
+//            let vc = MainViewController()
+//            vc.modalPresentationStyle = .overFullScreen
+//            self.present(vc, animated: false)
             
         }
         

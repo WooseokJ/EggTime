@@ -34,8 +34,8 @@ class WriteView: BaseView {
     //제목입력
     lazy var titleInput: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = Constants.imageBackground.color
-        textField.textColor = .black
+        textField.textColor = .white
+        textField.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
         return textField
     }()
     //제목 스택뷰
@@ -61,8 +61,7 @@ class WriteView: BaseView {
         let dateformattor = DateFormatter()
         dateformattor.dateFormat = "yyyy-MM-dd hh:mm"
         label.text = dateformattor.string(from: Date())
-        label.backgroundColor = Constants.imageBackground.color
-        label.textColor = .black
+        label.textColor = .white
         return label
     }()
     // 등록일 스택뷰
@@ -82,8 +81,8 @@ class WriteView: BaseView {
     // 오픈일 입력
     lazy var opendateInput: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = Constants.imageBackground.color
-        textField.textColor = .black
+        textField.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
+        textField.textColor = .white
         return textField
     }()
     // 오픈일 스택뷰
@@ -105,8 +104,8 @@ class WriteView: BaseView {
     //
     lazy var writeTextView: UITextView = {
         let textview = UITextView()
-        textview.backgroundColor = Constants.imageBackground.color
-        textview.textColor = .black
+        textview.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
+        textview.textColor = .white
         return textview
     }()
     
@@ -122,13 +121,13 @@ class WriteView: BaseView {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
         let layoutwidth = UIScreen.main.bounds.width - (spacing * 4)
-        layout.itemSize = CGSize(width: layoutwidth / 2.7, height: layoutwidth)
+        layout.itemSize = CGSize(width: layoutwidth / 2.4, height: layoutwidth)
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = Constants.background.color
+        cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         cv.register(WriteCollectionViewCell.self, forCellWithReuseIdentifier: WriteCollectionViewCell.reuseIdentifier)
         return cv
     }()
@@ -143,25 +142,28 @@ class WriteView: BaseView {
     //MARK: 뷰등록
     
     override func configure() {
-        [titleStackView,dateStackView,openStackView,writeLabel,writeTextView,imageLabel,collectionview].forEach {
+        [backGroundView,titleStackView,dateStackView,openStackView,writeLabel,writeTextView,imageLabel,collectionview].forEach {
             self.addSubview($0)
         }
     }
     
     //MARK: 위치
     override func setConstrains() {
-        
+        backGroundView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
         //제목
         titleLabel.snp.makeConstraints {
-            $0.width.equalTo(100)
+            $0.width.equalTo(80)
             $0.height.equalTo(titleStackView.snp.height)
         }
         titleInput.snp.makeConstraints {
-            $0.width.equalTo(100)
+            $0.leading.equalTo(titleLabel.snp.trailing).offset(20)
+            $0.trailing.equalTo(-20)
             $0.height.equalTo(titleStackView.snp.height)
         }
         titleStackView.snp.makeConstraints {
-            $0.top.equalTo(100)
+            $0.top.equalTo(120)
             $0.leading.equalTo(30)
             $0.trailing.equalTo(-30)
             $0.height.equalTo(30)

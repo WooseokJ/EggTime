@@ -29,13 +29,13 @@ class DetailView: BaseView {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
         let layoutwidth = UIScreen.main.bounds.width - (spacing * 4)
-        layout.itemSize = CGSize(width: layoutwidth / 1.5, height: layoutwidth)
+        layout.itemSize = CGSize(width: layoutwidth / 1, height: layoutwidth*1.2)
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = Constants.background.color
+        cv.backgroundColor = .clear
         cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
         return cv
     }()
@@ -82,16 +82,16 @@ class DetailView: BaseView {
     //내용
     let content: UITextView = {
         let textView = UITextView(frame: .zero)
-        textView.backgroundColor = Constants.background.color
         textView.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         textView.textColor = .white
+        textView.backgroundColor = .clear
         return textView
     }()
     
     
     //MARK: 뷰 등록
     override func configure() {
-        [collectionview,dateLabel,openDateLabel,titleLabel,contentLabel,content].forEach {
+        [backGroundView,collectionview,dateLabel,openDateLabel,titleLabel,contentLabel,content].forEach {
             self.addSubview($0)
         }
     }
@@ -100,19 +100,21 @@ class DetailView: BaseView {
     
     //MARK: 위치
     override func setConstrains() {
-        
+        backGroundView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
         // 이미지
         collectionview.snp.makeConstraints {
             $0.top.equalTo(100)
             $0.trailing.equalTo(0)
-            $0.leading.equalTo(80)
-            $0.height.equalTo(300)
+            $0.leading.equalTo(0)
+            $0.height.equalTo(400)
         }
         // 날짜
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(collectionview.snp.bottom).offset(10)
-            $0.trailing.equalTo(-80)
-            $0.leading.equalTo(collectionview.snp.leading)
+            $0.trailing.equalTo(-40)
+            $0.leading.equalTo(40)
             $0.height.equalTo(40)
         }
         
@@ -127,16 +129,16 @@ class DetailView: BaseView {
         // 제목라벨
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(openDateLabel.snp.bottom).offset(10)
-            $0.trailing.equalTo(-80)
-            $0.leading.equalTo(80)
+            $0.trailing.equalTo(dateLabel.snp.trailing)
+            $0.leading.equalTo(dateLabel.snp.leading)
             $0.height.equalTo(40)
         }
 
         //내용라벨
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.trailing.equalTo(-80)
-            $0.leading.equalTo(80)
+            $0.trailing.equalTo(dateLabel.snp.trailing)
+            $0.leading.equalTo(dateLabel.snp.leading)
             $0.height.equalTo(40)
         }
         
@@ -170,7 +172,6 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         let detailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid )
 
-        print(detailInfo[0].title)
         detailView.dateLabel.text = "[등록일] " + repository.dateToString(date: detailInfo[0].regDate)
         detailView.openDateLabel.text = "[개봉일] " + repository.dateToString(date: detailInfo[0].openDate)
         detailView.titleLabel.text = "[제목] \(detailInfo[0].title)"
@@ -183,8 +184,8 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         cell.imageView.image = UIImage(named: "NoImage")
-        
-        
+//        cell.backgroundView = UIImageView(image: UIImage(named: "BackGroundImage"))
+        cell.backgroundColor = .blue
         return cell
     }
 }

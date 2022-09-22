@@ -10,6 +10,8 @@
 		5C0E29B7C200E44B4F9AEE4D /* Pods_EggTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */; };
 		E103002C28CEFE6B00922B54 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002B28CEFE6B00922B54 /* RealmRepository.swift */; };
 		E103002E28CEFED900922B54 /* EggTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002D28CEFED900922B54 /* EggTime.swift */; };
+		E15FE08628DC15EC00956CA9 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */; };
+		E15FE08728DC15EC00956CA9 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15FE08528DC15EC00956CA9 /* BaseCollectionViewCell.xib */; };
 		E16F4D8F28D19B6700CEC17A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D8E28D19B6700CEC17A /* MapViewController.swift */; };
 		E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9128D19B7F00CEC17A /* MapView.swift */; };
 		E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */; };
@@ -56,7 +58,6 @@
 		E1FCB0E428CDA33900C07AA3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0E328CDA33900C07AA3 /* BaseView.swift */; };
 		E1FCB0E628CDA34500C07AA3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0E528CDA34500C07AA3 /* BaseViewController.swift */; };
 		E1FCB0E828CDA3A000C07AA3 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0E728CDA3A000C07AA3 /* BaseTableViewCell.swift */; };
-		E1FCB0EA28CDA3AB00C07AA3 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0E928CDA3AB00C07AA3 /* BaseCollectionViewCell.swift */; };
 		E1FCB0F028CDA56B00C07AA3 /* identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0EF28CDA56B00C07AA3 /* identifier.swift */; };
 		E1FCB0F228CDA58E00C07AA3 /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */; };
 		E1FCB10028CDB20200C07AA3 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0FF28CDB20200C07AA3 /* View.swift */; };
@@ -83,6 +84,8 @@
 		E103002B28CEFE6B00922B54 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		E103002D28CEFED900922B54 /* EggTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggTime.swift; sourceTree = "<group>"; };
 		E15813CC28DB20F100E359CE /* EggTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		E15FE08528DC15EC00956CA9 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E16F4D8E28D19B6700CEC17A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E16F4D9128D19B7F00CEC17A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +129,6 @@
 		E1FCB0E328CDA33900C07AA3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		E1FCB0E528CDA34500C07AA3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E1FCB0E728CDA3A000C07AA3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		E1FCB0E928CDA3AB00C07AA3 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1FCB0EF28CDA56B00C07AA3 /* identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = identifier.swift; sourceTree = "<group>"; };
 		E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		E1FCB0FF28CDB20200C07AA3 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -433,7 +435,8 @@
 				E1FCB0E328CDA33900C07AA3 /* BaseView.swift */,
 				E1FCB0E528CDA34500C07AA3 /* BaseViewController.swift */,
 				E1FCB0E728CDA3A000C07AA3 /* BaseTableViewCell.swift */,
-				E1FCB0E928CDA3AB00C07AA3 /* BaseCollectionViewCell.swift */,
+				E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */,
+				E15FE08528DC15EC00956CA9 /* BaseCollectionViewCell.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FCB0BF28CDA0FB00C07AA3 /* LaunchScreen.storyboard in Resources */,
+				E15FE08728DC15EC00956CA9 /* BaseCollectionViewCell.xib in Resources */,
 				E1FCB0BC28CDA0FB00C07AA3 /* Assets.xcassets in Resources */,
 				E1FCB0BA28CDA0F600C07AA3 /* Main.storyboard in Resources */,
 			);
@@ -633,7 +637,6 @@
 				E1FCB0E828CDA3A000C07AA3 /* BaseTableViewCell.swift in Sources */,
 				E1FCB10028CDB20200C07AA3 /* View.swift in Sources */,
 				E1DC08B128D7F55D0032440A /* PageVC2.swift in Sources */,
-				E1FCB0EA28CDA3AB00C07AA3 /* BaseCollectionViewCell.swift in Sources */,
 				E1DC08B328D7F5680032440A /* PageVC3.swift in Sources */,
 				E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */,
 				E16F4DB028D1DA7C00CEC17A /* VersionViewController.swift in Sources */,
@@ -656,6 +659,7 @@
 				E103002E28CEFED900922B54 /* EggTime.swift in Sources */,
 				E1FCB0B528CDA0F600C07AA3 /* SceneDelegate.swift in Sources */,
 				E1FCB10228CDB52800C07AA3 /* TabBarController.swift in Sources */,
+				E15FE08628DC15EC00956CA9 /* BaseCollectionViewCell.swift in Sources */,
 				E1FCB0D528CDA28F00C07AA3 /* SettingView.swift in Sources */,
 				E1FCB0D328CDA25500C07AA3 /* ListViewController.swift in Sources */,
 				E1FCB0F228CDA58E00C07AA3 /* Transition+Extension.swift in Sources */,

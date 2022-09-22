@@ -20,15 +20,16 @@ class SettingView: BaseView {
     let tableView : UITableView = {
         let tableview = UITableView(frame: .zero, style: .insetGrouped)
         tableview.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.reuseIdentifier )
-        tableview.backgroundColor = Constants.background.color
+//        tableview.backgroundColor = Constants.background.color
         tableview.rowHeight = 80
+        tableview.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         return tableview
         
     }()
     //MARK: 뷰등록
     
     override func configure() {
-        [tableView].forEach {
+        [backGroundView,tableView].forEach {
             self.addSubview($0)
         }
     }
@@ -36,6 +37,10 @@ class SettingView: BaseView {
     
     //MARK: 위치
     override func setConstrains() {
+        backGroundView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
+        
         tableView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(self.safeAreaLayoutGuide)
@@ -60,7 +65,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.content.text = Setting.allCases[indexPath.section].list[indexPath.row]
-        cell.backgroundColor = Constants.background.color
+//        cell.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
+        
+
+        cell.backgroundColor = .clear
         cell.selectionStyle = .none
         return cell
     }
@@ -85,7 +93,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         //MARK: 사용법
         if (indexPath.row == 1) {
             let vc = PageViewController()
-            transition(vc,transitionStyle: .presentFullNavigation)
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .overFullScreen
+            self.present(nav, animated: true)
         }
         //MARK: 오픈소스
         if (indexPath.row == 2) {

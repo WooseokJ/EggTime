@@ -17,17 +17,18 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     //MARK: 컬렉션뷰 안의 내용크기
     let imageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = Constants.imageBackground.color
-        imageView.layer.cornerRadius = imageView.frame.height / 2
-        imageView.clipsToBounds = true
+        imageView.image = UIImage(named: "BackgroundImage")
+//        imageView.layer.cornerRadius = imageView.frame.height / 2
+//        imageView.clipsToBounds = true
         return imageView
     }()
     
     let dateLabel : UILabel = {
         let label = UILabel()
-        label.backgroundColor = .lightGray
+        label.backgroundColor = .clear
         label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .center
+        label.textColor = .white
         return label
     }()
     

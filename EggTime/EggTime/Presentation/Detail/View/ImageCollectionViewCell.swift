@@ -39,6 +39,7 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     
     //MARK: 위치
     override func setConstrains() {
+  
         imageView.snp.makeConstraints {
             $0.edges.equalTo(0)
         }

@@ -17,6 +17,7 @@ class PageViewController: BaseViewController {
 
     
     lazy var vcArray: [UIViewController] = {
+        
         return [vc1, vc2, vc3]
     }()
     

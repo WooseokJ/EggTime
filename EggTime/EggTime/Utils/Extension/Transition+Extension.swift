@@ -22,8 +22,9 @@ extension UIViewController {
         case .presentFullNavigation:
             let nav = UINavigationController(rootViewController: viewController)
             nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true)
+            self.present(nav, animated: false)
         }
+        
     }
     
 }

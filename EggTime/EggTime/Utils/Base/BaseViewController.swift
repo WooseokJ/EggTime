@@ -3,19 +3,44 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
-
+    let back = BaseView()
+    override func loadView() {
+        super.view = back
+    }
     
+    // 정렬메뉴 액션
+       var menuSortedItems: [UIAction] {
+           return [
+               UIAction(title: "map", image: UIImage(systemName: "map.circle"), handler: { [self] _ in
+                   let vc = MainViewController()
+                   transition(vc,transitionStyle: .presentFullNavigation)
+               }),
+               UIAction(title: "List", image: UIImage(systemName: "list.bullet.below.rectangle"), handler: { [self] _ in
+                   let vc = ListViewController()
+                   transition(vc,transitionStyle: .presentFullNavigation)
+               }),
+               UIAction(title: "Setting", image: UIImage(systemName: "gear.circle"), handler: { [self] _ in
+                   let vc = SettingViewController()
+                   transition(vc,transitionStyle: .presentFullNavigation)
+               })
+           ]
+       }
+       // 정렬메뉴
+       var sortMenu: UIMenu {
+           return UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuSortedItems)
+       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         setConstraints()
-        view.backgroundColor = Constants.background.color
-        TabBarController().tabBar.backgroundColor = .white
+//        TabBarController().tabBar.backgroundColor = .white
+
         
         navigationController?.navigationBar.tintColor = .white // 좌우측 네비바 버튼 칼러
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white] //네비바 title 칼러
-         
+        
+
     }
     
     

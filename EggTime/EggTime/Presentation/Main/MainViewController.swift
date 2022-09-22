@@ -13,10 +13,15 @@ class MainViewController: BaseViewController {
         super.view = mainview
     }
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.title = "타임 캡슐 묻기"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "mappin.and.ellipse"), style: .plain, target: self, action: #selector(mapShowButtonClicked))
+        navigationItem.title = "타임 캡슐 묻기"
+        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
+        let mapping =  UIBarButtonItem(image: UIImage(systemName: "mappin.and.ellipse"), style: .plain, target: self, action: #selector(mapShowButtonClicked))
+        
+        self.navigationItem.rightBarButtonItems = [sortButton,mapping]
     }
         
 }

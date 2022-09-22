@@ -51,12 +51,15 @@ class BackupStoredView: BaseView {
     
     //MARK: 뷰등록
     override func configure() {
-        [backupButton,storedButton,imageView].forEach {
+        [backGroundView,backupButton,storedButton,imageView].forEach {
             self.addSubview($0)
         }
     }
     //MARK: 위치
     override func setConstrains() {
+        backGroundView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
         imageView.snp.makeConstraints {
             $0.top.equalTo(200)
             $0.width.height.equalTo(200)

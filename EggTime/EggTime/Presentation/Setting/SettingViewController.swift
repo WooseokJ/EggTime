@@ -16,6 +16,9 @@ class SettingViewController: BaseViewController {
         self.navigationItem.title = "설정"
         settingview.tableView.dataSource = self
         settingview.tableView.delegate = self
+        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
+        self.navigationItem.rightBarButtonItems = [sortButton]
+
     }
     
 

@@ -38,6 +38,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     
     override func viewWillAppear(_ animated: Bool) {
         picker.delegate = self
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackgroundImage")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
         print(repository.localRealm.configuration.fileURL!)

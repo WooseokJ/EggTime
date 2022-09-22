@@ -21,7 +21,6 @@ class SettingTableViewCell: BaseTableViewCell {
     let content : UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.backgroundColor = Constants.background.color
         label.textColor = .white
         return label
     }()
@@ -37,6 +36,7 @@ class SettingTableViewCell: BaseTableViewCell {
     
     //MARK: 테이블뷰 안에 위치 등록
     override func setConstrains() {
+
         content.snp.makeConstraints {
             $0.leading.equalTo(10)
             $0.top.equalTo(self.safeAreaLayoutGuide)

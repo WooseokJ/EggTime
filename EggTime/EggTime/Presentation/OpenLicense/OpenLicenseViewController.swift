@@ -23,6 +23,8 @@ class OpenLicenseViewController: BaseViewController {
         navigationItem.title = "OpenLicense"
         openLicenseView.tableView.delegate = self
         openLicenseView.tableView.dataSource = self
+        
+        
     }
 
 }

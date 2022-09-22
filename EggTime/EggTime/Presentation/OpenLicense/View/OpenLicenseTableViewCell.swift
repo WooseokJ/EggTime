@@ -14,7 +14,6 @@ class OpenLicenseTableViewCell: BaseTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
         setConstrains()
-        self.backgroundColor = Constants.background.color
     }
     
     required init?(coder: NSCoder) {
@@ -25,7 +24,6 @@ class OpenLicenseTableViewCell: BaseTableViewCell {
     //MARK: 크기
     let content: UILabel = {
         let label = UILabel()
-        label.backgroundColor = Constants.background.color
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = .white
@@ -40,6 +38,7 @@ class OpenLicenseTableViewCell: BaseTableViewCell {
     }
     //MARK: 위치
     override func setConstrains() {
+   
         content.snp.makeConstraints {
             $0.top.bottom.trailing.equalTo(self)
             $0.leading.equalTo(40)

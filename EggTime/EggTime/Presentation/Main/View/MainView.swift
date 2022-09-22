@@ -19,14 +19,22 @@ class MainView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     //MARK: 크기
-    let eggBackGround : UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 210
-        view.clipsToBounds = true
-        view.backgroundColor = Constants.imageBackground.color
-        return view
-    }()
+//    let backGroundView: UIImageView = {
+//        let image = UIImageView()
+//        image.image = UIImage(named: "BackgroundImage")
+//        return image
+//    }()
+//
+    
+//    let eggBackGround : UIView = {
+//        let view = UIView()
+//        view.layer.cornerRadius = 210
+//        view.clipsToBounds = true
+//        view.backgroundColor = Constants.imageBackground.color
+//        return view
+//    }()
     
 //    let soakButton : UIButton = {
 //        let button = UIButton()
@@ -41,7 +49,7 @@ class MainView: BaseView {
     //MARK: 뷰 등록
     override func configure() {
         
-        [eggBackGround].forEach {
+        [backGroundView].forEach {
             self.addSubview($0)
         }
         
@@ -51,12 +59,15 @@ class MainView: BaseView {
     //MARK: 위치
     
     override func setConstrains() {
-        eggBackGround.snp.makeConstraints {
-            $0.leading.trailing.equalTo(0)
-            $0.centerX.equalTo(self)
-            $0.top.equalTo(100)
-            $0.bottom.equalTo(-100)
+        backGroundView.snp.makeConstraints {
+            $0.edges.equalTo(0)
         }
+//        eggBackGround.snp.makeConstraints {
+//            $0.leading.trailing.equalTo(0)
+//            $0.centerX.equalTo(self)
+//            $0.top.equalTo(100)
+//            $0.bottom.equalTo(-100)
+//        }
 //        soakButton.snp.makeConstraints {
 //            $0.bottom.equalTo(eggBackGround.snp.bottom).multipliedBy(0.9)
 //            $0.leading.equalTo(100)
