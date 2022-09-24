@@ -28,7 +28,9 @@ class ListCollectionViewCell: BaseCollectionViewCell {
         label.backgroundColor = .clear
         label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     

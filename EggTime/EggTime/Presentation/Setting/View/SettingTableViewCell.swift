@@ -21,7 +21,9 @@ class SettingTableViewCell: BaseTableViewCell {
     let content : UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     

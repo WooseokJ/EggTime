@@ -26,7 +26,6 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
         tasks = repository.fetch()
         setpin()
 
-//        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 203/255, green: 214/255, blue: 220/255, alpha: 1.0)
         if CLLocationManager.locationServicesEnabled() {
             print("위치 서비스 On 상태")
             locationManager.startUpdatingLocation()
@@ -56,8 +55,11 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "mappin.and.ellipse"), style: .plain, target: self, action: #selector(tapsoakButton) )
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(xmarkClicked) ) //지워도됨
-//        
+
+        
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        
         navigationController?.navigationBar.barTintColor = .clear
         
         locationManager.delegate = self
@@ -152,9 +154,9 @@ extension MapViewController {
 //                marker.captionText = task.title
                 marker.touchHandler = { (overlay) in
                     if let marker = overlay as? NMFMarker {
-                        if marker.iconImage.reuseIdentifier == "\(self.sdkBundle.bundleIdentifier ?? "").mSNormal" {
+//                        if marker.iconImage.reuseIdentifier == "\(self.sdkBundle.bundleIdentifier ?? "").mSNormal" {
 //                             marker.iconImage = NMFOverlayImage(name: "mSNormalNight", in: Bundle.naverMapFramework())
-                            [self.mapview.popup,self.mapview.centerView,self.mapview.title,self.mapview.detailButton,self.mapview.image,self.mapview.checkButton].forEach {
+                        [self.mapview.popup,self.mapview.centerView,self.mapview.title,self.mapview.detailButton,self.mapview.image,self.mapview.checkButton,self.mapview.lineView].forEach {
                                 self.view.addSubview($0)
                             }
                             self.show()
@@ -172,7 +174,7 @@ extension MapViewController {
                              self.hidden()
 //                             marker.iconImage = NMFOverlayImage(name: "mSNormal", in: Bundle.naverMapFramework())
                          }
-                    }
+//                    }
                     return true
 
                 }
@@ -191,14 +193,15 @@ extension MapViewController {
     func show() {
         
         self.mapview.title.snp.remakeConstraints {
-            $0.bottom.equalTo(self.mapview.centerView.snp.top)
-            $0.height.equalTo(30)
+            $0.centerX.equalTo(mapview.centerView)
+            $0.top.equalTo(mapview.centerView.snp.top).offset(10)
             $0.width.equalTo(self.mapview.image.snp.width)
-            $0.leading.equalTo(self.mapview.image.snp.leading)
+            $0.height.equalTo(self.mapview.centerView.snp.height).multipliedBy(0.08)
         }
         
         self.mapview.centerView.snp.remakeConstraints {
-            $0.width.height.equalTo(300)
+            $0.width.equalTo(300)
+            $0.height.equalTo(500)
             $0.center.equalTo(self.view)
         }
         
@@ -206,20 +209,31 @@ extension MapViewController {
             $0.edges.equalTo(self.view)
         }
         self.mapview.image.snp.remakeConstraints {
-            $0.center.equalTo(self.view)
-            $0.height.width.equalTo(300)
+            $0.centerX.equalTo(mapview.centerView)
+            $0.top.equalTo(mapview.title.snp.bottom).offset(10)
+            $0.leading.equalTo(mapview.centerView.snp.leading).offset(10)
+            $0.trailing.equalTo(mapview.centerView.snp.trailing).offset(-10)
+            $0.bottom.equalTo(self.mapview.checkButton.snp.top).offset(-10)
         }
         self.mapview.checkButton.snp.remakeConstraints {
-            $0.top.equalTo(self.mapview.image.snp.bottom).offset(20)
-            $0.height.equalTo(30)
-            $0.width.equalTo(self.mapview.image.snp.width).multipliedBy(0.3)
-            $0.leading.equalTo(self.mapview.image.snp.leading).offset(5)
-        }
-        self.mapview.detailButton.snp.remakeConstraints {
-            $0.top.equalTo(self.mapview.image.snp.bottom).offset(20)
-            $0.height.equalTo(30)
+            $0.bottom.equalTo(self.mapview.centerView.snp.bottom).offset(-10)
+            $0.height.equalTo(50)
             $0.width.equalTo(self.mapview.image.snp.width).multipliedBy(0.5)
-            $0.trailing.equalTo(self.mapview.image.snp.trailing).offset(-5)
+            $0.leading.equalTo(self.mapview.image.snp.leading)
+        }
+        
+        self.mapview.detailButton.snp.remakeConstraints {
+            $0.height.equalTo(50)
+            $0.width.equalTo(self.mapview.image.snp.width).multipliedBy(0.5)
+            $0.trailing.equalTo(self.mapview.image.snp.trailing)
+            $0.bottom.equalTo(self.mapview.centerView.snp.bottom).offset(-10)
+        }
+        self.mapview.lineView.snp.remakeConstraints {
+            $0.height.equalTo(self.mapview.detailButton.snp.height)
+            $0.width.equalTo(1)
+            $0.centerX.equalTo(self.mapview.image)
+            $0.top.equalTo(self.mapview.checkButton.snp.top)
+            $0.bottom.equalTo(self.mapview.checkButton.snp.bottom)
         }
         
         self.mapview.checkButton.addTarget(self, action: #selector(self.checkButtonClicked), for: .touchUpInside)
@@ -245,6 +259,9 @@ extension MapViewController {
             $0.height.width.equalTo(0)
         }
         self.mapview.title.snp.remakeConstraints{
+            $0.height.width.equalTo(0)
+        }
+        self.mapview.lineView.snp.remakeConstraints {
             $0.height.width.equalTo(0)
         }
     }

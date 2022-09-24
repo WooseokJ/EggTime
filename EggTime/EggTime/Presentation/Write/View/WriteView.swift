@@ -21,20 +21,25 @@ class WriteView: BaseView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
     }
     
     //MARK: 크기
     // 제목
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "제목"
-        label.textColor = .white
+        label.text = "캡슐 제목"
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     //제목입력
     lazy var titleInput: UITextField = {
         let textField = UITextField()
-        textField.textColor = .white
+        textField.textColor = AllColor.textColor.color
+        textField.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        textField.placeholder = "제목을 입력해주세요."
         textField.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
         return textField
     }()
@@ -51,8 +56,10 @@ class WriteView: BaseView {
     // 등록일
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "등록일"
-        label.textColor = .white
+        label.text = "캡슐 등록일"
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     // 등록일 입력
@@ -61,7 +68,9 @@ class WriteView: BaseView {
         let dateformattor = DateFormatter()
         dateformattor.dateFormat = "yyyy-MM-dd hh:mm"
         label.text = dateformattor.string(from: Date())
-        label.textColor = .white
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     // 등록일 스택뷰
@@ -74,15 +83,19 @@ class WriteView: BaseView {
     // 오픈일
     lazy var openLabel: UILabel = {
         let label = UILabel()
-        label.text = "오픈일"
-        label.textColor = .white
+        label.text = "캡슐 오픈일"
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     // 오픈일 입력
     lazy var opendateInput: UITextField = {
         let textField = UITextField()
         textField.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
-        textField.textColor = .white
+        textField.textColor = AllColor.textColor.color
+        textField.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        textField.placeholder = "오픈일을 선택해주세요."
         return textField
     }()
     // 오픈일 스택뷰
@@ -97,15 +110,18 @@ class WriteView: BaseView {
     // 글쓰기
     lazy var writeLabel: UILabel = {
         let label = UILabel()
-        label.text = "글쓰기"
-        label.textColor = .white
+        label.text = "캡슐 내용쓰기"
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     //
     lazy var writeTextView: UITextView = {
         let textview = UITextView()
         textview.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
-        textview.textColor = .white
+        textview.textColor = AllColor.textColor.color
+        textview.font = UIFont(name: "SongMyung-Regular", size: 16.0)
         return textview
     }()
     
@@ -113,7 +129,9 @@ class WriteView: BaseView {
     lazy var imageLabel: UILabel = {
         let label = UILabel()
         label.text = "이미지"
-        label.textColor = .white
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     // 이미지 컬렉션뷰
@@ -280,13 +298,13 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let photo = UIAlertAction(title: "앨범", style: .default) { (action) in
             self.photoSelect()
         }
-//        let camera = UIAlertAction(title: "카메라", style: .default) { action in
-//            self.cameraStart()
-//        }
+        let camera = UIAlertAction(title: "카메라", style: .default) { action in
+            self.cameraStart()
+        }
         let cancel = UIAlertAction(title: "취소하기", style: .cancel)
         
         alert.addAction(photo)
-//        alert.addAction(camera)
+        alert.addAction(camera)
         alert.addAction(cancel)
         present(alert,animated: true)
     }

@@ -26,6 +26,10 @@
 		E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB428D1E2A300CEC17A /* UILabel.swift */; };
 		E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB728D1E5B700CEC17A /* PageViewController.swift */; };
 		E16F4DBA28D1E5C100CEC17A /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB928D1E5C100CEC17A /* PageView.swift */; };
+		E189E0C628DCD9B000A07311 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189E0C528DCD9B000A07311 /* UITextView.swift */; };
+		E189E0D728DCE66E00A07311 /* BMEULJIRO.otf in Resources */ = {isa = PBXBuildFile; fileRef = E189E0D628DCE66E00A07311 /* BMEULJIRO.otf */; };
+		E189E0D928DCE6CC00A07311 /* SongMyung-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E189E0D828DCE6CC00A07311 /* SongMyung-Regular.ttf */; };
+		E18ABCE428DEC83B0011D6DF /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = E18ABCE328DEC83B0011D6DF /* YPImagePicker */; };
 		E191978628DB256A0056AB56 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E191978528DB256A0056AB56 /* Realm */; };
 		E191978828DB256A0056AB56 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E191978728DB256A0056AB56 /* RealmSwift */; };
 		E191978B28DB259B0056AB56 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = E191978A28DB259B0056AB56 /* Zip */; };
@@ -100,6 +104,9 @@
 		E16F4DB428D1E2A300CEC17A /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E16F4DB728D1E5B700CEC17A /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		E16F4DB928D1E5C100CEC17A /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		E189E0C528DCD9B000A07311 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		E189E0D628DCE66E00A07311 /* BMEULJIRO.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMEULJIRO.otf; sourceTree = "<group>"; };
+		E189E0D828DCE6CC00A07311 /* SongMyung-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SongMyung-Regular.ttf"; sourceTree = "<group>"; };
 		E1DC08AE28D7F5520032440A /* PageVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC1.swift; sourceTree = "<group>"; };
 		E1DC08B028D7F55D0032440A /* PageVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC2.swift; sourceTree = "<group>"; };
 		E1DC08B228D7F5680032440A /* PageVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC3.swift; sourceTree = "<group>"; };
@@ -141,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E191978828DB256A0056AB56 /* RealmSwift in Frameworks */,
+				E18ABCE428DEC83B0011D6DF /* YPImagePicker in Frameworks */,
 				E191978628DB256A0056AB56 /* Realm in Frameworks */,
 				E191978B28DB259B0056AB56 /* Zip in Frameworks */,
 				5C0E29B7C200E44B4F9AEE4D /* Pods_EggTime.framework in Frameworks */,
@@ -316,6 +324,8 @@
 		E1FCB0B128CDA0F600C07AA3 /* EggTime */ = {
 			isa = PBXGroup;
 			children = (
+				E189E0D828DCE6CC00A07311 /* SongMyung-Regular.ttf */,
+				E189E0D628DCE66E00A07311 /* BMEULJIRO.otf */,
 				E1FCB0C928CDA16200C07AA3 /* Utils */,
 				E1FCB0C828CDA15500C07AA3 /* Presentation */,
 				E1FCB0C628CDA11B00C07AA3 /* Application */,
@@ -472,6 +482,7 @@
 			children = (
 				E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */,
 				E16F4D9B28D1B26C00CEC17A /* UIViewController+Extension.swift */,
+				E189E0C528DCD9B000A07311 /* UITextView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -516,6 +527,7 @@
 				E191978728DB256A0056AB56 /* RealmSwift */,
 				E191978A28DB259B0056AB56 /* Zip */,
 				E191978D28DB25AB0056AB56 /* SnapKit */,
+				E18ABCE328DEC83B0011D6DF /* YPImagePicker */,
 			);
 			productName = EggTime;
 			productReference = E15813CC28DB20F100E359CE /* EggTime.app */;
@@ -549,6 +561,7 @@
 				E191978428DB256A0056AB56 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */,
 				E191978C28DB25AB0056AB56 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E18ABCE228DEC83B0011D6DF /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 			);
 			productRefGroup = E1FCB0A628CDA0F600C07AA3;
 			projectDirPath = "";
@@ -565,9 +578,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FCB0BF28CDA0FB00C07AA3 /* LaunchScreen.storyboard in Resources */,
+				E189E0D728DCE66E00A07311 /* BMEULJIRO.otf in Resources */,
 				E15FE08728DC15EC00956CA9 /* BaseCollectionViewCell.xib in Resources */,
 				E1FCB0BC28CDA0FB00C07AA3 /* Assets.xcassets in Resources */,
 				E1FCB0BA28CDA0F600C07AA3 /* Main.storyboard in Resources */,
+				E189E0D928DCE6CC00A07311 /* SongMyung-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +675,7 @@
 				E1FCB0B528CDA0F600C07AA3 /* SceneDelegate.swift in Sources */,
 				E1FCB10228CDB52800C07AA3 /* TabBarController.swift in Sources */,
 				E15FE08628DC15EC00956CA9 /* BaseCollectionViewCell.swift in Sources */,
+				E189E0C628DCD9B000A07311 /* UITextView.swift in Sources */,
 				E1FCB0D528CDA28F00C07AA3 /* SettingView.swift in Sources */,
 				E1FCB0D328CDA25500C07AA3 /* ListViewController.swift in Sources */,
 				E1FCB0F228CDA58E00C07AA3 /* Transition+Extension.swift in Sources */,
@@ -890,6 +906,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E18ABCE228DEC83B0011D6DF /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yummypets/YPImagePicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		E191978428DB256A0056AB56 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -917,6 +941,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E18ABCE328DEC83B0011D6DF /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E18ABCE228DEC83B0011D6DF /* XCRemoteSwiftPackageReference "YPImagePicker" */;
+			productName = YPImagePicker;
+		};
 		E191978528DB256A0056AB56 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E191978428DB256A0056AB56 /* XCRemoteSwiftPackageReference "realm-swift" */;

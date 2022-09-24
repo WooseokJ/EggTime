@@ -31,17 +31,20 @@ class VersionView: BaseView {
     // 최신버전
     let recentLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = AllColor.textColor.color
         label.font = UIFont.systemFont(ofSize: 20)
         label.textAlignment = .center
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
         return label
     }()
     // 현재버전
     let presentLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .white
+        label.textColor = AllColor.textColor.color
         label.textAlignment = .center
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
     }()
     

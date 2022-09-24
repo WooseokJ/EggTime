@@ -17,10 +17,10 @@ class ListView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
     
     //MARK: 크기
-
+    
     
     let collectionview : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,7 +32,7 @@ class ListView: BaseView {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.backgroundColor = Constants.background.color
+        //        cv.backgroundColor = Constants.background.color
         cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         cv.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
         return cv
@@ -60,9 +60,7 @@ class ListView: BaseView {
             $0.trailing.leading.equalTo(self.safeAreaLayoutGuide)
         }
     }
-    
 
-    
 }
 
 extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -88,10 +86,10 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-           let itemSpacing : CGFloat = 10
-           let myWidth : CGFloat = (collectionView.bounds.width - itemSpacing * 2) / 3
-           return CGSize(width: myWidth, height: myWidth)
-       }
+        let itemSpacing : CGFloat = 10
+        let myWidth : CGFloat = (collectionView.bounds.width - itemSpacing * 2) / 3
+        return CGSize(width: myWidth, height: myWidth)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -111,21 +109,34 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let openDay = calendar.component(.day, from: openDate)
         print(todayYear,todayMonth,todayDay)
         print(openYear,openMonth,openDay)
-
-        if !((openYear <= todayYear) && (openMonth <= todayMonth) && (openDay <= todayDay) && openAvailable.contains(tasks[indexPath.item].objectId)) {
-            let vc = DetailViewController()
-            transition(vc,transitionStyle: .push)
-            vc.navigationItem.backBarButtonItem?.tintColor = .white
-            vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
-            vc.objectid = tasks[indexPath.item].objectId
-            print(tasks[indexPath.item].objectId)
-            vc.tag = indexPath.item
-        } else{
-            let alert = UIAlertController(title: "아직 오픈시간아님", message: "", preferredStyle: .alert)
+        
+        // 해당날짜인지 판단
+        guard ((openYear <= todayYear) && (openMonth <= todayMonth) && (openDay <= todayDay)) else {
+            let alert = UIAlertController(title: "아직 오픈날짜가 아닙니다.", message: "", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .cancel)
             alert.addAction(ok)
             present(alert,animated: true)
+            return
         }
+        
+        //해당위치에서 열수있는지 판단
+        guard openAvailable.contains(tasks[indexPath.item].objectId) else {
+            let alert = UIAlertController(title: "현위치에서는 오픈할수없습니다.", message: "", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .cancel)
+            alert.addAction(ok)
+            present(alert,animated: true)
+            return
+        }
+        
+        //오픈
+        let vc = DetailViewController()
+        transition(vc,transitionStyle: .push)
+        vc.navigationItem.backBarButtonItem?.tintColor = AllColor.textColor.color
+        vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
+        vc.objectid = tasks[indexPath.item].objectId
+        print(tasks[indexPath.item].objectId)
+        vc.tag = indexPath.item
+        
         
     }
     

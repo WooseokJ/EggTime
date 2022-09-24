@@ -14,8 +14,11 @@ class PageVC3: UIViewController {
         let bt = UIButton()
         let text = UserDefaults.standard.bool(forKey: "first") ? "확인" : "시작하기"
         bt.setTitle(text, for: .normal)
-        bt.layer.borderColor = UIColor.white.cgColor
+        bt.setTitleColor(AllColor.textColor.color, for: .normal)
+        bt.layer.borderColor = AllColor.textColor.color.cgColor
         bt.layer.borderWidth = 4
+        bt.titleLabel?.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return bt
     }()
     override func viewDidLoad() {

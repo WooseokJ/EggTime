@@ -44,16 +44,16 @@ class DetailView: BaseView {
     let dateLabel: UILabel = {
        let label = UILabel()
 //        label.backgroundColor = Constants.imageBackground.color
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.textColor = .white
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.textColor = AllColor.textColor.color
         return label
     }()
     //오픈날짜
     let openDateLabel: UILabel = {
        let label = UILabel()
 //        label.backgroundColor = Constants.imageBackground.color
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.textColor = .white
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.textColor = AllColor.textColor.color
         return label
         
     }()
@@ -62,8 +62,8 @@ class DetailView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
 //        label.backgroundColor = Constants.imageBackground.color
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.textColor = .white
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.textColor = AllColor.textColor.color
         label.numberOfLines = 0
         return label
     }()
@@ -71,10 +71,12 @@ class DetailView: BaseView {
     //내용라벨:
     let contentLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.textColor = .white
+//        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
+        label.textColor = AllColor.textColor.color
         label.numberOfLines = 0
-        label.text = "[내용]"
+        label.text = "[캡슐 내용]"
         return label
     }()
     
@@ -82,8 +84,9 @@ class DetailView: BaseView {
     //내용
     let content: UITextView = {
         let textView = UITextView(frame: .zero)
-        textView.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        textView.textColor = .white
+//        textView.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        textView.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        textView.textColor = AllColor.textColor.color
         textView.backgroundColor = .clear
         return textView
     }()
@@ -172,9 +175,10 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         let detailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid )
 
-        detailView.dateLabel.text = "[등록일] " + repository.dateToString(date: detailInfo[0].regDate)
-        detailView.openDateLabel.text = "[개봉일] " + repository.dateToString(date: detailInfo[0].openDate)
-        detailView.titleLabel.text = "[제목] \(detailInfo[0].title)"
+        
+        detailView.dateLabel.text = "[캡슐 등록일] " + repository.dateToString(date: detailInfo[0].regDate)
+        detailView.openDateLabel.text = "[캡슐 오픈일] " + repository.dateToString(date: detailInfo[0].openDate)
+        detailView.titleLabel.text = "[캡슐 제목] \(detailInfo[0].title)"
         detailView.content.text =  "\(detailInfo[0].content)"
         
         guard indexPath.item >= detailInfo[0].imageList.count else {

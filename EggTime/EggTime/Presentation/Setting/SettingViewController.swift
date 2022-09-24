@@ -11,9 +11,22 @@ class SettingViewController: BaseViewController {
         super.view = settingview
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = "설정"
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+        ]
+        //2
+        navigationController?.navigationBar.titleTextAttributes = attributes
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "설정"
+        
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        
         settingview.tableView.dataSource = self
         settingview.tableView.delegate = self
         let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)

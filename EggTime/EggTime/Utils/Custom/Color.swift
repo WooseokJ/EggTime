@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum Constants{
+enum AllColor{
     
     // 백그라운드 칼러
     enum background {
@@ -22,5 +22,9 @@ enum Constants{
 
     }
     
+    enum textColor {
+        static let color = UIColor.black
+        static let navColor = UIColor.blue
+    }
     
 }

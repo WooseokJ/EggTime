@@ -25,12 +25,22 @@ class ListViewController: BaseViewController {
             print("위치 서비스 Off 상태")
         }
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "캡슐 리스트"
         listView.collectionview.dataSource = self
         listView.collectionview.delegate = self
+        
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        navigationItem.title = "타임 캡슐 리스트"
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+        ]
+        //2
+        navigationController?.navigationBar.titleTextAttributes = attributes
 
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -67,7 +77,7 @@ extension ListViewController: CLLocationManagerDelegate{
             tasks.forEach{
                 //MARK: 거리 계산하는 매소드
                 let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
-                if containDistance < 40 {
+                if containDistance < 100 {
                     openAvailable.append($0.objectId)
                 }
             }

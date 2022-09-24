@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import YPImagePicker
+import YPImagePicker
 //import Kingfisher
 import CoreLocation
 import MobileCoreServices
@@ -18,7 +18,6 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     override func loadView() {
         super.view = writeView
     }
-    
     
     let repository = RealmRepository()
     
@@ -34,17 +33,14 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     let writeViewCell = WriteCollectionViewCell()
     
     
-    
+
     
     override func viewWillAppear(_ animated: Bool) {
         picker.delegate = self
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackgroundImage")
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
+
         print(repository.localRealm.configuration.fileURL!)
-        
-        print(UserDefaults.standard.double(forKey: "lat"))
-        print(UserDefaults.standard.double(forKey: "lng"))
+
     }
     
     lazy var pickerSelect: [String] = Picker.allCases.map{$0.pickerLisk[0]}
@@ -54,12 +50,22 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         writeView.pickerView.dataSource = self
         writeView.pickerView.delegate = self
         
+        navigationItem.title = "캡슐 묻기"
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+        ]
+        //2
+        navigationController?.navigationBar.titleTextAttributes = attributes
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(saveButtonClicked))
+       
         writeView.opendateInput.inputView = writeView.pickerView
         
         writeView.collectionview.delegate = self
         writeView.collectionview.dataSource = self
         configToolbar()
-        
+
     }
     // 키보드 여백눌러서 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -75,7 +81,7 @@ extension WriteViewController {
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.white
+        toolBar.tintColor = AllColor.textColor.color
         toolBar.backgroundColor = .black
         toolBar.sizeToFit()
         
@@ -117,17 +123,6 @@ extension WriteViewController {
         
         
             //MARK: 거리 계산하는 매소드
-            
-//            let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
-//            print("차이거리:", containDistance)
-//            if containDistance <= 100 {
-//                distanceArray.append(containDistance)
-//            }
-        
-
-        
-        print(UserDefaults.standard.double(forKey: "lat"))
-        print(UserDefaults.standard.double(forKey: "lng"))
         
         let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, latitude: UserDefaults.standard.double(forKey: "lat") , longitude: UserDefaults.standard.double(forKey: "lng") , imageStringArray: imageArrayString )
         do {
@@ -145,7 +140,7 @@ extension WriteViewController {
         }
         
         
-        fetchDocumentZipFile() //확인용
+//        fetchDocumentZipFile() //확인용
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -170,15 +165,35 @@ extension WriteViewController {
     }
     //MARK: 카메라 선택
     @objc func cameraStart() {
-        //        let picker = YPImagePicker() //권한요청 메소드는 안에있어.
-        //        picker.didFinishPicking { [unowned picker] items, _ in
-        //            if let photo = items.singlePhoto {
-        //                WriteCollectionViewCell().imageView.image = photo.image
-        //            }
-        //            picker.dismiss(animated: true, completion: nil)
-        //        }
-        //        present(picker, animated: true, completion: nil)
+        let picker = YPImagePicker() //권한요청 메소드는 안에있어.
+        picker.didFinishPicking { [self, unowned picker] items, _ in
+            if let photo = items.singlePhoto {
+                
+                let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+                let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+                let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+                let dirPath = paths.first
+                let imageData = photo.image.jpegData(compressionQuality: 1)
+                let imageURL = URL(fileURLWithPath: dirPath!).appendingPathComponent("YPImagePicker\(Date()).png")
+                
+                
+                if imageArrayUIImage.count == tag! {
+                    
+                    imageArrayString.append(imageURL.lastPathComponent)
+                    imageArrayUIImage.append(photo.image)
+                } else{
+                    imageArrayString[tag!] = imageURL.lastPathComponent
+                    imageArrayUIImage[tag!] = photo.image
+                }
+
+                writeView.collectionview.reloadData()
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
     }
+    
+        
 }
 
 
@@ -191,37 +206,20 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
     //카메라나 앨범등 PickerController가 사용되고 이미지 촬영을 했을 때 발동 된다.
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-        //            selectedImage = image
-        //            writeView.collectionview.reloadData()
-        //            dismiss(animated: true)
-        //        }
+
         
         let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
         
         if mediaType.isEqual(to: kUTTypeImage as NSString as String) {
             let selectImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-            //            if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
-            //
-            //                let imgName = UUID().uuidString+".jpeg"
-            //                let documentDirectory = NSTemporaryDirectory()
-            //                let localPath = documentDirectory.appending(imgName)
-            //                let data = selectImage!.jpegData(compressionQuality: 0.3)! as NSData
-            //                data.write(toFile: localPath, atomically: true)
-            //                let photoURL = URL.init(fileURLWithPath: localPath)
-            //
-            //                //카메라로 촬영했을때 로직구현
-            //
-            //
-            //
-            //            }else
-            if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
+
+            if (UIImagePickerController.isSourceTypeAvailable(.photoLibrary)) {
                 
                 let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as? NSURL
                 let imageName=imageUrl?.lastPathComponent//파일이름
                 let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
                 let photoURL          = NSURL(fileURLWithPath: documentDirectory)
-                let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
+//                let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
                 
                 if imageArrayUIImage.count == tag! {
                     imageArrayString.append(imageName!)
@@ -245,5 +243,8 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
             dismiss(animated: true)
         }
     }
+    
+    
+    
     
 }

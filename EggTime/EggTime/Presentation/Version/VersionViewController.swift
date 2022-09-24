@@ -30,6 +30,12 @@ class VersionViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "버전확인"
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+        ]
+        //2
+        navigationController?.navigationBar.titleTextAttributes = attributes
 
         guard let version = version  else {
              showAlertMessage(title: "version 오류", button: "확인")

@@ -28,19 +28,25 @@ class DetailViewController: BaseViewController {
             print("collectionview Tasks Changed")
         }
     }
-    
-    
 
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         detailView.collectionview.dataSource = self
         detailView.collectionview.delegate = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(showAlertDeleteMessage))
-        detailView.content.isEditable = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "xmark.bin.circle"), style: .plain, target: self, action: #selector(showAlertDeleteMessage))
 
+        detailView.content.isEditable = false
         
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+        ]
+        //2
+        navigationController?.navigationBar.titleTextAttributes = attributes
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,13 +76,10 @@ extension DetailViewController {
             return
         }
         let item = tasks[tagNotNil]
+
         repository.deleteItem(item: item)
         ListView().collectionview.reloadData()
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
-
-
     
 }

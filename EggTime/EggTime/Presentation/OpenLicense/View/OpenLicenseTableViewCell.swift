@@ -26,7 +26,9 @@ class OpenLicenseTableViewCell: BaseTableViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = AllColor.textColor.color
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return label
         
     }()

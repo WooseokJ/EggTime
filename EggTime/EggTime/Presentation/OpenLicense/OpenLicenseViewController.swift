@@ -21,9 +21,15 @@ class OpenLicenseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "OpenLicense"
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+        ]
+        //2
+        navigationController?.navigationBar.titleTextAttributes = attributes
+
         openLicenseView.tableView.delegate = self
         openLicenseView.tableView.dataSource = self
-        
         
     }
 

@@ -27,25 +27,29 @@ class BackupStoredView: BaseView {
     let backupButton: UIButton = {
         let button = UIButton()
         button.setTitle("백업", for: .normal)
-        
+        button.setTitleColor(AllColor.textColor.color, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 3
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = AllColor.textColor.color.cgColor
         return button
     }()
     let storedButton: UIButton = {
         let button = UIButton()
         button.setTitle("복구", for: .normal)
-        
+        button.setTitleColor(AllColor.textColor.color, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 3
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = AllColor.textColor.color.cgColor
         return button
     }()
     let imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "tray.and.arrow.up")
-        image.tintColor = .white
+        image.tintColor = AllColor.textColor.color
         return image
     }()
     

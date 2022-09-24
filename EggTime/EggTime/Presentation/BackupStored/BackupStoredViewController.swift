@@ -24,6 +24,13 @@ class BackupStoredViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "백업/복구하기"
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+        ]
+        //2
+        navigationController?.navigationBar.titleTextAttributes = attributes
+
         backupStoredView.backupButton.addTarget(self, action: #selector(backupButtonClicked), for: .touchUpInside)
         backupStoredView.storedButton.addTarget(self, action: #selector(storedButtonClicked), for: .touchUpInside)
     }

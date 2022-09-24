@@ -32,6 +32,12 @@ class PageViewController: BaseViewController {
         pageViewController.dataSource = self
         pageViewController.delegate = self
         navigationItem.title = "앱 사용법"
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+        ]
+        //2
+        navigationController?.navigationBar.titleTextAttributes = attributes
 
         if let firstVC = vcArray.first {
                pageViewController.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)

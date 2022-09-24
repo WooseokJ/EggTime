@@ -33,15 +33,26 @@ class MapView: BaseView {
     let title: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 0
+        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.backgroundColor = .yellow
         return label
+    }()
+    
+    let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        return view
     }()
     
     let centerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        
         return view
     }()
     
@@ -52,13 +63,19 @@ class MapView: BaseView {
     let checkButton: UIButton = {
         let button = UIButton()
         button.setTitle("확인", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = .systemGray5
+        button.titleLabel?.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+
         return button
     }()
     let detailButton: UIButton = {
        let button = UIButton()
         button.setTitle("자세히보기", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.backgroundColor = .systemGray5
+        button.titleLabel?.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        
         return button
     }()
     
