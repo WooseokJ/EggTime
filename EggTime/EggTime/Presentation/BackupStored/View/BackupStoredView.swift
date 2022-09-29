@@ -28,7 +28,7 @@ class BackupStoredView: BaseView {
         let button = UIButton()
         button.setTitle("백업", for: .normal)
         button.setTitleColor(AllColor.textColor.color, for: .normal)
-        button.titleLabel?.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        button.titleLabel?.font = AllFont.font.name
 
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 3
@@ -39,7 +39,7 @@ class BackupStoredView: BaseView {
         let button = UIButton()
         button.setTitle("복구", for: .normal)
         button.setTitleColor(AllColor.textColor.color, for: .normal)
-        button.titleLabel?.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        button.titleLabel?.font = AllFont.font.name
 
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 3

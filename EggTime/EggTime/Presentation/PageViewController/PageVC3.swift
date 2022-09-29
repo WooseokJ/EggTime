@@ -17,12 +17,28 @@ class PageVC3: UIViewController {
         bt.setTitleColor(AllColor.textColor.color, for: .normal)
         bt.layer.borderColor = AllColor.textColor.color.cgColor
         bt.layer.borderWidth = 4
-        bt.titleLabel?.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        bt.titleLabel?.font = AllFont.font.name
 
         return bt
     }()
+    
+    let imageView: UIImageView = {
+        let image = UIImageView()
+        return image
+    }()
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationItem.title = "앱 사용법"
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
+        imageView.image = UIImage(named: "BackgroundImage")
+        
         view.backgroundColor = .systemGray3
         view.addSubview(button)
         button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)

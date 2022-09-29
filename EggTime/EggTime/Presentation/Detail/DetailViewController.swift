@@ -18,7 +18,6 @@ class DetailViewController: BaseViewController {
     
     var objectid: ObjectId? // 객체아이디 받아와 
 
-    let repository = RealmRepository()
 
     var tag: Int?
     
@@ -43,7 +42,8 @@ class DetailViewController: BaseViewController {
         self.navigationItem.backBarButtonItem = backBarButtonItem
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+            NSAttributedString.Key.font: AllFont.font.name
+
         ]
         //2
         navigationController?.navigationBar.titleTextAttributes = attributes

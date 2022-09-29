@@ -9,21 +9,22 @@ import UIKit
 
 class PageVC2: UIViewController {
 
+    let imageView: UIImageView = {
+        let image = UIImageView()
+        return image
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray2
-        // Do any additional setup after loading the view.
+        view.addSubview(imageView)
+        navigationController?.navigationItem.title = "앱 사용법"
+        imageView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
+        imageView.image = UIImage(named: "BackgroundImage")
+        
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

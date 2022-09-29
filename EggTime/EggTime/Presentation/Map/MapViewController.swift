@@ -18,8 +18,7 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
     var latitude: Double?
     var longtitude: Double?
 
-    let repository = RealmRepository()
-    var tasks: Results<EggTime>!
+    var tasks: Results<EggTime>! 
 
     override func viewWillAppear(_ animated: Bool) {
         print(#function)
@@ -119,7 +118,7 @@ extension MapViewController {
             tasks.forEach{
                 //MARK: 거리 계산하는 매소드
                 let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
-                print("차이거리:", containDistance)
+//                print("차이거리:", containDistance)
                 if containDistance <= 100 {
                     distanceArray.append(containDistance)
                 }
@@ -127,16 +126,13 @@ extension MapViewController {
 
             //현 위치로 카메라 이동
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: location.coordinate.latitude , lng: location.coordinate.longitude )) // 서울역위치
+//            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: naverMapView.mapView.latitude , lng: naverMapView.mapView.longitude )) // 서울역위치
             cameraUpdate.animation = .easeIn
             naverMapView.mapView.moveCamera(cameraUpdate)
 
             print(distanceArray) // 거리의 모음
             UserDefaults.standard.set(location.coordinate.latitude, forKey: "lat")
             UserDefaults.standard.set(location.coordinate.longitude, forKey: "lng")
-
-
-
-
         }
 
         // 위치 업데이트 멈춰 (실시간성이 중요한거는 매번쓰고, 중요하지않은건 원하는 시점에 써라)
@@ -163,11 +159,12 @@ extension MapViewController {
                             self.mapview.title.text = task.title
                             self.mapview.image.contentMode = .scaleToFill
 
-                            if task.imageList.count != 0 {
-                                self.mapview.image.image = self.loadImageFromDocument(fileName: task.imageList[0])
-                            } else {
-                                self.mapview.image.image = UIImage(named: "NoImage")
-                            }
+                            self.mapview.image.image = UIImage(named: "Egg2")
+//                            if task.imageList.count != 0 {
+//                                self.mapview.image.image = self.loadImageFromDocument(fileName: task.imageList[0])
+//                            } else {
+//                                self.mapview.image.image = UIImage(named: "NoImage")
+//                            }
 
                            return true
                          } else {
@@ -210,27 +207,27 @@ extension MapViewController {
         }
         self.mapview.image.snp.remakeConstraints {
             $0.centerX.equalTo(mapview.centerView)
-            $0.top.equalTo(mapview.title.snp.bottom).offset(10)
-            $0.leading.equalTo(mapview.centerView.snp.leading).offset(10)
-            $0.trailing.equalTo(mapview.centerView.snp.trailing).offset(-10)
-            $0.bottom.equalTo(self.mapview.checkButton.snp.top).offset(-10)
+            $0.top.equalTo(mapview.title.snp.bottom)
+            $0.leading.equalTo(mapview.centerView.snp.leading)
+            $0.trailing.equalTo(mapview.centerView.snp.trailing)
+            $0.bottom.equalTo(self.mapview.checkButton.snp.top)
         }
         self.mapview.checkButton.snp.remakeConstraints {
-            $0.bottom.equalTo(self.mapview.centerView.snp.bottom).offset(-10)
+            $0.bottom.equalTo(self.mapview.centerView.snp.bottom)
             $0.height.equalTo(50)
-            $0.width.equalTo(self.mapview.image.snp.width).multipliedBy(0.5)
-            $0.leading.equalTo(self.mapview.image.snp.leading)
+            $0.width.equalTo(self.mapview.centerView.snp.width).multipliedBy(0.5)
+            $0.leading.equalTo(self.mapview.centerView.snp.leading)
         }
         
         self.mapview.detailButton.snp.remakeConstraints {
             $0.height.equalTo(50)
-            $0.width.equalTo(self.mapview.image.snp.width).multipliedBy(0.5)
-            $0.trailing.equalTo(self.mapview.image.snp.trailing)
-            $0.bottom.equalTo(self.mapview.centerView.snp.bottom).offset(-10)
+            $0.width.equalTo(self.mapview.centerView.snp.width).multipliedBy(0.5)
+            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
+            $0.bottom.equalTo(self.mapview.centerView.snp.bottom)
         }
         self.mapview.lineView.snp.remakeConstraints {
             $0.height.equalTo(self.mapview.detailButton.snp.height)
-            $0.width.equalTo(1)
+            $0.width.equalTo(0.5)
             $0.centerX.equalTo(self.mapview.image)
             $0.top.equalTo(self.mapview.checkButton.snp.top)
             $0.bottom.equalTo(self.mapview.checkButton.snp.bottom)

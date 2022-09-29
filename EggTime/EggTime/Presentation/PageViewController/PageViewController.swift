@@ -34,7 +34,7 @@ class PageViewController: BaseViewController {
         navigationItem.title = "앱 사용법"
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+            NSAttributedString.Key.font: AllFont.font.name
         ]
         //2
         navigationController?.navigationBar.titleTextAttributes = attributes

@@ -3,31 +3,80 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import UserNotifications
 
-class MainViewController: BaseViewController, UNUserNotificationCenterDelegate {
+class MainViewController: BaseViewController {
     
     //MARK: 뷰 가져오기
     let mainview = MainView()
     override func loadView() {
         super.view = mainview
     }
-    let repository = RealmRepository()
-    var tasks: Results<EggTime>! {
-        didSet {
-            print("collectionview Tasks Changed")
-        }
-    }
-    let notificationCenter = UNUserNotificationCenter.current() // 알람할떄 선행되야됨.
+    var tasks: Results<EggTime>!
+    
+    var timer: Timer?
+    var second: Int = 0
+    var minTmpDate: DateComponents?
+    
     override func viewWillAppear(_ animated: Bool) {
-
+        print(#function)
         navigationItem.title = "타임 캡슐"
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+            NSAttributedString.Key.font: AllFont.font.name
         ]
-        navigationController?.navigationBar.titleTextAttributes = attributes
+        navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
         
+        let date = Date()
+        print(date)
+        let min = repository.localRealm.objects(EggTime.self).filter("openDate >= %@",date).sorted(byKeyPath: "openDate", ascending: true)
+        print(min)
+        guard !min.isEmpty else {
+            
+            mainview.titleLabel.text = "캡슐 없음"
+            return
+        }
+        
+        mainview.titleLabel.text = min[0].title
+        
+        mainview.tempLabel.text = "가장 빠른 캡슐 남은기간"
+
+        var minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: min[0].openDate)
+
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+            minDate.second! -= 1
+            
+            if minDate.second == -1 {
+                minDate.second = 59
+                minDate.minute! -= 1
+            }
+            if minDate.minute == -1 {
+                minDate.minute = 59
+                minDate.hour! -= 1
+            }
+            if minDate.hour == -1 {
+                mainview.timelabel.text = "캡슐 오픈"
+                timer.invalidate()
+            }
+            print(minDate)
+            let time = String(format: "%02d:", minDate.hour!)+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
+
+            if minDate.month != 0 { // 7개월 3일 12:03:02
+                mainview.dayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
+                mainview.timelabel.text = time
+            }
+            else if minDate.day != 0 {
+                mainview.dayLabel.text = "\(minDate.day!)일"
+                mainview.timelabel.text = time
+            }
+            else if minDate.hour != -1 {
+                mainview.dayLabel.text = "오늘"
+                mainview.timelabel.text = time
+            }
+        }
+
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,52 +86,9 @@ class MainViewController: BaseViewController, UNUserNotificationCenterDelegate {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
-        notificationCenter.delegate = self
-        requestAuthorization()
-        
-        
-
-    }
-    //MARK: notification 2. 권한요청
-    func requestAuthorization(){
-        let authrozationOptions = UNAuthorizationOptions(arrayLiteral: .alert, .sound)
-        notificationCenter.requestAuthorization(options: authrozationOptions){success,error in
-            if success{
-                self.sendNotification()
-            }
-        }
     }
     
-    func sendNotification(){
-        
-        DispatchQueue.main.async { [self] in
-            tasks = repository.localRealm.objects(EggTime.self)
-            
-            tasks.forEach {
-                let notificationContent = UNMutableNotificationContent()
-                notificationContent.title = "오늘은 오픈일입니다."
-                notificationContent.subtitle = "subtitle"
-                notificationContent.body = "body"
-                
-                
-                
-                
-//                var date = DateComponents()
-//                date.hour = 8
-//                date.minute = 30
-                let date = Date().addingTimeInterval(10)
-                let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
-//                var dateComponents = calendar.dateComponents([.year, .month, .day], from: $0.openDate)
-//                print(dateComponents)
-//                print(Date())
-                
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-                let request = UNNotificationRequest(identifier: "\($0.openDate)", content: notificationContent, trigger: trigger)
-                notificationCenter.add(request) //등록시 시간,날짜 계속체크 앱이꺼져도
-            }
-        }
-        
-    }
+    
     
 }
 

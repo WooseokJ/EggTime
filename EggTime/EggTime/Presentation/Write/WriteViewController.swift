@@ -10,16 +10,16 @@ import YPImagePicker
 //import Kingfisher
 import CoreLocation
 import MobileCoreServices
+import RealmSwift
 
-class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
     
     let writeView = WriteView()
     
     override func loadView() {
+        
         super.view = writeView
     }
-    
-    let repository = RealmRepository()
     
     let picker = UIImagePickerController()
     
@@ -32,12 +32,15 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     
     let writeViewCell = WriteCollectionViewCell()
     
-    
+    let notificationCenter = UNUserNotificationCenter.current() // 알람할떄 선행되야됨.
+    var tasks: Results<EggTime>!
+
 
     
     override func viewWillAppear(_ animated: Bool) {
         picker.delegate = self
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackgroundImage")
+        super.view = writeView
 
         print(repository.localRealm.configuration.fileURL!)
 
@@ -53,7 +56,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         navigationItem.title = "캡슐 묻기"
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+            NSAttributedString.Key.font: AllFont.font.name
         ]
         //2
         navigationController?.navigationBar.titleTextAttributes = attributes
@@ -65,11 +68,56 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         writeView.collectionview.delegate = self
         writeView.collectionview.dataSource = self
         configToolbar()
+        
+        notificationCenter.delegate = self
+        
+        requestAuthorization()
+
 
     }
     // 키보드 여백눌러서 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    //MARK: notification 2. 권한요청
+    func requestAuthorization(){
+        let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .sound)
+
+        notificationCenter.requestAuthorization(options: authOptions) { success, error in
+               if let error = error {
+                   print("Error: \(error)")
+               }
+           }
+    }
+    
+    func sendNotification(){
+        
+        DispatchQueue.main.async { [self] in
+            tasks = repository.localRealm.objects(EggTime.self)
+            
+            tasks.forEach {
+                let notificationContent = UNMutableNotificationContent()
+                notificationContent.title = "오늘은 오픈일입니다."
+//                notificationContent.subtitle = "\($0.regDate)에 등록한 타임캡슐이 오픈할수있습니다. "
+                notificationContent.body = "\($0.regDate)에 등록한 타임캡슐이 오픈할수있습니다. "
+                print($0.openDate)
+                
+                var dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: $0.openDate)
+                
+                
+                print(dateComponents)
+                
+//                let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: date)
+//                print(dateComponents)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                
+                let request = UNNotificationRequest(identifier: "sani", content: notificationContent, trigger: trigger)
+                notificationCenter.add(request) { (error) in
+                    print(error)
+                }
+            }
+        }
     }
     
 }
@@ -120,11 +168,22 @@ extension WriteViewController {
             showAlertMessage(title: "오픈일을 선택해주세요", button: "확인")
             return
         }
-        
+        sendNotification()
         
             //MARK: 거리 계산하는 매소드
+        print(writeView.dateInput.text)
+        print(writeView.opendateInput.text)
         
-        let task = EggTime(title: writeView.titleInput.text!, regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""), openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  , content: writeView.writeTextView.text, latitude: UserDefaults.standard.double(forKey: "lat") , longitude: UserDefaults.standard.double(forKey: "lng") , imageStringArray: imageArrayString )
+        let task = EggTime(title: writeView.titleInput.text!,
+                           regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""),
+                           openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  ,
+                           
+                           content: writeView.writeTextView.text,
+                           latitude: UserDefaults.standard.double(forKey: "lat") ,
+                           longitude: UserDefaults.standard.double(forKey: "lng") ,
+                           imageStringArray: imageArrayString)
+        print(repository.stringToDate(string: writeView.dateInput.text ?? ""))
+        print(repository.stringToDate(string: writeView.opendateInput.text ?? ""))
         do {
             try repository.localRealm.write {
                 repository.localRealm.add(task)

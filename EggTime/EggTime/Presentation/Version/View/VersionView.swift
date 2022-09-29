@@ -24,7 +24,7 @@ class VersionView: BaseView {
     //MARK: 크기
     let imageView: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(named: "sampleAppIcon")
+        imageview.image = UIImage(named: "Egg")
         return imageview
     }()
     
@@ -34,7 +34,7 @@ class VersionView: BaseView {
         label.textColor = AllColor.textColor.color
         label.font = UIFont.systemFont(ofSize: 20)
         label.textAlignment = .center
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.font = AllFont.font.name
         return label
     }()
     // 현재버전
@@ -43,7 +43,7 @@ class VersionView: BaseView {
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = AllColor.textColor.color
         label.textAlignment = .center
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.font = AllFont.font.name
 
         return label
     }()
@@ -61,23 +61,24 @@ class VersionView: BaseView {
         }
         imageView.snp.makeConstraints {
             $0.top.equalTo(200)
-            $0.width.height.equalTo(200)
-            $0.leading.equalTo(100)
-            $0.trailing.equalTo(-100)
+            $0.height.equalTo(200)
+            $0.centerX.equalTo(self)
+            $0.width.equalTo(150)
+            
         }
         
         recentLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(60)
             $0.width.equalTo(200)
             $0.height.equalTo(20)
-            $0.leading.equalTo(imageView.snp.leading)
+            $0.centerX.equalTo(self)
         }
         presentLabel.snp.makeConstraints {
             $0.top.equalTo(recentLabel.snp.bottom).offset(20)
             $0.width.equalTo(recentLabel.snp.width)
             $0.height.equalTo(recentLabel.snp.height)
-            $0.leading.equalTo(recentLabel.snp.leading)
-            
+            $0.centerX.equalTo(self)
+
         }
         
     }

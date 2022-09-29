@@ -2,22 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>SongMyung-Regular.ttf</string>
-	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>앱을 열때마다 위치주소 가져오기 허용, 네이버 지도에서 마커와 현위치를 표시하기위해 위치정보가 사용됩니다.</string>
+	<string></string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>사진 앨범 가져오게 해주세용</string>
 	<key>NSCameraUsageDescription</key>
 	<string>카메라 사용을 허용해주세용</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>NMFCientId</key>
 	<string>sjtk98rxyn</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DalseoHealingMedium.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -41,8 +43,6 @@
 					<key>UISceneConfigurationName</key>
 					<string></string>
 					<key>UISceneDelegateClassName</key>
-					<string></string>
-					<key>UISceneStoryboardFile</key>
 					<string></string>
 				</dict>
 			</array>

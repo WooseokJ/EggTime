@@ -24,7 +24,6 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     //MARK: 크기
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = AllColor.imageBackground.color
         return imageView
     }()
   

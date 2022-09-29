@@ -8,7 +8,7 @@
 import UIKit
 
 import Zip
-
+import RealmSwift
 
 class BackupStoredViewController: BaseViewController {
 
@@ -18,6 +18,12 @@ class BackupStoredViewController: BaseViewController {
         super.view = backupStoredView
     }
     
+    var tasks: Results<EggTime>!
+
+    override func viewWillDisappear(_ animated: Bool) {
+        print(#function)
+        tasks = repository.fetch()
+    }
     
     
     
@@ -26,7 +32,7 @@ class BackupStoredViewController: BaseViewController {
         navigationItem.title = "백업/복구하기"
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+            NSAttributedString.Key.font: AllFont.font.name
         ]
         //2
         navigationController?.navigationBar.titleTextAttributes = attributes
@@ -68,6 +74,17 @@ class BackupStoredViewController: BaseViewController {
         do {
             let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "나의 캡슐 백업파일") // Zip
             print("Archive location: \(zipFilePath)")
+            
+            repository.localRealm.beginWrite()
+                do {
+                    try self.repository.localRealm.writeCopy(toFile: zipFilePath)
+                } catch {
+                    // Error backing up data
+                }
+            repository.localRealm.cancelWrite()
+            
+            
+            
             // activityviewController
             showActivityViewController()
         } catch {
@@ -135,15 +152,24 @@ extension BackupStoredViewController: UIDocumentPickerDelegate{
             let fileURL = path.appendingPathComponent("나의 캡슐 백업파일.zip")   // ~/document/sesacDiary.zip
             do {
                 try Zip.unzipFile(fileURL, destination: path , overwrite: true, password: nil, progress: { progress in
-                    print("progress: \(progress)")
-                }, fileOutputHandler: { unzippedFile in
-                    print("unzippedFile: \(unzippedFile)")
+                }, fileOutputHandler: { [self] unzippedFile in
+                    print(unzippedFile)
                     self.showAlertMessage(title: "복구가완료되었습니다.", button: "확인")
                     
+                    repository.localRealm.beginWrite()
+                        do {
+                            try self.repository.localRealm.writeCopy(toFile: unzippedFile)
+                        } catch {
+                            // Error backing up data
+                        }
+                    repository.localRealm.cancelWrite()
+//
                 }) //overwrite은 덮어씌우기
             } catch {
                 showAlertMessage(title: "압축해제실패", button: "확인")
             }
+
+            
         } else {
             do {
                 //파일 앱 zip -> 도큐먼트 폴더에 복사

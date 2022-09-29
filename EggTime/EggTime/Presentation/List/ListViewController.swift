@@ -25,7 +25,14 @@ class ListViewController: BaseViewController {
             print("위치 서비스 Off 상태")
         }
     }
-    
+    var tasks: Results<EggTime>! {
+        didSet {
+            listView.collectionview.reloadData()
+            print("collectionview Tasks Changed")
+        }
+    }
+    var currentlat: Double?
+    var currentlng: Double?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +44,7 @@ class ListViewController: BaseViewController {
         navigationItem.title = "타임 캡슐 리스트"
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+            NSAttributedString.Key.font: AllFont.font.name
         ]
         //2
         navigationController?.navigationBar.titleTextAttributes = attributes
@@ -48,14 +55,6 @@ class ListViewController: BaseViewController {
         let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
         
         self.navigationItem.rightBarButtonItems = [sortButton]
-    }
-
-    let repository = RealmRepository()
-    var tasks: Results<EggTime>! {
-        didSet {
-            listView.collectionview.reloadData()
-            print("collectionview Tasks Changed")
-        }
     }
 
     var openAvailable: [ObjectId] = []
@@ -74,6 +73,9 @@ extension ListViewController: CLLocationManagerDelegate{
             print("현재좌표:",location.coordinate.latitude)
             print("현재좌표:",location.coordinate.longitude)
 
+            currentlat = location.coordinate.latitude
+            currentlng = location.coordinate.longitude
+            
             tasks.forEach{
                 //MARK: 거리 계산하는 매소드
                 let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
@@ -81,6 +83,7 @@ extension ListViewController: CLLocationManagerDelegate{
                     openAvailable.append($0.objectId)
                 }
             }
+            
 
         }
 

@@ -30,17 +30,19 @@ class WriteView: BaseView {
         let label = UILabel()
         label.text = "캡슐 제목"
         label.textColor = AllColor.textColor.color
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
-
+        label.font = AllFont.font.title
+        
         return label
     }()
     //제목입력
     lazy var titleInput: UITextField = {
         let textField = UITextField()
-        textField.textColor = AllColor.textColor.color
-        textField.font = UIFont(name: "SongMyung-Regular", size: 16.0)
-        textField.placeholder = "제목을 입력해주세요."
+        textField.textColor = .black
+        textField.font = AllFont.font.name
+        textField.placeholder = " 제목을 입력해주세요."
         textField.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
+        textField.layer.cornerRadius = 10
+        textField.clipsToBounds = true
         return textField
     }()
     //제목 스택뷰
@@ -58,19 +60,20 @@ class WriteView: BaseView {
         let label = UILabel()
         label.text = "캡슐 등록일"
         label.textColor = AllColor.textColor.color
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
-
+        label.font = AllFont.font.title
         return label
     }()
     // 등록일 입력
     lazy var dateInput: UILabel = {
         let label = UILabel()
         let dateformattor = DateFormatter()
-        dateformattor.dateFormat = "yyyy-MM-dd hh:mm"
+        dateformattor.dateFormat = "yyyy-MM-dd"
         label.text = dateformattor.string(from: Date())
-        label.textColor = AllColor.textColor.color
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
-
+        label.textColor = .black
+        label.font = AllFont.font.name
+        label.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
         return label
     }()
     // 등록일 스택뷰
@@ -85,7 +88,7 @@ class WriteView: BaseView {
         let label = UILabel()
         label.text = "캡슐 오픈일"
         label.textColor = AllColor.textColor.color
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.font = AllFont.font.title
 
         return label
     }()
@@ -93,9 +96,11 @@ class WriteView: BaseView {
     lazy var opendateInput: UITextField = {
         let textField = UITextField()
         textField.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
-        textField.textColor = AllColor.textColor.color
-        textField.font = UIFont(name: "SongMyung-Regular", size: 16.0)
-        textField.placeholder = "오픈일을 선택해주세요."
+        textField.textColor = .black
+        textField.font = AllFont.font.name
+        textField.placeholder = " 오픈일을 선택해주세요."
+        textField.layer.cornerRadius = 10
+        textField.clipsToBounds = true
         return textField
     }()
     // 오픈일 스택뷰
@@ -112,7 +117,7 @@ class WriteView: BaseView {
         let label = UILabel()
         label.text = "캡슐 내용쓰기"
         label.textColor = AllColor.textColor.color
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.font = AllFont.font.title
 
         return label
     }()
@@ -120,8 +125,10 @@ class WriteView: BaseView {
     lazy var writeTextView: UITextView = {
         let textview = UITextView()
         textview.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
-        textview.textColor = AllColor.textColor.color
-        textview.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        textview.textColor = .black
+        textview.font = AllFont.font.name
+        textview.layer.cornerRadius = 10
+        textview.clipsToBounds = true
         return textview
     }()
     
@@ -130,15 +137,15 @@ class WriteView: BaseView {
         let label = UILabel()
         label.text = "이미지"
         label.textColor = AllColor.textColor.color
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
-
+        label.font = AllFont.font.title
+  
         return label
     }()
     // 이미지 컬렉션뷰
     lazy var collectionview: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
-        let layoutwidth = UIScreen.main.bounds.width - (spacing * 4)
+        let layoutwidth = UIScreen.main.bounds.width - (spacing * 3)
         layout.itemSize = CGSize(width: layoutwidth / 2.4, height: layoutwidth)
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: spacing)

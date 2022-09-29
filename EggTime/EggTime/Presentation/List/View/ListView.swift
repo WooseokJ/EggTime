@@ -32,7 +32,6 @@ class ListView: BaseView {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        //        cv.backgroundColor = Constants.background.color
         cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         cv.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
         return cv
@@ -56,7 +55,7 @@ class ListView: BaseView {
         
         collectionview.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalTo(0)
             $0.trailing.leading.equalTo(self.safeAreaLayoutGuide)
         }
     }
@@ -73,16 +72,22 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier, for: indexPath) as? ListCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.imageView.layer.cornerRadius = cell.frame.height / 3.5
+//        cell.imageView.layer.cornerRadius = cell.frame.height / 3.5
+        print(tasks[indexPath.row].openDate)
+        print(repository.dateToString(date: tasks[indexPath.row].openDate))
         cell.dateLabel.text = repository.dateToString(date: tasks[indexPath.row].openDate)
+        cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+        cell.titleLabel.text = tasks[indexPath.row].title
+//        if tasks[indexPath.item].imageList.count == 0 {
+//            cell.imageView.image = UIImage(named: "NoImage")
+//            return cell
+//        } else {
+//            cell.imageView.image = loadImageFromDocument(fileName: tasks[indexPath.item].imageList[0])
+//            return cell
+//        }
         
-        if tasks[indexPath.item].imageList.count == 0 {
-            cell.imageView.image = UIImage(named: "NoImage")
-            return cell
-        } else {
-            cell.imageView.image = loadImageFromDocument(fileName: tasks[indexPath.item].imageList[0])
-            return cell
-        }
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -121,6 +126,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         //해당위치에서 열수있는지 판단
         guard openAvailable.contains(tasks[indexPath.item].objectId) else {
+            
             let alert = UIAlertController(title: "현위치에서는 오픈할수없습니다.", message: "", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .cancel)
             alert.addAction(ok)

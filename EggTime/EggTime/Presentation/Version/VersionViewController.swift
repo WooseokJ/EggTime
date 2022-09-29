@@ -19,8 +19,8 @@ class VersionViewController: BaseViewController {
     //나중에수정
     var version: String? {
         guard let dictionary = Bundle.main.infoDictionary,
-            let version = dictionary["CFBundleShortVersionString"] as? String,
-            let build = dictionary["CFBundleVersion"] as? String else {return nil}
+        let version = dictionary["CFBundleShortVersionString"] as? String,
+        let build = dictionary["CFBundleVersion"] as? String else {return nil}
 
         let versionAndBuild: String = "vserion: \(version)"
         return versionAndBuild
@@ -32,7 +32,7 @@ class VersionViewController: BaseViewController {
         navigationItem.title = "버전확인"
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: UIFont(name: "SongMyung-Regular", size:16)!
+            NSAttributedString.Key.font: AllFont.font.name
         ]
         //2
         navigationController?.navigationBar.titleTextAttributes = attributes

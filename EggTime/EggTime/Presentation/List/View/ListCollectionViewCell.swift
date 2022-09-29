@@ -17,20 +17,29 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     //MARK: 컬렉션뷰 안의 내용크기
     let imageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "BackgroundImage")
+        imageView.image = UIImage(named: "Egg")
+        
 //        imageView.layer.cornerRadius = imageView.frame.height / 2
 //        imageView.clipsToBounds = true
         return imageView
     }()
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.backgroundColor = .clear
+        label.textColor = AllColor.textColor.color
+        label.font = AllFont.font.name
+        label.numberOfLines = 0
+        return label
+    }()
+    
     let dateLabel : UILabel = {
         let label = UILabel()
         label.backgroundColor = .clear
-        label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .center
         label.textColor = AllColor.textColor.color
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
-
+        label.font = AllFont.font.name
         return label
     }()
     
@@ -38,7 +47,7 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     
     //MARK: 컬렉션뷰에 등록
     override func configure() {
-        [dateLabel,imageView].forEach {
+        [dateLabel,titleLabel,imageView].forEach { //imageView
             self.contentView.addSubview($0)
         }
     }
@@ -47,17 +56,25 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     //MARK: 컬렉션뷰 안의 위치
     override func setConstrains() {
         
-        imageView.snp.makeConstraints {
-            $0.top.equalTo(0)
-            $0.leading.trailing.equalTo(0)
-            $0.bottom.equalTo(-50)
-            
-        }
+
 
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(10)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
             $0.leading.trailing.equalTo(0)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(5)
+            $0.bottom.equalTo(dateLabel.snp.top).offset(-2)
+            $0.leading.trailing.equalTo(0)
+        }
+        
+        
+        imageView.snp.makeConstraints {
+            $0.top.equalTo(30)
+            $0.centerX.equalTo(self)
+            $0.bottom.equalTo(-90)
         }
     }
     

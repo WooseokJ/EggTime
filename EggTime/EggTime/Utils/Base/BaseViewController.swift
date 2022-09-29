@@ -1,5 +1,6 @@
 
 import UIKit
+import RealmSwift
 
 class BaseViewController: UIViewController {
     
@@ -30,6 +31,8 @@ class BaseViewController: UIViewController {
         return UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuSortedItems)
     }
     
+    let repository = RealmRepository()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

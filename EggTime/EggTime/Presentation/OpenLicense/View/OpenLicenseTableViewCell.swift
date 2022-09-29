@@ -27,7 +27,7 @@ class OpenLicenseTableViewCell: BaseTableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = AllColor.textColor.color
-        label.font = UIFont(name: "SongMyung-Regular", size: 16.0)
+        label.font = AllFont.font.name
 
         return label
         

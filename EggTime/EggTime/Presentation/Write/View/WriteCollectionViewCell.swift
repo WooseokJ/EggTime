@@ -23,6 +23,9 @@ class WriteCollectionViewCell: BaseCollectionViewCell {
     //MARK: 크기
     var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     

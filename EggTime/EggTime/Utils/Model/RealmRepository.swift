@@ -41,7 +41,7 @@ class RealmRepository: RealmRepositoryType {
         formattor.locale = Locale(identifier: "ko_KR")
         formattor.timeZone = TimeZone(abbreviation: "KST")
         formattor.dateFormat = "yyyy-MM-dd"
-        return formattor.date(from: string) ?? Date()
+        return formattor.date(from: string)!
     }
     
     // date -> string로 바꾸기

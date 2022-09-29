@@ -6,12 +6,25 @@
 //
 
 import UIKit
-
+import SnapKit
 class PageVC1: UIViewController {
 
+    let imageView: UIImageView = {
+        let image = UIImageView()
+        return image
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray
+        view.addSubview(imageView)
+        navigationController?.navigationItem.title = "앱 사용법"
+        imageView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
+        imageView.image = UIImage(named: "BackgroundImage")
+        
+        
     }
     
 
