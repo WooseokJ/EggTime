@@ -7,7 +7,6 @@
 
 import UIKit
 import YPImagePicker
-//import Kingfisher
 import CoreLocation
 import MobileCoreServices
 import RealmSwift
@@ -46,7 +45,12 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
 
     }
     
-    lazy var pickerSelect: [String] = Picker.allCases.map{$0.pickerLisk[0]}
+    
+    lazy var pickerSelect: [String] = Picker.allCases.map{return $0.pickerLisk[0]}
+//    map.{
+//        return $0.pickerLisk[0]
+//    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +150,8 @@ extension WriteViewController {
     @objc func donePicker() {
         let row = self.writeView.pickerView.selectedRow(inComponent: 0)
         self.writeView.pickerView.selectRow(row, inComponent: 0, animated: false)
-        let text = self.pickerSelect[row].split(separator: ":")
+        let text = pickerSelect[row].split(separator: ":")
+        
         self.writeView.opendateInput.text = String(text[1])
         self.writeView.opendateInput.resignFirstResponder()
     }
@@ -171,8 +176,7 @@ extension WriteViewController {
         sendNotification()
         
             //MARK: 거리 계산하는 매소드
-        print(writeView.dateInput.text)
-        print(writeView.opendateInput.text)
+  
         
         let task = EggTime(title: writeView.titleInput.text!,
                            regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""),
@@ -182,8 +186,7 @@ extension WriteViewController {
                            latitude: UserDefaults.standard.double(forKey: "lat") ,
                            longitude: UserDefaults.standard.double(forKey: "lng") ,
                            imageStringArray: imageArrayString)
-        print(repository.stringToDate(string: writeView.dateInput.text ?? ""))
-        print(repository.stringToDate(string: writeView.opendateInput.text ?? ""))
+
         do {
             try repository.localRealm.write {
                 repository.localRealm.add(task)

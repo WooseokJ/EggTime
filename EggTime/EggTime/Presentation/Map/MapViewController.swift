@@ -159,12 +159,15 @@ extension MapViewController {
                             self.mapview.title.text = task.title
                             self.mapview.image.contentMode = .scaleToFill
 
-                            self.mapview.image.image = UIImage(named: "Egg2")
-//                            if task.imageList.count != 0 {
-//                                self.mapview.image.image = self.loadImageFromDocument(fileName: task.imageList[0])
-//                            } else {
-//                                self.mapview.image.image = UIImage(named: "NoImage")
-//                            }
+                        if Date() >= task.openDate {
+                                if task.imageList.count != 0 {
+                                    self.mapview.image.image = self.loadImageFromDocument(fileName: task.imageList[0])
+                                } else {
+                                    self.mapview.image.image = UIImage(named: "NoImage")
+                                }
+                            } else {
+                                self.mapview.image.image = UIImage(named: "Egg2")
+                            }
 
                            return true
                          } else {

@@ -4,6 +4,7 @@ import UIKit
 import SnapKit
 import RealmSwift
 import UserNotifications
+import CoreLocation
 
 class MainViewController: BaseViewController {
     
@@ -12,12 +13,10 @@ class MainViewController: BaseViewController {
     override func loadView() {
         super.view = mainview
     }
-    var tasks: Results<EggTime>!
-    
     var timer: Timer?
     var second: Int = 0
-    var minTmpDate: DateComponents?
-    
+    let date = Date()
+        
     override func viewWillAppear(_ animated: Bool) {
         print(#function)
         navigationItem.title = "타임 캡슐"
@@ -26,23 +25,33 @@ class MainViewController: BaseViewController {
             NSAttributedString.Key.font: AllFont.font.name
         ]
         navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
-        
+
         let date = Date()
-        print(date)
+
         let min = repository.localRealm.objects(EggTime.self).filter("openDate >= %@",date).sorted(byKeyPath: "openDate", ascending: true)
-        print(min)
+
+        
         guard !min.isEmpty else {
             
             mainview.titleLabel.text = "캡슐 없음"
             return
         }
+      
+        
         
         mainview.titleLabel.text = min[0].title
         
         mainview.tempLabel.text = "가장 빠른 캡슐 남은기간"
 
         var minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: min[0].openDate)
-
+        
+        print(minDate)
+        
+        if timer != nil && timer!.isValid {
+            timer?.invalidate() //기존 타이머 시작하면 멈춤
+        }
+        
+   
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
             minDate.second! -= 1
             
@@ -58,7 +67,7 @@ class MainViewController: BaseViewController {
                 mainview.timelabel.text = "캡슐 오픈"
                 timer.invalidate()
             }
-            print(minDate)
+            
             let time = String(format: "%02d:", minDate.hour!)+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
 
             if minDate.month != 0 { // 7개월 3일 12:03:02
@@ -74,9 +83,11 @@ class MainViewController: BaseViewController {
                 mainview.timelabel.text = time
             }
         }
-
+      
+        
+        
+        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +96,6 @@ class MainViewController: BaseViewController {
         self.navigationItem.rightBarButtonItems = [sortButton,mapping]
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        
     }
     
     
@@ -100,3 +110,5 @@ extension MainViewController {
     }
     
 }
+
+
