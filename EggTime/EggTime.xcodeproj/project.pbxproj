@@ -10,6 +10,7 @@
 		5C0E29B7C200E44B4F9AEE4D /* Pods_EggTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */; };
 		E103002C28CEFE6B00922B54 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002B28CEFE6B00922B54 /* RealmRepository.swift */; };
 		E103002E28CEFED900922B54 /* EggTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002D28CEFED900922B54 /* EggTime.swift */; };
+		E1348D2D28E57F81003C3E9A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1348D2C28E57F81003C3E9A /* TabBarViewController.swift */; };
 		E15FE08628DC15EC00956CA9 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */; };
 		E15FE08728DC15EC00956CA9 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15FE08528DC15EC00956CA9 /* BaseCollectionViewCell.xib */; };
 		E16F4D8F28D19B6700CEC17A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D8E28D19B6700CEC17A /* MapViewController.swift */; };
@@ -86,6 +87,7 @@
 		BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E103002B28CEFE6B00922B54 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		E103002D28CEFED900922B54 /* EggTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggTime.swift; sourceTree = "<group>"; };
+		E1348D2C28E57F81003C3E9A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E15813CC28DB20F100E359CE /* EggTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E15FE08528DC15EC00956CA9 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 				BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1348D2828E57E2E003C3E9A /* TapBar */ = {
+			isa = PBXGroup;
+			children = (
+				E1348D2C28E57F81003C3E9A /* TabBarViewController.swift */,
+			);
+			path = TapBar;
 			sourceTree = "<group>";
 		};
 		E16F4D8D28D19B4600CEC17A /* Map */ = {
@@ -354,6 +364,7 @@
 		E1FCB0C828CDA15500C07AA3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E1348D2828E57E2E003C3E9A /* TapBar */,
 				E16F4DB628D1E58A00CEC17A /* PageViewController */,
 				E16F4DAE28D1DA6900CEC17A /* Version */,
 				E16F4DA328D1CD1000CEC17A /* OpenLicense */,
@@ -647,6 +658,7 @@
 				E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */,
 				E1FCB0E428CDA33900C07AA3 /* BaseView.swift in Sources */,
 				E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */,
+				E1348D2D28E57F81003C3E9A /* TabBarViewController.swift in Sources */,
 				E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */,
 				E1DC08AF28D7F5520032440A /* PageVC1.swift in Sources */,
 				E1FCB0B728CDA0F600C07AA3 /* MainViewController.swift in Sources */,

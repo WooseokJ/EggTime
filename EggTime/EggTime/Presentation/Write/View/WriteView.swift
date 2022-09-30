@@ -28,7 +28,7 @@ class WriteView: BaseView {
     // 제목
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "캡슐 제목"
+        label.text = "캡슐 이름"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
         
@@ -39,7 +39,7 @@ class WriteView: BaseView {
         let textField = UITextField()
         textField.textColor = .black
         textField.font = AllFont.font.name
-        textField.placeholder = " 제목을 입력해주세요."
+        textField.placeholder = "  캡슐 이름을 입력해주세요."
         textField.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
@@ -58,7 +58,7 @@ class WriteView: BaseView {
     // 등록일
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "캡슐 등록일"
+        label.text = "캡슐 묻은날짜"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
         return label
@@ -68,7 +68,7 @@ class WriteView: BaseView {
         let label = UILabel()
         let dateformattor = DateFormatter()
         dateformattor.dateFormat = "yyyy-MM-dd"
-        label.text = dateformattor.string(from: Date())
+        label.text = "  " + dateformattor.string(from: Date())
         label.textColor = .black
         label.font = AllFont.font.name
         label.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
@@ -86,7 +86,7 @@ class WriteView: BaseView {
     // 오픈일
     lazy var openLabel: UILabel = {
         let label = UILabel()
-        label.text = "캡슐 오픈일"
+        label.text = "캡슐 여는날짜"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
 
@@ -98,7 +98,7 @@ class WriteView: BaseView {
         textField.backgroundColor =  UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
         textField.textColor = .black
         textField.font = AllFont.font.name
-        textField.placeholder = " 오픈일을 선택해주세요."
+        textField.placeholder = "  캡슐 여는날짜을 선택해주세요."
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
         return textField
@@ -115,7 +115,7 @@ class WriteView: BaseView {
     // 글쓰기
     lazy var writeLabel: UILabel = {
         let label = UILabel()
-        label.text = "캡슐 내용쓰기"
+        label.text = "전하고 싶은 내용"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
 
@@ -138,22 +138,26 @@ class WriteView: BaseView {
         label.text = "이미지"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
-  
+//        label.backgroundColor = .red
         return label
     }()
     // 이미지 컬렉션뷰
     lazy var collectionview: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let spacing : CGFloat = 20
-        let layoutwidth = UIScreen.main.bounds.width - (spacing * 3)
-        layout.itemSize = CGSize(width: layoutwidth / 2.4, height: layoutwidth)
+        let spacing : CGFloat = 0
+        let layoutwidth = UIScreen.main.bounds.width - (spacing * 2)
+        layout.itemSize = CGSize(width: layoutwidth / 2.4, height: layoutwidth / 2.5)
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: 20)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
+//        cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         cv.register(WriteCollectionViewCell.self, forCellWithReuseIdentifier: WriteCollectionViewCell.reuseIdentifier)
+        cv.layer.cornerRadius = 10
+        cv.clipsToBounds = true
+        cv.backgroundColor = .clear
+//        cv.backgroundColor = .red
         return cv
     }()
     
@@ -179,7 +183,7 @@ class WriteView: BaseView {
         }
         //제목
         titleLabel.snp.makeConstraints {
-            $0.width.equalTo(80)
+            $0.width.equalTo(120)
             $0.height.equalTo(titleStackView.snp.height)
         }
         titleInput.snp.makeConstraints {
@@ -188,7 +192,7 @@ class WriteView: BaseView {
             $0.height.equalTo(titleStackView.snp.height)
         }
         titleStackView.snp.makeConstraints {
-            $0.top.equalTo(120)
+            $0.top.equalTo(100)
             $0.leading.equalTo(30)
             $0.trailing.equalTo(-30)
             $0.height.equalTo(30)
@@ -230,7 +234,7 @@ class WriteView: BaseView {
         
         //글쓰기
         writeLabel.snp.makeConstraints {
-            $0.top.equalTo(openLabel.snp.bottom).offset(40)
+            $0.top.equalTo(openLabel.snp.bottom).offset(30)
             $0.leading.equalTo(openLabel.snp.leading)
             $0.height.equalTo(openLabel.snp.height)
         }
@@ -238,20 +242,20 @@ class WriteView: BaseView {
         writeTextView.snp.makeConstraints {
             $0.top.equalTo(writeLabel.snp.bottom).offset(20)
             $0.leading.equalTo(writeLabel.snp.leading)
-            $0.height.equalTo(200)
+            $0.height.equalTo(writeLabel.snp.height).multipliedBy(4)
             $0.trailing.equalTo(opendateInput.snp.trailing)
         }
         //이미지
         imageLabel.snp.makeConstraints {
-            $0.top.equalTo(writeTextView.snp.bottom).offset(20)
             $0.leading.equalTo(writeTextView.snp.leading)
-            $0.height.equalTo(writeLabel.snp.height)
+            $0.top.equalTo(writeTextView.snp.bottom).offset(20)
+            
         }
         collectionview.snp.makeConstraints {
             $0.top.equalTo(imageLabel.snp.bottom).offset(20)
             $0.leading.equalTo(writeTextView.snp.leading)
             $0.trailing.equalTo(writeTextView.snp.trailing)
-            $0.bottom.equalTo(-20)
+            $0.bottom.equalTo(-10)
         }
     }
 }
@@ -285,7 +289,8 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
             return UICollectionViewCell()
         }
         
-    
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
         guard indexPath.item >= imageArrayUIImage.count else {
             cell.imageView.image = imageArrayUIImage[indexPath.item]
             
@@ -293,6 +298,7 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
         }
         cell.imageView.contentMode = .scaleToFill
         cell.imageView.image = UIImage(named: "UploadImage")
+        
         
 
         return cell

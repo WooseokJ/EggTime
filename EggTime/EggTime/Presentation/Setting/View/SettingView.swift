@@ -22,7 +22,8 @@ class SettingView: BaseView {
         tableview.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.reuseIdentifier )
 //        tableview.backgroundColor = Constants.background.color
         tableview.rowHeight = 80
-        tableview.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
+//        tableview.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
+        tableview.backgroundColor = .clear
         return tableview
         
     }()
@@ -90,27 +91,27 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             transition(vc,transitionStyle: .push)
         }
         
-        //MARK: 사용법
-        if (indexPath.row == 1) {
-            let vc = PageViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .overFullScreen
-            self.present(nav, animated: true)
-        }
+//        //MARK: 사용법
+//        if (indexPath.row == 1) {
+//            let vc = PageViewController()
+//            let nav = UINavigationController(rootViewController: vc)
+//            nav.modalPresentationStyle = .overFullScreen
+//            self.present(nav, animated: true)
+//        }
         //MARK: 오픈소스
-        if (indexPath.row == 2) {
+        if (indexPath.row == 1) {
             let vc = OpenLicenseViewController()
             transition(vc,transitionStyle: .push)
         }
         
         //MARK: 버전 앨럿
-        if (indexPath.row == 3) {
+        if (indexPath.row == 2) {
             let vc = VersionViewController()
             transition(vc,transitionStyle: .push)
         }
         
         //MARK: 리뷰쓰기
-        if (indexPath.row == 4)  {
+        if (indexPath.row == 3)  {
             if let reviewURL = URL(string: "itms-apps://itunes.apple.com/app/itunes-u/idwooseokJo?ls=1&mt=8&action=write-review"), UIApplication.shared.canOpenURL(reviewURL) { // 유효한 URL인지 검사합니다.
                 if #available(iOS 10.0, *) { //iOS 10.0부터 URL를 오픈하는 방법이 변경 되었습니다.
                     UIApplication.shared.open(reviewURL, options: [:], completionHandler: nil)

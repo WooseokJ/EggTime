@@ -65,7 +65,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         //2
         navigationController?.navigationBar.titleTextAttributes = attributes
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(saveButtonClicked))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(saveButtonClicked))
        
         writeView.opendateInput.inputView = writeView.pickerView
         

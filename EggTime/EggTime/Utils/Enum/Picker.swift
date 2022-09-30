@@ -15,10 +15,10 @@ enum Picker: String, CaseIterable {
     case afterweek = "일주일후: "
     case afterTwoWeek = "이주일후: "
     case afterMonth = "한달후: "
-//    case afterTwoMonth = "두달후: "
-//    case afterThridMonth = "세달후: "
-//    case afterHalfMonth = "반년후: "
-//    case afterYear = "일년후: "
+    case afterTwoMonth = "두달후: "
+    case afterThridMonth = "세달후: "
+    case afterHalfMonth = "반년후: "
+    case afterYear = "일년후: "
 //    case userSelect = "사용자지정: "
     
     var pickerLisk: [String] {
@@ -42,14 +42,14 @@ enum Picker: String, CaseIterable {
 //            return [Date(timeIntervalSinceNow: 86400 * 31)]
 
 
-//        case .afterTwoMonth:
-//            return [self.rawValue+datePicker(afterday: 60)]
-//        case .afterThridMonth:
-//            return [self.rawValue+datePicker(afterday: 90)]
-//        case .afterHalfMonth:
-//            return [self.rawValue+datePicker(afterday: 182)]
-//        case .afterYear:
-//            return [self.rawValue+datePicker(afterday: 365)]
+        case .afterTwoMonth:
+            return [self.rawValue+datePicker(afterday: 60)]
+        case .afterThridMonth:
+            return [self.rawValue+datePicker(afterday: 90)]
+        case .afterHalfMonth:
+            return [self.rawValue+datePicker(afterday: 182)]
+        case .afterYear:
+            return [self.rawValue+datePicker(afterday: 365)]
 //        case .userSelect:
 //            return ["사용자입력"]
             }

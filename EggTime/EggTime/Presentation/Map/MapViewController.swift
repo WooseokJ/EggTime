@@ -38,13 +38,14 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
             print("위치 서비스 Off 상태")
         }
     }
+    
+   
 
     var distanceArray: [CLLocationDistance] = []
     var markers = [NMFMarker]()
     let infoWindow = NMFInfoWindow()
     let dataSource = NMFInfoWindowDefaultTextSource.data()
     let sdkBundle = Bundle.naverMapFramework()
-    
     
     let clusterManager = ClusterManager()
 
@@ -53,13 +54,19 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "mappin.and.ellipse"), style: .plain, target: self, action: #selector(tapsoakButton) )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .plain, target: self, action: #selector(tapsoakButton) )
 
         
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
         navigationController?.navigationBar.barTintColor = .clear
+        
+        //현 위치로 카메라 이동
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: naverMapView.mapView.latitude , lng: naverMapView.mapView.longitude )) // 서울역위치
+//            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: naverMapView.mapView.latitude , lng: naverMapView.mapView.longitude )) // 서울역위치
+        cameraUpdate.animation = .easeIn
+        naverMapView.mapView.moveCamera(cameraUpdate)
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -124,11 +131,7 @@ extension MapViewController {
                 }
             }
 
-            //현 위치로 카메라 이동
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: location.coordinate.latitude , lng: location.coordinate.longitude )) // 서울역위치
-//            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: naverMapView.mapView.latitude , lng: naverMapView.mapView.longitude )) // 서울역위치
-            cameraUpdate.animation = .easeIn
-            naverMapView.mapView.moveCamera(cameraUpdate)
+
 
             print(distanceArray) // 거리의 모음
             UserDefaults.standard.set(location.coordinate.latitude, forKey: "lat")
@@ -136,7 +139,7 @@ extension MapViewController {
         }
 
         // 위치 업데이트 멈춰 (실시간성이 중요한거는 매번쓰고, 중요하지않은건 원하는 시점에 써라)
-        locationManager.stopUpdatingLocation() // stopUpdatingHeading 이랑 주의
+//        locationManager.stopUpdatingLocation() // stopUpdatingHeading 이랑 주의
     }
 
 
@@ -159,13 +162,14 @@ extension MapViewController {
                             self.mapview.title.text = task.title
                             self.mapview.image.contentMode = .scaleToFill
 
-                        if Date() >= task.openDate {
+                        if Date() >= task.openDate && !self.distanceArray.isEmpty{
                                 if task.imageList.count != 0 {
                                     self.mapview.image.image = self.loadImageFromDocument(fileName: task.imageList[0])
                                 } else {
                                     self.mapview.image.image = UIImage(named: "NoImage")
                                 }
-                            } else {
+                            }
+                        else {
                                 self.mapview.image.image = UIImage(named: "Egg2")
                             }
 

@@ -42,8 +42,8 @@ class WriteCollectionViewCell: BaseCollectionViewCell {
     override func setConstrains() {
         imageView.snp.makeConstraints {
             $0.leading.equalTo(0)
-            $0.top.equalTo(30)
-            $0.bottom.equalTo(-30)
+            $0.top.equalTo(0)
+            $0.bottom.equalTo(0)
             $0.trailing.equalTo(0)
         }
     }

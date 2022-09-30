@@ -19,7 +19,7 @@ class MainViewController: BaseViewController {
         
     override func viewWillAppear(_ animated: Bool) {
         print(#function)
-        navigationItem.title = "타임 캡슐"
+//        navigationItem.title = ""
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
             NSAttributedString.Key.font: AllFont.font.name
@@ -33,7 +33,7 @@ class MainViewController: BaseViewController {
         
         guard !min.isEmpty else {
             
-            mainview.titleLabel.text = "캡슐 없음"
+            mainview.titleLabel.text = "현재 묻은 캡슐이 없습니다."
             return
         }
       
@@ -41,7 +41,7 @@ class MainViewController: BaseViewController {
         
         mainview.titleLabel.text = min[0].title
         
-        mainview.tempLabel.text = "가장 빠른 캡슐 남은기간"
+        mainview.tempLabel.text = "가장 빨리 열수있는 캡슐까지 남은기간"
 
         var minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: min[0].openDate)
         
@@ -83,21 +83,31 @@ class MainViewController: BaseViewController {
                 mainview.timelabel.text = time
             }
         }
-      
-        
-        
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
-        let mapping =  UIBarButtonItem(image: UIImage(systemName: "map.circle"), style: .plain, target: self, action: #selector(mapShowButtonClicked))
-        self.navigationItem.rightBarButtonItems = [sortButton,mapping]
+//        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
+        let mapping =  UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .plain, target: self, action: #selector(mapShowButtonClicked))
+        self.navigationItem.leftBarButtonItem = mapping
+        
+        let list = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listClicked))
+        let setting = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: #selector(settingClicked))
+        self.navigationItem.rightBarButtonItems = [setting,list]
+        
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
+    @objc func listClicked() {
+        let vc = ListViewController()
+        transition(vc,transitionStyle: .presentFullNavigation)
+    }
+    @objc func settingClicked() {
+        let vc = SettingViewController()
+        transition(vc,transitionStyle: .presentFullNavigation)
+    }
     
     
 }

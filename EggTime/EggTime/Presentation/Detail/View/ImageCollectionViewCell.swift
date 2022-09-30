@@ -24,6 +24,9 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     //MARK: 크기
     let imageView: UIImageView = {
         let imageView = UIImageView()
+        
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
         return imageView
     }()
   
@@ -40,7 +43,10 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     override func setConstrains() {
   
         imageView.snp.makeConstraints {
-            $0.edges.equalTo(0)
+            $0.top.equalTo(0)
+            $0.leading.equalTo(0)
+            $0.trailing.equalTo(0)
+            $0.bottom.equalTo(0)
         }
         
     }

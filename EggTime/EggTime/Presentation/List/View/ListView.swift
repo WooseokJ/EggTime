@@ -32,8 +32,11 @@ class ListView: BaseView {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
+//        cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
+        cv.backgroundColor = .clear
         cv.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
+        cv.layer.cornerRadius = 10
+        cv.clipsToBounds = true
         return cv
     }()
     
@@ -77,6 +80,8 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(repository.dateToString(date: tasks[indexPath.row].openDate))
         cell.dateLabel.text = repository.dateToString(date: tasks[indexPath.row].openDate)
         cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
         cell.titleLabel.text = tasks[indexPath.row].title
 //        if tasks[indexPath.item].imageList.count == 0 {
 //            cell.imageView.image = UIImage(named: "NoImage")

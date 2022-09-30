@@ -1,33 +1,33 @@
+////
+////  PageVC1.swift
+////  EggTime
+////
+////  Created by useok on 2022/09/19.
+////
 //
-//  PageVC1.swift
-//  EggTime
+//import UIKit
+//import SnapKit
+//class PageVC1: UIViewController {
 //
-//  Created by useok on 2022/09/19.
+//    let imageView: UIImageView = {
+//        let image = UIImageView()
+//        return image
+//    }()
+//    
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.addSubview(imageView)
+//        navigationController?.navigationItem.title = "앱 사용법"
+//        imageView.snp.makeConstraints {
+//            $0.edges.equalTo(0)
+//        }
+//        imageView.image = UIImage(named: "BackgroundImage")
+//        
+//        
+//    }
+//    
 //
-
-import UIKit
-import SnapKit
-class PageVC1: UIViewController {
-
-    let imageView: UIImageView = {
-        let image = UIImageView()
-        return image
-    }()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(imageView)
-        navigationController?.navigationItem.title = "앱 사용법"
-        imageView.snp.makeConstraints {
-            $0.edges.equalTo(0)
-        }
-        imageView.image = UIImage(named: "BackgroundImage")
-        
-        
-    }
-    
-
-
-
-}
+//
+//
+//}

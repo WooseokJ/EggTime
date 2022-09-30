@@ -52,10 +52,22 @@ class ListViewController: BaseViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
+//        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
+        let setting = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: #selector(settingClicked))
+        let home = UIBarButtonItem(image: UIImage(systemName: "house"), style: .plain, target: self, action: #selector(homeClicked))
         
-        self.navigationItem.rightBarButtonItems = [sortButton]
+        self.navigationItem.rightBarButtonItems = [setting,home]
     }
+    
+    @objc func homeClicked() {
+        let vc = MainViewController()
+        transition(vc,transitionStyle: .presentFullNavigation)
+    }
+    @objc func settingClicked() {
+        let vc = SettingViewController()
+        transition(vc,transitionStyle: .presentFullNavigation)
+    }
+    
 
     var openAvailable: [ObjectId] = []
 

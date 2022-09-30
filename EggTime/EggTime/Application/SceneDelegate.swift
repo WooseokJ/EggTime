@@ -14,15 +14,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        if !UserDefaults.standard.bool(forKey: "first") {
-            if let windowScene = scene as? UIWindowScene {
-               let window = UIWindow(windowScene: windowScene)
-               window.rootViewController = PageViewController()
-               self.window = window
-               window.makeKeyAndVisible()
-           }
-        }
-        else {
+//        if !UserDefaults.standard.bool(forKey: "first") {
+//            if let windowScene = scene as? UIWindowScene {
+//               let window = UIWindow(windowScene: windowScene)
+//               window.rootViewController = PageViewController()
+//               self.window = window
+//               window.makeKeyAndVisible()
+//           }
+//        }
+//        else {
 //            if let windowScene = scene as? UIWindowScene {
 //               let window = UIWindow(windowScene: windowScene)
 //               window.rootViewController = MainViewController()
@@ -32,14 +32,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //           }
             guard let windowScene = (scene as? UIWindowScene) else { return }
             window = UIWindow(windowScene: windowScene)
-            
+
             let mainViewController = MainViewController() // 이 뷰컨트롤러를 내비게이션 컨트롤러에 담아볼게요!
-            
+
             let navigationController = UINavigationController(rootViewController: mainViewController) // 내비게이션 컨트롤러에 처음으로 보여질 화면을 rootView로 지정해주고!
-                   
+
            window?.rootViewController = navigationController // 시작을 위에서 만든 내비게이션 컨트롤러로 해주면 끝!
            window?.makeKeyAndVisible()
-        }
+//        }
         
 
         

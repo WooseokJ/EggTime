@@ -12,6 +12,7 @@ class SettingViewController: BaseViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         self.navigationItem.title = "설정"
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
@@ -27,12 +28,26 @@ class SettingViewController: BaseViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
+        let list = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listClicked))
+        let home = UIBarButtonItem(image: UIImage(systemName: "house"), style: .plain, target: self, action: #selector(homeClicked))
+        self.navigationItem.rightBarButtonItems = [list,home]
+        
         settingview.tableView.dataSource = self
         settingview.tableView.delegate = self
-        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
-        self.navigationItem.rightBarButtonItems = [sortButton]
+//        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
+//        self.navigationItem.rightBarButtonItems = [sortButton]
+        
 
     }
+    @objc func listClicked() {
+        let vc = ListViewController()
+        transition(vc,transitionStyle: .presentFullNavigation)
+    }
+    @objc func homeClicked() {
+        let vc = MainViewController()
+        transition(vc,transitionStyle: .presentFullNavigation)
+    }
+    
     
 
 }

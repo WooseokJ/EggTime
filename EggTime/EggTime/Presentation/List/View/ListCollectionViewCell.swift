@@ -18,7 +18,8 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     let imageView : UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Egg")
-        
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
 //        imageView.layer.cornerRadius = imageView.frame.height / 2
 //        imageView.clipsToBounds = true
         return imageView

@@ -1,4 +1,4 @@
-//
+
 //  DetailView.swift
 //  EggTime
 //
@@ -28,15 +28,20 @@ class DetailView: BaseView {
     let collectionview : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
-        let layoutwidth = UIScreen.main.bounds.width - (spacing * 2)
-        layout.itemSize = CGSize(width: layoutwidth / 1.1, height: layoutwidth*1.2)
+        let layoutwidth = UIScreen.main.bounds.width  - (spacing * 2)
+        layout.itemSize = CGSize(width: layoutwidth , height: layoutwidth )
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
+        
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
+//        cv.backgroundColor = .red
+        
         cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
+//        cv.layer.cornerRadius = 10
+//        cv.clipsToBounds = true
         return cv
     }()
     
@@ -105,7 +110,7 @@ class DetailView: BaseView {
         label.font = AllFont.font.name
         label.textColor = AllColor.textColor.color
         label.numberOfLines = 0
-        label.text = "캡슐 내용"
+        label.text = "전하고 싶은 내용"
         
         return label
     }()
@@ -141,15 +146,16 @@ class DetailView: BaseView {
         }
         // 이미지
         collectionview.snp.makeConstraints {
-            $0.top.equalTo(100)
+            $0.top.equalToSuperview().offset(80)
             $0.trailing.equalTo(0)
             $0.leading.equalTo(0)
-            $0.height.equalTo(400)
+            $0.height.equalToSuperview().multipliedBy(0.4)
+//            $0.edges.equalTo(0)
         }
         
         // 날짜
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(collectionview.snp.bottom).offset(5)
+            $0.top.equalTo(collectionview.snp.bottom).offset(15)
             $0.leading.equalTo(collectionview.snp.leading).offset(22)
             $0.height.equalTo(40)
             $0.width.equalTo(100)
@@ -165,7 +171,7 @@ class DetailView: BaseView {
         
         // 오픈날짜
         openDateLabel.snp.makeConstraints {
-            $0.top.equalTo(dateOutputLabel.snp.bottom).offset(5)
+            $0.top.equalTo(dateOutputLabel.snp.bottom).offset(15)
             $0.trailing.equalTo(dateLabel.snp.trailing)
             $0.leading.equalTo(dateLabel.snp.leading)
             $0.height.equalTo(dateLabel.snp.height)
@@ -180,7 +186,7 @@ class DetailView: BaseView {
         
         // 제목라벨
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(openDateLabel.snp.bottom).offset(5)
+            $0.top.equalTo(openDateLabel.snp.bottom).offset(15)
             $0.trailing.equalTo(dateLabel.snp.trailing)
             $0.leading.equalTo(dateLabel.snp.leading)
             $0.height.equalTo(dateLabel.snp.height)
@@ -195,7 +201,7 @@ class DetailView: BaseView {
 
         //내용라벨
         contentLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(15)
             $0.trailing.equalTo(dateLabel.snp.trailing)
             $0.leading.equalTo(dateLabel.snp.leading)
             $0.height.equalTo(dateLabel.snp.height)
@@ -204,7 +210,7 @@ class DetailView: BaseView {
         
         // 내용
         content.snp.makeConstraints {
-            $0.top.equalTo(contentLabel.snp.bottom).offset(5)
+            $0.top.equalTo(contentLabel.snp.bottom).offset(10)
             $0.trailing.equalTo(dateOutputLabel.snp.trailing)
             $0.leading.equalTo(dateLabel.snp.leading)
             $0.bottom.greaterThanOrEqualTo(self.safeAreaLayoutGuide).offset(-10)
@@ -233,13 +239,16 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let detailInfo = repository.localRealm.objects(EggTime.self).filter("objectId = %@",objectid as Any )
 
         
-        detailView.dateLabel.text = "캡슐 등록일"
-        detailView.dateOutputLabel.text = repository.dateToString(date: detailInfo[0].regDate)
-        detailView.openDateLabel.text = "캡슐 오픈일"
-        detailView.openOutputLabel.text = repository.dateToString(date: detailInfo[0].openDate)
-        detailView.titleLabel.text = "캡슐 제목"
-        detailView.titleOutputLabel.text = detailInfo[0].title
+        detailView.dateLabel.text = "캡슐 묻은날짜"
+        detailView.dateOutputLabel.text = "  "+repository.dateToString(date: detailInfo[0].regDate)
+        detailView.openDateLabel.text = "캡슐 여는날짜"
+        detailView.openOutputLabel.text = "  "+repository.dateToString(date: detailInfo[0].openDate)
+        detailView.titleLabel.text = "캡슐 이름"
+        detailView.titleOutputLabel.text = "  "+detailInfo[0].title
         detailView.content.text = detailInfo[0].content
+        
+        cell.imageView.layer.cornerRadius = 15
+        cell.imageView.clipsToBounds = true
         
         guard indexPath.item >= detailInfo[0].imageList.count else {
             cell.imageView.contentMode = .scaleToFill

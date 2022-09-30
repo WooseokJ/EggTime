@@ -10,27 +10,27 @@ class BaseViewController: UIViewController {
     }
     
     // 정렬메뉴 액션
-    var menuSortedItems: [UIAction] {
-        return [
-            UIAction(title: "Main", image: UIImage(systemName: "m.circle"), handler: { [self] _ in
-                let vc = MainViewController()
-                transition(vc,transitionStyle: .presentFullNavigation)
-            }),
-            UIAction(title: "List", image: UIImage(systemName: "list.bullet.below.rectangle"), handler: { [self] _ in
-                let vc = ListViewController()
-                transition(vc,transitionStyle: .presentFullNavigation)
-            }),
-            UIAction(title: "Setting", image: UIImage(systemName: "gear.circle"), handler: { [self] _ in
-                let vc = SettingViewController()
-                transition(vc,transitionStyle: .presentFullNavigation)
-            })
-        ]
-    }
-    // 정렬메뉴
-    var sortMenu: UIMenu {
-        return UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuSortedItems)
-    }
-    
+//    var menuSortedItems: [UIAction] {
+//        return [
+//            UIAction(title: "Main", image: UIImage(systemName: "m.circle"), handler: { [self] _ in
+//                let vc = MainViewController()
+//                transition(vc,transitionStyle: .presentFullNavigation)
+//            }),
+//            UIAction(title: "List", image: UIImage(systemName: "list.bullet.below.rectangle"), handler: { [self] _ in
+//                let vc = ListViewController()
+//                transition(vc,transitionStyle: .presentFullNavigation)
+//            }),
+//            UIAction(title: "Setting", image: UIImage(systemName: "gear.circle"), handler: { [self] _ in
+//                let vc = SettingViewController()
+//                transition(vc,transitionStyle: .presentFullNavigation)
+//            })
+//        ]
+//    }
+//    // 정렬메뉴
+//    var sortMenu: UIMenu {
+//        return UIMenu(title: "", image: nil, identifier: nil, options: [], children: menuSortedItems)
+//    }
+//
     let repository = RealmRepository()
 
     
