@@ -36,8 +36,8 @@ class DetailView: BaseView {
         layout.minimumInteritemSpacing = spacing
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .clear
-//        cv.backgroundColor = .red
+//        cv.backgroundColor = .clear
+        cv.backgroundColor = .red
         
         cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
 //        cv.layer.cornerRadius = 10
@@ -110,8 +110,7 @@ class DetailView: BaseView {
         label.font = AllFont.font.name
         label.textColor = AllColor.textColor.color
         label.numberOfLines = 0
-        label.text = "전하고 싶은 내용"
-        
+        label.text = "캡슐에 담은 내용"
         return label
     }()
     
@@ -146,7 +145,7 @@ class DetailView: BaseView {
         }
         // 이미지
         collectionview.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(80)
+            $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.trailing.equalTo(0)
             $0.leading.equalTo(0)
             $0.height.equalToSuperview().multipliedBy(0.4)

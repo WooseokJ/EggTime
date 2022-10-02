@@ -21,6 +21,14 @@ class ListView: BaseView {
     
     //MARK: 크기
     
+    let contentlabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = AllFont.font.name
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
     
     let collectionview : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -44,7 +52,7 @@ class ListView: BaseView {
     
     //MARK: 뷰등록
     override func configure() {
-        [backGroundView,collectionview].forEach {
+        [backGroundView,contentlabel,collectionview].forEach {
             self.addSubview($0)
         }
     }
@@ -146,7 +154,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
         vc.objectid = tasks[indexPath.item].objectId
         print(tasks[indexPath.item].objectId)
-        vc.tag = indexPath.item
+//        vc.tag = indexPath.item
         
         
     }

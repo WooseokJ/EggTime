@@ -25,7 +25,10 @@ class BackupStoredViewController: BaseViewController {
         tasks = repository.fetch()
     }
     
+    var saveFileName: String = "BackupFile"
     
+    var urlPaths = [URL]() // 빈배열 타입이 URL
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +38,7 @@ class BackupStoredViewController: BaseViewController {
             NSAttributedString.Key.font: AllFont.font.name
         ]
         //2
-        navigationController?.navigationBar.titleTextAttributes = attributes
+        navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
 
         backupStoredView.backupButton.addTarget(self, action: #selector(backupButtonClicked), for: .touchUpInside)
         backupStoredView.storedButton.addTarget(self, action: #selector(storedButtonClicked), for: .touchUpInside)
@@ -54,8 +57,7 @@ class BackupStoredViewController: BaseViewController {
 
     func backupButtonClickedStart() {
         
-        var urlPaths = [URL]() // 빈배열 타입이 URL
-        
+        urlPaths.removeAll()
         
         //  도큐먼트 위치에 백업파일 확인
         guard let path = documentDirectoryPath() else { // path는 도큐먼트 경로
@@ -70,9 +72,10 @@ class BackupStoredViewController: BaseViewController {
         }
         let backUpFileURL = URL(string: realFile.path)! //realFile와 같은경로라서 backUpFileURL과 동일
         urlPaths.append(backUpFileURL) //
+        
         // 백업파일압축: URL   (https://github.com/marmelroy/Zip.git)
         do {
-            let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "나의 캡슐 백업파일") // Zip
+            let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: saveFileName) // Zip
             print("Archive location: \(zipFilePath)")
             
             repository.localRealm.beginWrite()
@@ -82,8 +85,6 @@ class BackupStoredViewController: BaseViewController {
                     // Error backing up data
                 }
             repository.localRealm.cancelWrite()
-            
-            
             
             // activityviewController
             showActivityViewController()
@@ -98,10 +99,13 @@ class BackupStoredViewController: BaseViewController {
             showAlertMessage(title: "도큐먼트 위치 ", button: "확인")
             return
         }
-        let backupFileURL = path.appendingPathComponent("나의 캡슐 백업파일.zip")
+        
+
+        let backupFileURL = path.appendingPathComponent("\(saveFileName).zip")
         
         let vc = UIActivityViewController(activityItems: [backupFileURL], applicationActivities: [] ) //activityItems: 어떤거보낼래?
         self.present(vc,animated: true)
+
         }
     
     //MARK: 복구
@@ -117,13 +121,8 @@ class BackupStoredViewController: BaseViewController {
         } // 반드시 파일앱에 저장해놔야함 ascopy:     UIDocumentPickerViewController는 문서선택시 어떻게해줄거냐?
  
     }
-    
-    
-   
-    
 
 }
-
 
 // 나중에수정
 extension BackupStoredViewController: UIDocumentPickerDelegate{
@@ -149,12 +148,22 @@ extension BackupStoredViewController: UIDocumentPickerDelegate{
         
         // sandboxFileURL 에 이미 파일이 있는경우
         if FileManager.default.fileExists(atPath: sandboxFileURL.path) {  // 파일앱에 복구파일있는경우
-            let fileURL = path.appendingPathComponent("나의 캡슐 백업파일.zip")   // ~/document/sesacDiary.zip
+            let fileURL = path.appendingPathComponent("\(saveFileName).zip")   // ~/document/sesacDiary.zip
             do {
                 try Zip.unzipFile(fileURL, destination: path , overwrite: true, password: nil, progress: { progress in
                 }, fileOutputHandler: { [self] unzippedFile in
-                    print(unzippedFile)
-                    self.showAlertMessage(title: "복구가완료되었습니다.", button: "확인")
+                    
+                    let alert = UIAlertController(title: "복구가 완료 되었습니다", message: "앱이 재시작됩니다.", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default) {(action) in
+                        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            exit(0)
+                        }
+                    }
+                    alert.addAction(ok)
+                    self.present(alert,animated: true)
+                    
+                    
                     
                     repository.localRealm.beginWrite()
                         do {
@@ -175,13 +184,26 @@ extension BackupStoredViewController: UIDocumentPickerDelegate{
                 //파일 앱 zip -> 도큐먼트 폴더에 복사
                 try FileManager.default.copyItem(at: selectedFieldURL, to: sandboxFileURL)
                 
-                let fileURL = path.appendingPathComponent("나의 캡슐 백업파일.zip") //  ~fileapp/foder/sesacDiary.zip
+                let fileURL = path.appendingPathComponent("\(saveFileName).zip") //  ~fileapp/foder/sesacDiary.zip
                 
                 try Zip.unzipFile(fileURL, destination: path , overwrite: true, password: nil, progress: { progress in
                     print("progress: \(progress)")
                 }, fileOutputHandler: { unzippedFile in
                     print("unzippedFile: \(unzippedFile)")
-                    self.showAlertMessage(title: "복구가완료되얷습니다", button: "확인")
+//                    self.showAlertMessage(title: "복구가 완료 되었습니다", button: "확인")
+                    
+                    let alert = UIAlertController(title: "복구가 완료 되었습니다", message: "앱이 재시작됩니다.", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "확인", style: .default) {(action) in
+                        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            exit(0)
+                        }
+                    }
+                    alert.addAction(ok)
+                    self.present(alert,animated: true)
+                 
+                    
+                    
                 }) //overwrite은 덮어씌우기
                 
             } catch {

@@ -36,8 +36,8 @@ class MapView: BaseView {
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
         label.numberOfLines = 0
-        label.font = AllFont.font.name
-//        label.backgroundColor = .yellow
+        label.backgroundColor = .clear
+        
         return label
     }()
     
@@ -85,6 +85,34 @@ class MapView: BaseView {
         return button
     }()
     
+    let leaveDayLabel: UILabel = {
+        let label = UILabel()
+        label.font = AllFont.font.mapTime
+        label.textColor = AllColor.textColor.color
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
+
+    let leaveTitle: UILabel = {
+        let label = UILabel()
+        label.font = AllFont.font.title
+        label.textColor = AllColor.textColor.color
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let leaveTimeLabel: UILabel = {
+        let label = UILabel()
+        label.font = AllFont.font.mapTime
+        label.textColor = AllColor.textColor.color
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
     let backGroundView2: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "BackgroundImage")
@@ -93,18 +121,15 @@ class MapView: BaseView {
 
  
     override func configure() {
-//        backGroundView.addSubview(self)
+        self.addSubview(backGroundView)
     }
     
     
     override func setConstrains() {
-        
-//        backGroundView.snp.makeConstraints {
-//            $0.top.equalTo(0)
-//            $0.height.equalTo(30)
-//            $0.leading.trailing.equalTo(0)
-//        }
-        
+        backGroundView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
+//
     }
     
     

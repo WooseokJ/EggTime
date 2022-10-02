@@ -6,8 +6,9 @@
 //
 
 import UIKit
-
 import RealmSwift
+import NMapsMap
+
 class DetailViewController: BaseViewController {
 
     //MARK: 뷰 가져오기
@@ -16,17 +17,16 @@ class DetailViewController: BaseViewController {
         super.view = detailView
     }
     
-    var objectid: ObjectId? // 객체아이디 받아와 
-
-
-    var tag: Int?
+    var objectid: ObjectId? // 객체아이디 받아와
     
-    var tasks: Results<EggTime>! {
-        didSet {
-            detailView.collectionview.reloadData()
-            print("collectionview Tasks Changed")
-        }
+
+    
+    override func viewWillDisappear(_ animated: Bool) {
+       
     }
+    
+    
+    
 
 
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class DetailViewController: BaseViewController {
         
         detailView.collectionview.dataSource = self
         detailView.collectionview.delegate = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "xmark.bin.circle"), style: .plain, target: self, action: #selector(showAlertDeleteMessage))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(showAlertDeleteMessage))
 
         detailView.content.isEditable = false
         
@@ -48,11 +48,11 @@ class DetailViewController: BaseViewController {
         //2
         navigationController?.navigationBar.titleTextAttributes = attributes
     }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        tasks = repository.fetch()
+//    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tasks = repository.fetch()
-        
-    }
     
 
 }
@@ -71,15 +71,18 @@ extension DetailViewController {
         present(alert,animated: true)
     }
     
-    func deleteButtonClicked() {
-        guard let tagNotNil = tag else {
-            return
-        }
-        let item = tasks[tagNotNil]
+    @objc func deleteButtonClicked() {
 
-        repository.deleteItem(item: item)
+        let item2 = repository.localRealm.objects(EggTime.self).where {
+            $0.objectId == objectid!
+        }
+        
+        repository.deleteItem(item: item2)
         ListView().collectionview.reloadData()
+        
+        
         self.navigationController?.popViewController(animated: true)
+        
     }
     
 }

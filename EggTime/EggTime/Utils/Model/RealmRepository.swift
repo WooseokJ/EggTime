@@ -28,7 +28,7 @@ class RealmRepository: RealmRepositoryType {
         return localRealm.objects(EggTime.self)
     }
     
-    func deleteItem(item: EggTime) {
+    func deleteItem(item: Results<EggTime>) {
 //        removeImageFromDocument(fileName: "\(item.objectId).jpg") //도큐먼트의 이미지 삭제 10
         try! localRealm.write{
             localRealm.delete(item) // 레코드 삭제

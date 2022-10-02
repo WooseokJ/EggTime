@@ -62,11 +62,23 @@ class MainView: BaseView {
         label.textAlignment = .center
         return label
     }()
+    
+    let plusButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+//        button.contentVerticalAlignment = .fill
+//        button.contentHorizontalAlignment = .fill
+        button.layer.cornerRadius = 30
+        button.clipsToBounds = true
+        button.backgroundColor = .white
+        return button
+        
+    }()
 
     //MARK: 뷰 등록
     override func configure() {
         
-        [backGroundView,tempLabel,dayLabel,titleLabel,timelabel].forEach {
+        [backGroundView,tempLabel,dayLabel,titleLabel,timelabel,plusButton].forEach {
             self.addSubview($0)
         }
         
@@ -108,6 +120,11 @@ class MainView: BaseView {
             $0.top.equalTo(dayLabel.snp.bottom).offset(10)
             $0.height.equalTo(100)
             $0.leading.trailing.equalTo(0)
+        }
+        plusButton.snp.makeConstraints {
+            $0.bottom.equalTo(-55)
+            $0.trailing.equalTo(-35)
+            $0.height.width.equalTo(60)
         }
 
         

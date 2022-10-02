@@ -27,6 +27,7 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
         
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
   

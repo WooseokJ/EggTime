@@ -7,190 +7,290 @@ import RealmSwift
 import Cluster
 
 class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocationManagerDelegate, NMFMapViewOptionDelegate {
-
+    
     let mapview = MapView()
-
+    
     override func loadView() {
         super.view = mapview
     }
-
+    
     var locationManager = CLLocationManager()
     var latitude: Double?
     var longtitude: Double?
-
-    var tasks: Results<EggTime>! 
-
+    var tasks: Results<EggTime>!
+    
+    let circle = NMFCircleOverlay()
+    
+    var deleteObjectid: ObjectId?
+    
     override func viewWillAppear(_ animated: Bool) {
-        print(#function)
-        tasks = repository.fetch()
-        setpin()
-
+        
+        markers.forEach {
+            $0.mapView = nil
+        }
+    
+        markers.removeAll()
+        
         if CLLocationManager.locationServicesEnabled() {
             print("위치 서비스 On 상태")
+            
             locationManager.startUpdatingLocation()
-
-            //기본위치
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: 37.553409 , lng: 126.969734 )) // 서울역위치
-            cameraUpdate.animation = .easeIn
-            naverMapView.mapView.moveCamera(cameraUpdate)
-
+            
+            
+            
         } else {
             print("위치 서비스 Off 상태")
         }
+        
+        setpin()
+        hidden()
+        
+        navigationItem.title = "타임 캡슐 묻은 장소"
+        navigationItem.backButtonTitle = " "
+        
     }
     
-   
-
+    var timer: Timer?
+    var detailTask: EggTime?
+    
     var distanceArray: [CLLocationDistance] = []
+    
     var markers = [NMFMarker]()
     let infoWindow = NMFInfoWindow()
     let dataSource = NMFInfoWindowDefaultTextSource.data()
     let sdkBundle = Bundle.naverMapFramework()
-    
     let clusterManager = ClusterManager()
-
-
+    
     lazy var naverMapView = NMFNaverMapView(frame: view.frame) // UIView
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .plain, target: self, action: #selector(tapsoakButton) )
-
+        print(#function)
         
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
-        self.navigationItem.backBarButtonItem = backBarButtonItem
-        
-        navigationController?.navigationBar.barTintColor = .clear
-        
-        //현 위치로 카메라 이동
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: naverMapView.mapView.latitude , lng: naverMapView.mapView.longitude )) // 서울역위치
-//            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: naverMapView.mapView.latitude , lng: naverMapView.mapView.longitude )) // 서울역위치
-        cameraUpdate.animation = .easeIn
-        naverMapView.mapView.moveCamera(cameraUpdate)
+     
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-
-
-        naverMapView.mapView.zoomLevel = 17
+        
+        
+        //현 위치로 카메라 이동
+        
+        naverMapView.showLocationButton = true
+        naverMapView.showCompass = true
+        naverMapView.showScaleBar = true
+        naverMapView.showZoomControls = true
+        naverMapView.showIndoorLevelPicker = true
+        naverMapView.showsLargeContentViewer = true
+        
+        naverMapView.mapView.zoomLevel = 10
         naverMapView.mapView.positionMode = .direction
-
-//        naverMapView.mapView.touchDelegate = self
+        
         naverMapView.mapView.addCameraDelegate(delegate: self)
         naverMapView.mapView.addOptionDelegate(delegate: self)
         naverMapView.mapView.isIndoorMapEnabled = true //실내지도
         
         view.addSubview(naverMapView)
-        view.addSubview(mapview.backGroundView2)
-            mapview.backGroundView2.snp.remakeConstraints {
-                $0.top.equalTo(0)
-                $0.leading.trailing.equalTo(0)
-                $0.height.equalTo(100)
-        }
-
+        
         naverMapView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalTo(0)
         }
-
+        
     }
-//    @objc func xmarkClicked() {
-//        dismiss(animated: true)
-//    }
-
-
 }
 
 extension MapViewController {
-
-
-
-    @objc func tapsoakButton(){
-        let vc = WriteViewController()
-        transition(vc,transitionStyle: .push)
-    }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(#function)
+        
         if let location = locations.first {
-            //현위치 좌표
-            print("현재좌표:",location.coordinate.latitude)
-            print("현재좌표:",location.coordinate.longitude)
+            latitude = location.coordinate.latitude
+            longtitude = location.coordinate.longitude
+            
+            
             distanceArray.removeAll()
-
-            naverMapView.showLocationButton = true
-            naverMapView.mapView.positionMode = .direction
-
+            
+            
             tasks.forEach{
                 //MARK: 거리 계산하는 매소드
                 let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
-//                print("차이거리:", containDistance)
+                //                print("차이거리:", containDistance)
                 if containDistance <= 100 {
                     distanceArray.append(containDistance)
                 }
             }
-
-
-
+            circle.center = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
+            circle.radius = 100
+            circle.mapView = naverMapView.mapView
+            circle.outlineWidth = 1
+            circle.outlineColor = UIColor.systemBlue
+            circle.fillColor = .clear
+            
+            
+            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: location.coordinate.latitude , lng: location.coordinate.longitude ))
+            cameraUpdate.animation = .easeIn
+            naverMapView.mapView.moveCamera(cameraUpdate)
+            
             print(distanceArray) // 거리의 모음
             UserDefaults.standard.set(location.coordinate.latitude, forKey: "lat")
             UserDefaults.standard.set(location.coordinate.longitude, forKey: "lng")
         }
-
+        
         // 위치 업데이트 멈춰 (실시간성이 중요한거는 매번쓰고, 중요하지않은건 원하는 시점에 써라)
-//        locationManager.stopUpdatingLocation() // stopUpdatingHeading 이랑 주의
+        locationManager.stopUpdatingLocation() // stopUpdatingHeading 이랑 주의
     }
-
-
-
+    
     // 탭할떄
     func setpin() {
-        if !tasks.isEmpty {
-            tasks.forEach { task in
-                let marker = NMFMarker(position: NMGLatLng(lat: task.latitude!, lng: task.longitude!))
-//                marker.isHideCollidedMarkers = true // 여러개 모여있으면 숨겨주는기능
-//                marker.captionText = task.title
-                marker.touchHandler = { (overlay) in
-                    if let marker = overlay as? NMFMarker {
-//                        if marker.iconImage.reuseIdentifier == "\(self.sdkBundle.bundleIdentifier ?? "").mSNormal" {
-//                             marker.iconImage = NMFOverlayImage(name: "mSNormalNight", in: Bundle.naverMapFramework())
-                        [self.mapview.popup,self.mapview.centerView,self.mapview.title,self.mapview.detailButton,self.mapview.image,self.mapview.checkButton,self.mapview.lineView].forEach {
-                                self.view.addSubview($0)
-                            }
-                            self.show()
-                            self.mapview.title.text = task.title
-                            self.mapview.image.contentMode = .scaleToFill
+        
+        tasks = repository.fetch()
+ 
+        locationManager.startUpdatingLocation()
 
-                        if Date() >= task.openDate && !self.distanceArray.isEmpty{
-                                if task.imageList.count != 0 {
-                                    self.mapview.image.image = self.loadImageFromDocument(fileName: task.imageList[0])
-                                } else {
-                                    self.mapview.image.image = UIImage(named: "NoImage")
+        
+        if !tasks.isEmpty {
+            tasks.enumerated().forEach { [self] index,task in
+                let marker = NMFMarker(position: NMGLatLng(lat: task.latitude!, lng: task.longitude!))
+                markers.append(marker)
+                
+                markers[index].mapView = naverMapView.mapView
+                if markers[index].infoWindow == nil {
+                    
+                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+                    markers[index].infoWindow?.open(with: markers[index])
+                } else {
+                    // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
+                    markers[index].infoWindow?.close()
+                }
+               
+//                markers[index].isHideCollidedMarkers = true // 여러개 모여있으면 숨겨주는기능
+                
+                //                marker.captionText = task.title
+                markers[index].touchHandler = { [self] (overlay) in
+                    
+                    if let marker = overlay as? NMFMarker {
+                        detailTask = task
+                        
+                        [mapview.popup,mapview.centerView,mapview.title,mapview.detailButton,mapview.image,mapview.checkButton,mapview.lineView,mapview.leaveTimeLabel,mapview.leaveDayLabel,mapview.leaveTitle].forEach {
+                            view.addSubview($0)
+                        }
+                        mapview.title.text = task.title
+                        self.mapview.image.contentMode = .scaleToFill
+                        let date = Date()
+                        var minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: task.openDate)
+                        
+                        
+                        self.mapview.leaveTimeLabel.snp.remakeConstraints {
+                            $0.centerY.equalTo(self.view).offset(30)
+                            $0.centerX.equalTo(self.view)
+                            $0.height.equalTo(50)
+                            $0.leading.equalTo(self.mapview.centerView.snp.leading)
+                            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
+                        }
+                        
+                        self.mapview.leaveDayLabel.snp.remakeConstraints {
+                            $0.height.equalTo(30)
+                            $0.leading.equalTo(self.mapview.centerView.snp.leading)
+                            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
+                            $0.bottom.equalTo(self.mapview.leaveTimeLabel.snp.top).offset(-5)
+                        }
+                        
+                        
+                        self.mapview.leaveTitle.snp.remakeConstraints {
+                            $0.bottom.equalTo(self.mapview.leaveTimeLabel.snp.top).offset(-30)
+                            $0.height.equalTo(50)
+                            $0.leading.equalTo(self.mapview.centerView.snp.leading)
+                            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
+                        }
+                        
+                        let time = String(format: "%02d:", minDate.hour!)+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
+                        
+                        
+                        self.mapview.leaveTitle.text = "오픈까지 남은기간"
+                        
+                        if minDate.month! != 0 { // 7개월 3일 12:03:02
+                            self.mapview.leaveDayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
+                            self.mapview.leaveTimeLabel.text  = time
+                        }
+                        else if minDate.day! != 0 {
+                            self.mapview.leaveDayLabel.text = "\(minDate.day!)일"
+                            self.mapview.leaveTimeLabel.text  = time
+                        }
+                        else if minDate.hour! != -1 {
+                            self.mapview.leaveDayLabel.text = "내일 오픈 가능"
+                            self.mapview.leaveTimeLabel.text = time
+                        }
+                        
+                        
+                        if date >= task.openDate && !self.distanceArray.isEmpty{
+                            self.mapview.leaveTitle.snp.remakeConstraints {
+                                $0.width.height.equalTo(0)
+                            }
+                            self.mapview.leaveTimeLabel.snp.remakeConstraints {
+                                $0.width.height.equalTo(0)
+                            }
+                            self.mapview.leaveDayLabel.snp.remakeConstraints {
+                                $0.width.height.equalTo(0)
+                            }
+                            if task.imageList.count != 0 {
+                                self.mapview.image.image = self.loadImageFromDocument(fileName: task.imageList[0])
+                            } else {
+                                
+                                self.mapview.image.image = UIImage(named: "NoImage")
+                            }
+                        }
+                        else {
+                            
+                            if self.timer != nil && self.timer!.isValid {
+                                self.timer?.invalidate() //기존 타이머 시작하면 멈춤
+                            }
+                            
+                            self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                                minDate.second! -= 1
+                                
+                                if minDate.second! == -1 {
+                                    minDate.second! = 59
+                                    minDate.minute! -= 1
+                                }
+                                if minDate.minute! == -1  {
+                                    minDate.minute! = 59
+                                    minDate.hour! -= 1
+                                }
+                                if minDate.hour! == -1 {
+                                    timer.invalidate()
+                                }
+                                let time = String(format: "%02d:", minDate.hour!)+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
+                                
+                                
+                                if minDate.month! != 0 { // 7개월 3일 12:03:02
+                                    self.mapview.leaveDayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
+                                    self.mapview.leaveTimeLabel.text  = time
+                                }
+                                else if minDate.day! != 0 {
+                                    self.mapview.leaveDayLabel.text = "\(minDate.day!)일"
+                                    self.mapview.leaveTimeLabel.text  = time
+                                }
+                                else if minDate.hour! != -1 {
+                                    self.mapview.leaveDayLabel.text = "내일 오픈 가능"
+                                    self.mapview.leaveTimeLabel.text = time
                                 }
                             }
-                        else {
-                                self.mapview.image.image = UIImage(named: "Egg2")
-                            }
-
-                           return true
-                         } else {
-                             self.hidden()
-//                             marker.iconImage = NMFOverlayImage(name: "mSNormal", in: Bundle.naverMapFramework())
-                         }
-//                    }
+                            self.mapview.image.image = UIImage(named: "Egg2")
+                        }
+                        self.show()
+                        
+                        return true
+                    } else {
+                        self.hidden()
+                    }
                     return true
-
                 }
-
-                marker.mapView = naverMapView.mapView
-                infoWindow.open(with: marker)
-
-
-            }
+  
+            } 
         }
     }
-
+    
     @objc func checkButtonClicked() {
         hidden()
     }
@@ -198,7 +298,7 @@ extension MapViewController {
         
         self.mapview.title.snp.remakeConstraints {
             $0.centerX.equalTo(mapview.centerView)
-            $0.top.equalTo(mapview.centerView.snp.top).offset(10)
+            $0.top.equalTo(mapview.centerView.snp.top)
             $0.width.equalTo(self.mapview.image.snp.width)
             $0.height.equalTo(self.mapview.centerView.snp.height).multipliedBy(0.08)
         }
@@ -242,10 +342,10 @@ extension MapViewController {
         
         self.mapview.checkButton.addTarget(self, action: #selector(self.checkButtonClicked), for: .touchUpInside)
         self.mapview.detailButton.addTarget(self, action: #selector(self.detailButtonClicked), for: .touchUpInside)
-
+        
     }
-
-
+    
+    
     func hidden() {
         self.mapview.popup.snp.remakeConstraints {
             $0.height.width.equalTo(0)
@@ -269,9 +369,22 @@ extension MapViewController {
             $0.height.width.equalTo(0)
         }
     }
-
+    
     @objc func detailButtonClicked() {
-        let vc = ListViewController()
-        transition(vc,transitionStyle: .presentFullNavigation)
+        
+        guard detailTask!.openDate < Date() else {
+            showAlertMessage(title: "아직 오픈가능한 시간이아닙니다.", button: "확인")
+            return
+        }
+        
+  
+        let vc = DetailViewController()
+        transition(vc,transitionStyle: .push)
+        
+        vc.navigationItem.backBarButtonItem?.tintColor = AllColor.textColor.color
+        vc.navigationItem.title = "자세히 보기"
+        vc.objectid = detailTask?.objectId
+
+
     }
 }

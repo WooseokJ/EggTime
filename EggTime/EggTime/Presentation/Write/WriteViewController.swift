@@ -6,12 +6,14 @@
 //
 
 import UIKit
-import YPImagePicker
 import CoreLocation
 import MobileCoreServices
 import RealmSwift
 
-class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
+
+
+
+class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     let writeView = WriteView()
     
@@ -31,102 +33,71 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     
     let writeViewCell = WriteCollectionViewCell()
     
-    let notificationCenter = UNUserNotificationCenter.current() // 알람할떄 선행되야됨.
     var tasks: Results<EggTime>!
-
-
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         picker.delegate = self
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackgroundImage")
         super.view = writeView
-
+        
         print(repository.localRealm.configuration.fileURL!)
-
+        
     }
     
     
     lazy var pickerSelect: [String] = Picker.allCases.map{return $0.pickerLisk[0]}
-//    map.{
-//        return $0.pickerLisk[0]
-//    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         writeView.pickerView.dataSource = self
         writeView.pickerView.delegate = self
         
-        navigationItem.title = "캡슐 묻기"
+        navigationItem.title = "타임 캡슐 묻기"
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
             NSAttributedString.Key.font: AllFont.font.name
         ]
-        //2
         navigationController?.navigationBar.titleTextAttributes = attributes
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(saveButtonClicked))
+      
        
+        
+        let right = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
+        right.setTitleTextAttributes([NSAttributedString.Key.font : AllFont.font.name], for: .normal)
+        
+        navigationItem.rightBarButtonItem = right
+   
         writeView.opendateInput.inputView = writeView.pickerView
         
         writeView.collectionview.delegate = self
         writeView.collectionview.dataSource = self
         configToolbar()
         
-        notificationCenter.delegate = self
+ 
         
-        requestAuthorization()
-
-
+        writeView.titleInput.delegate = self
+        writeView.opendateInput.delegate = self
+        
+        
+        
     }
     // 키보드 여백눌러서 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
-    //MARK: notification 2. 권한요청
-    func requestAuthorization(){
-        let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .sound)
-
-        notificationCenter.requestAuthorization(options: authOptions) { success, error in
-               if let error = error {
-                   print("Error: \(error)")
-               }
-           }
-    }
-    
-    func sendNotification(){
-        
-        DispatchQueue.main.async { [self] in
-            tasks = repository.localRealm.objects(EggTime.self)
-            
-            tasks.forEach {
-                let notificationContent = UNMutableNotificationContent()
-                notificationContent.title = "오늘은 오픈일입니다."
-//                notificationContent.subtitle = "\($0.regDate)에 등록한 타임캡슐이 오픈할수있습니다. "
-                notificationContent.body = "\($0.regDate)에 등록한 타임캡슐이 오픈할수있습니다. "
-                print($0.openDate)
-                
-                var dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: $0.openDate)
-                
-                
-                print(dateComponents)
-                
-//                let dateComponents = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute], from: date)
-//                print(dateComponents)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-                
-                let request = UNNotificationRequest(identifier: "sani", content: notificationContent, trigger: trigger)
-                notificationCenter.add(request) { (error) in
-                    print(error)
-                }
-            }
-        }
-    }
+   
     
 }
 
 extension WriteViewController {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text?.count == 0 {
+            textField.text = "  "
+        }
+    }
+    
     
     //MARK: 피커뷰 위한 툴바
     func configToolbar() {
@@ -152,7 +123,7 @@ extension WriteViewController {
         self.writeView.pickerView.selectRow(row, inComponent: 0, animated: false)
         let text = pickerSelect[row].split(separator: ":")
         
-        self.writeView.opendateInput.text = String(text[1])
+        self.writeView.opendateInput.text = " "+String(text[1])
         self.writeView.opendateInput.resignFirstResponder()
     }
     //MARK: 피커 취소
@@ -173,10 +144,9 @@ extension WriteViewController {
             showAlertMessage(title: "오픈일을 선택해주세요", button: "확인")
             return
         }
-        sendNotification()
         
-            //MARK: 거리 계산하는 매소드
-  
+        //MARK: 거리 계산하는 매소드
+        
         
         let task = EggTime(title: writeView.titleInput.text!,
                            regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""),
@@ -186,7 +156,7 @@ extension WriteViewController {
                            latitude: UserDefaults.standard.double(forKey: "lat") ,
                            longitude: UserDefaults.standard.double(forKey: "lng") ,
                            imageStringArray: imageArrayString)
-
+        
         do {
             try repository.localRealm.write {
                 repository.localRealm.add(task)
@@ -202,7 +172,7 @@ extension WriteViewController {
         }
         
         
-//        fetchDocumentZipFile() //확인용
+        //        fetchDocumentZipFile() //확인용
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -227,35 +197,18 @@ extension WriteViewController {
     }
     //MARK: 카메라 선택
     @objc func cameraStart() {
-        let picker = YPImagePicker() //권한요청 메소드는 안에있어.
-        picker.didFinishPicking { [self, unowned picker] items, _ in
-            if let photo = items.singlePhoto {
-                
-                let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-                let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-                let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-                let dirPath = paths.first
-                let imageData = photo.image.jpegData(compressionQuality: 1)
-                let imageURL = URL(fileURLWithPath: dirPath!).appendingPathComponent("YPImagePicker\(Date()).png")
-                
-                
-                if imageArrayUIImage.count == tag! {
-                    
-                    imageArrayString.append(imageURL.lastPathComponent)
-                    imageArrayUIImage.append(photo.image)
-                } else{
-                    imageArrayString[tag!] = imageURL.lastPathComponent
-                    imageArrayUIImage[tag!] = photo.image
-                }
-
-                writeView.collectionview.reloadData()
-            }
-            picker.dismiss(animated: true, completion: nil)
+        
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else { // .camera
+            print("사용불가+사용자에게 토스트/얼럿띄움")
+            return
         }
-        present(picker, animated: true, completion: nil)
+        picker.sourceType = .camera //카메라로 띄우겟다 // photolibrary로하면 갤러리가 뜸 camera하면 camera뜸
+        picker.allowsEditing = true // 카메라 찍은뒤 편집할수있냐없냐 default는 false임. //이게있어서 찍은뒤 편집화면이 보일수있는거
+        present(picker, animated: true)
+   
     }
     
-        
+    
 }
 
 
@@ -268,20 +221,46 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
     //카메라나 앨범등 PickerController가 사용되고 이미지 촬영을 했을 때 발동 된다.
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
+        
         
         let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
         
         if mediaType.isEqual(to: kUTTypeImage as NSString as String) {
+            
+            
             let selectImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            
+            if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+                
+                
+                let imgName = UUID().uuidString+".jpeg"
+                let documentDirectory = NSTemporaryDirectory()
+                let localPath = documentDirectory.appending(imgName)
+                let data = selectImage!.jpegData(compressionQuality: 0.3)! as NSData
+                data.write(toFile: localPath, atomically: true)
+                let photoURL = URL.init(fileURLWithPath: localPath)
+                
+                if imageArrayUIImage.count == tag! {
+                    
+                    imageArrayString.append(imgName)
+                    imageArrayUIImage.append(selectImage!)
+                } else{
+                    imageArrayString[tag!] = imgName
+                    imageArrayUIImage[tag!] = selectImage!
+                }
+                
+                writeView.collectionview.reloadData()
+                picker.dismiss(animated: true, completion: nil)
 
-            if (UIImagePickerController.isSourceTypeAvailable(.photoLibrary)) {
+            }
+            
+            else if (UIImagePickerController.isSourceTypeAvailable(.photoLibrary)) {
                 
                 let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as? NSURL
                 let imageName=imageUrl?.lastPathComponent//파일이름
                 let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
                 let photoURL          = NSURL(fileURLWithPath: documentDirectory)
-//                let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
+                //                let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
                 
                 if imageArrayUIImage.count == tag! {
                     imageArrayString.append(imageName!)
@@ -293,20 +272,18 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
                 writeView.collectionview.reloadData()
                 dismiss(animated: true)
                 
-                //                let data=NSData(contentsOf: imageUrl as! URL)!
-                
-                //사진첩(라이브러리)로 사진을 가져왔을때 로직구현
-                
             }
             
+            //UIImagePickerController5: 취소버튼 클릭시
+            func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+                dismiss(animated: true)
+            }
         }
-        //UIImagePickerController5: 취소버튼 클릭시
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            dismiss(animated: true)
-        }
+        
+        
+        
+        
     }
-    
-    
-    
-    
 }
+
+

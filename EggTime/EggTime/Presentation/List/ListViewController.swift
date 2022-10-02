@@ -4,7 +4,7 @@ import UIKit
 import RealmSwift
 import CoreLocation
 import expanding_collection
-
+import SnapKit
 
 class ListViewController: BaseViewController {
 
@@ -25,12 +25,29 @@ class ListViewController: BaseViewController {
             print("위치 서비스 Off 상태")
         }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        tasks = repository.fetch()
+        if tasks.count == 0 {
+            listView.contentlabel.snp.remakeConstraints {
+                $0.center.equalTo(view)
+                $0.height.equalTo(50)
+                $0.leading.trailing.equalTo(0)
+            }
+            listView.contentlabel.text = "현재 묻은 타임캡슐이 없습니다."
+        }
+    }
+    
+    
     var tasks: Results<EggTime>! {
         didSet {
             listView.collectionview.reloadData()
             print("collectionview Tasks Changed")
         }
     }
+    
+    var openAvailable: [ObjectId] = []
+
     var currentlat: Double?
     var currentlng: Double?
 
@@ -40,6 +57,8 @@ class ListViewController: BaseViewController {
         listView.collectionview.delegate = self
         
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+
+        
         self.navigationItem.backBarButtonItem = backBarButtonItem
         navigationItem.title = "타임 캡슐 리스트"
         let attributes = [
@@ -52,11 +71,13 @@ class ListViewController: BaseViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-//        let sortButton = UIBarButtonItem(title: "", image: UIImage(systemName: "list.bullet.circle"), primaryAction: nil, menu: self.sortMenu)
+
         let setting = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: #selector(settingClicked))
         let home = UIBarButtonItem(image: UIImage(systemName: "house"), style: .plain, target: self, action: #selector(homeClicked))
-        
+        let mapping =  UIBarButtonItem(image: UIImage(systemName: "map"), style: .plain, target: self, action: #selector(mapShowButtonClicked))
+
         self.navigationItem.rightBarButtonItems = [setting,home]
+        self.navigationItem.leftBarButtonItem = mapping
     }
     
     @objc func homeClicked() {
@@ -67,13 +88,14 @@ class ListViewController: BaseViewController {
         let vc = SettingViewController()
         transition(vc,transitionStyle: .presentFullNavigation)
     }
-    
-
-    var openAvailable: [ObjectId] = []
-
-    override func viewWillAppear(_ animated: Bool) {
-        tasks = repository.fetch()
+    // 지도보기 버튼
+    @objc func mapShowButtonClicked() {
+        let vc = MapViewController()
+        transition(vc,transitionStyle: .push)
     }
+
+
+
 
 }
 

@@ -24,16 +24,19 @@ class WriteCollectionViewCell: BaseCollectionViewCell {
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 10
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleToFill
+        
         return imageView
     }()
+    
+
     
     
     
     //MARK: 뷰등록
     override func configure() {
-        self.addSubview(imageView)
+        [imageView].forEach {
+            self.addSubview($0)
+        }
     }
     
     
@@ -41,11 +44,13 @@ class WriteCollectionViewCell: BaseCollectionViewCell {
     //MARK: 위치
     override func setConstrains() {
         imageView.snp.makeConstraints {
-            $0.leading.equalTo(0)
             $0.top.equalTo(0)
             $0.bottom.equalTo(0)
+            $0.leading.equalTo(0)
             $0.trailing.equalTo(0)
         }
+
+        
     }
     
     

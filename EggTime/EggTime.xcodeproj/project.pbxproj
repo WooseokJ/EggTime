@@ -30,7 +30,6 @@
 		E17E65E328E2B492003D7FE1 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E65E228E2B492003D7FE1 /* Font.swift */; };
 		E183E22128E34F0A009DA548 /* DalseoHealingMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E183E22028E34F0A009DA548 /* DalseoHealingMedium.otf */; };
 		E189E0C628DCD9B000A07311 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189E0C528DCD9B000A07311 /* UITextView.swift */; };
-		E18ABCE428DEC83B0011D6DF /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = E18ABCE328DEC83B0011D6DF /* YPImagePicker */; };
 		E191978B28DB259B0056AB56 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = E191978A28DB259B0056AB56 /* Zip */; };
 		E191978E28DB25AB0056AB56 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E191978D28DB25AB0056AB56 /* SnapKit */; };
 		E1D2ACC628DF9378004E2A75 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E1D2ACC528DF9378004E2A75 /* Realm */; };
@@ -148,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1D2ACC828DF9378004E2A75 /* RealmSwift in Frameworks */,
-				E18ABCE428DEC83B0011D6DF /* YPImagePicker in Frameworks */,
 				E191978B28DB259B0056AB56 /* Zip in Frameworks */,
 				5C0E29B7C200E44B4F9AEE4D /* Pods_EggTime.framework in Frameworks */,
 				E191978E28DB25AB0056AB56 /* SnapKit in Frameworks */,
@@ -525,7 +523,6 @@
 			packageProductDependencies = (
 				E191978A28DB259B0056AB56 /* Zip */,
 				E191978D28DB25AB0056AB56 /* SnapKit */,
-				E18ABCE328DEC83B0011D6DF /* YPImagePicker */,
 				E1D2ACC528DF9378004E2A75 /* Realm */,
 				E1D2ACC728DF9378004E2A75 /* RealmSwift */,
 			);
@@ -560,7 +557,6 @@
 			packageReferences = (
 				E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */,
 				E191978C28DB25AB0056AB56 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				E18ABCE228DEC83B0011D6DF /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 				E1D2ACC428DF9378004E2A75 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = E1FCB0A628CDA0F600C07AA3;
@@ -844,7 +840,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -880,7 +876,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -918,14 +914,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E18ABCE228DEC83B0011D6DF /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Yummypets/YPImagePicker.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
@@ -953,11 +941,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E18ABCE328DEC83B0011D6DF /* YPImagePicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E18ABCE228DEC83B0011D6DF /* XCRemoteSwiftPackageReference "YPImagePicker" */;
-			productName = YPImagePicker;
-		};
 		E191978A28DB259B0056AB56 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */;

@@ -13,6 +13,7 @@ enum AllFont {
         static let name = UIFont(name: "DalseoHealingMedium", size: 14.0)
         static let title = UIFont(name: "DalseoHealingMedium", size: 16.0)
         static let time = UIFont(name: "DalseoHealingMedium", size: 50.0)
+        static let mapTime = UIFont(name: "DalseoHealingMedium", size: 24.0)
 
     }
 }
