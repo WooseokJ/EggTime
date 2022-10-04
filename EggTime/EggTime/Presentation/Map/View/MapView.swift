@@ -49,7 +49,7 @@ class MapView: BaseView {
     
     let centerView: UIImageView = {
         let view = UIImageView()
-        
+        view.backgroundColor = .clear
         view.image = UIImage(named: "BackgroundImage")
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
@@ -58,7 +58,7 @@ class MapView: BaseView {
     
     let image: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleToFill
+        
         return image
     }()
     let checkButton: UIButton = {

@@ -68,7 +68,7 @@ class MainViewController: BaseViewController {
             }
             
             
-            mainview.tempLabel.text = "현재 열수있는 캡슐이 없습니다."
+            mainview.tempLabel.text = "현재 오픈대기중인 캡슐이 없습니다."
             
 
             return
@@ -102,7 +102,7 @@ class MainViewController: BaseViewController {
             
         }
         
-        mainview.titleLabel.text = "캡슐이름: "+min[0].title
+        mainview.titleLabel.text = "\(min[0].title)님이 묻은캡슐"
         
         
         mainview.tempLabel.text = "가장 빨리 열수있는 캡슐까지 남은기간"

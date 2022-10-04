@@ -4,7 +4,6 @@ import NMapsMap
 import CoreLocation
 import SnapKit
 import RealmSwift
-import Cluster
 
 class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocationManagerDelegate, NMFMapViewOptionDelegate {
     
@@ -31,6 +30,12 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
     
         markers.removeAll()
         
+        alldistanceArray.forEach {
+            if $0 <= 100 {
+                distanceArray.append($0)
+            }
+        }
+        
         if CLLocationManager.locationServicesEnabled() {
             print("위치 서비스 On 상태")
             
@@ -54,12 +59,11 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
     var detailTask: EggTime?
     
     var distanceArray: [CLLocationDistance] = []
-    
+    var alldistanceArray: [CLLocationDistance] = []
     var markers = [NMFMarker]()
     let infoWindow = NMFInfoWindow()
     let dataSource = NMFInfoWindowDefaultTextSource.data()
     let sdkBundle = Bundle.naverMapFramework()
-    let clusterManager = ClusterManager()
     
     lazy var naverMapView = NMFNaverMapView(frame: view.frame) // UIView
     override func viewDidLoad() {
@@ -110,15 +114,14 @@ extension MapViewController {
             
             
             distanceArray.removeAll()
-            
+            alldistanceArray.removeAll()
             
             tasks.forEach{
                 //MARK: 거리 계산하는 매소드
                 let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
-                //                print("차이거리:", containDistance)
-                if containDistance <= 100 {
-                    distanceArray.append(containDistance)
-                }
+                
+                alldistanceArray.append(containDistance)
+                
             }
             circle.center = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
             circle.radius = 100
@@ -175,7 +178,7 @@ extension MapViewController {
                         [mapview.popup,mapview.centerView,mapview.title,mapview.detailButton,mapview.image,mapview.checkButton,mapview.lineView,mapview.leaveTimeLabel,mapview.leaveDayLabel,mapview.leaveTitle].forEach {
                             view.addSubview($0)
                         }
-                        mapview.title.text = task.title
+                        mapview.title.text = "\(task.title)님이 묻은 타임캡슐"
                         self.mapview.image.contentMode = .scaleToFill
                         let date = Date()
                         var minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: task.openDate)
@@ -221,6 +224,7 @@ extension MapViewController {
                             self.mapview.leaveDayLabel.text = "내일 오픈 가능"
                             self.mapview.leaveTimeLabel.text = time
                         }
+
                         
                         
                         if date >= task.openDate && !self.distanceArray.isEmpty{
@@ -240,7 +244,18 @@ extension MapViewController {
                                 self.mapview.image.image = UIImage(named: "NoImage")
                             }
                         }
+                        // 오픈일 지낫는데 거리가 멀어
+                        else if date >= task.openDate && self.distanceArray.isEmpty {
+                            self.mapview.leaveTitle.text = ""
+                            self.mapview.leaveDayLabel.text = "해당 거리에서는 "
+                            self.mapview.leaveTimeLabel.text = "열수 없습니다."
+                            self.mapview.image.contentMode = .scaleAspectFit
+                            self.mapview.image.image = UIImage(named: "EggImage")
+                            
+                        }
+                        
                         else {
+                            
                             
                             if self.timer != nil && self.timer!.isValid {
                                 self.timer?.invalidate() //기존 타이머 시작하면 멈춤
@@ -249,7 +264,7 @@ extension MapViewController {
                             self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                                 minDate.second! -= 1
                                 
-                                if minDate.second! == -1 {
+                                if minDate.second! != -1 {
                                     minDate.second! = 59
                                     minDate.minute! -= 1
                                 }
@@ -276,8 +291,10 @@ extension MapViewController {
                                     self.mapview.leaveTimeLabel.text = time
                                 }
                             }
-                            self.mapview.image.image = UIImage(named: "Egg2")
+                            self.mapview.image.contentMode = .scaleAspectFit
+                            self.mapview.image.image = UIImage(named: "EggImage")
                         }
+                        
                         self.show()
                         
                         return true
@@ -313,7 +330,6 @@ extension MapViewController {
             $0.edges.equalTo(self.view)
         }
         self.mapview.image.snp.remakeConstraints {
-            $0.centerX.equalTo(mapview.centerView)
             $0.top.equalTo(mapview.title.snp.bottom)
             $0.leading.equalTo(mapview.centerView.snp.leading)
             $0.trailing.equalTo(mapview.centerView.snp.trailing)
@@ -372,8 +388,14 @@ extension MapViewController {
     
     @objc func detailButtonClicked() {
         
-        guard detailTask!.openDate < Date() else {
+        guard detailTask!.openDate < Date()  else {
             showAlertMessage(title: "아직 오픈가능한 시간이아닙니다.", button: "확인")
+            return
+        }
+        print(distanceArray) // 거리의 모음
+
+        guard !distanceArray.isEmpty else  {
+            showAlertMessage(title: "해당 거리에서는 오픈할수없습니다.", button: "확인")
             return
         }
         

@@ -20,15 +20,6 @@ class DetailViewController: BaseViewController {
     var objectid: ObjectId? // 객체아이디 받아와
     
 
-    
-    override func viewWillDisappear(_ animated: Bool) {
-       
-    }
-    
-    
-    
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -22,8 +22,6 @@
 		E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */; };
 		E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */; };
 		E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */; };
-		E16F4DB028D1DA7C00CEC17A /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DAF28D1DA7C00CEC17A /* VersionViewController.swift */; };
-		E16F4DB328D1DA8900CEC17A /* VersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB228D1DA8900CEC17A /* VersionView.swift */; };
 		E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB428D1E2A300CEC17A /* UILabel.swift */; };
 		E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB728D1E5B700CEC17A /* PageViewController.swift */; };
 		E16F4DBA28D1E5C100CEC17A /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB928D1E5C100CEC17A /* PageView.swift */; };
@@ -99,8 +97,6 @@
 		E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseView.swift; sourceTree = "<group>"; };
 		E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseTableViewCell.swift; sourceTree = "<group>"; };
 		E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicense.swift; sourceTree = "<group>"; };
-		E16F4DAF28D1DA7C00CEC17A /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
-		E16F4DB228D1DA8900CEC17A /* VersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionView.swift; sourceTree = "<group>"; };
 		E16F4DB428D1E2A300CEC17A /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E16F4DB728D1E5B700CEC17A /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		E16F4DB928D1E5C100CEC17A /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
@@ -244,23 +240,6 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
-		E16F4DAE28D1DA6900CEC17A /* Version */ = {
-			isa = PBXGroup;
-			children = (
-				E16F4DAF28D1DA7C00CEC17A /* VersionViewController.swift */,
-				E16F4DB128D1DA7F00CEC17A /* View */,
-			);
-			path = Version;
-			sourceTree = "<group>";
-		};
-		E16F4DB128D1DA7F00CEC17A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E16F4DB228D1DA8900CEC17A /* VersionView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		E16F4DB628D1E58A00CEC17A /* PageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,7 +343,6 @@
 			children = (
 				E1348D2828E57E2E003C3E9A /* TapBar */,
 				E16F4DB628D1E58A00CEC17A /* PageViewController */,
-				E16F4DAE28D1DA6900CEC17A /* Version */,
 				E16F4DA328D1CD1000CEC17A /* OpenLicense */,
 				E16F4D9528D1ABB900CEC17A /* BackupStored */,
 				E16F4D8D28D19B4600CEC17A /* Map */,
@@ -649,7 +627,6 @@
 				E1DC08B128D7F55D0032440A /* PageVC2.swift in Sources */,
 				E1DC08B328D7F5680032440A /* PageVC3.swift in Sources */,
 				E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */,
-				E16F4DB028D1DA7C00CEC17A /* VersionViewController.swift in Sources */,
 				E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */,
 				E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */,
 				E1FCB0E428CDA33900C07AA3 /* BaseView.swift in Sources */,
@@ -666,7 +643,6 @@
 				E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */,
 				E1FCB0D728CDA2A500C07AA3 /* SettingTableViewCell.swift in Sources */,
 				E1F156E528CDF7E500500841 /* WriteView.swift in Sources */,
-				E16F4DB328D1DA8900CEC17A /* VersionView.swift in Sources */,
 				E16F4D9A28D1ABE200CEC17A /* BackupStoredView.swift in Sources */,
 				E103002E28CEFED900922B54 /* EggTime.swift in Sources */,
 				E1FCB0B528CDA0F600C07AA3 /* SceneDelegate.swift in Sources */,

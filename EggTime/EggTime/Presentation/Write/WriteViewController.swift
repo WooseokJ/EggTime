@@ -135,15 +135,33 @@ extension WriteViewController {
     //MARK: 저장하기 버튼클릭
     @objc func saveButtonClicked() {
         // 제목이 nil인지,입력여부 확인
-        guard (writeView.titleInput.text != nil) && (writeView.titleInput.text?.count != 0) else {
-            showAlertMessage(title: "제목을 입력해주세요", button: "확인")
+        guard (writeView.titleInput.text != nil) && (writeView.titleInput.text!.count > 2) else {
+            showAlertMessage(title: "작성자를 입력해주세요", button: "확인")
             return
         }
         //오픈일 nil인지,입력여부 확인
-        guard  (writeView.opendateInput.text != nil) && (writeView.opendateInput.text?.count != 0 )else {
-            showAlertMessage(title: "오픈일을 선택해주세요", button: "확인")
+        guard  (writeView.opendateInput.text != nil) && (writeView.opendateInput.text?.count != 2 )else {
+            showAlertMessage(title: "열리는날짜를 선택해주세요", button: "확인")
             return
         }
+        
+        let alert = UIAlertController(title: "주의", message: "캡슐이 열리기까지 캡슐을 삭제할수없습니다.", preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.saveStart()
+        }
+        
+        let cancel = UIAlertAction(title: "취소하기", style: .cancel)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert,animated: true)
+        
+        
+        
+    }
+    
+    func saveStart() {
+    
         
         //MARK: 거리 계산하는 매소드
         
@@ -175,8 +193,6 @@ extension WriteViewController {
         //        fetchDocumentZipFile() //확인용
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
     
     
     //MARK: 수정하기 버튼클릭

@@ -83,14 +83,15 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier, for: indexPath) as? ListCollectionViewCell else {
             return UICollectionViewCell()
         }
-//        cell.imageView.layer.cornerRadius = cell.frame.height / 3.5
-        print(tasks[indexPath.row].openDate)
-        print(repository.dateToString(date: tasks[indexPath.row].openDate))
+
         cell.dateLabel.text = repository.dateToString(date: tasks[indexPath.row].openDate)
         cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
-        cell.titleLabel.text = tasks[indexPath.row].title
+        cell.titleLabel.text = "\(tasks[indexPath.row].title)님의 캡슐"
+        cell.imageView.image = UIImage(named: "Egg2")
+        cell.imageView.contentMode = .scaleAspectFit
+
 //        if tasks[indexPath.item].imageList.count == 0 {
 //            cell.imageView.image = UIImage(named: "NoImage")
 //            return cell
@@ -129,12 +130,24 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         print(openYear,openMonth,openDay)
         
         // 해당날짜인지 판단
-        guard ((openYear <= todayYear) && (openMonth <= todayMonth) && (openDay <= todayDay)) else {
-            let alert = UIAlertController(title: "아직 오픈날짜가 아닙니다.", message: "", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "확인", style: .cancel)
-            alert.addAction(ok)
-            present(alert,animated: true)
-            return
+        if ((openYear >= todayYear) && (openMonth >= todayMonth)) {
+            
+            //MARK: 오픈달은 넘었는데 오픈일과 오늘day가 같으면 경고메세지
+            if (openMonth > todayMonth) && (openDay == todayDay) {
+                let alert = UIAlertController(title: "아직 오픈날짜가 아닙니다.", message: "", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .cancel)
+                alert.addAction(ok)
+                present(alert,animated: true)
+                return
+            }
+            
+            else if (openMonth == todayMonth) && (openDay > todayDay) {
+                let alert = UIAlertController(title: "아직 오픈날짜가 아닙니다.", message: "", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .cancel)
+                alert.addAction(ok)
+                present(alert,animated: true)
+                return
+            }
         }
         
         //해당위치에서 열수있는지 판단
@@ -153,7 +166,6 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         vc.navigationItem.backBarButtonItem?.tintColor = AllColor.textColor.color
         vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
         vc.objectid = tasks[indexPath.item].objectId
-        print(tasks[indexPath.item].objectId)
 //        vc.tag = indexPath.item
         
         

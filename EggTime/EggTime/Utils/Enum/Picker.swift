@@ -23,6 +23,7 @@ enum Picker: String, CaseIterable {
     
     var pickerLisk: [String] {
         switch self {
+
         case .afterOneday:
             return [self.rawValue+datePicker(afterday: 1)]
 //            return [Date(timeIntervalSinceNow: 86400 * 1)]

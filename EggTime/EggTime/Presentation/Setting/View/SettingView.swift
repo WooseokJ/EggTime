@@ -104,14 +104,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             transition(vc,transitionStyle: .push)
         }
         
-        //MARK: 버전 앨럿
-        if (indexPath.row == 2) {
-            let vc = VersionViewController()
-            transition(vc,transitionStyle: .push)
-        }
         
         //MARK: 리뷰쓰기
-        if (indexPath.row == 3)  {
+        if (indexPath.row == 2)  {
             if let appstoreUrl = URL(string: "https://apps.apple.com/app/iduseok0569") {
                 var urlComp = URLComponents(url: appstoreUrl, resolvingAgainstBaseURL: false)
                 urlComp?.queryItems = [

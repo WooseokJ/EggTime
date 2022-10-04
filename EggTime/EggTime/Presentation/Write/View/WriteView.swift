@@ -28,10 +28,10 @@ class WriteView: BaseView {
     // 제목
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "캡슐 이름"
+        label.text = "작성자"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
-        
+//        label.backgroundColor  = .red
         return label
     }()
     //제목입력
@@ -39,7 +39,7 @@ class WriteView: BaseView {
         let textField = UITextField()
         textField.textColor = .black
         textField.font = AllFont.font.name
-        textField.placeholder = "  캡슐 이름을 입력해주세요."
+        textField.placeholder = "  작성자명을 입력해주세요."
         textField.backgroundColor = AllColor.textColor.textInputColor
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
@@ -60,6 +60,8 @@ class WriteView: BaseView {
         label.text = "캡슐 묻은 날짜"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
+//        label.backgroundColor  = .red
+
         return label
     }()
     // 등록일 입력
@@ -88,6 +90,7 @@ class WriteView: BaseView {
         label.text = "캡슐 열리는 날짜"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
+//        label.backgroundColor  = .red
 
         return label
     }()
@@ -117,6 +120,7 @@ class WriteView: BaseView {
         label.text = "캡슐에 담을 내용"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
+//        label.backgroundColor  = .red
 
         return label
     }()
@@ -137,6 +141,8 @@ class WriteView: BaseView {
         label.text = "이미지"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
+//        label.backgroundColor  = .red
+
         return label
     }()
     // 이미지 컬렉션뷰
@@ -144,7 +150,7 @@ class WriteView: BaseView {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
         let layoutwidth = UIScreen.main.bounds.width // - (spacing * 2)
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2  , height: UIScreen.main.bounds.width / 2 )
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 1.6  , height: UIScreen.main.bounds.width / 1.3 )
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing)
 //        layout.minimumLineSpacing = spacing
@@ -154,8 +160,8 @@ class WriteView: BaseView {
         cv.register(WriteCollectionViewCell.self, forCellWithReuseIdentifier: WriteCollectionViewCell.reuseIdentifier)
         cv.layer.cornerRadius = 10
         cv.clipsToBounds = true
-//        cv.backgroundColor = .clear
-        cv.backgroundColor = .blue
+        cv.backgroundColor = .clear
+//        cv.backgroundColor = .blue
         return cv
     }()
     
@@ -169,7 +175,12 @@ class WriteView: BaseView {
     //MARK: 뷰등록
     
     override func configure() {
-        [backGroundView,dateStackView,writeLabel,imageLabel,writeTextView,collectionview].forEach {
+        [backGroundView,
+         titleLabel,titleInput,
+         dateLabel,dateInput,
+         openLabel,opendateInput
+         ,writeLabel,writeTextView,
+         imageLabel,collectionview].forEach {
             self.addSubview($0)
         }
     }
@@ -180,80 +191,86 @@ class WriteView: BaseView {
             $0.edges.equalTo(0)
         }
         //제목
-//        titleLabel.snp.makeConstraints {
-//            $0.width.equalToSuperview().multipliedBy(0.35)
-//            $0.height.equalToSuperview().multipliedBy(0.1)
-//        }
-//        titleInput.snp.makeConstraints {
-//            $0.leading.equalTo(titleLabel.snp.trailing).offset(20)
-//            $0.trailing.equalTo(-20)
-//            $0.height.equalToSuperview().multipliedBy(0.1)
-//        }
-//        titleStackView.snp.makeConstraints {
-//            $0.top.equalTo(100)
-//            $0.leading.equalTo(30)
-//            $0.trailing.equalTo(-30)
-//            $0.height.equalToSuperview().multipliedBy(0.2)
-//        }
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.width.equalTo(UIScreen.main.bounds.width / 3)
+            $0.height.equalTo(UIScreen.main.bounds.height / 23)
+            $0.leading.equalTo(20)
+
+
+        }
+        titleInput.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.top)
+            $0.leading.equalTo(titleLabel.snp.trailing).offset(10)
+            $0.trailing.equalTo(-20)
+            $0.height.equalTo(titleLabel.snp.height)
+        }
+        
+        
+
         
         //등록일
-//        dateLabel.snp.makeConstraints {
-//            $0.width.equalTo(titleLabel.snp.width)
-//            $0.height.equalToSuperview().multipliedBy(0.1)
-//        }
-//        dateInput.snp.makeConstraints {
-//            $0.width.equalTo(titleInput.snp.width)
-//            $0.height.equalToSuperview().multipliedBy(0.1)
-//        }
-//        dateStackView.snp.makeConstraints {
-//            $0.top.equalTo(titleStackView.snp.bottom).offset(20)
-//            $0.leading.equalTo(titleStackView.snp.leading)
-//            $0.trailing.equalTo(titleStackView.snp.trailing)
-//            $0.height.equalToSuperview().multipliedBy(0.2)
-//        }
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.width.equalTo(titleLabel.snp.width)
+            $0.height.equalTo(titleLabel.snp.height)
+            $0.leading.equalTo(titleLabel.snp.leading)
+        }
+        dateInput.snp.makeConstraints {
+            $0.width.equalTo(titleInput.snp.width)
+            $0.height.equalTo(titleInput.snp.height)
+            $0.top.equalTo(dateLabel.snp.top)
+            $0.leading.equalTo(dateLabel.snp.trailing).offset(10)
+        }
+        
+        
+
         
         //개봉일
-//        openLabel.snp.makeConstraints {
-//            $0.top.equalTo(dateLabel.snp.bottom).offset(20)
-//            $0.leading.equalTo(dateLabel.snp.leading)
-//            $0.trailing.equalTo(dateLabel.snp.trailing)
-//            $0.height.equalToSuperview().multipliedBy(0.1)
-//        }
-//        opendateInput.snp.makeConstraints {
-//            $0.width.equalTo(dateInput.snp.width)
-//            $0.height.equalToSuperview().multipliedBy(0.1)
-//        }
-//        openStackView.snp.makeConstraints {
-//            $0.top.equalTo(dateStackView.snp.bottom).offset(20)
-//            $0.leading.equalTo(dateStackView.snp.leading)
-//            $0.trailing.equalTo(dateStackView.snp.trailing)
-//            $0.height.equalToSuperview().multipliedBy(0.2)
-//        }
+        openLabel.snp.makeConstraints {
+            $0.top.equalTo(dateLabel.snp.bottom).offset(10)
+            $0.width.equalTo(titleLabel.snp.width)
+            $0.height.equalTo(titleLabel.snp.height)
+            $0.leading.equalTo(titleLabel.snp.leading)
+        }
+        opendateInput.snp.makeConstraints {
+            $0.width.equalTo(titleInput.snp.width)
+            $0.height.equalTo(titleInput.snp.height)
+            $0.top.equalTo(openLabel.snp.top)
+            $0.leading.equalTo(openLabel.snp.trailing).offset(10)
+        }
+        
+        
+        
+
 //
 //        //글쓰기
-//        writeLabel.snp.makeConstraints {
-//            $0.top.equalTo(openLabel.snp.bottom).offset(20)
-//            $0.leading.equalTo(openLabel.snp.leading)
-//            $0.height.equalToSuperview().multipliedBy(0.1)
-//        }
-//        //글쓰기 입력
-//        writeTextView.snp.makeConstraints {
-//            $0.top.equalTo(writeLabel.snp.bottom).offset(20)
-//            $0.leading.equalTo(writeLabel.snp.leading)
-//            $0.height.equalToSuperview().multipliedBy(0.2)
-//            $0.height.equalToSuperview().multipliedBy(0.2)
-//        }
+        writeLabel.snp.makeConstraints {
+            $0.top.equalTo(openLabel.snp.bottom).offset(10)
+            $0.width.equalTo(titleLabel.snp.width)
+            $0.height.equalTo(titleLabel.snp.height)
+            $0.leading.equalTo(titleLabel.snp.leading)
+        }
+        //글쓰기 입력
+        writeTextView.snp.makeConstraints {
+            $0.top.equalTo(writeLabel.snp.bottom).offset(10)
+            $0.leading.equalTo(writeLabel.snp.leading)
+            $0.trailing.equalTo(opendateInput.snp.trailing)
+            $0.bottom.equalTo(imageLabel.snp.top).offset(-10)
+        }
+        
 ////        //이미지
-//        imageLabel.snp.makeConstraints {
-//            $0.leading.equalTo(writeTextView.snp.leading)
-//            $0.top.equalTo(writeTextView.snp.bottom).offset(20)
-//            $0.height.equalTo(titleLabel.snp.height)
-//        }
+        imageLabel.snp.makeConstraints {
+            $0.bottom.equalTo(collectionview.snp.top).offset(-10)
+            $0.width.equalTo(titleLabel.snp.width)
+            $0.height.equalTo(titleLabel.snp.height)
+            $0.leading.equalTo(titleLabel.snp.leading)
+        }
         collectionview.snp.makeConstraints {
             $0.bottom.equalTo(self).offset(-20)
-            $0.height.equalTo(UIScreen.main.bounds.width / 2)
-            $0.leading.equalTo(10)
-            $0.trailing.equalTo(-10)
+            $0.height.equalTo(UIScreen.main.bounds.width / 1.3)
+            $0.leading.equalTo(writeTextView.snp.leading)
+            $0.trailing.equalTo(writeTextView.snp.trailing)
         }
     }
 }
@@ -298,8 +315,7 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
         cell.clipsToBounds = true
         
         
-//        cell.imageView.backgroundColor = .red
-        cell.imageView.image = UIImage(named: "plusImage")
+        cell.imageView.image = UIImage(named: "imageupload")
         cell.imageView.contentMode = .scaleToFill
         
         guard indexPath.item >= imageArrayUIImage.count else {
@@ -308,8 +324,6 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
             return cell
         }
         
-//        NSLayoutConstraint
-
         return cell
     }
     

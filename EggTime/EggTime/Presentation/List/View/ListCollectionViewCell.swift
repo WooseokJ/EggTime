@@ -17,11 +17,8 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     //MARK: 컬렉션뷰 안의 내용크기
     let imageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Egg")
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
-//        imageView.layer.cornerRadius = imageView.frame.height / 2
-//        imageView.clipsToBounds = true
         return imageView
     }()
     

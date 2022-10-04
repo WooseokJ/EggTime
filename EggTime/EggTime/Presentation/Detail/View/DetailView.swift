@@ -36,8 +36,8 @@ class DetailView: BaseView {
         layout.minimumInteritemSpacing = spacing
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.backgroundColor = .clear
-        cv.backgroundColor = .red
+        cv.backgroundColor = .clear
+//        cv.backgroundColor = .red
         
         cv.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
 //        cv.layer.cornerRadius = 10
@@ -50,6 +50,7 @@ class DetailView: BaseView {
        let label = UILabel()
         label.font = AllFont.font.name
         label.textColor = AllColor.textColor.color
+//        label.backgroundColor = .red
         return label
     }()
     
@@ -57,7 +58,7 @@ class DetailView: BaseView {
         let label = UILabel()
         label.textColor = AllColor.textColor.outputColor
         label.font = AllFont.font.name
-        label.backgroundColor = UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
+        label.backgroundColor = AllColor.textColor.textInputColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         return label
@@ -68,7 +69,7 @@ class DetailView: BaseView {
        let label = UILabel()
         label.font = AllFont.font.name
         label.textColor = AllColor.textColor.color
-
+//        label.backgroundColor = .red
         return label
         
     }()
@@ -76,10 +77,11 @@ class DetailView: BaseView {
     let openOutputLabel: UILabel = {
         let label = UILabel()
         label.font = AllFont.font.name
-        label.backgroundColor = UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
+        label.backgroundColor = AllColor.textColor.textInputColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         label.textColor = AllColor.textColor.outputColor
+        
         return label
     }()
     
@@ -89,14 +91,14 @@ class DetailView: BaseView {
         label.font = AllFont.font.name
         label.textColor = AllColor.textColor.color
         label.numberOfLines = 0
-
+//        label.backgroundColor = .red
         return label
     }()
     
     let titleOutputLabel: UILabel = {
         let label = UILabel()
         label.font = AllFont.font.name
-        label.backgroundColor = UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
+        label.backgroundColor = AllColor.textColor.textInputColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         label.textColor = AllColor.textColor.outputColor
@@ -111,6 +113,7 @@ class DetailView: BaseView {
         label.textColor = AllColor.textColor.color
         label.numberOfLines = 0
         label.text = "캡슐에 담은 내용"
+//        label.backgroundColor = .red
         return label
     }()
     
@@ -119,10 +122,9 @@ class DetailView: BaseView {
     let content: UITextView = {
         let textView = UITextView(frame: .zero)
 //        textView.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        textView.backgroundColor = UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
+        textView.backgroundColor = AllColor.textColor.textInputColor
         textView.font = AllFont.font.name
         textView.textColor = AllColor.textColor.outputColor
-//        textView.backgroundColor = .clear
         textView.layer.cornerRadius = 10
         textView.clipsToBounds = true
         return textView
@@ -149,14 +151,13 @@ class DetailView: BaseView {
             $0.trailing.equalTo(0)
             $0.leading.equalTo(0)
             $0.height.equalToSuperview().multipliedBy(0.4)
-//            $0.edges.equalTo(0)
         }
         
         // 날짜
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(collectionview.snp.bottom).offset(15)
             $0.leading.equalTo(collectionview.snp.leading).offset(22)
-            $0.height.equalTo(40)
+            $0.height.equalTo(UIScreen.main.bounds.height / 23)
             $0.width.equalTo(100)
         }
         
@@ -242,15 +243,15 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         detailView.dateOutputLabel.text = "  "+repository.dateToString(date: detailInfo[0].regDate)
         detailView.openDateLabel.text = "캡슐 여는날짜"
         detailView.openOutputLabel.text = "  "+repository.dateToString(date: detailInfo[0].openDate)
-        detailView.titleLabel.text = "캡슐 이름"
-        detailView.titleOutputLabel.text = "  "+detailInfo[0].title
+        detailView.titleLabel.text = "작성자"
+        detailView.titleOutputLabel.text = " "+detailInfo[0].title
         detailView.content.text = detailInfo[0].content
         
         cell.imageView.layer.cornerRadius = 15
         cell.imageView.clipsToBounds = true
-        
+        cell.imageView.contentMode = .scaleAspectFit
+
         guard indexPath.item >= detailInfo[0].imageList.count else {
-            cell.imageView.contentMode = .scaleToFill
             cell.imageView.image = loadImageFromDocument(fileName: detailInfo[0].imageList[indexPath.item])
             return cell
         }

@@ -3,7 +3,6 @@
 import UIKit
 import RealmSwift
 import CoreLocation
-import expanding_collection
 import SnapKit
 
 class ListViewController: BaseViewController {
