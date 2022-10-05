@@ -128,7 +128,7 @@ extension MapViewController {
             circle.mapView = naverMapView.mapView
             circle.outlineWidth = 1
             circle.outlineColor = UIColor.systemBlue
-            circle.fillColor = .clear
+            circle.fillColor = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.1)
             
             
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: location.coordinate.latitude , lng: location.coordinate.longitude ))
