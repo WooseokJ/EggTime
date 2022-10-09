@@ -129,7 +129,6 @@ class MapView: BaseView {
         backGroundView.snp.makeConstraints {
             $0.edges.equalTo(0)
         }
-//
     }
     
     

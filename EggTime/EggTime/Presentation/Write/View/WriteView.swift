@@ -9,7 +9,6 @@ import Foundation
 
 import SnapKit
 import UIKit
-//import YPImagePicker
 
 class WriteView: BaseView {
     //MARK: 연결
@@ -31,7 +30,6 @@ class WriteView: BaseView {
         label.text = "작성자"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
-//        label.backgroundColor  = .red
         return label
     }()
     //제목입력
@@ -60,7 +58,6 @@ class WriteView: BaseView {
         label.text = "캡슐 묻은 날짜"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
-//        label.backgroundColor  = .red
 
         return label
     }()
@@ -71,7 +68,6 @@ class WriteView: BaseView {
         dateformattor.dateFormat = "yyyy-MM-dd"
         label.text = "  " + dateformattor.string(from: Date())
         label.textColor = .black
-        label.font = AllFont.font.name
         label.backgroundColor =  AllColor.textColor.textInputColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
@@ -90,8 +86,6 @@ class WriteView: BaseView {
         label.text = "캡슐 열리는 날짜"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
-//        label.backgroundColor  = .red
-
         return label
     }()
     // 오픈일 입력
@@ -99,7 +93,6 @@ class WriteView: BaseView {
         let textField = UITextField()
         textField.backgroundColor =  AllColor.textColor.textInputColor
         textField.textColor = .black
-        textField.font = AllFont.font.name
         textField.placeholder = "  캡슐 여는날짜을 선택해주세요."
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
@@ -119,7 +112,6 @@ class WriteView: BaseView {
         let label = UILabel()
         label.text = "캡슐에 담을 내용"
         label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.title
 //        label.backgroundColor  = .red
 
         return label
@@ -129,7 +121,6 @@ class WriteView: BaseView {
         let textview = UITextView()
         textview.backgroundColor =  AllColor.textColor.textInputColor
         textview.textColor = .black
-        textview.font = AllFont.font.name
         textview.layer.cornerRadius = 10
         textview.clipsToBounds = true
         return textview
@@ -141,27 +132,21 @@ class WriteView: BaseView {
         label.text = "이미지"
         label.textColor = AllColor.textColor.color
         label.font = AllFont.font.title
-//        label.backgroundColor  = .red
-
         return label
     }()
     // 이미지 컬렉션뷰
     lazy var collectionview: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
-        let layoutwidth = UIScreen.main.bounds.width // - (spacing * 2)
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 1.6  , height: UIScreen.main.bounds.width / 1.3 )
+        let layoutwidth = UIScreen.main.bounds.width
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 1.6  , height: UIScreen.main.bounds.width / 1.6 )
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing)
-//        layout.minimumLineSpacing = spacing
-//        layout.minimumInteritemSpacing = spacing
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         cv.register(WriteCollectionViewCell.self, forCellWithReuseIdentifier: WriteCollectionViewCell.reuseIdentifier)
         cv.layer.cornerRadius = 10
         cv.clipsToBounds = true
         cv.backgroundColor = .clear
-//        cv.backgroundColor = .blue
         return cv
     }()
     
@@ -196,18 +181,14 @@ class WriteView: BaseView {
             $0.width.equalTo(UIScreen.main.bounds.width / 3)
             $0.height.equalTo(UIScreen.main.bounds.height / 23)
             $0.leading.equalTo(20)
-
-
         }
+        
         titleInput.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.top)
             $0.leading.equalTo(titleLabel.snp.trailing).offset(10)
             $0.trailing.equalTo(-20)
             $0.height.equalTo(titleLabel.snp.height)
         }
-        
-        
-
         
         //등록일
         dateLabel.snp.makeConstraints {
@@ -223,10 +204,6 @@ class WriteView: BaseView {
             $0.leading.equalTo(dateLabel.snp.trailing).offset(10)
         }
         
-        
-
-        
-        //개봉일
         openLabel.snp.makeConstraints {
             $0.top.equalTo(dateLabel.snp.bottom).offset(10)
             $0.width.equalTo(titleLabel.snp.width)
@@ -239,19 +216,12 @@ class WriteView: BaseView {
             $0.top.equalTo(openLabel.snp.top)
             $0.leading.equalTo(openLabel.snp.trailing).offset(10)
         }
-        
-        
-        
-
-//
-//        //글쓰기
         writeLabel.snp.makeConstraints {
             $0.top.equalTo(openLabel.snp.bottom).offset(10)
             $0.width.equalTo(titleLabel.snp.width)
             $0.height.equalTo(titleLabel.snp.height)
             $0.leading.equalTo(titleLabel.snp.leading)
         }
-        //글쓰기 입력
         writeTextView.snp.makeConstraints {
             $0.top.equalTo(writeLabel.snp.bottom).offset(10)
             $0.leading.equalTo(writeLabel.snp.leading)
@@ -259,7 +229,6 @@ class WriteView: BaseView {
             $0.bottom.equalTo(imageLabel.snp.top).offset(-10)
         }
         
-////        //이미지
         imageLabel.snp.makeConstraints {
             $0.bottom.equalTo(collectionview.snp.top).offset(-10)
             $0.width.equalTo(titleLabel.snp.width)
@@ -268,7 +237,7 @@ class WriteView: BaseView {
         }
         collectionview.snp.makeConstraints {
             $0.bottom.equalTo(self).offset(-20)
-            $0.height.equalTo(UIScreen.main.bounds.width / 1.3)
+            $0.height.equalTo(UIScreen.main.bounds.width / 1.6)
             $0.leading.equalTo(writeTextView.snp.leading)
             $0.trailing.equalTo(writeTextView.snp.trailing)
         }
@@ -281,7 +250,6 @@ extension WriteViewController: UIPickerViewDelegate,UIPickerViewDataSource {
         return 1
     }
     
-    //
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerSelect.count
     }
@@ -310,26 +278,19 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WriteCollectionViewCell.reuseIdentifier, for: indexPath) as? WriteCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
         cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
-        
-        
         cell.imageView.image = UIImage(named: "imageupload")
         cell.imageView.contentMode = .scaleToFill
-        
         guard indexPath.item >= imageArrayUIImage.count else {
             cell.imageView.image = imageArrayUIImage[indexPath.item]
-            
             return cell
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         tag = indexPath.item
-        
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.actionSheet)
         let photo = UIAlertAction(title: "앨범", style: .default) { (action) in
             self.photoSelect()
@@ -338,7 +299,6 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
             self.cameraStart()
         }
         let cancel = UIAlertAction(title: "취소하기", style: .cancel)
-        
         alert.addAction(photo)
         alert.addAction(camera)
         alert.addAction(cancel)

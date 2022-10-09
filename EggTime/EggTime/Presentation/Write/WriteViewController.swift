@@ -55,13 +55,6 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         writeView.pickerView.delegate = self
         
         navigationItem.title = "타임 캡슐 묻기"
-        let attributes = [
-            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: AllFont.font.name
-        ]
-        navigationController?.navigationBar.titleTextAttributes = attributes
-      
-       
         
         let right = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
         right.setTitleTextAttributes([NSAttributedString.Key.font : AllFont.font.name], for: .normal)

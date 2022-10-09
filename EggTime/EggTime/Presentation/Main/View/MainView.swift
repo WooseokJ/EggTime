@@ -12,7 +12,6 @@ class MainView: BaseView {
         super.init(frame: frame)
         configure()
         setConstrains()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -35,9 +34,7 @@ class MainView: BaseView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-//        label.font = UIFont.systemFont(ofSize: 20)
         label.font = AllFont.font.name
-
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -47,9 +44,7 @@ class MainView: BaseView {
     let dayLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-//        label.font = UIFont.systemFont(ofSize: 50, weight: .bold)
         label.font = AllFont.font.time
-
         label.textAlignment = .center
         return label
     }()
@@ -57,17 +52,15 @@ class MainView: BaseView {
     let timelabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-//        label.font = UIFont.systemFont(ofSize: 50, weight: .bold)
         label.font = AllFont.font.time
         label.textAlignment = .center
         return label
     }()
     
     let plusButton: UIButton = {
-        let button = UIButton()
+        var button = UIButton()
+   
         button.setImage(UIImage(systemName: "plus"), for: .normal)
-//        button.contentVerticalAlignment = .fill
-//        button.contentHorizontalAlignment = .fill
         button.layer.cornerRadius = 30
         button.clipsToBounds = true
         button.backgroundColor = .white
@@ -78,7 +71,7 @@ class MainView: BaseView {
     //MARK: 뷰 등록
     override func configure() {
         
-        [backGroundView,tempLabel,dayLabel,titleLabel,timelabel,plusButton].forEach {
+        [tempLabel,dayLabel,titleLabel,timelabel,plusButton].forEach {
             self.addSubview($0)
         }
         
@@ -88,17 +81,13 @@ class MainView: BaseView {
     //MARK: 위치
     
     override func setConstrains() {
-        backGroundView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(0)
-            $0.bottom.equalTo(0)
-        }
+
         
         tempLabel.snp.makeConstraints {
             $0.centerX.equalTo(self)
             $0.bottom.equalTo(titleLabel.snp.top).offset(-10)
             $0.height.equalTo(titleLabel.snp.height)
             $0.leading.trailing.equalTo(0)
-            
         }
         
         titleLabel.snp.makeConstraints {

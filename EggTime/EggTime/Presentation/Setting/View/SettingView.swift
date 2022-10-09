@@ -20,9 +20,7 @@ class SettingView: BaseView {
     let tableView : UITableView = {
         let tableview = UITableView(frame: .zero, style: .insetGrouped)
         tableview.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.reuseIdentifier )
-//        tableview.backgroundColor = Constants.background.color
         tableview.rowHeight = 80
-//        tableview.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         tableview.backgroundColor = .clear
         return tableview
         
@@ -66,7 +64,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.content.text = Setting.allCases[indexPath.section].list[indexPath.row]
-//        cell.backgroundView = UIImageView(image: UIImage(named: "BackgroundImage"))
         
 
         cell.backgroundColor = .clear
@@ -74,13 +71,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
-    //MARK:  테이블뷰 색션 텍스트 정보
-//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
-//        let header = view as! UITableViewHeaderFooterView
-//        header.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-//        header.textLabel?.textColor = .white
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //나중에수정
@@ -91,13 +81,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             transition(vc,transitionStyle: .push)
         }
         
-//        //MARK: 사용법
-//        if (indexPath.row == 1) {
-//            let vc = PageViewController()
-//            let nav = UINavigationController(rootViewController: vc)
-//            nav.modalPresentationStyle = .overFullScreen
-//            self.present(nav, animated: true)
-//        }
         //MARK: 오픈소스
         if (indexPath.row == 1) {
             let vc = OpenLicenseViewController()
@@ -107,7 +90,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         //MARK: 리뷰쓰기
         if (indexPath.row == 2)  {
-            if let appstoreUrl = URL(string: "https://apps.apple.com/app/iduseok0569") {
+            if let appstoreUrl = URL(string: "https://apps.apple.com/app/idwooseokbird.dev@gmail.com") {
                 var urlComp = URLComponents(url: appstoreUrl, resolvingAgainstBaseURL: false)
                 urlComp?.queryItems = [
                     URLQueryItem(name: "action", value: "write-review")

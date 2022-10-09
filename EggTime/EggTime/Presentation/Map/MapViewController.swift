@@ -23,6 +23,11 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
     var deleteObjectid: ObjectId?
     
     override func viewWillAppear(_ animated: Bool) {
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
+            NSAttributedString.Key.font: AllFont.font.name
+        ]
+        navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
         
         markers.forEach {
             $0.mapView = nil
@@ -166,10 +171,7 @@ extension MapViewController {
                     // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
                     markers[index].infoWindow?.close()
                 }
-               
-//                markers[index].isHideCollidedMarkers = true // 여러개 모여있으면 숨겨주는기능
-                
-                //                marker.captionText = task.title
+                               
                 markers[index].touchHandler = { [self] (overlay) in
                     
                     if let marker = overlay as? NMFMarker {
@@ -264,29 +266,29 @@ extension MapViewController {
                             self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                                 minDate.second! -= 1
                                 
-                                if minDate.second! != -1 {
+                                if minDate.second! < 0 {
                                     minDate.second! = 59
                                     minDate.minute! -= 1
                                 }
-                                if minDate.minute! == -1  {
+                                if minDate.minute! < 0  {
                                     minDate.minute! = 59
                                     minDate.hour! -= 1
                                 }
-                                if minDate.hour! == -1 {
+                                if minDate.hour! < 0 {
                                     timer.invalidate()
                                 }
                                 let time = String(format: "%02d:", minDate.hour!)+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
                                 
                                 
-                                if minDate.month! != 0 { // 7개월 3일 12:03:02
+                                if minDate.month! > 0 { // 7개월 3일 12:03:02
                                     self.mapview.leaveDayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
                                     self.mapview.leaveTimeLabel.text  = time
                                 }
-                                else if minDate.day! != 0 {
+                                else if minDate.day! > 0 {
                                     self.mapview.leaveDayLabel.text = "\(minDate.day!)일"
                                     self.mapview.leaveTimeLabel.text  = time
                                 }
-                                else if minDate.hour! != -1 {
+                                else if minDate.hour! > 0 {
                                     self.mapview.leaveDayLabel.text = "내일 오픈 가능"
                                     self.mapview.leaveTimeLabel.text = time
                                 }
@@ -361,7 +363,6 @@ extension MapViewController {
         
     }
     
-    
     func hidden() {
         self.mapview.popup.snp.remakeConstraints {
             $0.height.width.equalTo(0)
@@ -392,13 +393,10 @@ extension MapViewController {
             showAlertMessage(title: "아직 오픈가능한 시간이아닙니다.", button: "확인")
             return
         }
-        print(distanceArray) // 거리의 모음
-
         guard !distanceArray.isEmpty else  {
             showAlertMessage(title: "해당 거리에서는 오픈할수없습니다.", button: "확인")
             return
         }
-        
   
         let vc = DetailViewController()
         transition(vc,transitionStyle: .push)

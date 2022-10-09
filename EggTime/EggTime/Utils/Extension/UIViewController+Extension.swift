@@ -18,7 +18,6 @@ extension UIViewController {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil} //Document 경로
         
         let fileURL = documentDirectory.appendingPathComponent(fileName) // 세부 경로. 이미지 저장할 위치
-//        print(fileURL)
         if FileManager.default.fileExists(atPath: fileURL.path) { //.path
             return UIImage(contentsOfFile: fileURL.path) //.path
         } else {

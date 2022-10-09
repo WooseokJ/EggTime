@@ -7,12 +7,10 @@
 
 import Foundation
 
-
 enum Setting: CaseIterable {
-    
     case content
     var list: [String] {
-        switch self{
+        switch self {
         case .content:
             return ["백업/복구하기","Open License","리뷰쓰기"]
         }

@@ -14,6 +14,7 @@ class BaseView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     let backGroundView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "BackgroundImage")
@@ -21,12 +22,12 @@ class BaseView: UIView {
     }()
     
     func configure() {
-//        backGroundView.addSubview(self)
+        self.addSubview(backGroundView)
     }
     func setConstrains() {
-//        backGroundView.snp.makeConstraints {
-//            $0.edges.equalTo(0)
-//        }
+        backGroundView.snp.makeConstraints {
+            $0.edges.equalTo(0)
+        }
     }
     
 }

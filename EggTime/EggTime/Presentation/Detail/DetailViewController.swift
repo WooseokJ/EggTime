@@ -26,23 +26,13 @@ class DetailViewController: BaseViewController {
         detailView.collectionview.dataSource = self
         detailView.collectionview.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(showAlertDeleteMessage))
-
         detailView.content.isEditable = false
         
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        let attributes = [
-            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: AllFont.font.name
-
-        ]
-        //2
-        navigationController?.navigationBar.titleTextAttributes = attributes
+        
     }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        tasks = repository.fetch()
-//    }
+
     
     
 

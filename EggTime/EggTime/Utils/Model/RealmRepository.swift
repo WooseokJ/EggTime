@@ -21,19 +21,17 @@ class RealmRepository: RealmRepositoryType {
     
     let localRealm = try! Realm()
     
-    
-    
-    
     func fetch() -> Results<EggTime> {
         return localRealm.objects(EggTime.self)
     }
     
     func deleteItem(item: Results<EggTime>) {
-//        removeImageFromDocument(fileName: "\(item.objectId).jpg") //도큐먼트의 이미지 삭제 10
         try! localRealm.write{
             localRealm.delete(item) // 레코드 삭제
         }
     }
+    lazy var tasks: Results<EggTime>! = self.fetch()
+
     
     // string -> date로 바꾸기
     func stringToDate(string: String) -> Date {

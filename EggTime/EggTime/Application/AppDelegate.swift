@@ -7,7 +7,7 @@
 import UIKit
 import NMapsMap
 import UserNotifications
-
+import FirebaseCore
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 //    UNUserNotificationCenterDelegate
@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NMFAuthManager.shared().clientId = "sjtk98rxyn"
         UNUserNotificationCenter.current().delegate = self // viewdidload...
+        FirebaseApp.configure()
         return true
     
     }

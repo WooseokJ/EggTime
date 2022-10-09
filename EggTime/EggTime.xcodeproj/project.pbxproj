@@ -7,12 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C0E29B7C200E44B4F9AEE4D /* Pods_EggTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */; };
+		18DB367728EEF4B1007014D9 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB367628EEF4B1007014D9 /* Timer.swift */; };
+		18DB367C28F004E4007014D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18DB367B28F004E4007014D9 /* GoogleService-Info.plist */; };
+		18DB368028F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 18DB367F28F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		18DB368228F00ADB007014D9 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18DB368128F00ADB007014D9 /* FirebaseCrashlytics */; };
+		18EA656528EDDBD500D9B74F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656428EDDBD500D9B74F /* Realm */; };
+		18EA656728EDDBD500D9B74F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656628EDDBD500D9B74F /* RealmSwift */; };
+		18EA656A28EDDC5700D9B74F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656928EDDC5700D9B74F /* SnapKit */; };
+		18EA656D28EDDC7100D9B74F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656C28EDDC7100D9B74F /* Zip */; };
+		1E5B9E9CD5B8527B45549BA5 /* Pods_EggTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */; };
 		E103002C28CEFE6B00922B54 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002B28CEFE6B00922B54 /* RealmRepository.swift */; };
 		E103002E28CEFED900922B54 /* EggTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002D28CEFED900922B54 /* EggTime.swift */; };
 		E1348D2D28E57F81003C3E9A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1348D2C28E57F81003C3E9A /* TabBarViewController.swift */; };
 		E15FE08628DC15EC00956CA9 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */; };
-		E15FE08728DC15EC00956CA9 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15FE08528DC15EC00956CA9 /* BaseCollectionViewCell.xib */; };
 		E16F4D8F28D19B6700CEC17A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D8E28D19B6700CEC17A /* MapViewController.swift */; };
 		E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9128D19B7F00CEC17A /* MapView.swift */; };
 		E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */; };
@@ -23,18 +30,9 @@
 		E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */; };
 		E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */; };
 		E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB428D1E2A300CEC17A /* UILabel.swift */; };
-		E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB728D1E5B700CEC17A /* PageViewController.swift */; };
-		E16F4DBA28D1E5C100CEC17A /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DB928D1E5C100CEC17A /* PageView.swift */; };
 		E17E65E328E2B492003D7FE1 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E65E228E2B492003D7FE1 /* Font.swift */; };
 		E183E22128E34F0A009DA548 /* DalseoHealingMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E183E22028E34F0A009DA548 /* DalseoHealingMedium.otf */; };
 		E189E0C628DCD9B000A07311 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189E0C528DCD9B000A07311 /* UITextView.swift */; };
-		E191978B28DB259B0056AB56 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = E191978A28DB259B0056AB56 /* Zip */; };
-		E191978E28DB25AB0056AB56 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E191978D28DB25AB0056AB56 /* SnapKit */; };
-		E1D2ACC628DF9378004E2A75 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = E1D2ACC528DF9378004E2A75 /* Realm */; };
-		E1D2ACC828DF9378004E2A75 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E1D2ACC728DF9378004E2A75 /* RealmSwift */; };
-		E1DC08AF28D7F5520032440A /* PageVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08AE28D7F5520032440A /* PageVC1.swift */; };
-		E1DC08B128D7F55D0032440A /* PageVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B028D7F55D0032440A /* PageVC2.swift */; };
-		E1DC08B328D7F5680032440A /* PageVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B228D7F5680032440A /* PageVC3.swift */; };
 		E1DC08B528D8437E0032440A /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B428D8437E0032440A /* Setting.swift */; };
 		E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156D928CDDD0500500841 /* DetailViewController.swift */; };
 		E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156DC28CDDD1400500841 /* DetailView.swift */; };
@@ -79,15 +77,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1387769608B1FD4E97E20182 /* Pods-EggTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.debug.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.debug.xcconfig"; sourceTree = "<group>"; };
-		3A4BF2660034AC03730AA34F /* Pods-EggTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.release.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.release.xcconfig"; sourceTree = "<group>"; };
-		BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18DB367628EEF4B1007014D9 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		18DB367B28F004E4007014D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E103002B28CEFE6B00922B54 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		E103002D28CEFED900922B54 /* EggTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggTime.swift; sourceTree = "<group>"; };
 		E1348D2C28E57F81003C3E9A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E15813CC28DB20F100E359CE /* EggTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
-		E15FE08528DC15EC00956CA9 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E16F4D8E28D19B6700CEC17A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E16F4D9128D19B7F00CEC17A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredViewController.swift; sourceTree = "<group>"; };
@@ -98,14 +95,9 @@
 		E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseTableViewCell.swift; sourceTree = "<group>"; };
 		E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicense.swift; sourceTree = "<group>"; };
 		E16F4DB428D1E2A300CEC17A /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		E16F4DB728D1E5B700CEC17A /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		E16F4DB928D1E5C100CEC17A /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		E17E65E228E2B492003D7FE1 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		E183E22028E34F0A009DA548 /* DalseoHealingMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DalseoHealingMedium.otf; sourceTree = "<group>"; };
 		E189E0C528DCD9B000A07311 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
-		E1DC08AE28D7F5520032440A /* PageVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC1.swift; sourceTree = "<group>"; };
-		E1DC08B028D7F55D0032440A /* PageVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC2.swift; sourceTree = "<group>"; };
-		E1DC08B228D7F5680032440A /* PageVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC3.swift; sourceTree = "<group>"; };
 		E1DC08B428D8437E0032440A /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		E1F156D928CDDD0500500841 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E1F156DC28CDDD1400500841 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -135,6 +127,8 @@
 		E1FCB0EF28CDA56B00C07AA3 /* identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = identifier.swift; sourceTree = "<group>"; };
 		E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
 		E1FCB0FF28CDB20200C07AA3 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		E76A899AAE1529DAECB9B501 /* Pods-EggTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.debug.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.debug.xcconfig"; sourceTree = "<group>"; };
+		F33613FBE49A3BC3654BF6FE /* Pods-EggTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.release.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,11 +136,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1D2ACC828DF9378004E2A75 /* RealmSwift in Frameworks */,
-				E191978B28DB259B0056AB56 /* Zip in Frameworks */,
-				5C0E29B7C200E44B4F9AEE4D /* Pods_EggTime.framework in Frameworks */,
-				E191978E28DB25AB0056AB56 /* SnapKit in Frameworks */,
-				E1D2ACC628DF9378004E2A75 /* Realm in Frameworks */,
+				18EA656728EDDBD500D9B74F /* RealmSwift in Frameworks */,
+				18DB368028F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				18EA656A28EDDC5700D9B74F /* SnapKit in Frameworks */,
+				18DB368228F00ADB007014D9 /* FirebaseCrashlytics in Frameworks */,
+				18EA656528EDDBD500D9B74F /* Realm in Frameworks */,
+				1E5B9E9CD5B8527B45549BA5 /* Pods_EggTime.framework in Frameworks */,
+				18EA656D28EDDC7100D9B74F /* Zip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,16 +152,16 @@
 		1FAB8394D18E3B7A8E893708 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1387769608B1FD4E97E20182 /* Pods-EggTime.debug.xcconfig */,
-				3A4BF2660034AC03730AA34F /* Pods-EggTime.release.xcconfig */,
+				E76A899AAE1529DAECB9B501 /* Pods-EggTime.debug.xcconfig */,
+				F33613FBE49A3BC3654BF6FE /* Pods-EggTime.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		21C107921BAE6ECAC45B62BB /* Frameworks */ = {
+		6E5A4351D70BCAD2CA44DA60 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BC1C32D9D6BB8D454EA2438E /* Pods_EggTime.framework */,
+				3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -236,28 +232,9 @@
 				E1DC08B428D8437E0032440A /* Setting.swift */,
 				E1F156EA28CE42FF00500841 /* Picker.swift */,
 				E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */,
+				18DB367628EEF4B1007014D9 /* Timer.swift */,
 			);
 			path = Enum;
-			sourceTree = "<group>";
-		};
-		E16F4DB628D1E58A00CEC17A /* PageViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E16F4DB728D1E5B700CEC17A /* PageViewController.swift */,
-				E16F4DBB28D1E5C400CEC17A /* View */,
-				E1DC08AE28D7F5520032440A /* PageVC1.swift */,
-				E1DC08B028D7F55D0032440A /* PageVC2.swift */,
-				E1DC08B228D7F5680032440A /* PageVC3.swift */,
-			);
-			path = PageViewController;
-			sourceTree = "<group>";
-		};
-		E16F4DBB28D1E5C400CEC17A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E16F4DB928D1E5C100CEC17A /* PageView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		E1F156D828CDDCF400500841 /* Detail */ = {
@@ -302,8 +279,8 @@
 				E183E22028E34F0A009DA548 /* DalseoHealingMedium.otf */,
 				E1FCB0B128CDA0F600C07AA3 /* EggTime */,
 				1FAB8394D18E3B7A8E893708 /* Pods */,
-				21C107921BAE6ECAC45B62BB /* Frameworks */,
 				E15813CC28DB20F100E359CE /* EggTime.app */,
+				6E5A4351D70BCAD2CA44DA60 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -315,6 +292,7 @@
 				E1FCB0C628CDA11B00C07AA3 /* Application */,
 				E1FCB0C728CDA14300C07AA3 /* Resource */,
 				E1FCB0C028CDA0FB00C07AA3 /* Info.plist */,
+				18DB367B28F004E4007014D9 /* GoogleService-Info.plist */,
 			);
 			path = EggTime;
 			sourceTree = "<group>";
@@ -342,7 +320,6 @@
 			isa = PBXGroup;
 			children = (
 				E1348D2828E57E2E003C3E9A /* TapBar */,
-				E16F4DB628D1E58A00CEC17A /* PageViewController */,
 				E16F4DA328D1CD1000CEC17A /* OpenLicense */,
 				E16F4D9528D1ABB900CEC17A /* BackupStored */,
 				E16F4D8D28D19B4600CEC17A /* Map */,
@@ -362,7 +339,6 @@
 				E1FCB0EE28CDA55C00C07AA3 /* identifier */,
 				E1FCB0ED28CDA55600C07AA3 /* Extension */,
 				E1FCB0EC28CDA55000C07AA3 /* Model */,
-				E1FCB0EB28CDA44A00C07AA3 /* Network */,
 				E1FCB0DF28CDA2F400C07AA3 /* Custom */,
 				E1FCB0DE28CDA2F000C07AA3 /* Base */,
 			);
@@ -429,7 +405,6 @@
 				E1FCB0E528CDA34500C07AA3 /* BaseViewController.swift */,
 				E1FCB0E728CDA3A000C07AA3 /* BaseTableViewCell.swift */,
 				E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */,
-				E15FE08528DC15EC00956CA9 /* BaseCollectionViewCell.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -443,13 +418,6 @@
 				E17E65E228E2B492003D7FE1 /* Font.swift */,
 			);
 			path = Custom;
-			sourceTree = "<group>";
-		};
-		E1FCB0EB28CDA44A00C07AA3 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		E1FCB0EC28CDA55000C07AA3 /* Model */ = {
@@ -486,12 +454,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1FCB0C328CDA0FB00C07AA3 /* Build configuration list for PBXNativeTarget "EggTime" */;
 			buildPhases = (
-				EE21D417FBE24D4C4D0253AB /* [CP] Check Pods Manifest.lock */,
+				0F1BFABCC2EF891B6EBC01D5 /* [CP] Check Pods Manifest.lock */,
 				E1FCB0AB28CDA0F600C07AA3 /* Sources */,
 				E1FCB0AC28CDA0F600C07AA3 /* Frameworks */,
 				E1FCB0AD28CDA0F600C07AA3 /* Resources */,
-				475D11CB728A79A2B89D41AA /* [CP] Embed Pods Frameworks */,
 				E142944828D0734600B297D3 /* Embed Frameworks */,
+				3D6DA6DDE814597BF7921181 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -499,10 +467,12 @@
 			);
 			name = EggTime;
 			packageProductDependencies = (
-				E191978A28DB259B0056AB56 /* Zip */,
-				E191978D28DB25AB0056AB56 /* SnapKit */,
-				E1D2ACC528DF9378004E2A75 /* Realm */,
-				E1D2ACC728DF9378004E2A75 /* RealmSwift */,
+				18EA656428EDDBD500D9B74F /* Realm */,
+				18EA656628EDDBD500D9B74F /* RealmSwift */,
+				18EA656928EDDC5700D9B74F /* SnapKit */,
+				18EA656C28EDDC7100D9B74F /* Zip */,
+				18DB367F28F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				18DB368128F00ADB007014D9 /* FirebaseCrashlytics */,
 			);
 			productName = EggTime;
 			productReference = E15813CC28DB20F100E359CE /* EggTime.app */;
@@ -533,9 +503,10 @@
 			);
 			mainGroup = E1FCB0A628CDA0F600C07AA3;
 			packageReferences = (
-				E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */,
-				E191978C28DB25AB0056AB56 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				E1D2ACC428DF9378004E2A75 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */,
+				18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */,
+				18DB367E28F00ADA007014D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E1FCB0A628CDA0F600C07AA3;
 			projectDirPath = "";
@@ -552,7 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FCB0BF28CDA0FB00C07AA3 /* LaunchScreen.storyboard in Resources */,
-				E15FE08728DC15EC00956CA9 /* BaseCollectionViewCell.xib in Resources */,
+				18DB367C28F004E4007014D9 /* GoogleService-Info.plist in Resources */,
 				E1FCB0BC28CDA0FB00C07AA3 /* Assets.xcassets in Resources */,
 				E1FCB0BA28CDA0F600C07AA3 /* Main.storyboard in Resources */,
 				E183E22128E34F0A009DA548 /* DalseoHealingMedium.otf in Resources */,
@@ -562,24 +533,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		475D11CB728A79A2B89D41AA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EggTime/Pods-EggTime-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EggTime/Pods-EggTime-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EggTime/Pods-EggTime-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EE21D417FBE24D4C4D0253AB /* [CP] Check Pods Manifest.lock */ = {
+		0F1BFABCC2EF891B6EBC01D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -601,6 +555,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3D6DA6DDE814597BF7921181 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EggTime/Pods-EggTime-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EggTime/Pods-EggTime-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EggTime/Pods-EggTime-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -619,21 +590,16 @@
 				E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */,
 				E16F4D9C28D1B26C00CEC17A /* UIViewController+Extension.swift in Sources */,
 				E1F156DF28CDF16400500841 /* ImageCollectionViewCell.swift in Sources */,
-				E16F4DBA28D1E5C100CEC17A /* PageView.swift in Sources */,
 				E1FCB0D928CDA2B600C07AA3 /* ListView.swift in Sources */,
 				E1FCB0E228CDA32300C07AA3 /* Color.swift in Sources */,
 				E1FCB0E828CDA3A000C07AA3 /* BaseTableViewCell.swift in Sources */,
 				E1FCB10028CDB20200C07AA3 /* View.swift in Sources */,
-				E1DC08B128D7F55D0032440A /* PageVC2.swift in Sources */,
-				E1DC08B328D7F5680032440A /* PageVC3.swift in Sources */,
-				E16F4DB828D1E5B700CEC17A /* PageViewController.swift in Sources */,
 				E16F4DB528D1E2A300CEC17A /* UILabel.swift in Sources */,
 				E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */,
 				E1FCB0E428CDA33900C07AA3 /* BaseView.swift in Sources */,
 				E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */,
 				E1348D2D28E57F81003C3E9A /* TabBarViewController.swift in Sources */,
 				E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */,
-				E1DC08AF28D7F5520032440A /* PageVC1.swift in Sources */,
 				E1FCB0B728CDA0F600C07AA3 /* MainViewController.swift in Sources */,
 				E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */,
 				E16F4DA528D1CD2C00CEC17A /* OpenLicenseViewController.swift in Sources */,
@@ -643,6 +609,7 @@
 				E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */,
 				E1FCB0D728CDA2A500C07AA3 /* SettingTableViewCell.swift in Sources */,
 				E1F156E528CDF7E500500841 /* WriteView.swift in Sources */,
+				18DB367728EEF4B1007014D9 /* Timer.swift in Sources */,
 				E16F4D9A28D1ABE200CEC17A /* BackupStoredView.swift in Sources */,
 				E103002E28CEFED900922B54 /* EggTime.swift in Sources */,
 				E1FCB0B528CDA0F600C07AA3 /* SceneDelegate.swift in Sources */,
@@ -715,6 +682,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -775,6 +744,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -796,20 +767,23 @@
 		};
 		E1FCB0C428CDA0FB00C07AA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1387769608B1FD4E97E20182 /* Pods-EggTime.debug.xcconfig */;
+			baseConfigurationReference = E76A899AAE1529DAECB9B501 /* Pods-EggTime.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5MHUF29PV8;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EggTime/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 허용해주세용";
+				INFOPLIST_KEY_CFBundleDisplayName = EggTime;
+				INFOPLIST_KEY_NSCameraUsageDescription = "이미지 등록 및 사용을 위해 카메라 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 열때마다 위치주소 가져오기 허용, 네이버 지도에서 마커와 현위치를 표시하기위해 위치정보가 사용됩니다.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 앨범 가져오게 해주세용";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "이미지 등록 및 사용을 위해 앨범 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -832,20 +806,23 @@
 		};
 		E1FCB0C528CDA0FB00C07AA3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A4BF2660034AC03730AA34F /* Pods-EggTime.release.xcconfig */;
+			baseConfigurationReference = F33613FBE49A3BC3654BF6FE /* Pods-EggTime.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5MHUF29PV8;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EggTime/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용을 허용해주세용";
+				INFOPLIST_KEY_CFBundleDisplayName = EggTime;
+				INFOPLIST_KEY_NSCameraUsageDescription = "이미지 등록 및 사용을 위해 카메라 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 열때마다 위치주소 가져오기 허용, 네이버 지도에서 마커와 현위치를 표시하기위해 위치정보가 사용됩니다.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 앨범 가져오게 해주세용";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "이미지 등록 및 사용을 위해 앨범 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -890,15 +867,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */ = {
+		18DB367E28F00ADA007014D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 9.0.0;
 			};
 		};
-		E191978C28DB25AB0056AB56 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.30.0;
+			};
+		};
+		18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -906,36 +891,46 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		E1D2ACC428DF9378004E2A75 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E191978A28DB259B0056AB56 /* Zip */ = {
+		18DB367F28F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E191978928DB259B0056AB56 /* XCRemoteSwiftPackageReference "Zip" */;
-			productName = Zip;
+			package = 18DB367E28F00ADA007014D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
-		E191978D28DB25AB0056AB56 /* SnapKit */ = {
+		18DB368128F00ADB007014D9 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E191978C28DB25AB0056AB56 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
+			package = 18DB367E28F00ADA007014D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
-		E1D2ACC528DF9378004E2A75 /* Realm */ = {
+		18EA656428EDDBD500D9B74F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E1D2ACC428DF9378004E2A75 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		E1D2ACC728DF9378004E2A75 /* RealmSwift */ = {
+		18EA656628EDDBD500D9B74F /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E1D2ACC428DF9378004E2A75 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		18EA656928EDDC5700D9B74F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		18EA656C28EDDC7100D9B74F /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
