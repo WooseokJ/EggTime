@@ -23,12 +23,7 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
     var deleteObjectid: ObjectId?
     
     override func viewWillAppear(_ animated: Bool) {
-        let attributes = [
-            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: AllFont.font.name
-        ]
-        navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
-        
+
         markers.forEach {
             $0.mapView = nil
         }

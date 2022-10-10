@@ -9,6 +9,8 @@ class ListView: BaseView {
     //MARK: 연결
     override init(frame: CGRect) {
         super.init(frame: frame)
+        super.configure()
+        super.setConstrains()
         configure()
         setConstrains()
     }
@@ -42,8 +44,6 @@ class ListView: BaseView {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.reuseIdentifier)
-        cv.layer.cornerRadius = 10
-        cv.clipsToBounds = true
         return cv
     }()
     
@@ -51,7 +51,7 @@ class ListView: BaseView {
     
     //MARK: 뷰등록
     override func configure() {
-        [backGroundView,contentlabel,collectionview].forEach {
+        [contentlabel,collectionview].forEach {
             self.addSubview($0)
         }
     }
@@ -59,9 +59,6 @@ class ListView: BaseView {
     
     //MARK: 위치
     override func setConstrains() {
-        backGroundView.snp.makeConstraints {
-            $0.edges.equalTo(0)
-        }
         
         collectionview.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
@@ -75,14 +72,13 @@ class ListView: BaseView {
 extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tasks.count
+        return repository.tasks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.reuseIdentifier, for: indexPath) as? ListCollectionViewCell else {
             return UICollectionViewCell()
         }
-
         cell.dateLabel.text = repository.dateToString(date: tasks[indexPath.row].openDate)
         cell.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
         cell.layer.cornerRadius = 10

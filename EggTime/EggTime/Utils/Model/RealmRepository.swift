@@ -24,12 +24,16 @@ class RealmRepository: RealmRepositoryType {
     func fetch() -> Results<EggTime> {
         return localRealm.objects(EggTime.self)
     }
+    func nearTimeFetch() -> Results<EggTime> {
+        return localRealm.objects(EggTime.self).filter("openDate >= %@", Date() ).sorted(byKeyPath: "openDate", ascending: true)
+    }
     
     func deleteItem(item: Results<EggTime>) {
         try! localRealm.write{
             localRealm.delete(item) // 레코드 삭제
         }
     }
+    
     lazy var tasks: Results<EggTime>! = self.fetch()
 
     

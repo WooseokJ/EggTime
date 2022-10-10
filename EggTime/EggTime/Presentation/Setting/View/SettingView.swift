@@ -9,6 +9,8 @@ class SettingView: BaseView {
     //MARK: 연결
     override init(frame: CGRect) {
         super.init(frame: frame)
+        super.configure()
+        super.setConstrains()
         configure()
         setConstrains()
     }
@@ -28,7 +30,7 @@ class SettingView: BaseView {
     //MARK: 뷰등록
     
     override func configure() {
-        [backGroundView,tableView].forEach {
+        [tableView].forEach {
             self.addSubview($0)
         }
     }
@@ -36,10 +38,6 @@ class SettingView: BaseView {
     
     //MARK: 위치
     override func setConstrains() {
-        backGroundView.snp.makeConstraints {
-            $0.edges.equalTo(0)
-        }
-        
         tableView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.leading.trailing.equalTo(self.safeAreaLayoutGuide)
@@ -64,33 +62,22 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.content.text = Setting.allCases[indexPath.section].list[indexPath.row]
-        
-
         cell.backgroundColor = .clear
-        cell.selectionStyle = .none
+        cell.selectionStyle = .none // 버튼클릭시 색상변화 x
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //나중에수정
-        
-        //MARK: 백업복구기능
-        if (indexPath.row == 0) {
+        switch indexPath.row {
+        case 0: // 백업하기
             let vc = BackupStoredViewController()
             transition(vc,transitionStyle: .push)
-        }
-        
-        //MARK: 오픈소스
-        if (indexPath.row == 1) {
+        case 1: //오픈라인센스
             let vc = OpenLicenseViewController()
             transition(vc,transitionStyle: .push)
-        }
-        
-        
-        //MARK: 리뷰쓰기
-        if (indexPath.row == 2)  {
-            if let appstoreUrl = URL(string: "https://apps.apple.com/app/idwooseokbird.dev@gmail.com") {
+        case 2: //리뷰쓰기
+            if let appstoreUrl = URL(string: "https://apps.apple.com/app/id\(1645004650)") {
                 var urlComp = URLComponents(url: appstoreUrl, resolvingAgainstBaseURL: false)
                 urlComp?.queryItems = [
                     URLQueryItem(name: "action", value: "write-review")
@@ -100,10 +87,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 UIApplication.shared.open(reviewUrl, options: [:], completionHandler: nil)
             }
-            
+        default:
+            break
         }
-        
     }
     
+    
 }
-

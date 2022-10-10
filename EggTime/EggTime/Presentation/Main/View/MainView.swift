@@ -10,6 +10,8 @@ class MainView: BaseView {
     //MARK: 연결
     override init(frame: CGRect) {
         super.init(frame: frame)
+        super.configure()
+        super.setConstrains()
         configure()
         setConstrains()
     }
@@ -29,6 +31,7 @@ class MainView: BaseView {
         label.numberOfLines = 0
         return label
     }()
+    
     
     
     let titleLabel: UILabel = {

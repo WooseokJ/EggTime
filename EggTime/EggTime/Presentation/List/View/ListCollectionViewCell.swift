@@ -53,8 +53,6 @@ class ListCollectionViewCell: BaseCollectionViewCell {
     
     //MARK: 컬렉션뷰 안의 위치
     override func setConstrains() {
-        
-
 
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(5)
@@ -67,7 +65,6 @@ class ListCollectionViewCell: BaseCollectionViewCell {
             $0.bottom.equalTo(dateLabel.snp.top).offset(-2)
             $0.leading.trailing.equalTo(0)
         }
-        
         
         imageView.snp.makeConstraints {
             $0.top.equalTo(30)

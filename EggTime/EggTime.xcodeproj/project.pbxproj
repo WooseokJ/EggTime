@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18DB367728EEF4B1007014D9 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DB367628EEF4B1007014D9 /* Timer.swift */; };
 		18DB367C28F004E4007014D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18DB367B28F004E4007014D9 /* GoogleService-Info.plist */; };
 		18DB368028F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 18DB367F28F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		18DB368228F00ADB007014D9 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18DB368128F00ADB007014D9 /* FirebaseCrashlytics */; };
@@ -77,7 +76,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		18DB367628EEF4B1007014D9 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		18DB367B28F004E4007014D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E103002B28CEFE6B00922B54 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				E1DC08B428D8437E0032440A /* Setting.swift */,
 				E1F156EA28CE42FF00500841 /* Picker.swift */,
 				E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */,
-				18DB367628EEF4B1007014D9 /* Timer.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -609,7 +606,6 @@
 				E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */,
 				E1FCB0D728CDA2A500C07AA3 /* SettingTableViewCell.swift in Sources */,
 				E1F156E528CDF7E500500841 /* WriteView.swift in Sources */,
-				18DB367728EEF4B1007014D9 /* Timer.swift in Sources */,
 				E16F4D9A28D1ABE200CEC17A /* BackupStoredView.swift in Sources */,
 				E103002E28CEFED900922B54 /* EggTime.swift in Sources */,
 				E1FCB0B528CDA0F600C07AA3 /* SceneDelegate.swift in Sources */,

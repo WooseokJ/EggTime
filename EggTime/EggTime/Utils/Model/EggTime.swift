@@ -13,16 +13,12 @@ class EggTime: Object {
     @Persisted var regDate: Date //등록일
     @Persisted var openDate: Date //오픈일
     @Persisted var content: String //내용
-    @Persisted var latitude: Double?
-    @Persisted var longitude: Double?
-    
-    
-    @Persisted var imageList = List<String>()
-    
-    
-    
+    @Persisted var latitude: Double? //위도
+    @Persisted var longitude: Double? //경도
+    @Persisted var imageList = List<String>() //이미지 이름 리스트
     @Persisted(primaryKey: true)  var objectId: ObjectId // 객체 id
     
+    @discardableResult
     convenience init(title: String,regDate: Date ,openDate: Date, content: String,latitude: Double, longitude: Double, imageStringArray: [String]) {
         self.init()
         self.title = title
@@ -32,7 +28,7 @@ class EggTime: Object {
         self.latitude = latitude
         self.longitude = longitude
         
-        imageStringArray.map {
+        imageStringArray.forEach {
             self.imageList.append($0)
         }
     }
