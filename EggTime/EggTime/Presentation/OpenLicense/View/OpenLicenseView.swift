@@ -13,6 +13,8 @@ class OpenLicenseView: BaseView {
     //MARK: 연결
     override init(frame: CGRect) {
         super.init(frame: frame)
+        super.configure()
+        super.setConstrains()
         configure()
         setConstrains()
     }
@@ -27,7 +29,7 @@ class OpenLicenseView: BaseView {
         let tableview = UITableView()
         tableview.register(OpenLicenseTableViewCell.self, forCellReuseIdentifier: OpenLicenseTableViewCell.reuseIdentifier)
         tableview.rowHeight = 60
-        tableview.backgroundColor = UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 0)
+        tableview.backgroundColor = .clear
         return tableview
     }()
     
@@ -59,11 +61,10 @@ extension OpenLicenseViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OpenLicenseTableViewCell.reuseIdentifier, for: indexPath) as? OpenLicenseTableViewCell else {return UITableViewCell()}
-        print(indexPath.section, indexPath.row)
         cell.content.text = OpenLicense.allCases[indexPath.section].list[indexPath.row]
         // 테이블뷰 선택 색상없애기
         cell.selectionStyle = .none
-        cell.backgroundColor = UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 0)
+        cell.backgroundColor = .clear
         return cell
     }
     

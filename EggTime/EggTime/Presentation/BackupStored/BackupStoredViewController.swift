@@ -33,28 +33,16 @@ class BackupStoredViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "백업/복구하기"
-        let attributes = [
-            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: AllFont.font.name
-        ]
-        //2
-        navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
-
         backupStoredView.backupButton.addTarget(self, action: #selector(backupButtonClicked), for: .touchUpInside)
         backupStoredView.storedButton.addTarget(self, action: #selector(storedButtonClicked), for: .touchUpInside)
     }
+    //MARK: 백업버튼클릭시
     @objc func backupButtonClicked() {
-        print(#function)
         backupButtonClickedStart()
     }
-    
-    @objc func storedButtonClicked() {
-        print(#function)
-        restoreButtonClicked()
-    }
+
 
     //MARK: 백업
-
     func backupButtonClickedStart() {
         
         urlPaths.removeAll()
@@ -73,7 +61,6 @@ class BackupStoredViewController: BaseViewController {
         let backUpFileURL = URL(string: realFile.path)! //realFile와 같은경로라서 backUpFileURL과 동일
         urlPaths.append(backUpFileURL) //
         
-        // 백업파일압축: URL   (https://github.com/marmelroy/Zip.git)
         do {
             let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: saveFileName) // Zip
             print("Archive location: \(zipFilePath)")
@@ -106,10 +93,14 @@ class BackupStoredViewController: BaseViewController {
         let vc = UIActivityViewController(activityItems: [backupFileURL], applicationActivities: [] ) //activityItems: 어떤거보낼래?
         self.present(vc,animated: true)
 
-        }
+    }
+    
+    //MARK: 복구버튼클릭시
+    @objc func storedButtonClicked() {
+        restoreButtonClicked()
+    }
     
     //MARK: 복구
-    
     func restoreButtonClicked() {
         if #available(iOS 14.0, *) {
             let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.archive], asCopy: true)

@@ -15,6 +15,8 @@ class MapView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        super.configure()
+        super.setConstrains()
         configure()
         setConstrains()
     }
@@ -118,16 +120,29 @@ class MapView: BaseView {
         image.image = UIImage(named: "BackgroundImage")
         return image
     }()
+    
+    lazy var naverMapView: NMFNaverMapView = {
+        let naverMapview = NMFNaverMapView(frame: self.frame)
+        naverMapview.showLocationButton = true
+        naverMapview.mapView.zoomLevel = 10
+        naverMapview.mapView.positionMode = .direction
+        return naverMapview
+    }()
 
  
     override func configure() {
-        self.addSubview(backGroundView)
+        [naverMapView].forEach{
+            self.addSubview($0)
+        }
+        
+
     }
     
     
     override func setConstrains() {
-        backGroundView.snp.makeConstraints {
-            $0.edges.equalTo(0)
+        naverMapView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalTo(0)
         }
     }
     

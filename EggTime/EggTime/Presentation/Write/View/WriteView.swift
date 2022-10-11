@@ -112,8 +112,6 @@ class WriteView: BaseView {
         let label = UILabel()
         label.text = "캡슐에 담을 내용"
         label.textColor = AllColor.textColor.color
-//        label.backgroundColor  = .red
-
         return label
     }()
     //

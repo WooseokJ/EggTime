@@ -18,7 +18,6 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     let writeView = WriteView()
     
     override func loadView() {
-        
         super.view = writeView
     }
     
@@ -26,28 +25,24 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     
     var imageArrayString: [String] = []
     var imageArrayUIImage: [UIImage] = []
-    var tag: Int?
     
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     
     let writeViewCell = WriteCollectionViewCell()
     
-    var tasks: Results<EggTime>!
-    
+    var tag: Int?
     
     
     override func viewWillAppear(_ animated: Bool) {
         picker.delegate = self
-        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackgroundImage")
-        super.view = writeView
-        
         print(repository.localRealm.configuration.fileURL!)
         
     }
     
     
     lazy var pickerSelect: [String] = Picker.allCases.map{return $0.pickerLisk[0]}
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +52,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         navigationItem.title = "타임 캡슐 묻기"
         
         let right = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
-        right.setTitleTextAttributes([NSAttributedString.Key.font : AllFont.font.name], for: .normal)
+        right.setTitleTextAttributes([NSAttributedString.Key.font : AllFont.font.name ], for: .normal)
         
         navigationItem.rightBarButtonItem = right
    
@@ -66,9 +61,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         writeView.collectionview.delegate = self
         writeView.collectionview.dataSource = self
         configToolbar()
-        
- 
-        
+
         writeView.titleInput.delegate = self
         writeView.opendateInput.delegate = self
         
@@ -79,9 +72,6 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
-   
-    
 }
 
 extension WriteViewController {
@@ -158,11 +148,9 @@ extension WriteViewController {
         
         //MARK: 거리 계산하는 매소드
         
-        
         let task = EggTime(title: writeView.titleInput.text!,
                            regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""),
                            openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  ,
-                           
                            content: writeView.writeTextView.text,
                            latitude: UserDefaults.standard.double(forKey: "lat") ,
                            longitude: UserDefaults.standard.double(forKey: "lng") ,
@@ -222,15 +210,11 @@ extension WriteViewController {
 
 
 
-//UIImagePickerControllerDelegate = 이미지를 선택하고 카메라를 찍었을 때 다양한 동작을 도와줍니다.
-//UINavigationControllerDelegate = 앨범 사진을 선택했을 때, 화면 전환을 네비게이션으로 이동합니다.
+
 
 extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    //UIImagePickerController4 : 사진성택하거나 카메라 촬영직후
-    //카메라나 앨범등 PickerController가 사용되고 이미지 촬영을 했을 때 발동 된다.
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         
         let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
         
@@ -267,9 +251,6 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
                 
                 let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as? NSURL
                 let imageName=imageUrl?.lastPathComponent//파일이름
-                let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-                let photoURL          = NSURL(fileURLWithPath: documentDirectory)
-                //                let localPath         = photoURL.appendingPathComponent(imageName!)//이미지 파일경로
                 
                 if imageArrayUIImage.count == tag! {
                     imageArrayString.append(imageName!)

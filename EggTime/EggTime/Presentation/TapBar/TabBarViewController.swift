@@ -16,7 +16,7 @@ final class TabBarController: UITabBarController {
         firstVC.tabBarItem.image = UIImage(systemName: "timer")
         
         let secondVC =  UINavigationController(rootViewController: MapViewController())
-        secondVC.view.backgroundColor = .blue
+        secondVC.view.backgroundColor = .clear
         secondVC.tabBarItem.selectedImage = UIImage(systemName: "map.circle.fill")
         secondVC.tabBarItem.title = "map"
         secondVC.tabBarItem.image = UIImage(systemName: "map.circle")

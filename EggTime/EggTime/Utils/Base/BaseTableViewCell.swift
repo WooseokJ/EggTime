@@ -13,12 +13,6 @@ class BaseTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let backGroundView: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "BackgroundImage")
-        return image
-    }()
-    
     func configure() {}
     func setConstrains() {}
     

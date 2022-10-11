@@ -13,7 +13,9 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.tintColor = .white // 모든 네비바 글자및아이콘 컬러
+        // 모든 네비바 글자및아이콘 컬러
+        navigationController?.navigationBar.tintColor = .white
+        
         // 네비게이션 타이틀 폰트및 색상 적용
         let attributes = [
             NSAttributedString.Key.foregroundColor: AllColor.textColor.color,

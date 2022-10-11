@@ -5,7 +5,7 @@ import CoreLocation
 import SnapKit
 import RealmSwift
 
-class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocationManagerDelegate, NMFMapViewOptionDelegate {
+class MapViewController: BaseViewController,NMFMapViewCameraDelegate, NMFMapViewOptionDelegate {
     
     let mapview = MapView()
     
@@ -23,11 +23,11 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
     var deleteObjectid: ObjectId?
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         markers.forEach {
             $0.mapView = nil
         }
-    
+        
         markers.removeAll()
         
         alldistanceArray.forEach {
@@ -38,11 +38,7 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
         
         if CLLocationManager.locationServicesEnabled() {
             print("위치 서비스 On 상태")
-            
             locationManager.startUpdatingLocation()
-            
-            
-            
         } else {
             print("위치 서비스 Off 상태")
         }
@@ -50,7 +46,6 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
         setpin()
         hidden()
         
-        navigationItem.title = "타임 캡슐 묻은 장소"
         navigationItem.backButtonTitle = " "
         
     }
@@ -61,49 +56,30 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, CLLocation
     var distanceArray: [CLLocationDistance] = []
     var alldistanceArray: [CLLocationDistance] = []
     var markers = [NMFMarker]()
-    let infoWindow = NMFInfoWindow()
-    let dataSource = NMFInfoWindowDefaultTextSource.data()
-    let sdkBundle = Bundle.naverMapFramework()
     
-    lazy var naverMapView = NMFNaverMapView(frame: view.frame) // UIView
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
         
-     
+        
+        navigationItem.title = "타임 캡슐 묻은 장소"
+        
+        
         
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
+        mapview.naverMapView.mapView.addCameraDelegate(delegate: self)
         
-        //현 위치로 카메라 이동
+        //        naverMapView.mapView.addOptionDelegate(delegate: self)
         
-        naverMapView.showLocationButton = true
-        naverMapView.showCompass = true
-        naverMapView.showScaleBar = true
-        naverMapView.showZoomControls = true
-        naverMapView.showIndoorLevelPicker = true
-        naverMapView.showsLargeContentViewer = true
         
-        naverMapView.mapView.zoomLevel = 10
-        naverMapView.mapView.positionMode = .direction
-        
-        naverMapView.mapView.addCameraDelegate(delegate: self)
-        naverMapView.mapView.addOptionDelegate(delegate: self)
-        naverMapView.mapView.isIndoorMapEnabled = true //실내지도
-        
-        view.addSubview(naverMapView)
-        
-        naverMapView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalTo(0)
-        }
         
     }
 }
 
-extension MapViewController {
+extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(#function)
@@ -125,7 +101,7 @@ extension MapViewController {
             }
             circle.center = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
             circle.radius = 100
-            circle.mapView = naverMapView.mapView
+            circle.mapView = mapview.naverMapView.mapView
             circle.outlineWidth = 1
             circle.outlineColor = UIColor.systemBlue
             circle.fillColor = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.1)
@@ -133,9 +109,8 @@ extension MapViewController {
             
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: location.coordinate.latitude , lng: location.coordinate.longitude ))
             cameraUpdate.animation = .easeIn
-            naverMapView.mapView.moveCamera(cameraUpdate)
+            mapview.naverMapView.mapView.moveCamera(cameraUpdate)
             
-            print(distanceArray) // 거리의 모음
             UserDefaults.standard.set(location.coordinate.latitude, forKey: "lat")
             UserDefaults.standard.set(location.coordinate.longitude, forKey: "lng")
         }
@@ -147,17 +122,16 @@ extension MapViewController {
     // 탭할떄
     func setpin() {
         
-        tasks = repository.fetch()
- 
+        
         locationManager.startUpdatingLocation()
-
+        tasks = repository.fetch()
         
         if !tasks.isEmpty {
             tasks.enumerated().forEach { [self] index,task in
                 let marker = NMFMarker(position: NMGLatLng(lat: task.latitude!, lng: task.longitude!))
                 markers.append(marker)
                 
-                markers[index].mapView = naverMapView.mapView
+                markers[index].mapView = mapview.naverMapView.mapView
                 if markers[index].infoWindow == nil {
                     
                     // 현재 마커에 정보 창이 열려있지 않을 경우 엶
@@ -166,7 +140,7 @@ extension MapViewController {
                     // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
                     markers[index].infoWindow?.close()
                 }
-                               
+                
                 markers[index].touchHandler = { [self] (overlay) in
                     
                     if let marker = overlay as? NMFMarker {
@@ -221,7 +195,7 @@ extension MapViewController {
                             self.mapview.leaveDayLabel.text = "내일 오픈 가능"
                             self.mapview.leaveTimeLabel.text = time
                         }
-
+                        
                         
                         
                         if date >= task.openDate && !self.distanceArray.isEmpty{
@@ -300,8 +274,8 @@ extension MapViewController {
                     }
                     return true
                 }
-  
-            } 
+                
+            }
         }
     }
     
@@ -392,14 +366,14 @@ extension MapViewController {
             showAlertMessage(title: "해당 거리에서는 오픈할수없습니다.", button: "확인")
             return
         }
-  
+        
         let vc = DetailViewController()
         transition(vc,transitionStyle: .push)
         
         vc.navigationItem.backBarButtonItem?.tintColor = AllColor.textColor.color
         vc.navigationItem.title = "자세히 보기"
         vc.objectid = detailTask?.objectId
-
-
+        
+        
     }
 }
