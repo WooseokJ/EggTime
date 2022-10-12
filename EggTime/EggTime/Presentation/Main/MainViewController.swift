@@ -39,7 +39,6 @@ final class MainViewController: BaseViewController {
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 뒤로가기 버튼 생성

@@ -36,7 +36,7 @@ class WriteView: BaseView {
     lazy var titleInput: UITextField = {
         let textField = UITextField()
         textField.textColor = .black
-        textField.font = AllFont.font.name
+//        textField.font = AllFont.font.name
         textField.placeholder = "  작성자명을 입력해주세요."
         textField.backgroundColor = AllColor.textColor.textInputColor
         textField.layer.cornerRadius = 10
@@ -96,6 +96,7 @@ class WriteView: BaseView {
         textField.placeholder = "  캡슐 여는날짜을 선택해주세요."
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
+//        textField.font = AllFont.font.name
         return textField
     }()
     // 오픈일 스택뷰
@@ -112,6 +113,7 @@ class WriteView: BaseView {
         let label = UILabel()
         label.text = "캡슐에 담을 내용"
         label.textColor = AllColor.textColor.color
+        label.font = AllFont.font.title
         return label
     }()
     //

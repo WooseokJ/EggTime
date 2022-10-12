@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18B1B17A28F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17928F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		18B1B17C28F5AFB6003B9E55 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17B28F5AFB6003B9E55 /* FirebaseCrashlytics */; };
+		18B1B17E28F5AFB6003B9E55 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17D28F5AFB6003B9E55 /* FirebaseMessaging */; };
 		18DB367C28F004E4007014D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18DB367B28F004E4007014D9 /* GoogleService-Info.plist */; };
-		18DB368028F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 18DB367F28F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		18DB368228F00ADB007014D9 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18DB368128F00ADB007014D9 /* FirebaseCrashlytics */; };
 		18EA656528EDDBD500D9B74F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656428EDDBD500D9B74F /* Realm */; };
 		18EA656728EDDBD500D9B74F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656628EDDBD500D9B74F /* RealmSwift */; };
 		18EA656A28EDDC5700D9B74F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656928EDDC5700D9B74F /* SnapKit */; };
@@ -76,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18B1B17728F5ACCD003B9E55 /* EggTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EggTime.entitlements; sourceTree = "<group>"; };
 		18DB367B28F004E4007014D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E103002B28CEFE6B00922B54 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
@@ -134,10 +136,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B1B17E28F5AFB6003B9E55 /* FirebaseMessaging in Frameworks */,
 				18EA656728EDDBD500D9B74F /* RealmSwift in Frameworks */,
-				18DB368028F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				18B1B17A28F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				18EA656A28EDDC5700D9B74F /* SnapKit in Frameworks */,
-				18DB368228F00ADB007014D9 /* FirebaseCrashlytics in Frameworks */,
+				18B1B17C28F5AFB6003B9E55 /* FirebaseCrashlytics in Frameworks */,
 				18EA656528EDDBD500D9B74F /* Realm in Frameworks */,
 				1E5B9E9CD5B8527B45549BA5 /* Pods_EggTime.framework in Frameworks */,
 				18EA656D28EDDC7100D9B74F /* Zip in Frameworks */,
@@ -284,6 +287,7 @@
 		E1FCB0B128CDA0F600C07AA3 /* EggTime */ = {
 			isa = PBXGroup;
 			children = (
+				18B1B17728F5ACCD003B9E55 /* EggTime.entitlements */,
 				E1FCB0C928CDA16200C07AA3 /* Utils */,
 				E1FCB0C828CDA15500C07AA3 /* Presentation */,
 				E1FCB0C628CDA11B00C07AA3 /* Application */,
@@ -457,6 +461,7 @@
 				E1FCB0AD28CDA0F600C07AA3 /* Resources */,
 				E142944828D0734600B297D3 /* Embed Frameworks */,
 				3D6DA6DDE814597BF7921181 /* [CP] Embed Pods Frameworks */,
+				18B1B17628F5A72E003B9E55 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -468,8 +473,9 @@
 				18EA656628EDDBD500D9B74F /* RealmSwift */,
 				18EA656928EDDC5700D9B74F /* SnapKit */,
 				18EA656C28EDDC7100D9B74F /* Zip */,
-				18DB367F28F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport */,
-				18DB368128F00ADB007014D9 /* FirebaseCrashlytics */,
+				18B1B17928F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				18B1B17B28F5AFB6003B9E55 /* FirebaseCrashlytics */,
+				18B1B17D28F5AFB6003B9E55 /* FirebaseMessaging */,
 			);
 			productName = EggTime;
 			productReference = E15813CC28DB20F100E359CE /* EggTime.app */;
@@ -503,7 +509,7 @@
 				18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */,
-				18DB367E28F00ADA007014D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E1FCB0A628CDA0F600C07AA3;
 			projectDirPath = "";
@@ -551,6 +557,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		18B1B17628F5A72E003B9E55 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 		3D6DA6DDE814597BF7921181 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -768,17 +793,18 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EggTime/EggTime.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5MHUF29PV8;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EggTime/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EggTime;
 				INFOPLIST_KEY_NSCameraUsageDescription = "이미지 등록 및 사용을 위해 카메라 접근 권한을 허용해주세요.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 열때마다 위치주소 가져오기 허용, 네이버 지도에서 마커와 현위치를 표시하기위해 위치정보가 사용됩니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "앱을 사용하는동안 위치정보 허용";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 사용하는동안 위치정보 허용";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "이미지 등록 및 사용을 위해 앨범 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -786,12 +812,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.EggTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -807,17 +834,18 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EggTime/EggTime.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5MHUF29PV8;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EggTime/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = EggTime;
 				INFOPLIST_KEY_NSCameraUsageDescription = "이미지 등록 및 사용을 위해 카메라 접근 권한을 허용해주세요.";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 열때마다 위치주소 가져오기 허용, 네이버 지도에서 마커와 현위치를 표시하기위해 위치정보가 사용됩니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "앱을 사용하는동안 위치정보 허용";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱을 사용하는동안 위치정보 허용";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "이미지 등록 및 사용을 위해 앨범 접근 권한을 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -825,12 +853,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.EggTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -863,7 +892,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		18DB367E28F00ADA007014D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -898,15 +927,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		18DB367F28F00ADB007014D9 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+		18B1B17928F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18DB367E28F00ADA007014D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
-		18DB368128F00ADB007014D9 /* FirebaseCrashlytics */ = {
+		18B1B17B28F5AFB6003B9E55 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18DB367E28F00ADA007014D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		18B1B17D28F5AFB6003B9E55 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		18EA656428EDDBD500D9B74F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

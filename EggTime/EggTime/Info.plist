@@ -2,18 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
+	<string>내 위치 확인을 위해 권한이 필요합니다.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>내 위치 확인을 위해 권한이 필요합니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>이미지 등록 및 사용을 위해 앨범 접근 권한을 허용해주세요.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>이미지 등록 및 사용을 위해 카메라 접근 권한을 허용해주세요.</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>NMFCientId</key>
 	<string>sjtk98rxyn</string>
 	<key>UIAppFonts</key>
@@ -48,5 +44,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>
