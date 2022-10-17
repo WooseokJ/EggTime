@@ -101,46 +101,17 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         var calendar = Calendar.current
         let date = Date()
         calendar.locale = Locale(identifier: "ko_KR")
-        
-        let todayYear = calendar.component(.year, from: date)
-        let todayMonth = calendar.component(.month, from: date)
-        let todayDay = calendar.component(.day, from: date)
-        
-        let openYear = calendar.component(.year, from: openDate)
-        let openMonth = calendar.component(.month, from: openDate)
-        let openDay = calendar.component(.day, from: openDate)
-        print(todayYear,todayMonth,todayDay)
-        print(openYear,openMonth,openDay)
+        let openSelect = calendar.dateComponents([.year,.month,.day], from: date, to: openDate)
         
         // 해당날짜인지 판단
-        if ((openYear >= todayYear) && (openMonth >= todayMonth)) {
-            
-            if (openMonth > todayMonth) && (openDay == todayDay) {
-                let alert = UIAlertController(title: "아직 오픈날짜가 아닙니다.", message: "", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .cancel)
-                alert.addAction(ok)
-                present(alert,animated: true)
-                return
-            }
-            
-            else if (openMonth == todayMonth) && (openDay > todayDay) {
-                let alert = UIAlertController(title: "아직 오픈날짜가 아닙니다.", message: "", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .cancel)
-                alert.addAction(ok)
-                present(alert,animated: true)
-                return
-            }
-        }
-        
-        // 해당위치에서 열수있는지 판단
-        guard openAvailable.contains(tasks[indexPath.item].objectId) else {
-            let alert = UIAlertController(title: "현위치에서는 오픈할수없습니다.", message: "", preferredStyle: .alert)
+        guard ((openSelect.year! <= 0) && (openSelect.month! <= 0) && (openSelect.day! <= 0)) else {
+            let alert = UIAlertController(title: "아직 오픈날짜가 아닙니다.", message: "", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .cancel)
             alert.addAction(ok)
             present(alert,animated: true)
             return
         }
-        
+                
         //오픈
         let vc = DetailViewController()
         transition(vc,transitionStyle: .push)
@@ -151,3 +122,5 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
 }
+
+

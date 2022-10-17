@@ -32,6 +32,7 @@ final class MainViewController: BaseViewController {
             notExistCapsule()
             return
         }
+        
         existCapsule()
         
         mainview.titleLabel.text = "\(nearTime[0].title)님이 묻은캡슐"
@@ -192,7 +193,7 @@ extension MainViewController: CLLocationManagerDelegate {
 extension MainViewController: UNUserNotificationCenterDelegate {
     
     //MARK: notification 2. 권한요청
-    func requestAuthorization(){
+    func requestAuthorization() {
         let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .sound)
         
         notificationCenter.requestAuthorization(options: authOptions) { success, error in

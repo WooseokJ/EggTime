@@ -41,8 +41,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     }
     
     
-    lazy var pickerSelect: [String] = Picker.allCases.map{return $0.pickerLisk[0]}
-    
+    lazy var pickerSelect: [String] = Picker.allCases.map{return $0.pickerLisk[0]} //3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +67,14 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
         
         
     }
+    // MARK: - UI
+
+
+       // MARK: - Selectors
+       @objc
+       private func handleDatePicker(_ sender: UIDatePicker) {
+           print(sender.date)
+       }
     // 키보드 여백눌러서 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -83,25 +90,25 @@ extension WriteViewController {
     
     
     //MARK: 피커뷰 위한 툴바
-    func configToolbar() {
+    func configToolbar() { //4
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
         toolBar.tintColor = AllColor.textColor.color
         toolBar.backgroundColor = .black
         toolBar.sizeToFit()
-        
+
         let doneBT = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(self.donePicker))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelBT = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(self.cancelPicker))
-        
+
         toolBar.setItems([cancelBT,flexibleSpace,doneBT], animated: false)
         toolBar.isUserInteractionEnabled = true
-        
+
         writeView.opendateInput.inputAccessoryView = toolBar
     }
-    //MARK: 피커 선택
-    @objc func donePicker() {
+//    //MARK: 피커 선택
+    @objc func donePicker() { //4
         let row = self.writeView.pickerView.selectedRow(inComponent: 0)
         self.writeView.pickerView.selectRow(row, inComponent: 0, animated: false)
         let text = pickerSelect[row].split(separator: ":")
@@ -109,8 +116,8 @@ extension WriteViewController {
         self.writeView.opendateInput.text = " "+String(text[1])
         self.writeView.opendateInput.resignFirstResponder()
     }
-    //MARK: 피커 취소
-    @objc func cancelPicker() {
+//    //MARK: 피커 취소
+    @objc func cancelPicker() { //4
         self.writeView.opendateInput.text = nil
         self.writeView.opendateInput.resignFirstResponder()
     }
@@ -169,8 +176,6 @@ extension WriteViewController {
         } catch let error {
             print(error)
         }
-        
-        
         //        fetchDocumentZipFile() //확인용
         self.navigationController?.popViewController(animated: true)
     }

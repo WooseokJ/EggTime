@@ -22,6 +22,8 @@ class ListViewController: BaseViewController {
                 $0.leading.trailing.equalTo(0)
             }
             listView.contentlabel.text = "현재 묻은 타임캡슐이 없습니다."
+            navigationItem.title = "타임 캡슐 리스트"
+
         }
     }
     
@@ -43,7 +45,6 @@ class ListViewController: BaseViewController {
         
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
         self.navigationItem.backBarButtonItem = backBarButtonItem
-        navigationItem.title = "타임 캡슐 리스트"
 
     }
 }

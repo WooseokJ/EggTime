@@ -13,28 +13,22 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, NMFMapView
         super.view = mapview
     }
     
-    var locationManager = CLLocationManager()
-    var latitude: Double?
-    var longtitude: Double?
-    var tasks: Results<EggTime>!
+    var locationManager = CLLocationManager() // 위치
+    var tasks: Results<EggTime>! // realm 데이터
+    let circle = NMFCircleOverlay() // 원
+    var deleteObjectid: ObjectId? // 지울 object
     
-    let circle = NMFCircleOverlay()
-    
-    var deleteObjectid: ObjectId?
+    var timer: Timer? // 타이머
+    var markers = [NMFMarker]() // 마커 모음.
+    var selectTask: EggTime?
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        tasks = repository.fetch()
+
         markers.forEach {
             $0.mapView = nil
         }
-        
         markers.removeAll()
-        
-        alldistanceArray.forEach {
-            if $0 <= 100 {
-                distanceArray.append($0)
-            }
-        }
         
         if CLLocationManager.locationServicesEnabled() {
             print("위치 서비스 On 상태")
@@ -42,98 +36,48 @@ class MapViewController: BaseViewController,NMFMapViewCameraDelegate, NMFMapView
         } else {
             print("위치 서비스 Off 상태")
         }
-        
         setpin()
         hidden()
-        
-        navigationItem.backButtonTitle = " "
-        
     }
-    
-    var timer: Timer?
-    var detailTask: EggTime?
-    
-    var distanceArray: [CLLocationDistance] = []
-    var alldistanceArray: [CLLocationDistance] = []
-    var markers = [NMFMarker]()
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         navigationItem.title = "타임 캡슐 묻은 장소"
-        
-        
-        
+        navigationItem.backButtonTitle = " "
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        
         mapview.naverMapView.mapView.addCameraDelegate(delegate: self)
-        
-        //        naverMapView.mapView.addOptionDelegate(delegate: self)
-        
-        
-        
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(#function)
-        
         if let location = locations.first {
-            latitude = location.coordinate.latitude
-            longtitude = location.coordinate.longitude
-            
-            
-            distanceArray.removeAll()
-            alldistanceArray.removeAll()
-            
-            tasks.forEach{
-                //MARK: 거리 계산하는 매소드
-                let containDistance = location.distance(from: CLLocation(latitude: CLLocationDegrees($0.latitude ?? 0), longitude: CLLocationDegrees($0.longitude ?? 0)))
-                
-                alldistanceArray.append(containDistance)
-                
-            }
+            // 거리 원
             circle.center = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
             circle.radius = 100
             circle.mapView = mapview.naverMapView.mapView
             circle.outlineWidth = 1
             circle.outlineColor = UIColor.systemBlue
             circle.fillColor = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.1)
-            
-            
+            // 카메라 이동
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: location.coordinate.latitude , lng: location.coordinate.longitude ))
             cameraUpdate.animation = .easeIn
             mapview.naverMapView.mapView.moveCamera(cameraUpdate)
-            
-            UserDefaults.standard.set(location.coordinate.latitude, forKey: "lat")
-            UserDefaults.standard.set(location.coordinate.longitude, forKey: "lng")
         }
-        
         // 위치 업데이트 멈춰 (실시간성이 중요한거는 매번쓰고, 중요하지않은건 원하는 시점에 써라)
         locationManager.stopUpdatingLocation() // stopUpdatingHeading 이랑 주의
     }
     
     // 탭할떄
     func setpin() {
-        
-        
-        locationManager.startUpdatingLocation()
-        tasks = repository.fetch()
-        
         if !tasks.isEmpty {
             tasks.enumerated().forEach { [self] index,task in
                 let marker = NMFMarker(position: NMGLatLng(lat: task.latitude!, lng: task.longitude!))
                 markers.append(marker)
-                
                 markers[index].mapView = mapview.naverMapView.mapView
                 if markers[index].infoWindow == nil {
-                    
                     // 현재 마커에 정보 창이 열려있지 않을 경우 엶
                     markers[index].infoWindow?.open(with: markers[index])
                 } else {
@@ -141,11 +85,10 @@ extension MapViewController: CLLocationManagerDelegate {
                     markers[index].infoWindow?.close()
                 }
                 
+                selectTask = task
+                
                 markers[index].touchHandler = { [self] (overlay) in
-                    
                     if let marker = overlay as? NMFMarker {
-                        detailTask = task
-                        
                         [mapview.popup,mapview.centerView,mapview.title,mapview.detailButton,mapview.image,mapview.checkButton,mapview.lineView,mapview.leaveTimeLabel,mapview.leaveDayLabel,mapview.leaveTitle].forEach {
                             view.addSubview($0)
                         }
@@ -153,86 +96,48 @@ extension MapViewController: CLLocationManagerDelegate {
                         self.mapview.image.contentMode = .scaleToFill
                         let date = Date()
                         var minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: task.openDate)
-                        
-                        
-                        self.mapview.leaveTimeLabel.snp.remakeConstraints {
-                            $0.centerY.equalTo(self.view).offset(30)
-                            $0.centerX.equalTo(self.view)
-                            $0.height.equalTo(50)
-                            $0.leading.equalTo(self.mapview.centerView.snp.leading)
-                            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
-                        }
-                        
-                        self.mapview.leaveDayLabel.snp.remakeConstraints {
-                            $0.height.equalTo(30)
-                            $0.leading.equalTo(self.mapview.centerView.snp.leading)
-                            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
-                            $0.bottom.equalTo(self.mapview.leaveTimeLabel.snp.top).offset(-5)
-                        }
-                        
-                        
-                        self.mapview.leaveTitle.snp.remakeConstraints {
-                            $0.bottom.equalTo(self.mapview.leaveTimeLabel.snp.top).offset(-30)
-                            $0.height.equalTo(50)
-                            $0.leading.equalTo(self.mapview.centerView.snp.leading)
-                            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
-                        }
-                        
-                        let time = String(format: "%02d:", minDate.hour!)+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
-                        
-                        
+                        leaveTimeFunc()
                         self.mapview.leaveTitle.text = "오픈까지 남은기간"
-                        
+
+                        let time = String(format: "%02d:", minDate.hour!)+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
+                     
                         if minDate.month! != 0 { // 7개월 3일 12:03:02
-                            self.mapview.leaveDayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
-                            self.mapview.leaveTimeLabel.text  = time
+                            mapview.leaveDayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
+                            mapview.leaveTimeLabel.text  = time
                         }
                         else if minDate.day! != 0 {
-                            self.mapview.leaveDayLabel.text = "\(minDate.day!)일"
-                            self.mapview.leaveTimeLabel.text  = time
+                            mapview.leaveDayLabel.text = "\(minDate.day!)일"
+                            mapview.leaveTimeLabel.text  = time
                         }
                         else if minDate.hour! != -1 {
-                            self.mapview.leaveDayLabel.text = "내일 오픈 가능"
-                            self.mapview.leaveTimeLabel.text = time
+                            mapview.leaveDayLabel.text = "내일 오픈 가능"
+                            mapview.leaveTimeLabel.text = time
                         }
-                        
-                        
-                        
-                        if date >= task.openDate && !self.distanceArray.isEmpty{
-                            self.mapview.leaveTitle.snp.remakeConstraints {
-                                $0.width.height.equalTo(0)
-                            }
-                            self.mapview.leaveTimeLabel.snp.remakeConstraints {
-                                $0.width.height.equalTo(0)
-                            }
-                            self.mapview.leaveDayLabel.snp.remakeConstraints {
-                                $0.width.height.equalTo(0)
-                            }
+
+                        if date >= task.openDate{
+                            hidden()
                             if task.imageList.count != 0 {
-                                self.mapview.image.image = self.loadImageFromDocument(fileName: task.imageList[0])
+                                mapview.image.image = loadImageFromDocument(fileName: task.imageList[0])
                             } else {
                                 
-                                self.mapview.image.image = UIImage(named: "NoImage")
+                                mapview.image.image = UIImage(named: "NoImage")
                             }
                         }
                         // 오픈일 지낫는데 거리가 멀어
-                        else if date >= task.openDate && self.distanceArray.isEmpty {
-                            self.mapview.leaveTitle.text = ""
-                            self.mapview.leaveDayLabel.text = "해당 거리에서는 "
-                            self.mapview.leaveTimeLabel.text = "열수 없습니다."
-                            self.mapview.image.contentMode = .scaleAspectFit
-                            self.mapview.image.image = UIImage(named: "EggImage")
+                        else if date >= task.openDate {
+                            mapview.leaveTitle.text = ""
+                            mapview.leaveDayLabel.text = "해당 거리에서는 "
+                            mapview.leaveTimeLabel.text = "열수 없습니다."
+                            mapview.image.contentMode = .scaleAspectFit
+                            mapview.image.image = UIImage(named: "EggImage")
                             
                         }
-                        
                         else {
-                            
-                            
-                            if self.timer != nil && self.timer!.isValid {
-                                self.timer?.invalidate() //기존 타이머 시작하면 멈춤
+                            if timer != nil && timer!.isValid {
+                                timer?.invalidate() //기존 타이머 시작하면 멈춤
                             }
                             
-                            self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                                 minDate.second! -= 1
                                 
                                 if minDate.second! < 0 {
@@ -250,31 +155,28 @@ extension MapViewController: CLLocationManagerDelegate {
                                 
                                 
                                 if minDate.month! > 0 { // 7개월 3일 12:03:02
-                                    self.mapview.leaveDayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
-                                    self.mapview.leaveTimeLabel.text  = time
+                                    mapview.leaveDayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
+                                    mapview.leaveTimeLabel.text  = time
                                 }
                                 else if minDate.day! > 0 {
-                                    self.mapview.leaveDayLabel.text = "\(minDate.day!)일"
-                                    self.mapview.leaveTimeLabel.text  = time
+                                    mapview.leaveDayLabel.text = "\(minDate.day!)일"
+                                    mapview.leaveTimeLabel.text  = time
                                 }
                                 else if minDate.hour! > 0 {
-                                    self.mapview.leaveDayLabel.text = "내일 오픈 가능"
-                                    self.mapview.leaveTimeLabel.text = time
+                                    mapview.leaveDayLabel.text = "내일 오픈 가능"
+                                    mapview.leaveTimeLabel.text = time
                                 }
                             }
-                            self.mapview.image.contentMode = .scaleAspectFit
-                            self.mapview.image.image = UIImage(named: "EggImage")
+                            mapview.image.contentMode = .scaleAspectFit
+                            mapview.image.image = UIImage(named: "EggImage")
                         }
-                        
-                        self.show()
-                        
+                        show()
                         return true
                     } else {
-                        self.hidden()
+                        hidden()
                     }
                     return true
                 }
-                
             }
         }
     }
@@ -327,8 +229,8 @@ extension MapViewController: CLLocationManagerDelegate {
             $0.bottom.equalTo(self.mapview.checkButton.snp.bottom)
         }
         
-        self.mapview.checkButton.addTarget(self, action: #selector(self.checkButtonClicked), for: .touchUpInside)
-        self.mapview.detailButton.addTarget(self, action: #selector(self.detailButtonClicked), for: .touchUpInside)
+        mapview.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+        mapview.detailButton.addTarget(self, action: #selector(detailButtonClicked), for: .touchUpInside)
         
     }
     
@@ -354,26 +256,53 @@ extension MapViewController: CLLocationManagerDelegate {
         self.mapview.lineView.snp.remakeConstraints {
             $0.height.width.equalTo(0)
         }
+        self.mapview.leaveTitle.snp.remakeConstraints {
+            $0.width.height.equalTo(0)
+        }
+        self.mapview.leaveTimeLabel.snp.remakeConstraints {
+            $0.width.height.equalTo(0)
+        }
+        self.mapview.leaveDayLabel.snp.remakeConstraints {
+            $0.width.height.equalTo(0)
+        }
     }
     
     @objc func detailButtonClicked() {
         
-        guard detailTask!.openDate < Date()  else {
+        
+        guard selectTask!.openDate < Date()  else {
             showAlertMessage(title: "아직 오픈가능한 시간이아닙니다.", button: "확인")
             return
         }
-        guard !distanceArray.isEmpty else  {
-            showAlertMessage(title: "해당 거리에서는 오픈할수없습니다.", button: "확인")
-            return
-        }
-        
         let vc = DetailViewController()
         transition(vc,transitionStyle: .push)
-        
         vc.navigationItem.backBarButtonItem?.tintColor = AllColor.textColor.color
         vc.navigationItem.title = "자세히 보기"
-        vc.objectid = detailTask?.objectId
+        vc.objectid = selectTask!.objectId
+    }
+    
+    func leaveTimeFunc() {
+        self.mapview.leaveTimeLabel.snp.remakeConstraints {
+            $0.centerY.equalTo(self.view).offset(30)
+            $0.centerX.equalTo(self.view)
+            $0.height.equalTo(50)
+            $0.leading.equalTo(self.mapview.centerView.snp.leading)
+            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
+        }
+        
+        self.mapview.leaveDayLabel.snp.remakeConstraints {
+            $0.height.equalTo(30)
+            $0.leading.equalTo(self.mapview.centerView.snp.leading)
+            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
+            $0.bottom.equalTo(self.mapview.leaveTimeLabel.snp.top).offset(-5)
+        }
         
         
+        self.mapview.leaveTitle.snp.remakeConstraints {
+            $0.bottom.equalTo(self.mapview.leaveTimeLabel.snp.top).offset(-30)
+            $0.height.equalTo(50)
+            $0.leading.equalTo(self.mapview.centerView.snp.leading)
+            $0.trailing.equalTo(self.mapview.centerView.snp.trailing)
+        }
     }
 }
