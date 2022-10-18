@@ -90,7 +90,7 @@ extension WriteViewController {
     
     
     //MARK: 피커뷰 위한 툴바
-    func configToolbar() { //4
+    func configToolbar() { // 4
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true

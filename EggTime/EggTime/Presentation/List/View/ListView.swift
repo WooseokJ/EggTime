@@ -96,12 +96,12 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let opendate = tasks[indexPath.item].openDate
         
-        let openDate = tasks[indexPath.item].openDate
         var calendar = Calendar.current
-        let date = Date()
+        let koreaOpenDate = calendar.date(byAdding: .day, value: +1, to: opendate)!
         calendar.locale = Locale(identifier: "ko_KR")
-        let openSelect = calendar.dateComponents([.year,.month,.day], from: date, to: openDate)
+        let openSelect = calendar.dateComponents([.year,.month,.day], from: Date(), to: koreaOpenDate)
         
         // 해당날짜인지 판단
         guard ((openSelect.year! <= 0) && (openSelect.month! <= 0) && (openSelect.day! <= 0)) else {
