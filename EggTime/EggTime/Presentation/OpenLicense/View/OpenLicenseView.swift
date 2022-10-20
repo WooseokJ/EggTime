@@ -25,18 +25,23 @@ class OpenLicenseView: BaseView {
     
     
     //MARK: 크기
-    let tableView: UITableView = {
-        let tableview = UITableView()
-        tableview.register(OpenLicenseTableViewCell.self, forCellReuseIdentifier: OpenLicenseTableViewCell.reuseIdentifier)
-        tableview.rowHeight = 60
-        tableview.backgroundColor = .clear
-        return tableview
+    let collectionView: UICollectionView = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+        let group =  NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        let spacing: CGFloat = 8
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return cv
     }()
     
     //MARK: 뷰등록
     
     override func configure() {
-        [backGroundView,tableView].forEach {
+        [collectionView].forEach {
             self.addSubview($0)
         }
     }
@@ -44,30 +49,9 @@ class OpenLicenseView: BaseView {
     
     //MARK: 위치
     override func setConstrains() {
-        backGroundView.snp.makeConstraints {
-            $0.edges.equalTo(0)
-        }
-        tableView.snp.makeConstraints {
+
+        collectionView.snp.makeConstraints {
             $0.edges.equalTo(self.safeAreaLayoutGuide)
         }
     }
 }
-
-
-extension OpenLicenseViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return OpenLicense.allCases[section].list.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: OpenLicenseTableViewCell.reuseIdentifier, for: indexPath) as? OpenLicenseTableViewCell else {return UITableViewCell()}
-        cell.content.text = OpenLicense.allCases[indexPath.section].list[indexPath.row]
-        // 테이블뷰 선택 색상없애기
-        cell.selectionStyle = .none
-        cell.backgroundColor = .clear
-        return cell
-    }
-    
-    
-}
-

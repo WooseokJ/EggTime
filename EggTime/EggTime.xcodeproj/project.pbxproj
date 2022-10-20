@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183E1DC429012D0000BE75A2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E1DC329012D0000BE75A2 /* Observable.swift */; };
 		18B1B17A28F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17928F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		18B1B17C28F5AFB6003B9E55 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17B28F5AFB6003B9E55 /* FirebaseCrashlytics */; };
 		18B1B17E28F5AFB6003B9E55 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17D28F5AFB6003B9E55 /* FirebaseMessaging */; };
@@ -24,7 +25,7 @@
 		E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9128D19B7F00CEC17A /* MapView.swift */; };
 		E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */; };
 		E16F4D9A28D1ABE200CEC17A /* BackupStoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9928D1ABE200CEC17A /* BackupStoredView.swift */; };
-		E16F4D9C28D1B26C00CEC17A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9B28D1B26C00CEC17A /* UIViewController+Extension.swift */; };
+		E16F4D9C28D1B26C00CEC17A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9B28D1B26C00CEC17A /* UIViewController.swift */; };
 		E16F4DA528D1CD2C00CEC17A /* OpenLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */; };
 		E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */; };
 		E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */; };
@@ -59,7 +60,7 @@
 		E1FCB0E628CDA34500C07AA3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0E528CDA34500C07AA3 /* BaseViewController.swift */; };
 		E1FCB0E828CDA3A000C07AA3 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0E728CDA3A000C07AA3 /* BaseTableViewCell.swift */; };
 		E1FCB0F028CDA56B00C07AA3 /* identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0EF28CDA56B00C07AA3 /* identifier.swift */; };
-		E1FCB0F228CDA58E00C07AA3 /* Transition+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */; };
+		E1FCB0F228CDA58E00C07AA3 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0F128CDA58E00C07AA3 /* Transition.swift */; };
 		E1FCB10028CDB20200C07AA3 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0FF28CDB20200C07AA3 /* View.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		183E1DC329012D0000BE75A2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		18B1B17728F5ACCD003B9E55 /* EggTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EggTime.entitlements; sourceTree = "<group>"; };
 		18DB367B28F004E4007014D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +91,7 @@
 		E16F4D9128D19B7F00CEC17A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredViewController.swift; sourceTree = "<group>"; };
 		E16F4D9928D1ABE200CEC17A /* BackupStoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredView.swift; sourceTree = "<group>"; };
-		E16F4D9B28D1B26C00CEC17A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		E16F4D9B28D1B26C00CEC17A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseViewController.swift; sourceTree = "<group>"; };
 		E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseView.swift; sourceTree = "<group>"; };
 		E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 		E1FCB0E528CDA34500C07AA3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E1FCB0E728CDA3A000C07AA3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		E1FCB0EF28CDA56B00C07AA3 /* identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = identifier.swift; sourceTree = "<group>"; };
-		E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Extension.swift"; sourceTree = "<group>"; };
+		E1FCB0F128CDA58E00C07AA3 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		E1FCB0FF28CDB20200C07AA3 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		E76A899AAE1529DAECB9B501 /* Pods-EggTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.debug.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.debug.xcconfig"; sourceTree = "<group>"; };
 		F33613FBE49A3BC3654BF6FE /* Pods-EggTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.release.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 		E1FCB0EC28CDA55000C07AA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				183E1DC329012D0000BE75A2 /* Observable.swift */,
 				E103002B28CEFE6B00922B54 /* RealmRepository.swift */,
 				E103002D28CEFED900922B54 /* EggTime.swift */,
 			);
@@ -433,8 +436,8 @@
 		E1FCB0ED28CDA55600C07AA3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				E1FCB0F128CDA58E00C07AA3 /* Transition+Extension.swift */,
-				E16F4D9B28D1B26C00CEC17A /* UIViewController+Extension.swift */,
+				E1FCB0F128CDA58E00C07AA3 /* Transition.swift */,
+				E16F4D9B28D1B26C00CEC17A /* UIViewController.swift */,
 				E189E0C528DCD9B000A07311 /* UITextView.swift */,
 			);
 			path = Extension;
@@ -610,7 +613,8 @@
 				E1DC08B528D8437E0032440A /* Setting.swift in Sources */,
 				E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */,
 				E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */,
-				E16F4D9C28D1B26C00CEC17A /* UIViewController+Extension.swift in Sources */,
+				E16F4D9C28D1B26C00CEC17A /* UIViewController.swift in Sources */,
+				183E1DC429012D0000BE75A2 /* Observable.swift in Sources */,
 				E1F156DF28CDF16400500841 /* ImageCollectionViewCell.swift in Sources */,
 				E1FCB0D928CDA2B600C07AA3 /* ListView.swift in Sources */,
 				E1FCB0E228CDA32300C07AA3 /* Color.swift in Sources */,
@@ -638,7 +642,7 @@
 				E189E0C628DCD9B000A07311 /* UITextView.swift in Sources */,
 				E1FCB0D528CDA28F00C07AA3 /* SettingView.swift in Sources */,
 				E1FCB0D328CDA25500C07AA3 /* ListViewController.swift in Sources */,
-				E1FCB0F228CDA58E00C07AA3 /* Transition+Extension.swift in Sources */,
+				E1FCB0F228CDA58E00C07AA3 /* Transition.swift in Sources */,
 				E1FCB0F028CDA56B00C07AA3 /* identifier.swift in Sources */,
 				E1FCB0D128CDA24100C07AA3 /* SettingViewController.swift in Sources */,
 				E16F4D8F28D19B6700CEC17A /* MapViewController.swift in Sources */,

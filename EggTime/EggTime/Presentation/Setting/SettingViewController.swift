@@ -47,12 +47,12 @@ extension SettingViewController {
             var content = UIListContentConfiguration.valueCell()
             content.text = Setting.allCases[indexPath.section].list[indexPath.row]
             content.textProperties.color = .white
+            content.textProperties.font = AllFont.font.name!
+            
             cell.contentConfiguration = content
-            cell.backgroundConfiguration?.backgroundColor = .green
             
             var background = UIBackgroundConfiguration.listPlainCell()
             background.backgroundColor = .clear
-            
             cell.backgroundConfiguration = background
             
         })
@@ -69,32 +69,5 @@ extension SettingViewController {
         dataSource.apply(snapShot)
         
         
-    }
-}
-
-extension SettingViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.item {
-        case 0 :
-            let vc = BackupStoredViewController()
-            transition(vc,transitionStyle: .push)
-        case 1:
-            let vc = OpenLicenseViewController()
-            transition(vc,transitionStyle: .push)
-        case 2:
-            if let appstoreUrl = URL(string: "https://apps.apple.com/app/id\(1645004650)") {
-                var urlComp = URLComponents(url: appstoreUrl, resolvingAgainstBaseURL: false)
-                urlComp?.queryItems = [
-                    URLQueryItem(name: "action", value: "write-review")
-                ]
-                guard let reviewUrl = urlComp?.url else {
-                    return
-                }
-                UIApplication.shared.open(reviewUrl, options: [:], completionHandler: nil)
-            }
-            
-        default:
-            break
-        }
     }
 }
