@@ -42,6 +42,7 @@ final class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // 뒤로가기 버튼 생성
         let backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
@@ -56,7 +57,6 @@ final class MainViewController: BaseViewController {
         requestAuthorization()
         // 추가하기 버튼 기능
         mainview.plusButton.addTarget(self, action: #selector(plusClicked), for: .touchUpInside)
-
     }
     //MARK: 캡슐 추가하기
     @objc func plusClicked() {

@@ -59,7 +59,7 @@ extension DetailViewController {
         }
         
         repository.deleteItem(item: item2)
-        ListView().collectionview.reloadData()
+//        ListView().collectionview.reloadData()
         
         
         self.navigationController?.popViewController(animated: true)

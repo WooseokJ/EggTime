@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		183E1DC429012D0000BE75A2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E1DC329012D0000BE75A2 /* Observable.swift */; };
+		183E1DC62901307500BE75A2 /* WriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E1DC52901307500BE75A2 /* WriteViewModel.swift */; };
 		18B1B17A28F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17928F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		18B1B17C28F5AFB6003B9E55 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17B28F5AFB6003B9E55 /* FirebaseCrashlytics */; };
 		18B1B17E28F5AFB6003B9E55 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17D28F5AFB6003B9E55 /* FirebaseMessaging */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		183E1DC329012D0000BE75A2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		183E1DC52901307500BE75A2 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
 		18B1B17728F5ACCD003B9E55 /* EggTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EggTime.entitlements; sourceTree = "<group>"; };
 		18DB367B28F004E4007014D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				183E1DC329012D0000BE75A2 /* Observable.swift */,
+				183E1DC52901307500BE75A2 /* WriteViewModel.swift */,
 				E103002B28CEFE6B00922B54 /* RealmRepository.swift */,
 				E103002D28CEFED900922B54 /* EggTime.swift */,
 			);
@@ -606,6 +609,7 @@
 			files = (
 				E1F156E228CDF7D600500841 /* WriteViewController.swift in Sources */,
 				E103002C28CEFE6B00922B54 /* RealmRepository.swift in Sources */,
+				183E1DC62901307500BE75A2 /* WriteViewModel.swift in Sources */,
 				E1F156EB28CE42FF00500841 /* Picker.swift in Sources */,
 				E1FCB0E628CDA34500C07AA3 /* BaseViewController.swift in Sources */,
 				E1F156E928CE0ABB00500841 /* WriteCollectionViewCell.swift in Sources */,

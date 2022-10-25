@@ -13,7 +13,7 @@ import RealmSwift
 
 
 
-class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class WriteViewController: BaseViewController  {
     
     let writeView = WriteView()
     
@@ -22,7 +22,7 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     }
     
     let picker = UIImagePickerController()
-    
+
     var imageArrayString: [String] = []
     var imageArrayUIImage: [UIImage] = []
     
@@ -33,53 +33,42 @@ class WriteViewController: BaseViewController, UITextFieldDelegate, CLLocationMa
     
     var tag: Int?
     
-    
     override func viewWillAppear(_ animated: Bool) {
-        picker.delegate = self
-        print(repository.localRealm.configuration.fileURL!)
-        
     }
-    
     
     lazy var pickerSelect: [String] = Picker.allCases.map{return $0.pickerLisk[0]} //3
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        writeView.pickerView.dataSource = self
-        writeView.pickerView.delegate = self
+        print(repository.localRealm.configuration.fileURL!)
         
         navigationItem.title = "타임 캡슐 묻기"
-        
         let right = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
-        right.setTitleTextAttributes([NSAttributedString.Key.font : AllFont.font.name ], for: .normal)
-        
+        right.setTitleTextAttributes([NSAttributedString.Key.font : AllFont.font.name as Any ], for: .normal)
         navigationItem.rightBarButtonItem = right
-   
+        
+        picker.delegate = self
+        writeView.pickerView.dataSource = self
+        writeView.pickerView.delegate = self
         writeView.opendateInput.inputView = writeView.pickerView
         
         writeView.collectionview.delegate = self
         writeView.collectionview.dataSource = self
         configToolbar()
-
+        
         writeView.titleInput.delegate = self
         writeView.opendateInput.delegate = self
         
-        
-        
     }
-    // MARK: - UI
+}
 
-
-       // MARK: - Selectors
-       @objc
-       private func handleDatePicker(_ sender: UIDatePicker) {
-           print(sender.date)
-       }
-    // 키보드 여백눌러서 내리기
+extension WriteViewController: UITextFieldDelegate {
+    // 키보드 여백 누를떄
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 }
+
 
 extension WriteViewController {
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -87,7 +76,6 @@ extension WriteViewController {
             textField.text = "  "
         }
     }
-    
     
     //MARK: 피커뷰 위한 툴바
     func configToolbar() { // 4
@@ -97,17 +85,17 @@ extension WriteViewController {
         toolBar.tintColor = AllColor.textColor.color
         toolBar.backgroundColor = .black
         toolBar.sizeToFit()
-
+        
         let doneBT = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(self.donePicker))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelBT = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(self.cancelPicker))
-
+        
         toolBar.setItems([cancelBT,flexibleSpace,doneBT], animated: false)
         toolBar.isUserInteractionEnabled = true
-
+        
         writeView.opendateInput.inputAccessoryView = toolBar
     }
-//    //MARK: 피커 선택
+    //    //MARK: 피커 선택
     @objc func donePicker() { //4
         let row = self.writeView.pickerView.selectedRow(inComponent: 0)
         self.writeView.pickerView.selectRow(row, inComponent: 0, animated: false)
@@ -116,7 +104,7 @@ extension WriteViewController {
         self.writeView.opendateInput.text = " "+String(text[1])
         self.writeView.opendateInput.resignFirstResponder()
     }
-//    //MARK: 피커 취소
+    //    //MARK: 피커 취소
     @objc func cancelPicker() { //4
         self.writeView.opendateInput.text = nil
         self.writeView.opendateInput.resignFirstResponder()
@@ -145,16 +133,10 @@ extension WriteViewController {
         alert.addAction(ok)
         alert.addAction(cancel)
         present(alert,animated: true)
-        
-        
-        
     }
     
     func saveStart() {
-    
-        
         //MARK: 거리 계산하는 매소드
-        
         let task = EggTime(title: writeView.titleInput.text!,
                            regDate: repository.stringToDate(string: writeView.dateInput.text ?? ""),
                            openDate: repository.stringToDate(string: writeView.opendateInput.text ?? "")  ,
@@ -176,7 +158,6 @@ extension WriteViewController {
         } catch let error {
             print(error)
         }
-        //        fetchDocumentZipFile() //확인용
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -185,7 +166,20 @@ extension WriteViewController {
     @objc func modifyButtonClicked() {
         self.navigationController?.popViewController(animated: true)
     }
-    
+}
+
+
+
+extension WriteViewController: UINavigationControllerDelegate {
+    // MARK: - Selectors
+    @objc private func handleDatePicker(_ sender: UIDatePicker) {
+        print(sender.date)
+    }
+}
+
+
+extension WriteViewController: UIImagePickerControllerDelegate {
+
     //MARK: 갤러리 선택
     @objc func photoSelect() {
         print(#function)
@@ -207,17 +201,8 @@ extension WriteViewController {
         picker.sourceType = .camera //카메라로 띄우겟다 // photolibrary로하면 갤러리가 뜸 camera하면 camera뜸
         picker.allowsEditing = true // 카메라 찍은뒤 편집할수있냐없냐 default는 false임. //이게있어서 찍은뒤 편집화면이 보일수있는거
         present(picker, animated: true)
-   
+        
     }
-    
-    
-}
-
-
-
-
-
-extension WriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -225,31 +210,24 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
         
         if mediaType.isEqual(to: kUTTypeImage as NSString as String) {
             
-            
             let selectImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
             
             if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
-                
-                
                 let imgName = UUID().uuidString+".jpeg"
                 let documentDirectory = NSTemporaryDirectory()
                 let localPath = documentDirectory.appending(imgName)
                 let data = selectImage!.jpegData(compressionQuality: 0.3)! as NSData
                 data.write(toFile: localPath, atomically: true)
                 let photoURL = URL.init(fileURLWithPath: localPath)
-                
                 if imageArrayUIImage.count == tag! {
-                    
                     imageArrayString.append(imgName)
                     imageArrayUIImage.append(selectImage!)
                 } else{
                     imageArrayString[tag!] = imgName
                     imageArrayUIImage[tag!] = selectImage!
                 }
-                
                 writeView.collectionview.reloadData()
                 picker.dismiss(animated: true, completion: nil)
-
             }
             
             else if (UIImagePickerController.isSourceTypeAvailable(.photoLibrary)) {
@@ -266,7 +244,6 @@ extension WriteViewController: UIImagePickerControllerDelegate, UINavigationCont
                 }
                 writeView.collectionview.reloadData()
                 dismiss(animated: true)
-                
             }
             
             //UIImagePickerController5: 취소버튼 클릭시

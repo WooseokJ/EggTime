@@ -266,14 +266,7 @@ extension WriteViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArrayUIImage.count + 1
     }
-    func resizeImage(image: UIImage, width: CGFloat, height: CGFloat) -> UIImage {
-           UIGraphicsBeginImageContext(CGSize(width: width, height: height))
-           image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
-           let newImage = UIGraphicsGetImageFromCurrentImageContext()
-           UIGraphicsEndImageContext()
-           return newImage!
-       }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WriteCollectionViewCell.reuseIdentifier, for: indexPath) as? WriteCollectionViewCell else {
             return UICollectionViewCell()

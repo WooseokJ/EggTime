@@ -1,5 +1,4 @@
 
-
 import Foundation
 
 import SnapKit
@@ -122,5 +121,3 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
 }
-
-

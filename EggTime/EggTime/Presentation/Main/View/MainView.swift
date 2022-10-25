@@ -85,7 +85,6 @@ class MainView: BaseView {
     
     override func setConstrains() {
 
-        
         tempLabel.snp.makeConstraints {
             $0.centerX.equalTo(self)
             $0.bottom.equalTo(titleLabel.snp.top).offset(-10)
