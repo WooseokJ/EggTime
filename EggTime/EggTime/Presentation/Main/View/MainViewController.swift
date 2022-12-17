@@ -10,6 +10,7 @@ final class MainViewController: BaseViewController {
     
     //MARK: 뷰 가져오기
     private let mainview = MainView()
+    
     override func loadView() {
         super.view = mainview
     }
@@ -17,28 +18,29 @@ final class MainViewController: BaseViewController {
     private var timer: Timer?
     private let date = Date()
     
-    private let locationManager = CLLocationManager()
     private let notificationCenter = UNUserNotificationCenter.current()
 
     override func viewWillAppear(_ animated: Bool) {
-        // 위치정보 여부 묻기
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        } else{print("위치 서비스 Off 상태")}
         navigationItem.title = "홈"
         let nearTime = repository.nearTimeFetch()
-
         guard !nearTime.isEmpty else {
             notExistCapsule()
             return
         }
-        
         existCapsule()
-        
         mainview.titleLabel.text = "\(nearTime[0].title)님이 묻은캡슐"
         timeSelect(nearTime: nearTime[0].openDate , mainview: mainview)
+
+    }
+    
+    private func bind() {
         
     }
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,18 +48,21 @@ final class MainViewController: BaseViewController {
         // 뒤로가기 버튼 생성
         let backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
+        
         // setting 네비바 버튼 생성
         let setting = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: #selector(settingClicked)) 
         self.navigationItem.rightBarButtonItem = setting
-        // 위치정보 델리게이트
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+
+        
         // 노티정보 델리게이트
         notificationCenter.delegate = self
+        
         requestAuthorization()
+        
         // 추가하기 버튼 기능
         mainview.plusButton.addTarget(self, action: #selector(plusClicked), for: .touchUpInside)
     }
+   
     //MARK: 캡슐 추가하기
     @objc func plusClicked() {
         let vc = WriteViewController()
@@ -92,6 +97,7 @@ final class MainViewController: BaseViewController {
         mainview.tempLabel.text = "현재 오픈대기중인 캡슐이 없습니다."
         
     }
+    
     //MARK: 캡슐이 존재할떄
     func existCapsule() {
         mainview.titleLabel.snp.remakeConstraints {
@@ -122,6 +128,7 @@ final class MainViewController: BaseViewController {
     }
     
     func timeSelect(nearTime: Date, mainview: MainView) {
+        
         var minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: nearTime)
 
         if timer != nil && timer!.isValid {
@@ -177,18 +184,6 @@ final class MainViewController: BaseViewController {
     }
 }
 
-//MARK: 위치정보 관련 매소드
-extension MainViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            UserDefaults.standard.set(location.coordinate.latitude, forKey: "lat")
-            UserDefaults.standard.set(location.coordinate.longitude, forKey: "lng")
-        }
-    }
-
-}
-
 //MARK: 노티정보 관련 매소드
 extension MainViewController: UNUserNotificationCenterDelegate {
     
@@ -217,5 +212,8 @@ extension MainViewController: UNUserNotificationCenterDelegate {
                 }
             }
         }
+        
     }
+    
+    
 }

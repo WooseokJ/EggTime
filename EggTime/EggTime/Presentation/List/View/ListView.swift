@@ -25,7 +25,7 @@ class ListView: BaseView {
     let contentlabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = AllFont.font.name
+        label.font = AppFont.font.name
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -114,7 +114,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //오픈
         let vc = DetailViewController()
         transition(vc,transitionStyle: .push)
-        vc.navigationItem.backBarButtonItem?.tintColor = AllColor.textColor.color
+        vc.navigationItem.backBarButtonItem?.tintColor = AppColor.textColor.color
         vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
         vc.objectid = tasks[indexPath.item].objectId
         

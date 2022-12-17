@@ -21,8 +21,8 @@ class OpenLicenseViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = "OpenLicense"
         let attributes = [
-            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: AllFont.font.name
+            NSAttributedString.Key.foregroundColor: AppColor.textColor.color,
+            NSAttributedString.Key.font: AppFont.font.name
         ]
         navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
         
@@ -46,7 +46,7 @@ extension OpenLicenseViewController {
             var content = UIListContentConfiguration.valueCell()
             content.text = OpenLicense.allCases[indexPath.section].list[indexPath.row]
             content.textProperties.color = .white
-            content.textProperties.font = AllFont.font.name!
+            content.textProperties.font = AppFont.font.name!
             cell.contentConfiguration = content
             
             var background = UIBackgroundConfiguration.listPlainCell()

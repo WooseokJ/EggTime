@@ -23,10 +23,10 @@ class MainView: BaseView {
     
     //MARK: 크기
     
-    let tempLabel: UILabel = {
+    lazy var tempLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = AllFont.font.name
+        label.font = AppFont.font.name
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -34,33 +34,33 @@ class MainView: BaseView {
     
     
     
-    let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = AllFont.font.name
+        label.font = AppFont.font.name
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
     
 
-    let dayLabel: UILabel = {
+    lazy var dayLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = AllFont.font.time
+        label.font = AppFont.font.time
         label.textAlignment = .center
         return label
     }()
     
-    let timelabel: UILabel = {
+    lazy var timelabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = AllFont.font.time
+        label.font = AppFont.font.time
         label.textAlignment = .center
         return label
     }()
     
-    let plusButton: UIButton = {
+    lazy var plusButton: UIButton = {
         var button = UIButton()
    
         button.setImage(UIImage(systemName: "plus"), for: .normal)

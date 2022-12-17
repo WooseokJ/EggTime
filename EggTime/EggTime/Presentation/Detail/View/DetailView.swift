@@ -48,17 +48,17 @@ class DetailView: BaseView {
     //등록날짜
     let dateLabel: UILabel = {
        let label = UILabel()
-        label.font = AllFont.font.name
-        label.textColor = AllColor.textColor.color
+        label.font = AppFont.font.name
+        label.textColor = AppColor.textColor.color
 //        label.backgroundColor = .red
         return label
     }()
     
     let dateOutputLabel: UILabel = {
         let label = UILabel()
-        label.textColor = AllColor.textColor.outputColor
-        label.font = AllFont.font.name
-        label.backgroundColor = AllColor.textColor.textInputColor
+        label.textColor = AppColor.textColor.outputColor
+        label.font = AppFont.font.name
+        label.backgroundColor = AppColor.textColor.textInputColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         return label
@@ -67,8 +67,8 @@ class DetailView: BaseView {
     //오픈날짜
     let openDateLabel: UILabel = {
        let label = UILabel()
-        label.font = AllFont.font.name
-        label.textColor = AllColor.textColor.color
+        label.font = AppFont.font.name
+        label.textColor = AppColor.textColor.color
 //        label.backgroundColor = .red
         return label
         
@@ -76,11 +76,11 @@ class DetailView: BaseView {
     
     let openOutputLabel: UILabel = {
         let label = UILabel()
-        label.font = AllFont.font.name
-        label.backgroundColor = AllColor.textColor.textInputColor
+        label.font = AppFont.font.name
+        label.backgroundColor = AppColor.textColor.textInputColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
-        label.textColor = AllColor.textColor.outputColor
+        label.textColor = AppColor.textColor.outputColor
         
         return label
     }()
@@ -88,8 +88,8 @@ class DetailView: BaseView {
     //제목
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = AllFont.font.name
-        label.textColor = AllColor.textColor.color
+        label.font = AppFont.font.name
+        label.textColor = AppColor.textColor.color
         label.numberOfLines = 0
 //        label.backgroundColor = .red
         return label
@@ -97,11 +97,11 @@ class DetailView: BaseView {
     
     let titleOutputLabel: UILabel = {
         let label = UILabel()
-        label.font = AllFont.font.name
-        label.backgroundColor = AllColor.textColor.textInputColor
+        label.font = AppFont.font.name
+        label.backgroundColor = AppColor.textColor.textInputColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
-        label.textColor = AllColor.textColor.outputColor
+        label.textColor = AppColor.textColor.outputColor
         return label
     }()
     
@@ -109,8 +109,8 @@ class DetailView: BaseView {
     let contentLabel: UILabel = {
         let label = UILabel()
 //        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.font = AllFont.font.name
-        label.textColor = AllColor.textColor.color
+        label.font = AppFont.font.name
+        label.textColor = AppColor.textColor.color
         label.numberOfLines = 0
         label.text = "캡슐에 담은 내용"
 //        label.backgroundColor = .red
@@ -122,9 +122,9 @@ class DetailView: BaseView {
     let content: UITextView = {
         let textView = UITextView(frame: .zero)
 //        textView.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        textView.backgroundColor = AllColor.textColor.textInputColor
-        textView.font = AllFont.font.name
-        textView.textColor = AllColor.textColor.outputColor
+        textView.backgroundColor = AppColor.textColor.textInputColor
+        textView.font = AppFont.font.name
+        textView.textColor = AppColor.textColor.outputColor
         textView.layer.cornerRadius = 10
         textView.clipsToBounds = true
         return textView

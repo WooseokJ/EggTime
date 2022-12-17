@@ -35,8 +35,8 @@ class MapView: BaseView {
     let title: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.title
+        label.textColor = AppColor.textColor.color
+        label.font = AppFont.font.title
         label.numberOfLines = 0
         label.backgroundColor = .clear
         
@@ -68,7 +68,7 @@ class MapView: BaseView {
         button.setTitle("확인", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.backgroundColor = .systemGray4
-        button.titleLabel?.font = AllFont.font.name
+        button.titleLabel?.font = AppFont.font.name
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.roundCorners(cornerRadius: 10, maskedCorners: [.layerMinXMaxYCorner])
@@ -80,7 +80,7 @@ class MapView: BaseView {
         button.setTitle("자세히보기", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.backgroundColor = .systemGray5
-        button.titleLabel?.font = AllFont.font.name
+        button.titleLabel?.font = AppFont.font.name
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner])
@@ -89,8 +89,8 @@ class MapView: BaseView {
     
     let leaveDayLabel: UILabel = {
         let label = UILabel()
-        label.font = AllFont.font.mapTime
-        label.textColor = AllColor.textColor.color
+        label.font = AppFont.font.mapTime
+        label.textColor = AppColor.textColor.color
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -99,8 +99,8 @@ class MapView: BaseView {
 
     let leaveTitle: UILabel = {
         let label = UILabel()
-        label.font = AllFont.font.title
-        label.textColor = AllColor.textColor.color
+        label.font = AppFont.font.title
+        label.textColor = AppColor.textColor.color
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -108,8 +108,8 @@ class MapView: BaseView {
     
     let leaveTimeLabel: UILabel = {
         let label = UILabel()
-        label.font = AllFont.font.mapTime
-        label.textColor = AllColor.textColor.color
+        label.font = AppFont.font.mapTime
+        label.textColor = AppColor.textColor.color
         label.numberOfLines = 0
         label.textAlignment = .center
         return label

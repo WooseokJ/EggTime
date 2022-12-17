@@ -44,7 +44,7 @@ class WriteViewController: BaseViewController  {
         
         navigationItem.title = "타임 캡슐 묻기"
         let right = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
-        right.setTitleTextAttributes([NSAttributedString.Key.font : AllFont.font.name as Any ], for: .normal)
+        right.setTitleTextAttributes([NSAttributedString.Key.font : AppFont.font.name as Any ], for: .normal)
         navigationItem.rightBarButtonItem = right
         
         picker.delegate = self
@@ -82,7 +82,6 @@ extension WriteViewController {
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
-        toolBar.tintColor = AllColor.textColor.color
         toolBar.backgroundColor = .black
         toolBar.sizeToFit()
         
@@ -113,12 +112,12 @@ extension WriteViewController {
     //MARK: 저장하기 버튼클릭
     @objc func saveButtonClicked() {
         // 제목이 nil인지,입력여부 확인
-        guard (writeView.titleInput.text != nil) && (writeView.titleInput.text!.count > 2) else {
+        guard (writeView.titleInput.text != nil) && (writeView.titleInput.text!.count != 0) else {
             showAlertMessage(title: "작성자를 입력해주세요", button: "확인")
             return
         }
         //오픈일 nil인지,입력여부 확인
-        guard  (writeView.opendateInput.text != nil) && (writeView.opendateInput.text?.count != 2 )else {
+        guard  (writeView.opendateInput.text != nil) && (writeView.opendateInput.text!.count > 2 )else {
             showAlertMessage(title: "열리는날짜를 선택해주세요", button: "확인")
             return
         }
@@ -189,7 +188,7 @@ extension WriteViewController: UIImagePickerControllerDelegate {
         }
         picker.sourceType = .photoLibrary //카메라로 띄우겟다 // photolibrary로하면 갤러리가 뜸 camera하면 camera뜸
         picker.allowsEditing = true // 카메라 찍은뒤 편집할수있냐없냐 default는 false임. //이게있어서 찍은뒤 편집화면이 보일수있는거
-        present(picker, animated: true)
+        present(picker, animated: true)
     }
     //MARK: 카메라 선택
     @objc func cameraStart() {
@@ -251,10 +250,6 @@ extension WriteViewController: UIImagePickerControllerDelegate {
                 dismiss(animated: true)
             }
         }
-        
-        
-        
-        
     }
 }
 

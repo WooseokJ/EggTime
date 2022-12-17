@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum AllFont {
+enum AppFont {
     enum font {
         static let name = UIFont(name: "DalseoHealingMedium", size: 14.0)
         static let title = UIFont(name: "DalseoHealingMedium", size: 16.0)

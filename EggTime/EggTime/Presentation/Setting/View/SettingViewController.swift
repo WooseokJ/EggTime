@@ -47,7 +47,7 @@ extension SettingViewController {
             var content = UIListContentConfiguration.valueCell()
             content.text = Setting.allCases[indexPath.section].list[indexPath.row]
             content.textProperties.color = .white
-            content.textProperties.font = AllFont.font.name!
+            content.textProperties.font = AppFont.font.name!
             
             cell.contentConfiguration = content
             

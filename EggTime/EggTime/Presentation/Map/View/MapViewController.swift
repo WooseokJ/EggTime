@@ -276,7 +276,7 @@ extension MapViewController: CLLocationManagerDelegate {
         }
         let vc = DetailViewController()
         transition(vc,transitionStyle: .push)
-        vc.navigationItem.backBarButtonItem?.tintColor = AllColor.textColor.color
+//        vc.navigationItem.backBarButtonItem?.tintColor = AllColor.textColor.color
         vc.navigationItem.title = "자세히 보기"
         vc.objectid = selectTask!.objectId
     }

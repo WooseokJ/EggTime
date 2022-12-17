@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>앱을 열때마다 위치주소 가져오기 허용, 네이버 지도에서 마커와 현위치를 표기하기위해 위치정보가 사용됩니다.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>앱을 열때마다 위치주소 가져오기 허용, 네이버 지도에서 마커와 현위치를 표기하기위해 위치정보가 사용됩니다.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>이미지 등록 및 사용을 위해 앨범 접근 권한을 허용해주세요.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>이미지 등록 및 사용을 위해 카메라 접근 권한을 허용해주세요.</string>
 	<key>NMFCientId</key>
 	<string>sjtk98rxyn</string>
 	<key>UIAppFonts</key>

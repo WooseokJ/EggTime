@@ -18,8 +18,8 @@ class BaseViewController: UIViewController {
         
         // 네비게이션 타이틀 폰트및 색상 적용
         let attributes = [
-            NSAttributedString.Key.foregroundColor: AllColor.textColor.color,
-            NSAttributedString.Key.font: AllFont.font.name
+            NSAttributedString.Key.foregroundColor: AppColor.textColor.color,
+            NSAttributedString.Key.font: AppFont.font.name
         ]
         navigationController?.navigationBar.titleTextAttributes = attributes
         

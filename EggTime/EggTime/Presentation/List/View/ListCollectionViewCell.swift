@@ -26,8 +26,8 @@ class ListCollectionViewCell: BaseCollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.backgroundColor = .clear
-        label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.name
+        label.textColor = AppColor.textColor.color
+        label.font = AppFont.font.name
         label.numberOfLines = 0
         return label
     }()
@@ -36,8 +36,8 @@ class ListCollectionViewCell: BaseCollectionViewCell {
         let label = UILabel()
         label.backgroundColor = .clear
         label.textAlignment = .center
-        label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.name
+        label.textColor = AppColor.textColor.color
+        label.font = AppFont.font.name
         return label
     }()
     

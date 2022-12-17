@@ -28,8 +28,8 @@ class WriteView: BaseView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "작성자"
-        label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.title
+        label.textColor = AppColor.textColor.color
+        label.font = AppFont.font.title
         return label
     }()
     //제목입력
@@ -38,7 +38,7 @@ class WriteView: BaseView {
         textField.textColor = .black
 //        textField.font = AllFont.font.name
         textField.placeholder = "  작성자명을 입력해주세요."
-        textField.backgroundColor = AllColor.textColor.textInputColor
+        textField.backgroundColor = AppColor.textColor.textInputColor
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
         return textField
@@ -56,8 +56,8 @@ class WriteView: BaseView {
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = "캡슐 묻은 날짜"
-        label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.title
+        label.textColor = AppColor.textColor.color
+        label.font = AppFont.font.title
 
         return label
     }()
@@ -68,7 +68,7 @@ class WriteView: BaseView {
         dateformattor.dateFormat = "yyyy-MM-dd"
         label.text = "  " + dateformattor.string(from: Date())
         label.textColor = .black
-        label.backgroundColor =  AllColor.textColor.textInputColor
+        label.backgroundColor =  AppColor.textColor.textInputColor
         label.layer.cornerRadius = 10
         label.clipsToBounds = true
         return label
@@ -84,14 +84,14 @@ class WriteView: BaseView {
     lazy var openLabel: UILabel = {
         let label = UILabel()
         label.text = "캡슐 열리는 날짜"
-        label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.title
+        label.textColor = AppColor.textColor.color
+        label.font = AppFont.font.title
         return label
     }()
     // 오픈일 입력
     lazy var opendateInput: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor =  AllColor.textColor.textInputColor
+        textField.backgroundColor =  AppColor.textColor.textInputColor
         textField.textColor = .black
         textField.placeholder = "  캡슐 여는날짜을 선택해주세요."
         textField.layer.cornerRadius = 10
@@ -112,14 +112,14 @@ class WriteView: BaseView {
     lazy var writeLabel: UILabel = {
         let label = UILabel()
         label.text = "캡슐에 담을 내용"
-        label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.title
+        label.textColor = AppColor.textColor.color
+        label.font = AppFont.font.title
         return label
     }()
     //
     lazy var writeTextView: UITextView = {
         let textview = UITextView()
-        textview.backgroundColor =  AllColor.textColor.textInputColor
+        textview.backgroundColor =  AppColor.textColor.textInputColor
         textview.textColor = .black
         textview.layer.cornerRadius = 10
         textview.clipsToBounds = true
@@ -130,8 +130,8 @@ class WriteView: BaseView {
     lazy var imageLabel: UILabel = {
         let label = UILabel()
         label.text = "이미지"
-        label.textColor = AllColor.textColor.color
-        label.font = AllFont.font.title
+        label.textColor = AppColor.textColor.color
+        label.font = AppFont.font.title
         return label
     }()
     // 이미지 컬렉션뷰

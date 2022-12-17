@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum AllColor{
+enum AppColor{
     
     enum textColor {
         static let color = UIColor.white

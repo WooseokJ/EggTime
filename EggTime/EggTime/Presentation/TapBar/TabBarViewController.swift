@@ -10,6 +10,7 @@ final class TabBarController: UITabBarController {
         self.tabBar.backgroundColor = .white
         self.tabBar.isTranslucent = false
         
+        
         let firstVC = UINavigationController(rootViewController: MainViewController())
         firstVC.tabBarItem.selectedImage = UIImage(systemName: "timer")
         firstVC.tabBarItem.title = "timer"
@@ -29,6 +30,7 @@ final class TabBarController: UITabBarController {
         viewControllers = [firstVC, secondVC, thirdVC]
         
     }
+    
 
 
 }
