@@ -13,11 +13,9 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate {
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        NMFAuthManager.shared().clientId = "sjtk98rxyn"
+        NMFAuthManager.shared().clientId = APIKey.clientKey
         UNUserNotificationCenter.current().delegate = self // viewdidload...
-        
         FirebaseApp.configure()
-        
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
           UNUserNotificationCenter.current().delegate = self

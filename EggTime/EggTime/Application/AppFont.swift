@@ -8,12 +8,16 @@
 import Foundation
 import UIKit
 
+
+
 enum AppFont {
+    static var fontName = "SUIT-Medium"
     enum font {
-        static let name = UIFont(name: "DalseoHealingMedium", size: 14.0)
-        static let title = UIFont(name: "DalseoHealingMedium", size: 16.0)
-        static let time = UIFont(name: "DalseoHealingMedium", size: 50.0)
-        static let mapTime = UIFont(name: "DalseoHealingMedium", size: 24.0)
+        static let name = UIFont(name: AppFont.fontName, size: 14.0)
+        static let title = UIFont(name: AppFont.fontName, size: 16.0)
+        static let time = UIFont(name:  AppFont.fontName, size: 50.0)
+        static let mapTime = UIFont(name:  AppFont.fontName, size: 24.0)
+        static let noEgg = UIFont(name: AppFont.fontName, size: 20.0)
 
     }
 }

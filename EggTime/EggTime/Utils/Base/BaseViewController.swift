@@ -4,9 +4,9 @@ import RealmSwift
 
 class BaseViewController: UIViewController {
     
-    let back = BaseView()
+    let baseView = BaseView()
     override func loadView() {
-        super.view = back
+        super.view = baseView
     }
     
     let repository = RealmRepository()
@@ -15,13 +15,14 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         // 모든 네비바 글자및아이콘 컬러
         navigationController?.navigationBar.tintColor = .white
-        
+
         // 네비게이션 타이틀 폰트및 색상 적용
         let attributes = [
             NSAttributedString.Key.foregroundColor: AppColor.textColor.color,
             NSAttributedString.Key.font: AppFont.font.name
         ]
-        navigationController?.navigationBar.titleTextAttributes = attributes
+        navigationController?.navigationBar.titleTextAttributes = attributes as [NSAttributedString.Key : Any]
+        
         
     }
     
@@ -36,3 +37,4 @@ class BaseViewController: UIViewController {
     
     
 }
+

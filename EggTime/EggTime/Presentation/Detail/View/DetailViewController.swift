@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import NMapsMap
 
-class DetailViewController: BaseViewController {
+final class DetailViewController: BaseViewController {
 
     //MARK: 뷰 가져오기
     let detailView = DetailView()

@@ -9,7 +9,6 @@ import Foundation
 
 
 enum Picker: String, CaseIterable {
-    
     case afterOneday = "내일: "
     case afterThreeDay = "3일후: "
     case afterweek = "일주일후: "
@@ -22,7 +21,6 @@ enum Picker: String, CaseIterable {
     
     var pickerLisk: [String] {
         switch self {
-
         case .afterOneday:
             return [self.rawValue+datePicker(afterday: 1)]
         case .afterThreeDay:
@@ -44,10 +42,8 @@ enum Picker: String, CaseIterable {
             return [self.rawValue+datePicker(afterday: 182)]
         case .afterYear:
             return [self.rawValue+datePicker(afterday: 365)]
-
             }
     }
-    
 }
 
 func datePicker(afterday: Int) -> String {

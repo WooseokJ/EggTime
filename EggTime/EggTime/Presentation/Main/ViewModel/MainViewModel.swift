@@ -8,27 +8,27 @@
 import Foundation
 import RxSwift
 
-class MainViewModel: ViewModelType {
+//class MainViewModel: ViewModelType {
+    
+    
+//
+//    struct Input{
+//
+//
+//    }
+//    struct Output{
+//
+//    }
+//
+//    var disposeBag = DisposeBag()
+//
+//
+//
+//    func transform(input: Input) -> Output {
+//        return
+//    }
     
     
     
-    struct Input{
-        
-        
-    }
-    struct Output{
-        
-    }
     
-    var disposeBag = DisposeBag()
-    
-    
-    
-    func transform(input: Input) -> Output {
-        return
-    }
-    
-    
-    
-    
-}
+//}

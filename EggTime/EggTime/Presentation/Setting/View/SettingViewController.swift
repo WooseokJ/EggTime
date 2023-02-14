@@ -2,7 +2,7 @@
 
 import UIKit
 
-class SettingViewController: BaseViewController {
+final class SettingViewController: BaseViewController {
     
     //MARK: 뷰 가져오기
     let settingview = SettingView()

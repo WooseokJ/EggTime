@@ -14,22 +14,17 @@ class ListView: BaseView {
         setConstrains()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    
     //MARK: 크기
     
-    let contentlabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.font = AppFont.font.name
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
+//    let contentlabel: UILabel = {
+//        let label = UILabel()
+//        label.textColor = .white
+//        label.font = AppFont.font.name
+//        label.textAlignment = .center
+//        label.numberOfLines = 0
+//        return label
+//    }()
+    let contentlabel = CustomLabel(title: "", type: .noEggTimeLabel)
     
     let collectionview : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -64,6 +59,18 @@ class ListView: BaseView {
             $0.bottom.equalTo(0)
             $0.trailing.leading.equalTo(self.safeAreaLayoutGuide)
         }
+        contentlabel.snp.remakeConstraints {
+            $0.center.equalTo(self)
+            $0.height.equalTo(50)
+            $0.leading.trailing.equalTo(0)
+        }
+    }
+    
+    func EggHidden() {
+        contentlabel.isHidden = false
+    }
+    func EggShow() {
+        contentlabel.isHidden = true
     }
 
 }
@@ -115,7 +122,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let vc = DetailViewController()
         transition(vc,transitionStyle: .push)
         vc.navigationItem.backBarButtonItem?.tintColor = AppColor.textColor.color
-        vc.navigationItem.title = "\(indexPath.row+1)번쨰 타임 캡슐"
+        vc.navigationItem.title = "\(tasks[indexPath.item].title)님의 타임 캡슐"
         vc.objectid = tasks[indexPath.item].objectId
         
     }

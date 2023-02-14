@@ -10,10 +10,7 @@ import CoreLocation
 import MobileCoreServices
 import RealmSwift
 
-
-
-
-class WriteViewController: BaseViewController  {
+final class WriteViewController: BaseViewController  {
     
     let writeView = WriteView()
     
@@ -188,7 +185,7 @@ extension WriteViewController: UIImagePickerControllerDelegate {
         }
         picker.sourceType = .photoLibrary //카메라로 띄우겟다 // photolibrary로하면 갤러리가 뜸 camera하면 camera뜸
         picker.allowsEditing = true // 카메라 찍은뒤 편집할수있냐없냐 default는 false임. //이게있어서 찍은뒤 편집화면이 보일수있는거
-        present(picker, animated: true)
+        present(picker, animated: true)  
     }
     //MARK: 카메라 선택
     @objc func cameraStart() {

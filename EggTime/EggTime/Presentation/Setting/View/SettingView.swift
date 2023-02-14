@@ -14,10 +14,7 @@ class SettingView: BaseView {
         configure()
         setConstrains()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     //MARK: 크기
     let collectionview : UICollectionView = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -64,9 +61,6 @@ extension SettingViewController: UICollectionViewDelegate {
             let vc = BackupStoredViewController()
             transition(vc,transitionStyle: .push)
         case 1:
-            let vc = OpenLicenseViewController()
-            transition(vc,transitionStyle: .push)
-        case 2:
             if let appstoreUrl = URL(string: "https://apps.apple.com/app/id\(1645004650)") {
                 var urlComp = URLComponents(url: appstoreUrl, resolvingAgainstBaseURL: false)
                 urlComp?.queryItems = [

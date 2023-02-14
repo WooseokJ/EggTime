@@ -14,14 +14,12 @@ class WriteView: BaseView {
     //MARK: 연결
     override init(frame: CGRect) {
         super.init(frame: frame)
+        super.configure()
+        super.setConstrains()
         configure()
         setConstrains()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        
-    }
     
     //MARK: 크기
     // 제목
@@ -160,7 +158,7 @@ class WriteView: BaseView {
     //MARK: 뷰등록
     
     override func configure() {
-        [backGroundView,
+        [
          titleLabel,titleInput,
          dateLabel,dateInput,
          openLabel,opendateInput
@@ -172,9 +170,7 @@ class WriteView: BaseView {
     
     //MARK: 위치
     override func setConstrains() {
-        backGroundView.snp.makeConstraints {
-            $0.edges.equalTo(0)
-        }
+   
         //제목
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)

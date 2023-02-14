@@ -21,14 +21,11 @@ class MapView: BaseView {
         setConstrains()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     //MARK: 크기
     let popup: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        view.isHidden = true
         return view
     }()
     
@@ -39,13 +36,13 @@ class MapView: BaseView {
         label.font = AppFont.font.title
         label.numberOfLines = 0
         label.backgroundColor = .clear
-        
+        label.isHidden = true
         return label
     }()
     
     let lineView: UIView = {
         let view = UIView()
-//        view.backgroundColor = .sy
+        view.isHidden = true
         return view
     }()
     
@@ -55,12 +52,15 @@ class MapView: BaseView {
         view.image = UIImage(named: "BackgroundImage")
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
+        view.isHidden = true
         return view
     }()
     
     let image: UIImageView = {
         let image = UIImageView()
-        
+        image.isHidden = true
+        image.contentMode = .scaleToFill
+        image.image = UIImage(named: "EggImage")
         return image
     }()
     let checkButton: UIButton = {
@@ -71,8 +71,8 @@ class MapView: BaseView {
         button.titleLabel?.font = AppFont.font.name
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-        button.roundCorners(cornerRadius: 10, maskedCorners: [.layerMinXMaxYCorner])
-
+        button.layer.maskedCorners = CACornerMask.layerMinXMaxYCorner
+        button.isHidden = true
         return button
     }()
     let detailButton: UIButton = {
@@ -83,7 +83,8 @@ class MapView: BaseView {
         button.titleLabel?.font = AppFont.font.name
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-        button.roundCorners(cornerRadius: 10, maskedCorners: [.layerMaxXMaxYCorner])
+        button.layer.maskedCorners = CACornerMask.layerMaxXMaxYCorner
+        button.isHidden = true
         return button
     }()
     
@@ -93,6 +94,7 @@ class MapView: BaseView {
         label.textColor = AppColor.textColor.color
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.isHidden = true
         return label
     }()
     
@@ -103,6 +105,8 @@ class MapView: BaseView {
         label.textColor = AppColor.textColor.color
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.isHidden = true
+        label.text = "오픈까지 남은기간"
         return label
     }()
     
@@ -112,12 +116,14 @@ class MapView: BaseView {
         label.textColor = AppColor.textColor.color
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.isHidden = true
         return label
     }()
     
     let backGroundView2: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "BackgroundImage")
+        image.isHidden = true
         return image
     }()
     
@@ -131,7 +137,7 @@ class MapView: BaseView {
 
  
     override func configure() {
-        [naverMapView].forEach{
+        [naverMapView,popup,centerView, image, checkButton, detailButton, title,lineView, leaveTitle, leaveDayLabel, leaveTimeLabel].forEach{
             self.addSubview($0)
         }
         
@@ -144,10 +150,100 @@ class MapView: BaseView {
             $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)
             $0.bottom.equalTo(0)
         }
+        title.snp.remakeConstraints {
+            $0.centerX.equalTo(centerView)
+            $0.top.equalTo(centerView.snp.top)
+            $0.width.equalTo(image.snp.width)
+            $0.height.equalTo(centerView.snp.height).multipliedBy(0.1)
+        }
+        
+        centerView.snp.remakeConstraints {
+            $0.width.equalTo(300)
+            $0.height.equalTo(500)
+            $0.center.equalTo(self)
+        }
+        
+        popup.snp.remakeConstraints {
+            $0.edges.equalTo(self)
+        }
+        image.snp.remakeConstraints {
+            $0.top.equalTo(title.snp.bottom)
+            $0.leading.equalTo(centerView.snp.leading)
+            $0.trailing.equalTo(centerView.snp.trailing)
+            $0.bottom.equalTo(checkButton.snp.top)
+        }
+        checkButton.snp.remakeConstraints {
+            $0.bottom.equalTo(centerView.snp.bottom)
+            $0.height.equalTo(50)
+            $0.width.equalTo(centerView.snp.width).multipliedBy(0.5)
+            $0.leading.equalTo(centerView.snp.leading)
+        }
+        
+        detailButton.snp.remakeConstraints {
+            $0.height.equalTo(50)
+            $0.width.equalTo(centerView.snp.width).multipliedBy(0.5)
+            $0.trailing.equalTo(centerView.snp.trailing)
+            $0.bottom.equalTo(centerView.snp.bottom)
+        }
+        lineView.snp.remakeConstraints {
+            $0.height.equalTo(detailButton.snp.height)
+            $0.width.equalTo(0.5)
+            $0.centerX.equalTo(image)
+            $0.top.equalTo(checkButton.snp.top)
+            $0.bottom.equalTo(checkButton.snp.bottom)
+        }
+        
+        leaveTimeLabel.snp.remakeConstraints {
+            $0.centerY.equalTo(self).offset(30)
+            $0.centerX.equalTo(self)
+            $0.height.equalTo(50)
+            $0.leading.equalTo(centerView.snp.leading)
+            $0.trailing.equalTo(centerView.snp.trailing)
+        }
+        
+        leaveDayLabel.snp.remakeConstraints {
+            $0.height.equalTo(30)
+            $0.leading.equalTo(centerView.snp.leading)
+            $0.trailing.equalTo(centerView.snp.trailing)
+            $0.bottom.equalTo(leaveTimeLabel.snp.top).offset(-5)
+        }
+        
+        
+        leaveTitle.snp.remakeConstraints {
+            $0.bottom.equalTo(leaveTimeLabel.snp.top).offset(-30)
+            $0.height.equalTo(50)
+            $0.leading.equalTo(centerView.snp.leading)
+            $0.trailing.equalTo(centerView.snp.trailing)
+        }
     }
     
+    func popupShow() {
+        popup.isHidden = false
+        image.isHidden = false
+        checkButton.isHidden  = false
+        detailButton.isHidden  = false
+        centerView.isHidden  = false
+        title.isHidden  = false
+        lineView.isHidden = false
+        leaveTitle.isHidden = false
+        leaveTimeLabel.isHidden = false
+        leaveDayLabel.isHidden = false
+    }
     
-    
-    
-    
+    func popupHidden() {
+        popup.isHidden = true
+        image.isHidden = true
+        checkButton.isHidden = true
+        detailButton.isHidden = true
+        centerView.isHidden = true
+        title.isHidden = true
+        lineView.isHidden = true
+        leaveTitle.isHidden = true
+        leaveTimeLabel.isHidden = true
+        leaveDayLabel.isHidden = true
+    }
+
 }
+
+
+

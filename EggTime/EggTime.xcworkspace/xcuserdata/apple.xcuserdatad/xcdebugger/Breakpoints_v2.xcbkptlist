@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "48508593-6791-4A5A-AFD0-FA83FE772EA7"
+   uuid = "464F9E84-3445-4FD6-A46C-BCF718A2E8FE"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AB745AE9-54FD-439A-94A7-C84229F40846"
+            uuid = "A50A5702-40E2-4649-8369-7F45EF3CA417"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EggTime/Presentation/List/ListViewController.swift"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,47 +23,62 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "03ECFA5C-6456-4D29-8264-FA58E39C68E5"
-            shouldBeEnabled = "Yes"
+            uuid = "1D6392F2-3515-49E8-A53B-7D091823C0E9"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EggTime/Presentation/Write/WriteViewController.swift"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "saveButtonClicked()"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "setpin()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "03ECFA5C-6456-4D29-8264-FA58E39C68E5 - 6a22fde3f1ff3180"
+                  uuid = "1D6392F2-3515-49E8-A53B-7D091823C0E9 - f8e878207dfa182"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "EggTime.WriteViewController.saveButtonClicked() -&gt; ()"
+                  symbolName = "EggTime.MapViewController.setpin() -&gt; ()"
                   moduleName = "EggTime"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/GitHub/EggTime/EggTime/EggTime/Presentation/Write/WriteViewController.swift"
+                  urlString = "file:///Users/apple/Documents/GitHub/EggTime/EggTime/EggTime/Presentation/Map/View/MapViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "856">
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "360">
                </Location>
                <Location
-                  uuid = "03ECFA5C-6456-4D29-8264-FA58E39C68E5 - 6a22fde3f1ff3180"
+                  uuid = "1D6392F2-3515-49E8-A53B-7D091823C0E9 - f8e878207dfa182"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "EggTime.WriteViewController.saveButtonClicked() -&gt; ()"
+                  symbolName = "EggTime.MapViewController.setpin() -&gt; ()"
                   moduleName = "EggTime"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Documents/GitHub/EggTime/EggTime/EggTime/Presentation/Write/WriteViewController.swift"
+                  urlString = "file:///Users/apple/Documents/GitHub/EggTime/EggTime/EggTime/Presentation/Map/View/MapViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "972">
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "624">
+               </Location>
+               <Location
+                  uuid = "1D6392F2-3515-49E8-A53B-7D091823C0E9 - 1184b0278c0fe66d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, EggTime.EggTime) -&gt; () in EggTime.MapViewController.setpin() -&gt; ()"
+                  moduleName = "EggTime"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/GitHub/EggTime/EggTime/EggTime/Presentation/Map/View/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "88">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -71,16 +86,191 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C363268C-C132-428E-8D4F-D653B54CBA57"
-            shouldBeEnabled = "Yes"
+            uuid = "F22EEBCD-BEA5-43B1-8BA1-F93BA583FF36"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EggTime/Presentation/Write/WriteViewController.swift"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "checkButtonClicked()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DDBFD020-5BCF-4E8A-B4C9-A40ED2203924"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "setpin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B253552-9A42-4097-86BF-7C1BC185D585"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
             endingLineNumber = "116"
-            landmarkName = "saveButtonClicked()"
+            landmarkName = "setpin()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6B253552-9A42-4097-86BF-7C1BC185D585 - 1184b0278c0fd812"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, EggTime.EggTime) -&gt; () in EggTime.MapViewController.setpin() -&gt; ()"
+                  moduleName = "EggTime"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/GitHub/EggTime/EggTime/EggTime/Presentation/Map/View/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "1316">
+               </Location>
+               <Location
+                  uuid = "6B253552-9A42-4097-86BF-7C1BC185D585 - 1184b0278c0fd812"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, EggTime.EggTime) -&gt; () in EggTime.MapViewController.setpin() -&gt; ()"
+                  moduleName = "EggTime"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/GitHub/EggTime/EggTime/EggTime/Presentation/Map/View/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "1400">
+               </Location>
+               <Location
+                  uuid = "6B253552-9A42-4097-86BF-7C1BC185D585 - 1e25ecc86c33dd96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.NMFOverlay) -&gt; Swift.Bool in closure #1 (Swift.Int, EggTime.EggTime) -&gt; () in EggTime.MapViewController.setpin() -&gt; ()"
+                  moduleName = "EggTime"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/GitHub/EggTime/EggTime/EggTime/Presentation/Map/View/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
+                  offsetFromSymbolStart = "916">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C60AAE2E-D329-4123-A8F5-107E83C39DDE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "setpin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B9EAD57-4325-4797-998F-AC0292236509"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EggTime/Presentation/Map/View/MapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "popupShow()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1BB956ED-62AA-405E-9C93-9A44732CC7BE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "setpin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DEB8BF97-CD74-46FA-B3FF-C30FEF3BD73A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "setpin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5CD65D77-C77B-430C-86B5-9F82893F5D9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EggTime/Presentation/Map/View/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "detailButtonClicked()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C802F69-427B-47B9-A00C-B4FBEF835FD1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EggTime/Presentation/Main/View/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "EggCheck()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

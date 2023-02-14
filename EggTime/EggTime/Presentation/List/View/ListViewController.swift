@@ -5,7 +5,7 @@ import RealmSwift
 import CoreLocation
 import SnapKit
 
-class ListViewController: BaseViewController {
+final class ListViewController: BaseViewController {
 
     //MARK: 뷰 가져오기
     let listView = ListView()
@@ -19,11 +19,7 @@ class ListViewController: BaseViewController {
         
         
         if tasks.count == 0 {
-            listView.contentlabel.snp.remakeConstraints {
-                $0.center.equalTo(view)
-                $0.height.equalTo(50)
-                $0.leading.trailing.equalTo(0)
-            }
+            listView.EggHidden()
             listView.contentlabel.text = "현재 묻은 타임캡슐이 없습니다."
 
         } else {

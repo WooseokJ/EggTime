@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18237A832962ABEA00DFBBE4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18237A822962ABEA00DFBBE4 /* CustomLabel.swift */; };
+		18237A882962B40700DFBBE4 /* SUIT-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 18237A872962B40700DFBBE4 /* SUIT-Medium.otf */; };
 		18AB97062917BBB4008E6384 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 18AB97052917BBB4008E6384 /* RxCocoa */; };
 		18AB97082917BBB4008E6384 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18AB97072917BBB4008E6384 /* RxSwift */; };
 		18AB970A2917BC79008E6384 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB97092917BC79008E6384 /* MainViewModel.swift */; };
 		18AB970D2917BC95008E6384 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB970C2917BC95008E6384 /* ViewModelType.swift */; };
-		18AB970F2917BF22008E6384 /* TapBarCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB970E2917BF22008E6384 /* TapBarCase.swift */; };
 		18B1B17A28F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17928F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		18B1B17C28F5AFB6003B9E55 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17B28F5AFB6003B9E55 /* FirebaseCrashlytics */; };
 		18B1B17E28F5AFB6003B9E55 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 18B1B17D28F5AFB6003B9E55 /* FirebaseMessaging */; };
 		18DB367C28F004E4007014D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18DB367B28F004E4007014D9 /* GoogleService-Info.plist */; };
+		18E39DB929755A1B00348657 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E39DB829755A1B00348657 /* APIKey.swift */; };
 		18EA656528EDDBD500D9B74F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656428EDDBD500D9B74F /* Realm */; };
 		18EA656728EDDBD500D9B74F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656628EDDBD500D9B74F /* RealmSwift */; };
 		18EA656A28EDDC5700D9B74F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18EA656928EDDC5700D9B74F /* SnapKit */; };
@@ -23,19 +25,15 @@
 		1E5B9E9CD5B8527B45549BA5 /* Pods_EggTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */; };
 		E103002C28CEFE6B00922B54 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002B28CEFE6B00922B54 /* RealmRepository.swift */; };
 		E103002E28CEFED900922B54 /* EggTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E103002D28CEFED900922B54 /* EggTime.swift */; };
-		E1348D2D28E57F81003C3E9A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1348D2C28E57F81003C3E9A /* TabBarViewController.swift */; };
+		E1348D2D28E57F81003C3E9A /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1348D2C28E57F81003C3E9A /* TabBarController.swift */; };
 		E15FE08628DC15EC00956CA9 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */; };
 		E16F4D8F28D19B6700CEC17A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D8E28D19B6700CEC17A /* MapViewController.swift */; };
 		E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9128D19B7F00CEC17A /* MapView.swift */; };
 		E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */; };
 		E16F4D9A28D1ABE200CEC17A /* BackupStoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9928D1ABE200CEC17A /* BackupStoredView.swift */; };
 		E16F4D9C28D1B26C00CEC17A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4D9B28D1B26C00CEC17A /* UIViewController.swift */; };
-		E16F4DA528D1CD2C00CEC17A /* OpenLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */; };
-		E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */; };
-		E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */; };
 		E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */; };
 		E17E65E328E2B492003D7FE1 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E65E228E2B492003D7FE1 /* AppFont.swift */; };
-		E183E22128E34F0A009DA548 /* DalseoHealingMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E183E22028E34F0A009DA548 /* DalseoHealingMedium.otf */; };
 		E1DC08B528D8437E0032440A /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DC08B428D8437E0032440A /* Setting.swift */; };
 		E1F156DA28CDDD0500500841 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156D928CDDD0500500841 /* DetailViewController.swift */; };
 		E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F156DC28CDDD1400500841 /* DetailView.swift */; };
@@ -62,7 +60,6 @@
 		E1FCB0E828CDA3A000C07AA3 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0E728CDA3A000C07AA3 /* BaseTableViewCell.swift */; };
 		E1FCB0F028CDA56B00C07AA3 /* identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0EF28CDA56B00C07AA3 /* identifier.swift */; };
 		E1FCB0F228CDA58E00C07AA3 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0F128CDA58E00C07AA3 /* Transition.swift */; };
-		E1FCB10028CDB20200C07AA3 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCB0FF28CDB20200C07AA3 /* UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,15 +76,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18237A822962ABEA00DFBBE4 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		18237A872962B40700DFBBE4 /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
 		18AB97092917BC79008E6384 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		18AB970C2917BC95008E6384 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
-		18AB970E2917BF22008E6384 /* TapBarCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarCase.swift; sourceTree = "<group>"; };
 		18B1B17728F5ACCD003B9E55 /* EggTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EggTime.entitlements; sourceTree = "<group>"; };
 		18DB367B28F004E4007014D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18E39DB829755A1B00348657 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		3BE7AB762272ED65862B2721 /* Pods_EggTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EggTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E103002B28CEFE6B00922B54 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		E103002D28CEFED900922B54 /* EggTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EggTime.swift; sourceTree = "<group>"; };
-		E1348D2C28E57F81003C3E9A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		E1348D2C28E57F81003C3E9A /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E15813CC28DB20F100E359CE /* EggTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15FE08428DC15EC00956CA9 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E16F4D8E28D19B6700CEC17A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -95,12 +94,8 @@
 		E16F4D9628D1ABD600CEC17A /* BackupStoredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredViewController.swift; sourceTree = "<group>"; };
 		E16F4D9928D1ABE200CEC17A /* BackupStoredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupStoredView.swift; sourceTree = "<group>"; };
 		E16F4D9B28D1B26C00CEC17A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseViewController.swift; sourceTree = "<group>"; };
-		E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseView.swift; sourceTree = "<group>"; };
-		E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicenseTableViewCell.swift; sourceTree = "<group>"; };
 		E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLicense.swift; sourceTree = "<group>"; };
 		E17E65E228E2B492003D7FE1 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
-		E183E22028E34F0A009DA548 /* DalseoHealingMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DalseoHealingMedium.otf; sourceTree = "<group>"; };
 		E1DC08B428D8437E0032440A /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		E1F156D928CDDD0500500841 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E1F156DC28CDDD1400500841 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -128,7 +123,6 @@
 		E1FCB0E728CDA3A000C07AA3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		E1FCB0EF28CDA56B00C07AA3 /* identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = identifier.swift; sourceTree = "<group>"; };
 		E1FCB0F128CDA58E00C07AA3 /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
-		E1FCB0FF28CDB20200C07AA3 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIButton.swift; path = ../../../Utils/Custom/UIButton.swift; sourceTree = "<group>"; };
 		E76A899AAE1529DAECB9B501 /* Pods-EggTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.debug.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.debug.xcconfig"; sourceTree = "<group>"; };
 		F33613FBE49A3BC3654BF6FE /* Pods-EggTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EggTime.release.xcconfig"; path = "Target Support Files/Pods-EggTime/Pods-EggTime.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,13 +148,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18AB96F52917B4D3008E6384 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		18AB96F62917B4E9008E6384 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +210,7 @@
 		18AB96FE2917B5EB008E6384 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E1FCB0DF28CDA2F400C07AA3 /* Custom */,
 				18AB970B2917BC89008E6384 /* Protocol */,
 				18AB96FF2917B5F2008E6384 /* Extension */,
 			);
@@ -232,7 +220,6 @@
 		18AB96FF2917B5F2008E6384 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				E1FCB0FF28CDB20200C07AA3 /* UIButton.swift */,
 				E16F4D9B28D1B26C00CEC17A /* UIViewController.swift */,
 			);
 			path = Extension;
@@ -266,7 +253,7 @@
 		E1348D2828E57E2E003C3E9A /* TapBar */ = {
 			isa = PBXGroup;
 			children = (
-				E1348D2C28E57F81003C3E9A /* TabBarViewController.swift */,
+				E1348D2C28E57F81003C3E9A /* TabBarController.swift */,
 			);
 			path = TapBar;
 			sourceTree = "<group>";
@@ -307,32 +294,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E16F4DA328D1CD1000CEC17A /* OpenLicense */ = {
-			isa = PBXGroup;
-			children = (
-				18AB96F52917B4D3008E6384 /* ViewModel */,
-				E16F4DA628D1CD2F00CEC17A /* View */,
-			);
-			path = OpenLicense;
-			sourceTree = "<group>";
-		};
-		E16F4DA628D1CD2F00CEC17A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E16F4DA428D1CD2C00CEC17A /* OpenLicenseViewController.swift */,
-				E16F4DA728D1CD3700CEC17A /* OpenLicenseView.swift */,
-				E16F4DA928D1CD4300CEC17A /* OpenLicenseTableViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		E16F4DAD28D1CFB400CEC17A /* Constant */ = {
 			isa = PBXGroup;
 			children = (
 				E1DC08B428D8437E0032440A /* Setting.swift */,
 				E1F156EA28CE42FF00500841 /* Picker.swift */,
 				E16F4DAB28D1CF6700CEC17A /* OpenLicense.swift */,
-				18AB970E2917BF22008E6384 /* TapBarCase.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -378,7 +345,7 @@
 		E1FCB0A628CDA0F600C07AA3 = {
 			isa = PBXGroup;
 			children = (
-				E183E22028E34F0A009DA548 /* DalseoHealingMedium.otf */,
+				18237A872962B40700DFBBE4 /* SUIT-Medium.otf */,
 				E1FCB0B128CDA0F600C07AA3 /* EggTime */,
 				1FAB8394D18E3B7A8E893708 /* Pods */,
 				E15813CC28DB20F100E359CE /* EggTime.app */,
@@ -406,6 +373,7 @@
 				E1FCB0B428CDA0F600C07AA3 /* SceneDelegate.swift */,
 				E17E65E228E2B492003D7FE1 /* AppFont.swift */,
 				E1FCB0B228CDA0F600C07AA3 /* AppDelegate.swift */,
+				18E39DB829755A1B00348657 /* APIKey.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -424,7 +392,6 @@
 			children = (
 				18AB96FE2917B5EB008E6384 /* Common */,
 				E1348D2828E57E2E003C3E9A /* TapBar */,
-				E16F4DA328D1CD1000CEC17A /* OpenLicense */,
 				E16F4D9528D1ABB900CEC17A /* BackupStored */,
 				E16F4D8D28D19B4600CEC17A /* Map */,
 				E1F156E028CDF7C500500841 /* Write */,
@@ -443,7 +410,6 @@
 				E1FCB0EE28CDA55C00C07AA3 /* identifier */,
 				E1FCB0ED28CDA55600C07AA3 /* Extension */,
 				E1FCB0EC28CDA55000C07AA3 /* Model */,
-				E1FCB0DF28CDA2F400C07AA3 /* Custom */,
 				E1FCB0DE28CDA2F000C07AA3 /* Base */,
 			);
 			path = Utils;
@@ -519,6 +485,7 @@
 		E1FCB0DF28CDA2F400C07AA3 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				18237A822962ABEA00DFBBE4 /* CustomLabel.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -560,8 +527,8 @@
 				E1FCB0AC28CDA0F600C07AA3 /* Frameworks */,
 				E1FCB0AD28CDA0F600C07AA3 /* Resources */,
 				E142944828D0734600B297D3 /* Embed Frameworks */,
-				3D6DA6DDE814597BF7921181 /* [CP] Embed Pods Frameworks */,
 				18B1B17628F5A72E003B9E55 /* ShellScript */,
+				B8871E1EDB68BE9A07A6BED2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -608,11 +575,11 @@
 			);
 			mainGroup = E1FCB0A628CDA0F600C07AA3;
 			packageReferences = (
-				18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */,
-				18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */,
-				18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */,
-				18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift.git" */,
+				18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit.git" */,
+				18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip.git" */,
+				18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
+				18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift.git" */,
 			);
 			productRefGroup = E1FCB0A628CDA0F600C07AA3;
 			projectDirPath = "";
@@ -629,9 +596,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FCB0BF28CDA0FB00C07AA3 /* LaunchScreen.storyboard in Resources */,
+				18237A882962B40700DFBBE4 /* SUIT-Medium.otf in Resources */,
 				18DB367C28F004E4007014D9 /* GoogleService-Info.plist in Resources */,
 				E1FCB0BC28CDA0FB00C07AA3 /* Assets.xcassets in Resources */,
-				E183E22128E34F0A009DA548 /* DalseoHealingMedium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,7 +646,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
-		3D6DA6DDE814597BF7921181 /* [CP] Embed Pods Frameworks */ = {
+		B8871E1EDB68BE9A07A6BED2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -703,32 +670,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18237A832962ABEA00DFBBE4 /* CustomLabel.swift in Sources */,
 				18AB970D2917BC95008E6384 /* ViewModelType.swift in Sources */,
 				E1F156E228CDF7D600500841 /* WriteViewController.swift in Sources */,
 				E103002C28CEFE6B00922B54 /* RealmRepository.swift in Sources */,
 				E1F156EB28CE42FF00500841 /* Picker.swift in Sources */,
 				E1FCB0E628CDA34500C07AA3 /* BaseViewController.swift in Sources */,
+				18E39DB929755A1B00348657 /* APIKey.swift in Sources */,
 				E1F156E928CE0ABB00500841 /* WriteCollectionViewCell.swift in Sources */,
 				E1FCB0DB28CDA2D800C07AA3 /* ListCollectionViewCell.swift in Sources */,
 				E1DC08B528D8437E0032440A /* Setting.swift in Sources */,
 				E16F4D9228D19B7F00CEC17A /* MapView.swift in Sources */,
-				E16F4DAA28D1CD4300CEC17A /* OpenLicenseTableViewCell.swift in Sources */,
 				18AB970A2917BC79008E6384 /* MainViewModel.swift in Sources */,
 				E16F4D9C28D1B26C00CEC17A /* UIViewController.swift in Sources */,
 				E1F156DF28CDF16400500841 /* ImageCollectionViewCell.swift in Sources */,
 				E1FCB0D928CDA2B600C07AA3 /* ListView.swift in Sources */,
 				E1FCB0E228CDA32300C07AA3 /* AppColor.swift in Sources */,
-				18AB970F2917BF22008E6384 /* TapBarCase.swift in Sources */,
 				E1FCB0E828CDA3A000C07AA3 /* BaseTableViewCell.swift in Sources */,
-				E1FCB10028CDB20200C07AA3 /* UIButton.swift in Sources */,
 				E1F156DD28CDDD1400500841 /* DetailView.swift in Sources */,
 				E1FCB0E428CDA33900C07AA3 /* BaseView.swift in Sources */,
-				E16F4DA828D1CD3700CEC17A /* OpenLicenseView.swift in Sources */,
-				E1348D2D28E57F81003C3E9A /* TabBarViewController.swift in Sources */,
+				E1348D2D28E57F81003C3E9A /* TabBarController.swift in Sources */,
 				E16F4DAC28D1CF6700CEC17A /* OpenLicense.swift in Sources */,
 				E1FCB0B728CDA0F600C07AA3 /* MainViewController.swift in Sources */,
 				E16F4D9728D1ABD600CEC17A /* BackupStoredViewController.swift in Sources */,
-				E16F4DA528D1CD2C00CEC17A /* OpenLicenseViewController.swift in Sources */,
 				E1FCB0DD28CDA2E800C07AA3 /* MainView.swift in Sources */,
 				E17E65E328E2B492003D7FE1 /* AppFont.swift in Sources */,
 				E1FCB0B328CDA0F600C07AA3 /* AppDelegate.swift in Sources */,
@@ -991,7 +955,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -999,7 +963,7 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -1007,7 +971,7 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -1015,7 +979,7 @@
 				minimumVersion = 10.30.0;
 			};
 		};
-		18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -1023,7 +987,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */ = {
+		18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
@@ -1036,47 +1000,47 @@
 /* Begin XCSwiftPackageProductDependency section */
 		18AB97052917BBB4008E6384 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift.git" */;
 			productName = RxCocoa;
 		};
 		18AB97072917BBB4008E6384 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift.git" */;
 			productName = RxSwift;
 		};
 		18B1B17928F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 		18B1B17B28F5AFB6003B9E55 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseCrashlytics;
 		};
 		18B1B17D28F5AFB6003B9E55 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseMessaging;
 		};
 		18EA656428EDDBD500D9B74F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift.git" */;
 			productName = Realm;
 		};
 		18EA656628EDDBD500D9B74F /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift.git" */;
 			productName = RealmSwift;
 		};
 		18EA656928EDDC5700D9B74F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit.git" */;
 			productName = SnapKit;
 		};
 		18EA656C28EDDC7100D9B74F /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */;
+			package = 18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip.git" */;
 			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */

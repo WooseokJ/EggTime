@@ -14,6 +14,8 @@ class BackupStoredView: BaseView {
     //MARK: 연결
     override init(frame: CGRect) {
         super.init(frame: frame)
+        super.configure()
+        super.setConstrains()
         configure()
         setConstrains()
     }
@@ -55,15 +57,13 @@ class BackupStoredView: BaseView {
     
     //MARK: 뷰등록
     override func configure() {
-        [backGroundView,backupButton,storedButton,imageView].forEach {
+        [backupButton,storedButton,imageView].forEach {
             self.addSubview($0)
         }
     }
     //MARK: 위치
     override func setConstrains() {
-        backGroundView.snp.makeConstraints {
-            $0.edges.equalTo(0)
-        }
+
         imageView.snp.makeConstraints {
             $0.top.equalTo(200)
             $0.width.height.equalTo(200)

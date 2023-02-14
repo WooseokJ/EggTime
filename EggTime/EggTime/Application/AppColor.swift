@@ -9,14 +9,12 @@ import Foundation
 import UIKit
 
 enum AppColor{
-    
     enum textColor {
         static let color = UIColor.white
         static let outputColor = UIColor.black
         static let navColor = UIColor.blue
         static let textInputColor = UIColor(red: 206/255, green: 215/255, blue: 220/255, alpha: 1.0)
     }
-    
 }
 
 

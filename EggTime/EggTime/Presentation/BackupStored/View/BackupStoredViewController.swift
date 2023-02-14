@@ -10,7 +10,7 @@ import UIKit
 import Zip
 import RealmSwift
 
-class BackupStoredViewController: BaseViewController {
+final class BackupStoredViewController: BaseViewController {
 
     //MARK: 뷰 가져오기
     let backupStoredView = BackupStoredView()
