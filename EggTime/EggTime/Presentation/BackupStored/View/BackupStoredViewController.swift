@@ -186,7 +186,7 @@ extension BackupStoredViewController: UIDocumentPickerDelegate{
                     let alert = UIAlertController(title: "복구가 완료 되었습니다", message: "앱이 재시작됩니다.", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "확인", style: .default) {(action) in
                         UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             exit(0)
                         }
                     }

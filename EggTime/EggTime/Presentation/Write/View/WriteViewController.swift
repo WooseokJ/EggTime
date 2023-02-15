@@ -30,15 +30,11 @@ final class WriteViewController: BaseViewController  {
     
     var tag: Int?
     
-    override func viewWillAppear(_ animated: Bool) {
-    }
-    
     lazy var pickerSelect: [String] = Picker.allCases.map{return $0.pickerLisk[0]} //3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(repository.localRealm.configuration.fileURL!)
-        
         navigationItem.title = "타임 캡슐 묻기"
         let right = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonClicked))
         right.setTitleTextAttributes([NSAttributedString.Key.font : AppFont.font.name as Any ], for: .normal)

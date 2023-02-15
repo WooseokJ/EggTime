@@ -16,14 +16,6 @@ class ListView: BaseView {
     
     //MARK: 크기
     
-//    let contentlabel: UILabel = {
-//        let label = UILabel()
-//        label.textColor = .white
-//        label.font = AppFont.font.name
-//        label.textAlignment = .center
-//        label.numberOfLines = 0
-//        return label
-//    }()
     let contentlabel = CustomLabel(title: "", type: .noEggTimeLabel)
     
     let collectionview : UICollectionView = {
@@ -60,9 +52,10 @@ class ListView: BaseView {
             $0.trailing.leading.equalTo(self.safeAreaLayoutGuide)
         }
         contentlabel.snp.remakeConstraints {
-            $0.center.equalTo(self)
-            $0.height.equalTo(50)
-            $0.leading.trailing.equalTo(0)
+            $0.width.equalTo(self.safeAreaLayoutGuide.snp.width).multipliedBy(0.7)
+            $0.height.equalTo(self.safeAreaLayoutGuide.snp.height).multipliedBy(0.1)
+            $0.centerY.equalTo(self.safeAreaLayoutGuide.snp.centerY).multipliedBy(0.8)
+            $0.centerX.equalTo(self)
         }
     }
     
@@ -120,7 +113,8 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 
         //오픈
         let vc = DetailViewController()
-        transition(vc,transitionStyle: .push)
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
         vc.navigationItem.backBarButtonItem?.tintColor = AppColor.textColor.color
         vc.navigationItem.title = "\(tasks[indexPath.item].title)님의 타임 캡슐"
         vc.objectid = tasks[indexPath.item].objectId

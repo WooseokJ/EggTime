@@ -17,7 +17,6 @@ final class MainViewController: BaseViewController {
     var tasks: Results<EggTime>!
 
     private var timer: Timer?
-    private let date = Date()
     
     private let notificationCenter = UNUserNotificationCenter.current()
 
@@ -37,24 +36,25 @@ final class MainViewController: BaseViewController {
     }
     
     func EggCheck() {
-        tasks = repository.fetch()
-        guard !tasks.isEmpty else {
+        let date = Date()
+        let nearTime = repository.nearTimeFetch()
+        guard !nearTime.isEmpty else {
             mainview.EggHidden()
             return
         }
-
-        let nearTime = repository.nearTimeFetch()
+        
         let minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: nearTime[0].openDate)
         
         guard var hour = minDate.hour else{return}
         guard var minute = minDate.minute else{return}
         guard var second = minDate.second else{return}
-        guard var month = minDate.month else{return}
-        guard var day = minDate.day else{return}
+        guard let month = minDate.month else{return}
+        guard let day = minDate.day else{return}
         
         if timer != nil && timer!.isValid {
             timer?.invalidate() //기존 타이머 시작하면 멈춤
         }
+        
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
             second -= 1
@@ -71,29 +71,22 @@ final class MainViewController: BaseViewController {
                 timer.invalidate()
             }
             mainview.timerLabel.text = String(format: "%02d:", hour)+String(format: "%02d:", minute)+String(format: "%02d", second)
-            mainview.writerLabel.text = "\(nearTime[0].title)님이 묻은 타임캡슐 "
-            
-            if minDate.month! > 0 {
-                mainview.leaveDay.text = "\(month)개월 \(day)일 "
-            }
-            else if minDate.day! > 0 {
-                mainview.leaveDay.text = "\(day)일"
-            }
-            else if (hour > 0) && (minute > 0 ) && (second > 0 ) {
-                mainview.leaveDay.text = "오늘 자정 오픈"
-            } else {
-                mainview.leaveDay.text = ""
-            }
-            mainview.EggShow()
-
         }
-
+        mainview.timerLabel.text = String(format: "%02d:", hour)+String(format: "%02d:", minute)+String(format: "%02d", second)
+        mainview.writerLabel.text = "\(nearTime[0].title)님이 묻은 타임캡슐 "
         
-        
-
-        
-        
-        
+        if month > 0 {
+            mainview.leaveDay.text = "\(month)개월 \(day)일 "
+        }
+        else if day > 0 {
+            mainview.leaveDay.text = "\(day)일"
+        }
+        else if (hour <= 0) && (minute <= 0 ) && (second <= 0 )  {
+            mainview.leaveDay.text = ""
+        } else {
+            mainview.leaveDay.text = "오늘 자정 오픈"
+        }
+        mainview.EggShow()
     }
 }
 
@@ -136,7 +129,9 @@ extension MainViewController {
     //MARK: 캡슐 추가하기
     @objc func plusClicked() {
         let vc = WriteViewController()
-        transition(vc,transitionStyle: .push)
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     //MARK: setting 추가하기
     @objc func settingClicked() {

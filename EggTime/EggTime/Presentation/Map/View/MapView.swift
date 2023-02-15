@@ -59,7 +59,7 @@ class MapView: BaseView {
     let image: UIImageView = {
         let image = UIImageView()
         image.isHidden = true
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFit
         image.image = UIImage(named: "EggImage")
         return image
     }()
@@ -88,6 +88,17 @@ class MapView: BaseView {
         return button
     }()
     
+    let leaveTitle: UILabel = {
+        let label = UILabel()
+        label.font = AppFont.font.noEgg
+        label.textColor = AppColor.textColor.color
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.isHidden = true
+        label.text = "오픈까지 남은 기간"
+        return label
+    }()
+    
     let leaveDayLabel: UILabel = {
         let label = UILabel()
         label.font = AppFont.font.mapTime
@@ -99,16 +110,7 @@ class MapView: BaseView {
     }()
     
 
-    let leaveTitle: UILabel = {
-        let label = UILabel()
-        label.font = AppFont.font.title
-        label.textColor = AppColor.textColor.color
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.isHidden = true
-        label.text = "오픈까지 남은기간"
-        return label
-    }()
+
     
     let leaveTimeLabel: UILabel = {
         let label = UILabel()
@@ -120,16 +122,11 @@ class MapView: BaseView {
         return label
     }()
     
-    let backGroundView2: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "BackgroundImage")
-        image.isHidden = true
-        return image
-    }()
     
     lazy var naverMapView: NMFNaverMapView = {
         let naverMapview = NMFNaverMapView(frame: self.frame)
         naverMapview.showLocationButton = true
+        
         naverMapview.mapView.zoomLevel = 10
         naverMapview.mapView.positionMode = .direction
         return naverMapview
@@ -154,13 +151,14 @@ class MapView: BaseView {
             $0.centerX.equalTo(centerView)
             $0.top.equalTo(centerView.snp.top)
             $0.width.equalTo(image.snp.width)
-            $0.height.equalTo(centerView.snp.height).multipliedBy(0.1)
+            $0.height.equalTo(centerView.snp.height).multipliedBy(0.08)
         }
         
         centerView.snp.remakeConstraints {
-            $0.width.equalTo(300)
-            $0.height.equalTo(500)
-            $0.center.equalTo(self)
+            $0.width.equalTo(self.safeAreaLayoutGuide.snp.width).multipliedBy(0.8)
+            $0.height.equalTo(self.safeAreaLayoutGuide.snp.height).multipliedBy(0.9)
+            $0.centerX.equalTo(self).multipliedBy(0.5)
+            $0.centerY.equalTo(self).multipliedBy(1.1)
         }
         
         popup.snp.remakeConstraints {
@@ -194,7 +192,7 @@ class MapView: BaseView {
         }
         
         leaveTimeLabel.snp.remakeConstraints {
-            $0.centerY.equalTo(self).offset(30)
+            $0.centerY.equalTo(self).multipliedBy(1.2)
             $0.centerX.equalTo(self)
             $0.height.equalTo(50)
             $0.leading.equalTo(centerView.snp.leading)

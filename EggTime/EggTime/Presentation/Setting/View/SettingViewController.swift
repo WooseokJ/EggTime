@@ -43,7 +43,7 @@ extension SettingViewController {
     }
     
     private func configureDataSource() {
-        var cellRegisteration = UICollectionView.CellRegistration<UICollectionViewCell,String> (handler: {cell, indexPath, itemIdentifier in
+        let cellRegisteration = UICollectionView.CellRegistration<UICollectionViewCell,String> (handler: {cell, indexPath, itemIdentifier in
             var content = UIListContentConfiguration.valueCell()
             content.text = Setting.allCases[indexPath.section].list[indexPath.row]
             content.textProperties.color = .white

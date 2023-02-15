@@ -25,7 +25,7 @@ class RealmRepository: RealmRepositoryType {
         return localRealm.objects(EggTime.self)
     }
     func nearTimeFetch() -> Results<EggTime> {
-        return localRealm.objects(EggTime.self).filter("openDate >= %@", Date() ).sorted(byKeyPath: "openDate", ascending: true)
+        return localRealm.objects(EggTime.self).filter("openDate >= %@", Date()).sorted(byKeyPath: "openDate", ascending: true)
     }
     
     func deleteItem(item: Results<EggTime>) {

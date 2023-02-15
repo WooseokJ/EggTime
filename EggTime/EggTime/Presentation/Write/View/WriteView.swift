@@ -91,7 +91,7 @@ class WriteView: BaseView {
         let textField = UITextField()
         textField.backgroundColor =  AppColor.textColor.textInputColor
         textField.textColor = .black
-        textField.placeholder = "  캡슐 여는날짜을 선택해주세요."
+        textField.placeholder = "  여는날짜을 선택해주세요."
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
 //        textField.font = AllFont.font.name
@@ -137,7 +137,7 @@ class WriteView: BaseView {
         let layout = UICollectionViewFlowLayout()
         let spacing : CGFloat = 20
         let layoutwidth = UIScreen.main.bounds.width
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 1.6  , height: UIScreen.main.bounds.width / 1.6 )
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 1.6  , height: UIScreen.main.bounds.width / 1.3 )
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: spacing)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -174,8 +174,8 @@ class WriteView: BaseView {
         //제목
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
-            $0.width.equalTo(UIScreen.main.bounds.width / 3)
-            $0.height.equalTo(UIScreen.main.bounds.height / 23)
+            $0.width.equalTo(UIScreen.main.bounds.width / 3.1)
+            $0.height.equalTo(UIScreen.main.bounds.height / 26)
             $0.leading.equalTo(20)
         }
         
@@ -222,18 +222,18 @@ class WriteView: BaseView {
             $0.top.equalTo(writeLabel.snp.bottom).offset(10)
             $0.leading.equalTo(writeLabel.snp.leading)
             $0.trailing.equalTo(opendateInput.snp.trailing)
-            $0.bottom.equalTo(imageLabel.snp.top).offset(-10)
+            $0.height.equalTo(UIScreen.main.bounds.width / 2)
         }
         
         imageLabel.snp.makeConstraints {
-            $0.bottom.equalTo(collectionview.snp.top).offset(-10)
+            $0.top.equalTo(writeTextView.snp.bottom).offset(10)
             $0.width.equalTo(titleLabel.snp.width)
             $0.height.equalTo(titleLabel.snp.height)
             $0.leading.equalTo(titleLabel.snp.leading)
         }
         collectionview.snp.makeConstraints {
-            $0.bottom.equalTo(self).offset(-20)
-            $0.height.equalTo(UIScreen.main.bounds.width / 1.6)
+            $0.bottom.equalTo(self).offset(-10)
+            $0.top.equalTo(imageLabel.snp.bottom).offset(10)
             $0.leading.equalTo(writeTextView.snp.leading)
             $0.trailing.equalTo(writeTextView.snp.trailing)
         }

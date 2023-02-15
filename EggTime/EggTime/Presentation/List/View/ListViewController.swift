@@ -17,17 +17,12 @@ final class ListViewController: BaseViewController {
         tasks = repository.fetch()
         navigationItem.title = "타임 캡슐 리스트"
         
-        
-        if tasks.count == 0 {
-            listView.EggHidden()
-            listView.contentlabel.text = "현재 묻은 타임캡슐이 없습니다."
-
-        } else {
-            listView.contentlabel.snp.remakeConstraints{
-                $0.height.width.equalTo(0)
-            }
-            
+        guard tasks.isEmpty else {
+            listView.EggShow()
+            return
         }
+        listView.EggHidden()
+        listView.contentlabel.text = "현재 묻은 타임캡슐이 없습니다."
     }
     
     var tasks: Results<EggTime>! {

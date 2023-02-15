@@ -25,11 +25,9 @@ final class DetailViewController: BaseViewController {
         
         detailView.collectionview.dataSource = self
         detailView.collectionview.delegate = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(showAlertDeleteMessage))
         detailView.content.isEditable = false
-        
-        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
-        self.navigationItem.backBarButtonItem = backBarButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image:UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(showAlertDeleteMessage))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
         
     }
 

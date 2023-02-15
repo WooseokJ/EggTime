@@ -12,9 +12,9 @@ final class TabBarController: UITabBarController {
 
 
         let firstVC = UINavigationController(rootViewController: MainViewController())
-        firstVC.tabBarItem.selectedImage = UIImage(systemName: "timer")
-        firstVC.tabBarItem.title = "timer"
-        firstVC.tabBarItem.image = UIImage(systemName: "timer")
+        firstVC.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
+        firstVC.tabBarItem.title = "house"
+        firstVC.tabBarItem.image = UIImage(systemName: "house")
 
         let secondVC =  UINavigationController(rootViewController: MapViewController())
         secondVC.view.backgroundColor = .clear
@@ -22,12 +22,7 @@ final class TabBarController: UITabBarController {
         secondVC.tabBarItem.title = "map"
         secondVC.tabBarItem.image = UIImage(systemName: "map.circle")
 
-        let thirdVC = UINavigationController(rootViewController: ListViewController())
-        thirdVC.tabBarItem.selectedImage = UIImage(systemName: "list.bullet.indent")
-        thirdVC.tabBarItem.title = "List"
-        thirdVC.tabBarItem.image = UIImage(systemName: "list.dash")
-
-        viewControllers = [firstVC, secondVC, thirdVC]
+        viewControllers = [firstVC, secondVC]
 
     }
 
