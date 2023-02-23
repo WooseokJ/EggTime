@@ -575,11 +575,11 @@
 			);
 			mainGroup = E1FCB0A628CDA0F600C07AA3;
 			packageReferences = (
-				18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift.git" */,
-				18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit.git" */,
-				18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip.git" */,
-				18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
-				18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift.git" */,
+				18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */,
+				18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */,
+				18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = E1FCB0A628CDA0F600C07AA3;
 			projectDirPath = "";
@@ -879,7 +879,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.EggTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -922,7 +922,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.EggTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -955,7 +955,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
+		18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -963,7 +963,7 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
+		18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -971,7 +971,7 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
+		18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -979,7 +979,7 @@
 				minimumVersion = 10.30.0;
 			};
 		};
-		18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -987,7 +987,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip.git" */ = {
+		18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
@@ -1000,47 +1000,47 @@
 /* Begin XCSwiftPackageProductDependency section */
 		18AB97052917BBB4008E6384 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = 18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
 		18AB97072917BBB4008E6384 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = 18AB97042917BBB4008E6384 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 		18B1B17928F5AFB6003B9E55 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
 		18B1B17B28F5AFB6003B9E55 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 		18B1B17D28F5AFB6003B9E55 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
+			package = 18B1B17828F5AFB6003B9E55 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
 		};
 		18EA656428EDDBD500D9B74F /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
 		18EA656628EDDBD500D9B74F /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = 18EA656328EDDBD500D9B74F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 		18EA656928EDDC5700D9B74F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = 18EA656828EDDC5700D9B74F /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		18EA656C28EDDC7100D9B74F /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip.git" */;
+			package = 18EA656B28EDDC7100D9B74F /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */

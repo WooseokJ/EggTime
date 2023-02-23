@@ -4,6 +4,7 @@ import NMapsMap
 import CoreLocation
 import SnapKit
 import RealmSwift
+import NaverMapClusterFramework
 
 final class MapViewController: BaseViewController,NMFMapViewCameraDelegate, NMFMapViewOptionDelegate {
     
@@ -22,6 +23,8 @@ final class MapViewController: BaseViewController,NMFMapViewCameraDelegate, NMFM
     var selectTask: EggTime!
  
     var alldistanceArray: [CLLocationDistance] = []
+    var clusterManager: ClusterManager?
+
     
     override func viewWillAppear(_ animated: Bool) {
         tasks = repository.fetch()
@@ -29,9 +32,7 @@ final class MapViewController: BaseViewController,NMFMapViewCameraDelegate, NMFM
             $0.mapView = nil
         }
         markers.removeAll()
-
-        
-        
+                
 
         locationRequest()
         setpin()
@@ -134,9 +135,12 @@ extension MapViewController {
         tasks.enumerated().forEach { [self] index,task in
             guard let lat = task.latitude else {return}
             guard let lng = task.longitude else  {return}
+            
+  
             let marker = NMFMarker(position: NMGLatLng(lat: lat, lng: lng))
             marker.isHideCollidedMarkers = true // hiden 처리
             markers.append(marker)
+            
             markers[index].mapView = mapview.naverMapView.mapView
             if markers[index].infoWindow == nil {
                 // 현재 마커에 정보 창이 열려있지 않을 경우 엶
@@ -154,13 +158,13 @@ extension MapViewController {
                     var minDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date, to: task.openDate)
                     mapview.popupShow()
                     selectTask = task // 선택한것.
-                    
+
                     mapview.image.contentMode = .scaleAspectFit
                     mapview.image.image = UIImage(named: "EggImage")
                     mapview.leaveTitle.isHidden = false
                     mapview.leaveDayLabel.isHidden = false
                     mapview.leaveTimeLabel.isHidden = false
-                    
+
                     if minDate.month! > 0 { // 7개월 3일 12:03:02
                         mapview.leaveDayLabel.text = "\(minDate.month!)개월 \(minDate.day!)일 "
                     }
@@ -171,7 +175,7 @@ extension MapViewController {
                         mapview.leaveTitle.isHidden = true
                         mapview.leaveDayLabel.isHidden = true
                         mapview.leaveTimeLabel.isHidden = true
-                        
+
                         mapview.image.contentMode = .scaleToFill
                         switch task.imageList.isEmpty {
                         case true: mapview.image.image = UIImage(named: "NoImage")
@@ -182,15 +186,15 @@ extension MapViewController {
                     else  {
                         mapview.leaveDayLabel.text = "오늘 자정 오픈"
                     }
-                    
+
                     mapview.leaveTimeLabel.text  = String(format: "%02d:", minDate.hour! )+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
 
                     // 오픈일 지낫는데 거리가 멀어
-                    
+
                     if timer != nil && timer!.isValid {
                         timer?.invalidate() //기존 타이머 시작하면 멈춤
                     }
-                    
+
 
                     timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
                         minDate.second! -= 1
@@ -209,7 +213,7 @@ extension MapViewController {
 
                         mapview.leaveTimeLabel.text  = String(format: "%02d:", minDate.hour!)+String(format: "%02d:", minDate.minute!)+String(format: "%02d", minDate.second!)
                     }
-                    
+
                 } else {
                     mapview.popupHidden()
                 }
