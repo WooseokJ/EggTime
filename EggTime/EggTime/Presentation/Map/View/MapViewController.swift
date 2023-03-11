@@ -26,6 +26,14 @@ final class MapViewController: BaseViewController,NMFMapViewCameraDelegate, NMFM
     var clusterManager: ClusterManager?
 
     
+    struct marker: markerProtocol { // markerProtocol을 상속받아 구조체 구현.
+        var markerName: String = "" // 마커 이름
+        var latitude: CGFloat = 37.518551  // 위도
+        var longitude: CGFloat = 126.905351 // 경도
+        
+        var markerHandler: (() -> ())? // 마커를 터치했을때 동작 정의할 핸들러
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         tasks = repository.fetch()
         markers.forEach {
@@ -36,6 +44,8 @@ final class MapViewController: BaseViewController,NMFMapViewCameraDelegate, NMFM
 
         locationRequest()
         setpin()
+
+
         
     }
 
@@ -94,7 +104,7 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print(location.coordinate.longitude, location.coordinate.latitude)
-            UserDefaults.standard.set(location.coordinate.longitude + Double.random(in: 0.0002...0.0008) , forKey: "lng")
+            UserDefaults.standard.set(location.coordinate.longitude + Double.random(in: 0.0003...0.0008) , forKey: "lng")
             UserDefaults.standard.set(location.coordinate.latitude + Double.random(in: 0.0002...0.0008), forKey: "lat")
             
             circle.center = NMGLatLng(lat: location.coordinate.latitude, lng: location.coordinate.longitude)
@@ -135,6 +145,24 @@ extension MapViewController {
         tasks.enumerated().forEach { [self] index,task in
             guard let lat = task.latitude else {return}
             guard let lng = task.longitude else  {return}
+            
+            
+            clusterManager = ClusterManager.init(mapView: mapview.naverMapView)
+            let M = marker()
+            
+            let clusterItem = ClusterItem.init()
+            let position = CLLocationCoordinate2D(latitude: lat, longitude: lng) // lat: 위도 , lng: 경도
+
+            let markerInfo = marker.init(markerName: "\(1+Int.random(in: 1...100))", latitude: lat, longitude: lng, markerHandler: { [weak self] in
+                    // 마커 클릭했을때의 동작 구현.
+                
+                  })
+
+            clusterItem.markerInfo = markerInfo
+            clusterItem.position = position
+
+            clusterManager!.add(clusterItem)
+            clusterManager!.cluster()
             
   
             let marker = NMFMarker(position: NMGLatLng(lat: lat, lng: lng))

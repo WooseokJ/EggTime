@@ -114,17 +114,17 @@ extension WriteViewController {
             showAlertMessage(title: "열리는날짜를 선택해주세요", button: "확인")
             return
         }
-        
-        let alert = UIAlertController(title: "주의", message: "캡슐이 열리기까지 캡슐을 삭제할수없습니다.", preferredStyle: UIAlertController.Style.alert)
-        let ok = UIAlertAction(title: "확인", style: .default) { (action) in
-            self.saveStart()
-        }
-        
-        let cancel = UIAlertAction(title: "취소하기", style: .cancel)
-        
-        alert.addAction(ok)
-        alert.addAction(cancel)
-        present(alert,animated: true)
+        self.saveStart()
+//        let alert = UIAlertController(title: "주의", message: "캡슐이 열리기까지 캡슐을 삭제할수없습니다.", preferredStyle: UIAlertController.Style.alert)
+//        let ok = UIAlertAction(title: "확인", style: .default) { (action) in
+//            self.saveStart()
+//        }
+
+//        let cancel = UIAlertAction(title: "취소하기", style: .cancel)
+//
+//        alert.addAction(ok)
+//        alert.addAction(cancel)
+//        present(alert,animated: true)
     }
     
     func saveStart() {
